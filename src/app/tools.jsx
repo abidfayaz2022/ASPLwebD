@@ -1,0 +1,110 @@
+'use client';
+import React from 'react';
+
+const ToolsSection = () => {
+    return (
+        <section className="tools-section py-5">
+            <div className="container">
+                <div className="row justify-content-center mb-5">
+                    <div className="col-lg-8 text-center">
+                        <h2 className="display-5 fw-bold mb-4">Powerful Tools & Resources</h2>
+                        <p className="lead text-muted mb-5">
+                            Simplify your financial decisions with our free tools
+                        </p>
+                    </div>
+                </div>
+
+                <div className="row g-4 align-items-center">
+                    <div className="col-lg-6">
+                        <div className="p-4 bg-light rounded-4 shadow-sm mb-4">
+                            <div className="d-flex justify-content-between align-items-center mb-3">
+                                <h4 className="fw-bold mb-0">NRI Tax Calculator</h4>
+                                <span className="badge badge-orange rounded-pill px-3 py-2">Free</span>
+                            </div>
+                            <p className="mb-4">
+                                Estimate your tax liability as a Non-Resident Indian with our comprehensive calculator. Get instant results and personalized recommendations.
+                            </p>
+                            <div className="d-flex justify-content-end">
+                                <a href="/tax_calculator" className="btn btn-orange px-4">
+                                    Try Calculator <i className="bi bi-arrow-right ms-2"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div className="p-4 bg-light rounded-4 shadow-sm">
+                            <div className="d-flex justify-content-between align-items-center mb-3">
+                                <h4 className="fw-bold mb-0">Tax Filing Guide</h4>
+                                <span className="badge badge-orange rounded-pill px-3 py-2">Free</span>
+                            </div>
+                            <p className="mb-4">
+                                Comprehensive guide to help NRIs understand their tax obligations and maximize benefits.
+                            </p>
+                            <div className="d-flex justify-content-end">
+                                <a href="/resources" className="btn btn-orange px-4">
+                                    View Resources <i className="bi bi-arrow-right ms-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-lg-6">
+                        <img
+                            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                            alt="Financial Tools"
+                            className="img-fluid rounded-4 shadow"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            {/* Inline CSS */}
+            <style jsx>{`
+        .tools-section {
+          background-color: #f8f9fa;
+        }
+
+        .btn-orange {
+          background-color: #f7c600;
+          color: black;
+          border-radius: 50px;
+          padding: 8px 16px;
+          font-size: 0.875rem;
+        }
+
+        .btn-orange:hover {
+          background-color: #e6b800;
+        }
+
+        .badge {
+          background-color: #fcb900;
+          color: black;
+          font-size: 0.875rem;
+          padding: 0.5rem 1rem;
+        }
+
+        .img-fluid {
+          max-width: 100%;
+          height: auto;
+        }
+
+        .container {
+          max-width: 1140px;
+        }
+
+        .shadow-sm {
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .rounded-4 {
+          border-radius: 16px;
+        }
+
+        .fw-bold {
+          font-weight: 700;
+        }
+      `}</style>
+        </section>
+    );
+};
+
+export default ToolsSection;
