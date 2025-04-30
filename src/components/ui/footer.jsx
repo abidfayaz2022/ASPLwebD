@@ -26,17 +26,18 @@ const Footer = () => {
                         <div className="col-lg-4 col-md-6">
                             <div className="footer-widget">
                                 <a className="navbar-brand" href="/">
-                                    ASPL Consultancy
+                                    Angel Services
                                 </a>
                                 <p className="mb-4 pe-lg-3">
                                     Your trusted partner in finance and business solutions
                                 </p>
+
                                 <div className="social-links d-flex gap-3 mb-3">
                                     <a
                                         href="https://www.linkedin.com/company/aspl-consultancy-pvt-ltd/?originalSubdomain=in"
                                         className="social-icon"
                                         style={{
-                                            backgroundColor: 'var(--primary-color)',
+
                                             color: '#fff',
                                             width: '36px',
                                             height: '36px',
@@ -45,15 +46,17 @@ const Footer = () => {
                                             alignItems: 'center',
                                             justifyContent: 'center',
                                             transition: 'all 0.3s ease',
+                                            fontSize: '24px',
+                                            color: '#0A66C2'
                                         }}
                                     >
-                                        <i className="bi bi-linkedin"></i>
+                                        <i className="bi bi-linkedin" ></i>
                                     </a>
                                     <a
                                         href="#"
                                         className="social-icon"
                                         style={{
-                                            backgroundColor: 'var(--primary-color)',
+
                                             color: '#fff',
                                             width: '36px',
                                             height: '36px',
@@ -62,15 +65,16 @@ const Footer = () => {
                                             alignItems: 'center',
                                             justifyContent: 'center',
                                             transition: 'all 0.3s ease',
+                                            fontSize: '24px', color: '#000000'
                                         }}
                                     >
-                                        <i className="bi bi-twitter-x"></i>
+                                        <i className="bi bi-twitter-x" ></i>
                                     </a>
                                     <a
                                         href="#"
                                         className="social-icon"
                                         style={{
-                                            backgroundColor: 'var(--primary-color)',
+
                                             color: '#fff',
                                             width: '36px',
                                             height: '36px',
@@ -79,15 +83,16 @@ const Footer = () => {
                                             alignItems: 'center',
                                             justifyContent: 'center',
                                             transition: 'all 0.3s ease',
+                                            fontSize: '24px', color: '#1877F2'
                                         }}
                                     >
-                                        <i className="bi bi-facebook"></i>
+                                        <i className="bi bi-facebook" ></i>
                                     </a>
                                     <a
                                         href="#"
                                         className="social-icon"
                                         style={{
-                                            backgroundColor: 'var(--primary-color)',
+
                                             color: '#fff',
                                             width: '36px',
                                             height: '36px',
@@ -96,6 +101,7 @@ const Footer = () => {
                                             alignItems: 'center',
                                             justifyContent: 'center',
                                             transition: 'all 0.3s ease',
+                                            fontSize: '24px', color: '#E1306C'
                                         }}
                                     >
                                         <i className="bi bi-instagram"></i>
@@ -244,7 +250,7 @@ const Footer = () => {
                                                 transition: 'all 0.3s ease',
                                             }}
                                         >
-                                            Accounting
+                                            Company Secretary
                                         </a>
                                     </li>
                                     <li className="mb-2">
@@ -257,7 +263,7 @@ const Footer = () => {
                                                 transition: 'all 0.3s ease',
                                             }}
                                         >
-                                            Tax Filing
+                                            Acounting
                                         </a>
                                     </li>
                                     <li className="mb-2">
@@ -270,7 +276,7 @@ const Footer = () => {
                                                 transition: 'all 0.3s ease',
                                             }}
                                         >
-                                            NRI Services
+                                            Tax Advisory
                                         </a>
                                     </li>
                                     <li className="mb-2">
@@ -283,7 +289,20 @@ const Footer = () => {
                                                 transition: 'all 0.3s ease',
                                             }}
                                         >
-                                            Advisory
+                                            Legacy Planning
+                                        </a>
+                                    </li>
+                                    <li className="mb-2">
+                                        <a
+                                            href="/services"
+                                            className="footer-link d-block py-1"
+                                            style={{
+                                                color: '#444',
+                                                textDecoration: 'none',
+                                                transition: 'all 0.3s ease',
+                                            }}
+                                        >
+                                            Fund Administration
                                         </a>
                                     </li>
                                 </ul>
@@ -411,7 +430,7 @@ const Footer = () => {
                                     fontSize: '14px',
                                 }}
                             >
-                                &copy; 2025 ASPL Consultancy. All rights reserved.
+                                &copy; 2025 Angel Services. All rights reserved.
                             </p>
                         </div>
                         <div className="col-md-6">
@@ -454,7 +473,7 @@ const Footer = () => {
         }
 
         .social-icon {
-          background-color: var(--primary-color);
+         
           color: #fff;
           width: 36px;
           height: 36px;

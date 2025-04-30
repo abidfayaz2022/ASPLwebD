@@ -25,10 +25,10 @@ export default function ContactCTA() {
                                     </p>
                                 </div>
                                 <div className="col-lg-4 text-lg-end">
-                                    <Link href="/contact" passHref legacyBehavior>
-                                        <a className="btn btn-light btn-lg px-4 py-3 fw-semibold rounded-pill shadow-sm">
-                                            <i className="bi bi-rocket-takeoff-fill me-2"></i> Get Started Today
-                                        </a>
+                                    <Link href="/contact"
+                                        className="btn btn-light btn-lg px-4 py-3 fw-semibold rounded-pill shadow-sm">
+                                        <i className="bi bi-rocket-takeoff-fill me-2"></i> Get Started Today
+
                                     </Link>
                                 </div>
                             </div>

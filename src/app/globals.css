@@ -643,8 +643,8 @@ body {
 }
 
 .feature-card:hover .feature-icon {
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
+  background-color: #fcb900;
+  color: #1e1e1e;
 }
 
 /* Brands and Partners section */

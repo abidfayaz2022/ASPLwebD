@@ -62,24 +62,6 @@ export default function WhyChooseASPL() {
                     ))}
                 </div>
             </div>
-
-            <style jsx>{`
-        .feature-card {
-          background-color: #ffffff;
-          transition: all 0.3s ease;
-        }
-        .feature-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-        }
-        .feature-icon i {
-          display: inline-block;
-        }
-       .feature-card:hover .feature-icon {
-       background-color: var(--primary-color);
-      color: var(--secondary-color);
-      }
-      `}</style>
         </section>
     )
 }

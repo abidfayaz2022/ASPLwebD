@@ -1,5 +1,7 @@
 'use client';
 import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const AboutUs = () => {
     return (
@@ -213,105 +215,110 @@ const AboutUs = () => {
             </section>
 
             {/* Team Section */}
-            <section className="team py-5 bg-light">
+            <section className="team py-4 py-md-5 bg-light">
                 <div className="container">
-                    <h2 className="text-center mb-5 text-dark">Our Team</h2>
-                    <div className="row g-4">
-                        {/* Team Member Card */}
-                        <div className="col-md-6 col-lg-3">
-                            <div className="card team-card h-100">
-                                <div className="card-body text-center">
-                                    <img
-                                        src="/images/Monika Jain.jpeg"
-                                        alt="Monika Jain"
-                                        className="team-member-img"
-                                        style={{ width: "150px", height: "150px", objectFit: "cover", borderRadius: "50%" }}
-                                    />
-                                    <h4>Monika Jain</h4>
-                                    <p className="text-muted">Director</p>
-                                    <div className="team-member-description">
-                                        <p>
-                                            Monika Jain is a Chartered Accountant with 12+ years of experience in finance, compliance, and BPO.
-                                            A former PwC specialist, she excels in statutory audits, IFRS, US GAAP, and financial advisory.
-                                            Monika drives global business expansion by facilitating regulatory compliance and scalable finance outsourcing
-                                            from an India-based back office, streamlining processes and empowering growth.
-                                        </p>
+                    <h2
+                        className="text-center mb-4 mb-md-5 text-dark"
+                        style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)' }}
+                    >
+                        Our Team
+                    </h2>
+                    <div className="row g-3 g-md-4">
+
+                        {/* Reusable team member card */}
+                        {[{
+                            name: 'Monika Jain',
+                            role: 'Director',
+                            img: '/images/Monika Jain.jpeg',
+                            linkedin: 'https://in.linkedin.com/in/monika-jain-ab545914',
+                            email: 'monika.jain@theangelservices.com',
+                            description: `Monika Jain is a Chartered Accountant with 15+ years of experience in finance,
+                                compliance, and BPO. A former PwC specialist, she excels in statutory audits, IFRS, US
+                                GAAP, and financial advisory. Monika drives global business expansion by facilitating
+                                regulatory compliance, and scalable finance outsourcing from an India-based back office,
+                                streamlining processes and empowering growth.`,
+                        }, {
+                            name: 'Gaurav Bansal',
+                            role: 'Advisor',
+                            img: '/images/Gaurav Bansal.jpeg',
+                            linkedin: 'https://in.linkedin.com/in/gaurav-bansal-91a5228b',
+                            email: 'gaurav.bansal@theangelservices.com',
+                            description: `
+                            Gaurav Bansal is a Fellow Chartered
+                                Accountant with 20+ years of experience in consulting, auditing, taxation, and financial
+                                management. A trusted advisor to multinationals, banks, and startups, he excels in
+                                guiding local setups and international expansion. As an expert in indirect
+                                taxation—including GST, excise, and customs—Gaurav delivers strategic solutions for
+                                regulatory compliance and operational efficiency, empowering businesses to scale
+                                globally through effective finance and accounting outsourcing.
+                            `,
+                        }, {
+                            name: 'Gaurav Agarwal',
+                            role: 'Senior Associate',
+                            img: '/images/Gaurav Agarwal.jpeg',
+                            linkedin: 'https://in.linkedin.com/in/gaurav-agarwal-374a49114',
+                            email: 'gaurav.agarwal@theangelservices.com',
+                            description: `With over 13 years of experience in
+                                accounting, finance, and operational strategy, Gaurav Agarwal specializes in optimizing
+                                financial processes and ensuring compliance excellence. As a key contributor to our
+                                finance & accounting outsourcing and overseas business setup solutions, he streamlines
+                                financial operations and drives regulatory adherence. His collaborative approach and
+                                problem-solving mindset empower businesses to scale sustainably and achieve long-term
+                                success`,
+                        }, {
+                            name: 'Mohammad Samad',
+                            role: 'Associate',
+                            img: '/images/Samad.jpeg',
+                            linkedin: 'https://in.linkedin.com/in/mohd-samad-99368125b',
+                            email: 'mohd.samad@theangelservices.com',
+                            description: `Samad is a Chartered Accountant specializing
+                                in financial reporting under Ind AS and SFRS, tax advisory, and process improvement. His
+                                technical expertise and leadership ensure compliance and accurate corporate financial
+                                management. By optimizing financial processes and navigating complex tax landscapes,
+                                Samad empowers businesses to achieve sustainable growth and operational efficiency.`,
+                        }, {
+                            name: 'Pinak Pani Dixit',
+                            role: 'Associate',
+                            img: '/images/Pinak.svg',
+                            linkedin: 'https://in.linkedin.com/in/pinakpanidixit',
+                            email: 'pinak.dixit@theangelservices.com',
+                            description: `Pinak Pani Dixit drives the development of
+                                scalable technology solutions by aligning engineering innovation with business goals. As
+                                Manager, Product Engineering, he leads cross-functional teams to deliver robust,
+                                future-ready platforms that support organizational growth. His expertise in managing
+                                product lifecycles, optimizing technical operations, and fostering collaboration ensures
+                                the company's technology initiatives are executed with precision and impact.`,
+                        }].map((member, index) => (
+                            <div className={`col-md-${index < 2 ? '6' : '4'}`} key={member.name}>
+                                <div className="card team-card h-100 shadow-sm">
+                                    <div className="card-body text-center p-3 p-md-4">
+                                        <Image
+                                            src={member.img}
+                                            alt={member.name}
+                                            width={150}
+                                            height={150}
+                                            className="team-member-img mb-3 rounded-circle"
+                                            style={{ objectFit: 'cover', width: 'clamp(120px, 30vw, 150px)', height: 'clamp(120px, 30vw, 150px)' }}
+                                        />
+                                        <h4 style={{ fontSize: 'clamp(1.1rem, 3vw, 1.5rem)' }}>{member.name}</h4>
+                                        <p className="text-muted" style={{ fontSize: 'clamp(0.9rem, 2vw, 1rem)' }}>{member.role}</p>
+                                        <div className="team-member-description">
+                                            <p style={{ fontSize: 'clamp(0.9rem, 2vw, 1rem)' }}>{member.description}</p>
+                                            <div className="d-flex justify-content-center gap-3 mb-3">
+                                                <Link href={member.linkedin}
+                                                    target="_blank" title="LinkedIn" style={{ color: '#0A66C2', fontSize: '1.2rem' }}>
+                                                    <i className="bi bi-linkedin"></i>
+
+                                                </Link>
+                                                <a href={`mailto:${member.email}`} title="Email" style={{ color: '#D44638', fontSize: '1.2rem' }}>
+                                                    <i className="bi bi-envelope-fill"></i>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div className="col-md-6 col-lg-3">
-                            <div className="card team-card h-100">
-                                <div className="card-body text-center">
-                                    <img
-                                        src="/images/Gaurav Bansal.jpeg"
-                                        alt="Gaurav Bansal"
-                                        className="team-member-img"
-                                        style={{ width: "150px", height: "150px", objectFit: "cover", borderRadius: "50%" }}
-                                    />
-                                    <h4>Gaurav Bansal</h4>
-                                    <p className="text-muted">Advisor</p>
-                                    <div className="team-member-description">
-                                        <p>
-                                            Gaurav Bansal is a Fellow Chartered Accountant with 20+ years of experience in consulting, auditing, taxation,
-                                            and financial management. A trusted advisor to multinationals, banks, and startups, he excels in guiding local
-                                            setups and international expansion. As an expert in indirect taxation—including GST, excise, and customs—Gaurav
-                                            delivers strategic solutions for regulatory compliance and operational efficiency, empowering businesses to scale
-                                            globally through effective finance and accounting outsourcing.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col-md-6 col-lg-3">
-                            <div className="card team-card h-100">
-                                <div className="card-body text-center">
-                                    <img
-                                        src="/images/Gaurav Agarwal.jpeg"
-                                        alt="Gaurav Agarwal"
-                                        className="team-member-img"
-                                        style={{ width: "150px", height: "150px", objectFit: "cover", borderRadius: "50%" }}
-                                    />
-                                    <h4>Gaurav Agarwal</h4>
-                                    <p className="text-muted">Senior Associate</p>
-                                    <div className="team-member-description">
-                                        <p>
-                                            With over 13 years of experience in accounting, finance, and operational strategy, Gaurav Agarwal specializes
-                                            in optimizing financial processes and ensuring compliance excellence. As a key contributor to our finance &
-                                            accounting outsourcing and overseas business setup solutions, he streamlines financial operations and drives
-                                            regulatory adherence. His collaborative approach and problem-solving mindset empower businesses to scale
-                                            sustainably and achieve long-term success.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col-md-6 col-lg-3">
-                            <div className="card team-card h-100">
-                                <div className="card-body text-center">
-                                    <img
-                                        src="/images/Samad.jpeg"
-                                        alt="Mohammad Samad"
-                                        className="team-member-img"
-                                        style={{ width: "150px", height: "150px", objectFit: "cover", borderRadius: "50%" }}
-                                    />
-                                    <h4>Mohammad Samad</h4>
-                                    <p className="text-muted">Associate</p>
-                                    <div className="team-member-description">
-                                        <p>
-                                            Samad is a Chartered Accountant specializing in financial reporting under Ind AS and SFRS, tax advisory, and
-                                            process improvement. His technical expertise and leadership ensure compliance and accurate corporate financial
-                                            management. By optimizing financial processes and navigating complex tax landscapes, Samad empowers businesses
-                                            to achieve sustainable growth and operational efficiency.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        ))}
 
                     </div>
                 </div>

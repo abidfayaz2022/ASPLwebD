@@ -3,7 +3,7 @@ export default function WhyUs() {
         <section className="why-us py-5" style={{ backgroundColor: '#EAF2FD' }}>
             <div className="container">
                 <div className="text-center mb-5">
-                    <h2 className="display-4 fw-bold text-dark mb-2">Why ASPL Consultancy?</h2>
+                    <h2 className="display-4 fw-bold text-dark mb-2">Why Angel Services?</h2>
                     <div className="divider-center mb-4">
                         <span className="bg-primary"></span>
                     </div>

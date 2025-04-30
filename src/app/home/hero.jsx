@@ -57,7 +57,7 @@ export default function HeroSection() {
                                 className="display-4 fw-bold mb-6"
                                 style={{ fontSize: '3.5rem', color: 'var(--text-dark)' }}
                             >
-                                ASPL Consultancy
+                                Angel Services
                             </h1>
                             <p className="lead mb-4" style={{ color: 'var(--text-dark)' }}>
                                 Your trusted partner in finance and business solutions

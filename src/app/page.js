@@ -1,9 +1,9 @@
 
-import HeroSection from "./hero"
-import WhyChooseASPL from "./whyChoose";
-import ServicesSection from "./services";
-import ToolsSection from "./tools";
-import CtaSection from "./cta";
+import HeroSection from "./home/hero"
+import WhyChooseASPL from "./home/whyChoose";
+import ServicesSection from "./home/services";
+import ToolsSection from "./home/tools";
+import CtaSection from "./home/cta";
 
 
 export default function Home() {
