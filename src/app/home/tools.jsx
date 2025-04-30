@@ -25,7 +25,7 @@ const ToolsSection = () => {
                                 Estimate your tax liability as a Non-Resident Indian with our comprehensive calculator. Get instant results and personalized recommendations.
                             </p>
                             <div className="d-flex justify-content-end">
-                                <a href="/tax_calculator" className="btn btn-orange px-4">
+                                <a href="/tax-calculator" className="btn btn-orange px-4">
                                     Try Calculator <i className="bi bi-arrow-right ms-2"></i>
                                 </a>
                             </div>
