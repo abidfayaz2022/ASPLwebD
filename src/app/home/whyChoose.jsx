@@ -32,7 +32,7 @@ export default function WhyChooseASPL() {
         },
     ]
 
-    return (
+    return (<>
         <section className="features-section py-5">
             <div className="container">
                 <div className="row justify-content-center mb-5">
@@ -63,6 +63,18 @@ export default function WhyChooseASPL() {
                 </div>
             </div>
         </section>
+        <style jsx>
+            {`
+                .feature-card p {display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;}
+
+            `}
+        </style>
+    </>
     )
 }
 
