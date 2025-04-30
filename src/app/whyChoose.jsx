@@ -75,6 +75,10 @@ export default function WhyChooseASPL() {
         .feature-icon i {
           display: inline-block;
         }
+       .feature-card:hover .feature-icon {
+       background-color: var(--primary-color);
+      color: var(--secondary-color);
+      }
       `}</style>
         </section>
     )

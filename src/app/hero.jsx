@@ -115,7 +115,7 @@ export default function HeroSection() {
                                 {[0, 1].map((idx) => (
                                     <Link
                                         key={idx}
-                                        href={idx === 0 ? '/nri_tax_return' : '/services_incorporation'}
+                                        href={idx === 0 ? '/nri-tax-return' : '/services_incorporation'}
                                         className="featured-service-card slide"
                                         style={{
                                             position: 'absolute',

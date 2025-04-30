@@ -203,7 +203,6 @@ const ServicePage = () => {
                     </div>
                 </div>
             </section>
-
             <style jsx>{`
         .services-hero-bg {
           position: absolute;

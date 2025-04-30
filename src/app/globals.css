@@ -24,6 +24,8 @@
   /* Derived Variables for Bootstrap compatibility */
   --bs-primary-rgb: 252, 185, 0;
   --bs-secondary-rgb: 51, 51, 51;
+  --bs-white-rgb: 255, 255, 255;
+  --bs-black-rgb: 0, 0, 0;
 }
 
 /* Global styles */

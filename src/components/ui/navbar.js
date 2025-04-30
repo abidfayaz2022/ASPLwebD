@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect } from 'react';
-// import "@/components/styles/navbar.module.css"
+
 
 
 const Navbar = () => {

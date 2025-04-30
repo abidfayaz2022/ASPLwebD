@@ -22,7 +22,7 @@ const ServicesSection = () => {
                 <div className="row g-4">
                     {/* Global Incorporation */}
                     <div className="col-md-6 col-lg-4">
-                        <a href="/services_incorporation" className="text-decoration-none">
+                        <a href="/services/incorporation" className="text-decoration-none">
                             <div className="service-card">
                                 <div className="position-absolute top-0 end-0 mt-3 me-3">
                                     <span className="badge bg-primary rounded-pill px-3 py-2">New</span>

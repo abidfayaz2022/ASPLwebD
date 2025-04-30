@@ -3,7 +3,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import Script from 'next/script';
 import BootstrapClient from './../components/bootstrapClient';
 import Navbar from '../components/ui/navbar';
-import Footer from '@/components/ui/footer';
+import Footer from '../components/ui/footer';
 import "./globals.css";
 
 export const metadata = {

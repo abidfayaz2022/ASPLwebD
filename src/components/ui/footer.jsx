@@ -182,7 +182,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2">
                                         <a
-                                            href="/angel_index"
+                                            href="https://asplconsultancy.com/angel"
                                             className="footer-link d-block py-1"
                                             style={{
                                                 color: '#444',
@@ -223,7 +223,7 @@ const Footer = () => {
                                 <ul className="footer-links list-unstyled">
                                     <li className="mb-2">
                                         <a
-                                            href="/services_incorporation"
+                                            href="/services/incorporation"
                                             className="footer-link d-block py-1"
                                             style={{
                                                 color: '#444',
@@ -262,7 +262,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2">
                                         <a
-                                            href="/nri_tax_return"
+                                            href="/nri-tax-return"
                                             className="footer-link d-block py-1"
                                             style={{
                                                 color: '#444',
