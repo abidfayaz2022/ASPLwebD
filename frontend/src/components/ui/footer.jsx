@@ -25,9 +25,16 @@ const Footer = () => {
                         {/* Company Info Section */}
                         <div className="col-lg-4 col-md-6">
                             <div className="footer-widget">
-                                <a className="navbar-brand" href="/">
+                                {/* <a className="navbar-brand" href="/">
                                     Angel Services
-                                </a>
+                                </a> */}
+                                <div className="ms-auto d-none d-lg-flex align-items-center">
+                                    <img
+                                        src="/images/angelserviceslogo (2).png"
+                                        alt="Angel Services Logo"
+                                        style={{ height: '50px', objectFit: 'contain' }}
+                                    />
+                                </div>
                                 <p className="mb-4 pe-lg-3">
                                     Your trusted partner in finance and business solutions
                                 </p>

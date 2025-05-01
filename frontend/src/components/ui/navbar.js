@@ -13,7 +13,15 @@ const Navbar = () => {
 
         < nav className="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm" >
             <div className="container">
-                <Link className="navbar-brand" href="/">Angel Services</Link>
+                {/* <Link className="navbar-brand" href="/">Angel Services</Link> */}
+                <div className="ms-auto d-none d-lg-flex align-items-center">
+                    <img
+                        src="/images/angelserviceslogo (2).png"
+                        alt="Angel Services Logo"
+                        style={{ height: '50px', objectFit: 'contain' }}
+                    />
+                </div>
+
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span className="navbar-toggler-icon"></span>
                 </button>
