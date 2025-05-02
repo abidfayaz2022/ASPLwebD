@@ -2,7 +2,42 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-
+const TeamCard = ({ member }) => (
+    <div className="card team-card h-100 shadow-sm">
+      <div className="card-body text-center p-3 p-md-4">
+        <Image
+          src={member.img}
+          alt={member.name}
+          width={150}
+          height={150}
+          className="team-member-img mb-3 rounded-circle"
+          style={{ objectFit: 'cover', width: 'clamp(120px, 30vw, 150px)', height: 'clamp(120px, 30vw, 150px)' }}
+        />
+        <h4 style={{ fontSize: 'clamp(1.1rem, 3vw, 1.5rem)' }}>{member.name}</h4>
+        <p className="text-muted" style={{ fontSize: 'clamp(0.9rem, 2vw, 1rem)' }}>{member.role}</p>
+  
+        {/* 🔽 Wrap this section in a .team-member-description div */}
+        <div className="team-member-description">
+          <p style={{ fontSize: 'clamp(0.9rem, 2vw, 1rem)' }}>{member.description}</p>
+          {(member.linkedin || member.email) && (
+            <div className="d-flex justify-content-center gap-3 mb-3">
+              {member.linkedin && (
+                <Link href={member.linkedin} target="_blank" title="LinkedIn" style={{ color: '#0A66C2', fontSize: '1.2rem' }}>
+                  <i className="bi bi-linkedin"></i>
+                </Link>
+              )}
+              {member.email && (
+                <a href={`mailto:${member.email}`} title="Email" style={{ color: '#D44638', fontSize: '1.2rem' }}>
+                  <i className="bi bi-envelope-fill"></i>
+                </a>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+  
 const AboutUs = () => {
     return (
         <div>
@@ -217,110 +252,119 @@ const AboutUs = () => {
             {/* Team Section */}
             <section className="team py-4 py-md-5 bg-light">
                 <div className="container">
-                    <h2
-                        className="text-center mb-4 mb-md-5 text-dark"
-                        style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)' }}
-                    >
-                        Our Team
-                    </h2>
-                    <div className="row g-3 g-md-4">
+                <h2
+  className="text-center mb-3 mb-md-4 text-dark"
+  style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)' }}
+>
+  Our Team
+</h2>
+<div className="underline-center mx-auto mb-4"></div>
 
-                        {/* Reusable team member card */}
-                        {[{
-                            name: 'Monika Jain',
-                            role: 'Director',
-                            img: '/images/Monika Jain.jpeg',
-                            linkedin: 'https://in.linkedin.com/in/monika-jain-ab545914',
-                            email: 'monika.jain@theangelservices.com',
-                            description: `Monika Jain is a Chartered Accountant with 15+ years of experience in finance,
-                                compliance, and BPO. A former PwC specialist, she excels in statutory audits, IFRS, US
-                                GAAP, and financial advisory. Monika drives global business expansion by facilitating
-                                regulatory compliance, and scalable finance outsourcing from an India-based back office,
-                                streamlining processes and empowering growth.`,
-                        }, {
-                            name: 'Gaurav Bansal',
-                            role: 'Advisor',
-                            img: '/images/Gaurav Bansal.jpeg',
-                            linkedin: 'https://in.linkedin.com/in/gaurav-bansal-91a5228b',
-                            email: 'gaurav.bansal@theangelservices.com',
-                            description: `
-                            Gaurav Bansal is a Fellow Chartered
-                                Accountant with 20+ years of experience in consulting, auditing, taxation, and financial
-                                management. A trusted advisor to multinationals, banks, and startups, he excels in
-                                guiding local setups and international expansion. As an expert in indirect
-                                taxation—including GST, excise, and customs—Gaurav delivers strategic solutions for
-                                regulatory compliance and operational efficiency, empowering businesses to scale
-                                globally through effective finance and accounting outsourcing.
-                            `,
-                        }, {
-                            name: 'Gaurav Agarwal',
-                            role: 'Senior Associate',
-                            img: '/images/Gaurav Agarwal.jpeg',
-                            linkedin: 'https://in.linkedin.com/in/gaurav-agarwal-374a49114',
-                            email: 'gaurav.agarwal@theangelservices.com',
-                            description: `With over 13 years of experience in
-                                accounting, finance, and operational strategy, Gaurav Agarwal specializes in optimizing
-                                financial processes and ensuring compliance excellence. As a key contributor to our
-                                finance & accounting outsourcing and overseas business setup solutions, he streamlines
-                                financial operations and drives regulatory adherence. His collaborative approach and
-                                problem-solving mindset empower businesses to scale sustainably and achieve long-term
-                                success`,
-                        }, {
-                            name: 'Mohammad Samad',
-                            role: 'Associate',
-                            img: '/images/Samad.jpeg',
-                            linkedin: 'https://in.linkedin.com/in/mohd-samad-99368125b',
-                            email: 'mohd.samad@theangelservices.com',
-                            description: `Samad is a Chartered Accountant specializing
-                                in financial reporting under Ind AS and SFRS, tax advisory, and process improvement. His
-                                technical expertise and leadership ensure compliance and accurate corporate financial
-                                management. By optimizing financial processes and navigating complex tax landscapes,
-                                Samad empowers businesses to achieve sustainable growth and operational efficiency.`,
-                        }, {
-                            name: 'Pinak Pani Dixit',
-                            role: 'Associate',
-                            img: '/images/Pinak.svg',
-                            linkedin: 'https://in.linkedin.com/in/pinakpanidixit',
-                            email: 'pinak.dixit@theangelservices.com',
-                            description: `Pinak Pani Dixit drives the development of
-                                scalable technology solutions by aligning engineering innovation with business goals. As
-                                Manager, Product Engineering, he leads cross-functional teams to deliver robust,
-                                future-ready platforms that support organizational growth. His expertise in managing
-                                product lifecycles, optimizing technical operations, and fostering collaboration ensures
-                                the company's technology initiatives are executed with precision and impact.`,
-                        }].map((member, index) => (
-                            <div className={`col-md-${index < 2 ? '6' : '4'}`} key={member.name}>
-                                <div className="card team-card h-100 shadow-sm">
-                                    <div className="card-body text-center p-3 p-md-4">
-                                        <Image
-                                            src={member.img}
-                                            alt={member.name}
-                                            width={150}
-                                            height={150}
-                                            className="team-member-img mb-3 rounded-circle"
-                                            style={{ objectFit: 'cover', width: 'clamp(120px, 30vw, 150px)', height: 'clamp(120px, 30vw, 150px)' }}
-                                        />
-                                        <h4 style={{ fontSize: 'clamp(1.1rem, 3vw, 1.5rem)' }}>{member.name}</h4>
-                                        <p className="text-muted" style={{ fontSize: 'clamp(0.9rem, 2vw, 1rem)' }}>{member.role}</p>
-                                        <div className="team-member-description">
-                                            <p style={{ fontSize: 'clamp(0.9rem, 2vw, 1rem)' }}>{member.description}</p>
-                                            <div className="d-flex justify-content-center gap-3 mb-3">
-                                                <Link href={member.linkedin}
-                                                    target="_blank" title="LinkedIn" style={{ color: '#0A66C2', fontSize: '1.2rem' }}>
-                                                    <i className="bi bi-linkedin"></i>
+                 {/* Leadership Section */}
+<h3 className="text-center text-dark mt-5 mb-4">Leadership</h3>
+<div className="row g-4 justify-content-center">
+  {[
+    {
+      name: 'Rajat Gupta',
+      role: 'Managing Director',
+      img: '/images/default.jpg',
+      linkedin: '',
+      email: '',
+      description: '',
+    },
+    {
+      name: "Malcolm D'souza",
+      role: 'Director',
+      img: '/images/default.jpg',
+      linkedin: '',
+      email: '',
+      description: '',
+    },
+    {
+      name: 'Monika Jain',
+      role: 'Director – India Operations',
+      img: '/images/Monika Jain.jpeg',
+      linkedin: 'https://in.linkedin.com/in/monika-jain-ab545914',
+      email: 'monika.jain@theangelservices.com',
+      description: `Monika Jain is a Chartered Accountant with 15+ years of experience in finance...`,
+    }
+  ].map(member => (
+    <div className="col-md-4" key={member.name}>
+      <TeamCard member={member} />
+    </div>
+  ))}
+</div>
 
-                                                </Link>
-                                                <a href={`mailto:${member.email}`} title="Email" style={{ color: '#D44638', fontSize: '1.2rem' }}>
-                                                    <i className="bi bi-envelope-fill"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+{/* Advisors Section */}
+<h3 className="text-center text-dark mt-5 mb-4">Advisors</h3>
+<div className="row g-4 justify-content-center">
+  {[
+    {
+      name: 'Rahul Saxena',
+      role: 'Advisor',
+      img: '/images/default.jpg',
+      linkedin: '',
+      email: '',
+      description: '',
+    },
+    {
+      name: 'Navin Bafna',
+      role: 'Advisor',
+      img: '/images/default.jpg',
+      linkedin: '',
+      email: '',
+      description: '',
+    },
+    {
+      name: 'Gaurav Bansal',
+      role: 'Advisor',
+      img: '/images/Gaurav Bansal.jpeg',
+      linkedin: 'https://in.linkedin.com/in/gaurav-bansal-91a5228b',
+      email: 'gaurav.bansal@theangelservices.com',
+      description: `Gaurav Bansal is a Fellow Chartered Accountant with 20+ years of experience...`,
+    }
+  ].map(member => (
+    <div className="col-md-4" key={member.name}>
+      <TeamCard member={member} />
+    </div>
+  ))}
+</div>
 
-                    </div>
+{/* Operations Section */}
+<h3 className="text-center text-dark mt-5 mb-4">Operations</h3>
+<div className="row g-4 justify-content-center">
+  {[
+    {
+      name: 'Gaurav Agarwal',
+      role: 'Senior Associate',
+      img: '/images/Gaurav Agarwal.jpeg',
+      linkedin: 'https://in.linkedin.com/in/gaurav-agarwal-374a49114',
+      email: 'gaurav.agarwal@theangelservices.com',
+      description: `With over 13 years of experience in accounting and finance...`,
+    },
+    {
+      name: 'Mohd. Samad',
+      role: 'Associate',
+      img: '/images/Samad.jpeg',
+      linkedin: 'https://in.linkedin.com/in/mohd-samad-99368125b',
+      email: 'mohd.samad@theangelservices.com',
+      description: `Samad is a Chartered Accountant specializing in financial reporting...`,
+    },
+    {
+      name: 'Pinak Pani Dixit',
+      role: 'Associate',
+      img: '/images/Pinak.svg',
+      linkedin: 'https://in.linkedin.com/in/pinakpanidixit',
+      email: 'pinak.dixit@theangelservices.com',
+      description: `Pinak Pani Dixit drives the development of scalable technology solutions...`,
+    }
+  ].map(member => (
+    <div className="col-md-4" key={member.name}>
+      <TeamCard member={member} />
+    </div>
+  ))}
+</div>
+
                 </div>
             </section>
 
@@ -334,6 +378,35 @@ const AboutUs = () => {
           height: auto;
           border-radius: 50%;
         }
+           .bg-primary-subtle {
+    background-color: #f4f4f4 !important;
+  }
+  .team-member-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+  }
+
+  .team-member-description {
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+  }
+
+  .team-card:hover .team-member-description {
+    opacity: 1;
+    visibility: visible;
+    max-height: 500px;
+  }
+    .underline-center {
+  height: 4px;
+  width: 80px;
+  background: linear-gradient(to right, #fcb900, rgba(252, 185, 0, 0.5));
+  border-radius: 4px;
+}
+
       `}</style>
         </div>
     );

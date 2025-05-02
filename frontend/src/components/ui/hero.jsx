@@ -295,22 +295,31 @@ export default function HeroSection() {
         }
 
         .btn-orange {
-          background-color: var(--primary-color);
-          color: #000;
-          border: none;
-          border-radius: 30px;
-          transition: var(--transition-speed) ease;
-          padding: 0.6rem 1.5rem;
-          font-size: 1rem;
-          line-height: 1.5;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
+  background-color: var(--primary-color);
+  color: #000;
+  border: none;
+  border-radius: 30px;
+  transition: var(--transition-speed) ease;
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
 
-        .btn-orange:hover {
-          background-color: #e6b800;
-        }
+.btn-orange i.bi-arrow-right {
+  color: #000 !important;
+}
+
+
+.btn-orange:hover {
+  background-color: #e6b800;
+}
+
+.btn-orange:hover i {
+  color: #000 !important;
+}
 
         /* Other Styling */
         .review-stack {

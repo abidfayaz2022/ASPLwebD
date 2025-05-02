@@ -1,0 +1,53 @@
+.blogsPage {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
+  }
+  
+  .pageTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1F2A44;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  
+  .description {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: #444;
+  }
+  
+  .searchInput {
+    display: block;
+    margin: 0 auto 30px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 400px;
+    font-size: 1rem;
+  }
+  
+  .blogGrid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  .blogCard {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    padding: 16px;
+    text-align: center;
+  }
+  
+  .date {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #777;
+  }
+  

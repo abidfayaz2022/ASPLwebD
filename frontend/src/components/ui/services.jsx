@@ -7,7 +7,7 @@ const ServicesSection = () => {
             <div className="container">
                 <div className="row align-items-center mb-5">
                     <div className="col-lg-6">
-                        <h2 className="display-5 fw-bold mb-3">Our Comprehensive Services</h2>
+                    <h2 className="display-5 fw-bold mb-3 text-nowrap">Our Comprehensive Services</h2>
                         <p className="lead mb-4">
                             Discover our full range of financial and accounting solutions designed for global businesses and NRIs
                         </p>

@@ -199,17 +199,116 @@ const Resources = () => {
             </section>
 
             {/* Coming Soon Section */}
-            <section className="py-5 bg-light">
-                <div className="container">
-                    <div className="row justify-content-center text-center mb-5">
-                        <div className="col-lg-8">
-                            <h2 className="display-6 fw-bold mb-3">More Resources Coming Soon</h2>
-                            <div className="accent-center-underline mb-4 mx-auto"></div>
-                            <p className="lead">We're constantly developing new tools and resources to help you manage your global financial needs.</p>
-                        </div>
-                    </div>
+{/* Tools and Blogs Section */}
+<section className="py-5 bg-light">
+  <div className="container">
+
+    {/* Section Heading */}
+    <div className="row text-center mb-5">
+      <div className="col-12">
+        <h2 className="section-heading">Explore Our Tools & Insights</h2>
+        <div className="accent-center-underline mx-auto mb-3"></div>
+        <p className="lead">Use our expert calculators and stay updated with practical knowledge tailored for NRIs.</p>
+      </div>
+    </div>
+
+    {/* Calculator Cards 2x2 */}
+    <div className="row g-4 mb-5">
+      {[
+        {
+          title: "Audit Requirement Calculator",
+          desc: "Check if your business qualifies for audit under Indian tax laws.",
+          icon: "bi-journal-check",
+          link: "/resources/audit-calculator"
+        },
+        {
+          title: "Corporate Tax Calculator",
+          desc: "Compute tax liability with applicable deductions & surcharges.",
+          icon: "bi-calculator",
+          link: "/resources/corporate-tax"
+        },
+        {
+          title: "Compliance Calendar",
+          desc: "Stay updated on return filing & financial due dates.",
+          icon: "bi-calendar2-event",
+          link: "/resources/compliance-calendar"
+        },
+        {
+          title: "GST Requirement Checker",
+          desc: "Find if your business needs GST registration based on turnover.",
+          icon: "bi-receipt",
+          link: "/resources/gst-requirement"
+        }
+      ].map((tool, index) => (
+        <div className="col-md-6" key={index}>
+          <div className="tool-box p-4 rounded-4 bg-white shadow-sm h-100 d-flex flex-column justify-content-between">
+            <div>
+              <div className="d-flex align-items-start mb-3">
+                <i className={`bi ${tool.icon} fs-2 text-warning me-3`}></i>
+                <div>
+                  <h5 className="fw-bold text-dark mb-1">{tool.title}</h5>
+                  <p className="text-muted mb-0">{tool.desc}</p>
                 </div>
-            </section>
+              </div>
+            </div>
+            <div className="mt-4">
+              <Link href={tool.link} className="btn btn-warning w-100 text-dark fw-semibold">
+                <i className="bi bi-arrow-right-circle me-2"></i>Use {tool.title.split(" ")[0]}
+              </Link>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {/* Blog Teasers */}
+    <div className="row mb-4">
+      <div className="col-12 text-center">
+        <h3 className="fw-bold text-dark mb-3">Recent Blog Highlights</h3>
+        <p className="text-muted">Catch up with our latest knowledge drops from LinkedIn</p>
+      </div>
+    </div>
+
+    <div className="row g-4 justify-content-center mb-4">
+      {[
+        {
+          url: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7309249758286528513?collapsed=1",
+          date: "April 1, 2024"
+        },
+        {
+          url: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7306616750173736960?collapsed=1",
+          date: "March 28, 2024"
+        },
+        {
+          url: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7304068620878327808?collapsed=1",
+          date: "March 20, 2024"
+        }
+      ].map((blog, idx) => (
+        <div className="col-md-6 col-lg-4" key={idx}>
+          <div className="bg-white shadow-sm rounded-4 overflow-hidden">
+            <iframe
+              src={blog.url}
+              height="360"
+              width="100%"
+              frameBorder="0"
+              allowFullScreen
+              title={`Blog ${idx}`}
+            ></iframe>
+            <div className="p-3 text-end text-muted small">🗓 {blog.date}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div className="text-center">
+      <Link href="/resources/blogs" className="btn btn-outline-dark rounded-pill px-4">
+        <i className="bi bi-newspaper me-2"></i>View All Blogs
+      </Link>
+    </div>
+  </div>
+
+</section>
+
 
             {/* Newsletter & CTA Section */}
             <section className="cta-section py-5 bg-white">
@@ -277,7 +376,31 @@ const Resources = () => {
             </section>
 
             <style jsx>{`
-        /* Hero Section Styles */
+       
+        /*calculators*/
+         .section-heading {
+      color: #1F2A44;
+      font-weight: 700;
+    }
+
+    .tool-box:hover {
+      box-shadow: 0 0 18px rgba(252, 185, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .accent-center-underline {
+      height: 4px;
+      width: 80px;
+      background: linear-gradient(to right, #fcb900, rgba(252, 185, 0, 0.5));
+      border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .tool-box {
+        text-align: center;
+      }
+    }
+       /* Hero Section Styles */
         .resources-hero-bg {
           background: linear-gradient(135deg, rgba(254,254,254,0.85), rgba(230,170,0,0.95)), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center/cover;
           height: 500px;
@@ -423,7 +546,6 @@ const Resources = () => {
         .section-tag {
           display: inline-block;
         }
-
         /* Process Timeline */
         .process-number {
           display: flex;

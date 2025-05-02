@@ -1,0 +1,40 @@
+.navbarCustom {
+    background-color: white;
+    border-bottom: 2px solid #fcb900;
+    transition: all 0.3s ease;
+    padding-top: 8px;     /* Reduced from default */
+    padding-bottom: 8px;  /* Reduced from default */
+  }
+  
+  .navLinks {
+    gap: 25px;
+  }
+  
+  .navItem {
+    position: relative;
+    font-weight: 500;
+    font-size: 1.05rem;
+    color: #222 !important;
+    transition: color 0.3s ease;
+    padding: 6px 10px;     /* Helps reduce link block height */
+  }
+  
+  .navItem:hover {
+    color: #fcb900 !important;
+  }
+  
+  .navItem::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #fcb900;
+    left: 0;
+    bottom: -4px;
+    transition: width 0.3s ease;
+  }
+  
+  .navItem:hover::after {
+    width: 100%;
+  }
+  
