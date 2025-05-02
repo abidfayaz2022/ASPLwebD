@@ -38,7 +38,7 @@ export default function WhyChooseASPL() {
                 <div className="row justify-content-center mb-5">
                     <div className="col-lg-7 text-center">
                         <h2 className="display-5 fw-bold mb-4" style={{ color: 'var(--text-dark)' }}>
-                            Why Choose ASPL
+                            Why Choose Us
                         </h2>
                         <p className="lead text-muted">
                             We deliver excellence through expertise, innovation, and commitment to your success
