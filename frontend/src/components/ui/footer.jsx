@@ -60,7 +60,7 @@ const Footer = () => {
                                         <i className="bi bi-linkedin" ></i>
                                     </a>
                                     <a
-                                        href="#"
+                                        href="https://x.com/AngelServices13"
                                         className="social-icon"
                                         style={{
 
@@ -78,7 +78,7 @@ const Footer = () => {
                                         <i className="bi bi-twitter-x" ></i>
                                     </a>
                                     <a
-                                        href="#"
+                                        href="https://www.facebook.com/urbizsupport/"
                                         className="social-icon"
                                         style={{
 
@@ -94,24 +94,6 @@ const Footer = () => {
                                         }}
                                     >
                                         <i className="bi bi-facebook" ></i>
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className="social-icon"
-                                        style={{
-
-                                            color: '#fff',
-                                            width: '36px',
-                                            height: '36px',
-                                            borderRadius: '50%',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            transition: 'all 0.3s ease',
-                                            fontSize: '24px', color: '#E1306C'
-                                        }}
-                                    >
-                                        <i className="bi bi-instagram"></i>
                                     </a>
                                 </div>
                             </div>
@@ -378,7 +360,7 @@ const Footer = () => {
                                             <i className="bi bi-geo-alt-fill"></i>
                                         </div>
                                         <div className="content">
-                                            <h6 className="mb-1" style={{ fontWeight: 600, color: '#333', fontSize: '15px' }}>Corporate Office</h6>
+                                            <h6 className="mb-1" style={{ fontWeight: 600, color: '#333', fontSize: '15px' }}>India Corporate Office</h6>
                                             <p className="mb-0" style={{ color: '#444', fontSize: '14px' }}>316, 3rd Floor, Ocean Plaza, Sector 18, Noida, U.P., India 201301</p>
                                         </div>
                                     </div>
@@ -388,7 +370,7 @@ const Footer = () => {
                                             <i className="bi bi-geo-alt-fill"></i>
                                         </div>
                                         <div className="content">
-                                            <h6 className="mb-1" style={{ fontWeight: 600, color: '#333', fontSize: '15px' }}>Agra Office</h6>
+                                            <h6 className="mb-1" style={{ fontWeight: 600, color: '#333', fontSize: '15px' }}>Administrative Office</h6>
                                             <p className="mb-0" style={{ color: '#444', fontSize: '14px' }}>10, Shree Nath Ji Complex, Madia Katra Crossing, Agra, U.P., India 282004.</p>
                                         </div>
                                     </div>
@@ -437,13 +419,13 @@ const Footer = () => {
                                     fontSize: '14px',
                                 }}
                             >
-                                &copy; 2025 Angel Services. All rights reserved.
+                                &copy; 2025 Angel Services pte. ltd. , All rights reserved.
                             </p>
                         </div>
                         <div className="col-md-6">
                             <div className="footer-links text-center text-md-end">
                                 <a
-                                    href="#"
+                                    href="/privacy"
                                     className="footer-link text-white px-2"
                                     style={{
                                         textDecoration: 'none',
@@ -453,7 +435,7 @@ const Footer = () => {
                                     Privacy Policy
                                 </a>
                                 <a
-                                    href="#"
+                                    href="/terms"
                                     className="footer-link text-white px-2"
                                     style={{
                                         textDecoration: 'none',

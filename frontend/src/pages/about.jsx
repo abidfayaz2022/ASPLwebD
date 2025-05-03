@@ -44,7 +44,7 @@ const AboutUs = () => {
             {/* About Header */}
             <section className="about-header py-5 bg-light">
                 <div className="container">
-                    <h1 className="text-center text-dark">About ASPL Consultancy</h1>
+                    <h1 className="text-center text-dark">About Angel Services</h1>
                     <p className="lead text-center text-dark">
                         Your trusted partner in finance and business solutions
                     </p>
@@ -58,11 +58,8 @@ const AboutUs = () => {
                         <div className="col-md-6">
                             <h2>Who We Are</h2>
                             <p>
-                                At ASPL Consultancy, we enable businesses to start, grow, and scale with confidence.
-                                As an independent brand operating under the Angel Services umbrella, we bring together
-                                the agility of a dedicated consultancy with the expertise of a global corporate services provider.
-                            </p>
-                            <p>
+                                At Angel Services, we enable businesses to start, grow, and scale with confidence.
+                                we bring together the agility of a dedicated consultancy with the expertise of a global corporate services provider.
                                 We specialize in incorporation, accounting, tax compliance, and financial outsourcing services across
                                 Asia and beyond—including Singapore, Indonesia, Vietnam, UAE, Hong Kong, BVI, and the Cayman Islands.
                                 Whether you're launching a startup or expanding internationally, we provide tailored support to help you
@@ -261,32 +258,32 @@ const AboutUs = () => {
 <div className="underline-center mx-auto mb-4"></div>
 
                  {/* Leadership Section */}
-<h3 className="text-center text-dark mt-5 mb-4">Leadership</h3>
+<h3 className="text-center mb-3 mb-md-4 text-dark">Leadership</h3>
 <div className="row g-4 justify-content-center">
   {[
     {
       name: 'Rajat Gupta',
       role: 'Managing Director',
-      img: '/images/default.jpg',
-      linkedin: '',
-      email: '',
-      description: '',
+      img: '/images/Rajat.jpg',
+      linkedin: 'https://www.linkedin.com/in/guptarajat13/',
+      email: 'rajat.gupta@theangelservices.com',
+      description: 'Rajat is an accomplished professional with over 18 years of experience in finance and business administration across multiple industries. His expertise includes financial management, capital raising, accounting, taxation, secretarial, and human resources with a strong understanding of regional laws and regulations.',
     },
     {
       name: "Malcolm D'souza",
       role: 'Director',
-      img: '/images/default.jpg',
-      linkedin: '',
-      email: '',
-      description: '',
+      img: '/images/Malcolm.jpg',
+      linkedin: 'https://www.linkedin.com/in/malcolmdsouza/',
+      email: 'malcolmd.dsouza@gmail.com',
+      description: 'Malcolm brings over 14 years of deep knowledge and experience in Enterprise Risk Management and Structured Trade Finance across global Commodity Trade Houses and International Banks in Singapore, Dubai and Abu Dhabi. His expertise includes Credit and Operational Risk Management, Counterpart Due Diligence, and Sanctions/Compliance Risk Management.',
     },
     {
       name: 'Monika Jain',
       role: 'Director – India Operations',
-      img: '/images/Monika Jain.jpeg',
+      img: '/images/Monika.jpg',
       linkedin: 'https://in.linkedin.com/in/monika-jain-ab545914',
       email: 'monika.jain@theangelservices.com',
-      description: `Monika Jain is a Chartered Accountant with 15+ years of experience in finance...`,
+      description: `Monika Jain is a Chartered Accountant with 15+ years of experience in finance, compliance, and BPO. A former PwC specialist, she excels in statutory audits, IFRS, US GAAP, and financial advisory. Monika drives global business expansion by facilitating regulatory compliance, and scalable finance outsourcing from an India-based back office, streamlining processes and empowering growth.`,
     }
   ].map(member => (
     <div className="col-md-4" key={member.name}>
@@ -302,26 +299,26 @@ const AboutUs = () => {
     {
       name: 'Rahul Saxena',
       role: 'Advisor',
-      img: '/images/default.jpg',
-      linkedin: '',
-      email: '',
-      description: '',
+      img: '/images/Rahul.jpg',
+      linkedin: 'https://www.linkedin.com/in/rahul-s-saxena/',
+      email: 'r@theangelservices.com',
+      description: "Rahul has 20 years of experience driving Digital Capabilities across Technology, Services, Consumer Goods, Beverages, Healthcare and Pharma industries. His strategic advisory and digital expertise guide the company's technology innovation and expansion.",
     },
     {
       name: 'Navin Bafna',
       role: 'Advisor',
-      img: '/images/default.jpg',
-      linkedin: '',
+      img: '/images/Navin.jpg',
+      linkedin: 'https://www.linkedin.com/in/navin-bafna-9ba68915/',
       email: '',
-      description: '',
+      description: 'Navin has 15 years of experience managing Corporate Finance across Consulting, Food & Real-Estate industries. His financial expertise and strategic insights help shape Angel Services business direction and financial strategy.',
     },
     {
       name: 'Gaurav Bansal',
       role: 'Advisor',
-      img: '/images/Gaurav Bansal.jpeg',
+      img: '/images/Gaurav Bansal.jpg',
       linkedin: 'https://in.linkedin.com/in/gaurav-bansal-91a5228b',
       email: 'gaurav.bansal@theangelservices.com',
-      description: `Gaurav Bansal is a Fellow Chartered Accountant with 20+ years of experience...`,
+      description: `Gaurav Bansal is a Fellow Chartered Accountant with 20+ years of experience in consulting, auditing, taxation, and financial management. A trusted advisor to multinationals, banks, and startups, he excels in guiding local setups and international expansion. As an expert in indirect taxation—including GST, excise, and customs—Gaurav delivers strategic solutions for regulatory compliance and operational efficiency, empowering businesses to scale globally through effective finance and accounting outsourcing.`,
     }
   ].map(member => (
     <div className="col-md-4" key={member.name}>
@@ -337,26 +334,26 @@ const AboutUs = () => {
     {
       name: 'Gaurav Agarwal',
       role: 'Senior Associate',
-      img: '/images/Gaurav Agarwal.jpeg',
+      img: '/images/Gaurav Agarwal.jpg',
       linkedin: 'https://in.linkedin.com/in/gaurav-agarwal-374a49114',
       email: 'gaurav.agarwal@theangelservices.com',
-      description: `With over 13 years of experience in accounting and finance...`,
+      description: `With over 13 years of experience in accounting, finance, and operational strategy, Gaurav Agarwal specializes in optimizing financial processes and ensuring compliance excellence. As a key contributor to our finance & accounting outsourcing and overseas business setup solutions, he streamlines financial operations and drives regulatory adherence. His collaborative approach and problem-solving mindset empower businesses to scale sustainably and achieve long-term success.`,
     },
     {
       name: 'Mohd. Samad',
       role: 'Associate',
-      img: '/images/Samad.jpeg',
+      img: '/images/Samad.jpg',
       linkedin: 'https://in.linkedin.com/in/mohd-samad-99368125b',
       email: 'mohd.samad@theangelservices.com',
-      description: `Samad is a Chartered Accountant specializing in financial reporting...`,
+      description: `Samad is a Chartered Accountant specializing in financial reporting under Ind AS and SFRS, tax advisory, and process improvement. His technical expertise and leadership ensure compliance and accurate corporate financial management. By optimizing financial processes and navigating complex tax landscapes, Samad empowers businesses to achieve sustainable growth and operational efficiency.`,
     },
     {
       name: 'Pinak Pani Dixit',
       role: 'Associate',
-      img: '/images/Pinak.svg',
+      img: '/images/Pinak.jpg',
       linkedin: 'https://in.linkedin.com/in/pinakpanidixit',
       email: 'pinak.dixit@theangelservices.com',
-      description: `Pinak Pani Dixit drives the development of scalable technology solutions...`,
+      description: `Pinak Pani Dixit drives the development of scalable technology solutions by aligning engineering innovation with business goals. As Product Engineering Manager, he leads cross-functional teams to deliver robust, future-ready platforms that support organizational growth. His expertise in managing product lifecycles, optimizing technical operations, and fostering collaboration ensures the company's technology initiatives are executed with precision and impact.`,
     }
   ].map(member => (
     <div className="col-md-4" key={member.name}>
