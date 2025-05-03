@@ -7,13 +7,28 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 import Link from 'next/link';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 export default function ServicesSection() {
 
     const prevRef = useRef(null);
     const nextRef = useRef(null);
+    const [swiperInstance, setSwiperInstance] = useState(null);
 
+    useEffect(() => {
+        if (
+            swiperInstance &&
+            prevRef.current &&
+            nextRef.current &&
+            swiperInstance.params.navigation
+        ) {
+            swiperInstance.params.navigation.prevEl = prevRef.current;
+            swiperInstance.params.navigation.nextEl = nextRef.current;
+            swiperInstance.navigation.destroy();
+            swiperInstance.navigation.init();
+            swiperInstance.navigation.update();
+        }
+    }, [swiperInstance, prevRef, nextRef]);
 
     return (<>
         <section className="services-section py-4 py-md-5 bg-light">
@@ -37,26 +52,23 @@ export default function ServicesSection() {
                 <div className="services-slider-wrapper position-relative mb-4" data-aos="fade-up">
 
 
-                    <div className="services-slider d-flex">
-
-                    <div className="services-slider-nav">
-                        <button  ref={prevRef} className="slider-arrow prev-arrow services-prev" aria-label="Previous services">
+                    <div className="services-slider">
+                        <button ref={prevRef} className="slider-arrow prev-arrow services-prev slick-arrow" aria-label="Previous services">
                             <i className="bi bi-chevron-left"></i>
                         </button>
-                        
-                        <button ref={nextRef} className="slider-arrow next-arrow services-next" aria-label="Next services">
-                            <i className="bi bi-chevron-right"></i>
-                        </button>
-                    </div>
-
                         <Swiper
-                            modules={[Autoplay, Pagination, Navigation]}
-                            autoplay={{ delay: 3000 }}
-                            pagination={{ clickable: true }}
+                         loop={true}
+                            modules={[Autoplay, Navigation]}
+                            autoplay={{ delay: 2000 }}
+                           
                             slidesPerView={3}
                             spaceBetween={5}
-
-                        
+                            breakpoints={{
+                                0: { slidesPerView: 1, spaceBetween: 8 },
+                                770: { slidesPerView: 2, spaceBetween: 8 },
+                                990: { slidesPerView: 3, spaceBetween: 12 },
+                               
+                            }}
                             navigation={{
                                 prevEl: prevRef.current,
                                 nextEl: nextRef.current,
@@ -68,6 +80,7 @@ export default function ServicesSection() {
                                 swiper.navigation.init();
                                 swiper.navigation.update();
                             }}
+                            onSwiper={setSwiperInstance}
                          
                         >
 
@@ -89,9 +102,9 @@ export default function ServicesSection() {
                                                 Seamless company setup across Singapore, UAE, Hong Kong, BVI, Cayman Islands, and more.
                                             </p>
                                             <ul className="list-unstyled mb-4">
-                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i>Multiple Jurisdictions</li>
-                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i>End-to-End Support</li>
-                                                <li className="d-flex align-items-center"><i className="bi bi-check-circle-fill me-2"></i>Tax-Efficient Structures</li>
+                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i> <span>Multiple Jurisdictions</span></li>
+                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i> <span>End-to-End Support</span></li>
+                                                <li className="d-flex align-items-center"><i className="bi bi-check-circle-fill me-2"></i> <span>Tax-Efficient Structures</span></li>
                                             </ul>
                                             <div className="d-flex justify-content-end">
                                                 <span className="btn btn-orange rounded-pill px-4">Learn More <i className="bi bi-arrow-right ms-2"></i></span>
@@ -116,9 +129,9 @@ export default function ServicesSection() {
                                                 End-to-end governance and compliance support to keep your business fully aligned with regulations.
                                             </p>
                                             <ul className="list-unstyled mb-4">
-                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i>Corporate Governance</li>
-                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i>Statutory Compliance</li>
-                                                <li className="d-flex align-items-center"><i className="bi bi-check-circle-fill me-2"></i>Regulatory Advisory</li>
+                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i> <span>Corporate Governance</span></li>
+                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i> <span>Statutory Compliance</span></li>
+                                                <li className="d-flex align-items-center"><i className="bi bi-check-circle-fill me-2"></i> <span>Regulatory Advisory</span></li>
                                             </ul>
                                             <div className="d-flex justify-content-end">
                                                 <span className="btn btn-orange rounded-pill px-4">Learn More <i className="bi bi-arrow-right ms-2"></i></span>
@@ -143,9 +156,9 @@ export default function ServicesSection() {
                                                 Accurate, timely, and insightful accounting solutions to empower smart business decisions.
                                             </p>
                                             <ul className="list-unstyled mb-4">
-                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i>Financial Reporting</li>
-                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i>Management Accounts</li>
-                                                <li className="d-flex align-items-center"><i className="bi bi-check-circle-fill me-2"></i>Streamlined Bookkeeping</li>
+                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i> <span>Financial Reporting</span></li>
+                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i> <span>Management Accounts</span></li>
+                                                <li className="d-flex align-items-center"><i className="bi bi-check-circle-fill me-2"></i> <span>Streamlined Bookkeeping</span></li>
                                             </ul>
                                             <div className="d-flex justify-content-end">
                                                 <span className="btn btn-orange rounded-pill px-4">Learn More <i className="bi bi-arrow-right ms-2"></i></span>
@@ -170,9 +183,9 @@ export default function ServicesSection() {
                                                 Tailored tax planning and compliance services for businesses and individuals across jurisdictions.
                                             </p>
                                             <ul className="list-unstyled mb-4">
-                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i>Tax Optimization</li>
-                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i>Cross-Border Planning</li>
-                                                <li className="d-flex align-items-center"><i className="bi bi-check-circle-fill me-2"></i>Compliance Management</li>
+                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i> <span>Tax Optimization</span></li>
+                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i> <span>Cross-Border Planning</span></li>
+                                                <li className="d-flex align-items-center"><i className="bi bi-check-circle-fill me-2"></i><span>Compliance Management</span></li>
                                             </ul>
                                             <div className="d-flex justify-content-end">
                                                 <span className="btn btn-orange rounded-pill px-4">Learn More <i className="bi bi-arrow-right ms-2"></i></span>
@@ -197,9 +210,9 @@ export default function ServicesSection() {
                                                 Structuring personal and family wealth for protection, succession, and long-term sustainability.
                                             </p>
                                             <ul className="list-unstyled mb-4">
-                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i>Family Trust Structures</li>
-                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i>Wealth Protection</li>
-                                                <li className="d-flex align-items-center"><i className="bi bi-check-circle-fill me-2"></i>Succession Planning</li>
+                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i><span>Family Trust Structures</span></li>
+                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i> <span>Wealth Protection</span></li>
+                                                <li className="d-flex align-items-center"><i className="bi bi-check-circle-fill me-2"></i> <span>Succession Planning</span></li>
                                             </ul>
                                             <div className="d-flex justify-content-end">
                                                 <span className="btn btn-orange rounded-pill px-4">Learn More <i className="bi bi-arrow-right ms-2"></i></span>
@@ -224,9 +237,9 @@ export default function ServicesSection() {
                                                 Efficient, compliant, and customized administrative solutions for investment funds and family offices.
                                             </p>
                                             <ul className="list-unstyled mb-4">
-                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i>NAV Calculation</li>
-                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i>Investor Reporting</li>
-                                                <li className="d-flex align-items-center"><i className="bi bi-check-circle-fill me-2"></i>Compliance Support</li>
+                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i> <span>NAV Calculation</span></li>
+                                                <li className="d-flex align-items-center mb-2"><i className="bi bi-check-circle-fill me-2"></i> <span>Investor Reporting</span></li>
+                                                <li className="d-flex align-items-center"><i className="bi bi-check-circle-fill me-2"></i> <span>Compliance Support</span></li>
                                             </ul>
                                             <div className="d-flex justify-content-end">
                                                 <span className="btn btn-orange rounded-pill px-4">Learn More <i className="bi bi-arrow-right ms-2"></i></span>
@@ -238,6 +251,9 @@ export default function ServicesSection() {
 
 
                         </Swiper>
+                        <button ref={nextRef} className="slider-arrow next-arrow services-next slick-arrow" aria-label="Next services">
+                            <i className="bi bi-chevron-right"></i>
+                        </button>
                     </div>
 
                     {/* Slider Arrows */}
@@ -263,15 +279,12 @@ export default function ServicesSection() {
         color: #f7c600 !important; /* keep check icons yellow */
     }
 
-/* Arrow Fixes */
-    /* Ensure slider container is relative */
     .services-slider-container {
         border-radius: 30px;
         overflow: hidden; 
         position: relative;
     }
 
-    /* Fix the arrow wrapper to cover full slider area */
     .slider-controls {
         position: absolute;
         top: 0;
@@ -282,9 +295,7 @@ export default function ServicesSection() {
         pointer-events: none; /* Prevent blocking interaction */
     }
 
-    /* Arrows styling and proper vertical centering */
 
-/* Button Fix */
 .card-body {
     padding-bottom: 2.5rem;
 }
@@ -338,7 +349,8 @@ export default function ServicesSection() {
     height: 100%;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     padding: 1.0rem; /* reduce padding inside cards */
-    min-height: 320px; /* set a lower minimum height */
+    padding-bottom: 0rem;
+    min-height: 400px; /* increased from 350px to 400px */
     height: auto; /* let them adjust naturally */
 }
 
@@ -350,6 +362,7 @@ export default function ServicesSection() {
 
     .service-card p {
         margin-bottom: 1rem; /* reduce space after paragraph */
+        color: #000 !important;
     }
 
     .service-card ul {
@@ -389,6 +402,83 @@ export default function ServicesSection() {
 
     .service-card {
         margin-bottom: 1.5rem;
+    }
+}
+
+.services-slider-wrapper {
+    position: relative;
+    padding: 0 40px; /* Add padding to container */
+    margin: 0 -40px; /* Compensate for padding to maintain layout */
+}
+
+.services-slider {
+    position: relative;
+    width: 100%;
+}
+
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+
+    opacity: 0.5;
+    z-index: 999; /* Very high z-index */
+    transform: translateY(-50%);
+    background: #fff;
+    border: 1px solid #eee;
+    color: #f7c600;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: background 0.2s, color 0.2s;
+    cursor: pointer;
+}
+
+.prev-arrow {
+    left: 0;
+}
+
+.next-arrow {
+    right: 0;
+}
+
+.slider-arrow:hover {
+    background: #f7c600;
+    color: #fff;
+    opacity: 1;
+}
+
+@media (max-width: 767px) {
+    .services-slider-wrapper {
+        padding: 0 30px;
+        margin: 0 -30px;
+    }
+    
+    .slider-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .service-card {
+        padding: 0.75rem !important;
+        min-height: 220px;
+    }
+    .service-card h4 {
+        font-size: 1rem;
+    }
+    .service-card p,
+    .service-card ul {
+        font-size: 0.95rem;
+    }
+    .btn-orange {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
     }
 }
         `}
