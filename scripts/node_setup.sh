@@ -1,14 +1,17 @@
 #!/bin/bash
 set -euo pipefail
 
-# Install prerequisites
+# 1) Refresh and purge any older Node.js
 apt-get update
-apt-get install -y curl
+apt-get remove -y nodejs || true
 
-# Use NodeSource to get Node 20.x
+# 2) Install prerequisites
+apt-get install -y curl gnupg build-essential
+
+# 3) Add NodeSource 20.x and install
 curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
 apt-get install -y nodejs
 
-# Verify
-echo "Node   → $(node --version)"
-echo "npm    → $(npm --version)"
+# 4) Verify
+echo "➤ node → $(node --version)"
+echo "➤ npm  → $(npm --version)"
