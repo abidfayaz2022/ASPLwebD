@@ -11,7 +11,11 @@ hooks:
       timeout: 60
       runas: ubuntu
 
+  # First, setup Node & npm as root
   BeforeInstall:
+    - location: scripts/setup_node.sh
+      timeout: 300
+      runas: root
     - location: scripts/stop.sh
       timeout: 60
       runas: ubuntu
