@@ -28,7 +28,7 @@ hooks:
     # Run your build as root so npm can mkdir node_modules
     - location: scripts/install.sh
       timeout: 300
-      runas: root
+      runas: ubuntu
 
     # (Optional) Chown the built files back to ubuntu
     - location: scripts/fix_perms.sh
@@ -38,4 +38,4 @@ hooks:
   ApplicationStart:
     - location: scripts/start.sh
       timeout: 300
-      runas: root
+      runas: ubuntu
