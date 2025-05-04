@@ -1,10 +1,21 @@
 version: 0.0
 os: linux
+
 files:
   - source: frontend
     destination: /home/ubuntu/angel/frontend
 
 hooks:
+  ApplicationStop:
+    - location: scripts/stop.sh
+      timeout: 60
+      runas: ubuntu
+
+  BeforeInstall:
+    - location: scripts/stop.sh
+      timeout: 60
+      runas: ubuntu
+
   AfterInstall:
     - location: scripts/install.sh
       timeout: 300
