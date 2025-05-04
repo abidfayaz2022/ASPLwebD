@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const IncorporationServices = () => {
+const TaxAdvisory = () => {
     return (
         <>
             {/* Hero Section */}
@@ -29,14 +29,14 @@ const IncorporationServices = () => {
                                     className="badge bg-white px-3 py-2 rounded-pill fs-6 fw-semibold"
                                     style={{ color: 'var(--primary-color)' }}
                                 >
-                                    Global Incorporation
+                                    Tax Solutions
                                 </span>
                             </div>
                             <h1 className="display-3 fw-bold text-white mb-4 text-shadow">
-                                Incorporation Services
+                                Tax Advisory & Support
                             </h1>
                             <p className="lead text-white mb-5 fs-4 fw-light">
-                                Your gateway to global business presence
+                                Structured tax solutions for local and global operations.
                             </p>
                             <div className="hero-buttons">
                                 <a
@@ -76,15 +76,15 @@ const IncorporationServices = () => {
                                         <div className="col-lg-3 text-center text-lg-start mb-4 mb-lg-0">
                                             <div className="intro-icon d-inline-flex">
                                                 <i
-                                                    className="bi bi-briefcase text-primary"
+                                                    className="bi bi-receipt-cutoff text-primary"
                                                     style={{ fontSize: '4rem' }}
                                                 ></i>
                                             </div>
                                         </div>
                                         <div className="col-lg-9">
-                                            <h2 className="fw-bold text-dark mb-3">End-to-End Company Formation</h2>
+                                            <h2 className="fw-bold text-dark mb-3">Proactive, Strategic Tax Support</h2>
                                             <p className="lead text-dark mb-0">
-                                                We specialise in end-to-end company formation services across major jurisdictions including Singapore, UAE, Hong Kong, Indonesia, Vietnam, and key offshore centres such as the British Virgin Islands (BVI) and the Cayman Islands. From pre-incorporation advisory to post-setup support, we help entrepreneurs, investors, and corporates build compliant and strategically structured entities to meet both local and international goals.
+                                                In today's complex tax landscape, we help clients navigate multi-jurisdictional tax obligations while optimising efficiency and minimising risks. Our proactive approach combines strategic planning with timely compliance to meet both domestic and cross-border tax needs.
                                             </p>
                                         </div>
                                     </div>
@@ -104,55 +104,55 @@ const IncorporationServices = () => {
             <section id="services" className="services py-5">
                 <div className="container">
                     <div className="text-center mb-5">
-                        <h2 className="display-4 fw-bold text-dark mb-2">Our Incorporation Services</h2>
+                        <h2 className="display-4 fw-bold text-dark mb-2">Our Tax Services</h2>
                         <div className="divider-center mb-4"><span className="bg-primary"></span></div>
-                        <p className="lead col-md-8 mx-auto text-dark">Comprehensive support for global company formation</p>
+                        <p className="lead col-md-8 mx-auto text-dark">Comprehensive tax advisory and compliance for every business need</p>
                     </div>
 
                     <div className="row g-4">
                         {/* Service Cards */}
                         {[
                             {
-                                icon: 'bi-building',
-                                title: 'Entity Incorporation',
-                                description: 'Incorporation of Private Limited Companies, LLCs, Branches, and Representative Offices',
-                                features: ['Private Limited Companies', 'LLCs', 'Branches', 'Representative Offices']
+                                icon: 'bi-calculator',
+                                title: 'Corporate Tax Compliance',
+                                description: 'Corporate tax computation and return filing across Singapore, India, UAE, and other markets',
+                                features: ['Tax computation', 'Return filing', 'Multi-country support']
                             },
                             {
-                                icon: 'bi-globe2',
-                                title: 'Jurisdiction Analysis',
-                                description: 'Jurisdiction analysis and entity type recommendation based on business objectives',
-                                features: ['Jurisdiction analysis', 'Entity type recommendation', 'Business objectives alignment']
+                                icon: 'bi-person-badge',
+                                title: 'Individual & Expatriate Tax',
+                                description: 'Individual and expatriate tax advisory and filing support',
+                                features: ['Individual tax', 'Expatriate tax', 'Filing support']
                             },
                             {
-                                icon: 'bi-diagram-3',
-                                title: 'Legal Structure Advisory',
-                                description: 'Advisory on legal structure, shareholding, and directorship setup',
-                                features: ['Legal structure', 'Shareholding', 'Directorship setup']
+                                icon: 'bi-receipt',
+                                title: 'GST/VAT Services',
+                                description: 'GST/VAT registration, filing, and return preparation',
+                                features: ['GST/VAT registration', 'Filing', 'Return preparation']
                             },
                             {
-                                icon: 'bi-file-earmark-medical',
-                                title: 'Documentation Support',
-                                description: 'End-to-end documentation support, including MOA/AOA drafting, registration forms, and statutory filings',
-                                features: ['MOA/AOA drafting', 'Registration forms', 'Statutory filings']
+                                icon: 'bi-cash-coin',
+                                title: 'Withholding Tax',
+                                description: 'Withholding tax calculation, remittance, and compliance tracking',
+                                features: ['Calculation', 'Remittance', 'Compliance tracking']
                             },
                             {
-                                icon: 'bi-card-checklist',
-                                title: 'Licensing & Tax Registration',
-                                description: 'Assistance with business license applications and tax registrations',
-                                features: ['Business license applications', 'Tax registrations']
+                                icon: 'bi-graph-up-arrow',
+                                title: 'Transfer Pricing',
+                                description: 'Transfer pricing advisory, documentation, and benchmarking',
+                                features: ['Advisory', 'Documentation', 'Benchmarking']
                             },
                             {
-                                icon: 'bi-bank',
-                                title: 'Liaison & Account Opening',
-                                description: 'Liaison with local authorities and banks for registration and account opening',
-                                features: ['Local authority liaison', 'Bank account opening', 'Registration support']
+                                icon: 'bi-globe',
+                                title: 'International Tax Structuring',
+                                description: 'Advisory on tax treaties, double taxation avoidance, and structuring for outbound investment',
+                                features: ['Tax treaties', 'Double taxation', 'Outbound structuring']
                             },
                             {
-                                icon: 'bi-calendar2-check',
-                                title: 'Post-Incorporation Services',
-                                description: 'Post-incorporation services such as compliance calendar setup and regulatory onboarding',
-                                features: ['Compliance calendar', 'Regulatory onboarding', 'Ongoing support']
+                                icon: 'bi-clipboard-check',
+                                title: 'Tax Due Diligence & Audit',
+                                description: 'Tax due diligence, audits, and representation before tax authorities',
+                                features: ['Due diligence', 'Audit', 'Representation']
                             }
                         ].map((service, index, arr) => {
                             // For the last (7th) card, center it on large screens
@@ -216,9 +216,9 @@ const IncorporationServices = () => {
                         <div className="col-lg-10">
                             <div className="card border-0 shadow-lg rounded-4 overflow-hidden">
                                 <div className="card-body p-5 text-center">
-                                    <h2 className="fw-bold mb-4">Simplify Your Global Expansion</h2>
+                                    <h2 className="fw-bold mb-4">Tailored Tax Planning for Every Industry</h2>
                                     <p className="lead mb-4">
-                                        We also provide region-specific incorporation packages designed to simplify market entry while addressing regulatory and tax implications.
+                                        We assist clients across industries including fintech, manufacturing, professional services, and family-owned businesses with tailored tax planning solutions.
                                     </p>
                                     <Link href="/contact" className="btn btn-primary btn-lg rounded-pill px-5 py-3 fw-semibold">
                                         Get Started <i className="bi bi-arrow-right ms-2"></i>
@@ -375,4 +375,4 @@ const IncorporationServices = () => {
     );
 };
 
-export default IncorporationServices; 
+export default TaxAdvisory; 

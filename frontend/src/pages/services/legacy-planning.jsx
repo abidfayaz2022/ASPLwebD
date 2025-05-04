@@ -1,20 +1,12 @@
 "use client";
 
-import Image from 'next/image';
 import Link from 'next/link';
 
-const IncorporationServices = () => {
+const LegacyPlanning = () => {
     return (
         <>
             {/* Hero Section */}
-            <section
-                className="hero position-relative"
-                style={{
-                    background: 'linear-gradient(90deg, var(--primary-color), #e59b00)',
-                    overflow: 'hidden',
-                }}
-            >
-                {/* Animated Background Elements */}
+            <section className="hero position-relative" style={{ background: 'linear-gradient(90deg, var(--primary-color), #e59b00)', overflow: 'hidden' }}>
                 <div className="animated-bg">
                     <div className="circle-1"></div>
                     <div className="circle-2"></div>
@@ -25,24 +17,18 @@ const IncorporationServices = () => {
                     <div className="row py-5 min-vh-40">
                         <div className="col-lg-8 mx-auto text-center">
                             <div className="hero-badge mb-3 d-inline-block">
-                                <span
-                                    className="badge bg-white px-3 py-2 rounded-pill fs-6 fw-semibold"
-                                    style={{ color: 'var(--primary-color)' }}
-                                >
-                                    Global Incorporation
+                                <span className="badge bg-white px-3 py-2 rounded-pill fs-6 fw-semibold" style={{ color: 'var(--primary-color)' }}>
+                                    Generational Protection
                                 </span>
                             </div>
                             <h1 className="display-3 fw-bold text-white mb-4 text-shadow">
-                                Incorporation Services
+                                Legacy Planning
                             </h1>
                             <p className="lead text-white mb-5 fs-4 fw-light">
-                                Your gateway to global business presence
+                                Preserving wealth and protecting generations.
                             </p>
                             <div className="hero-buttons">
-                                <a
-                                    href="#services"
-                                    className="btn btn-light btn-lg rounded-pill px-4 py-3 fw-semibold me-2 mb-2 mb-md-0 shadow-sm"
-                                >
+                                <a href="#services" className="btn btn-light btn-lg rounded-pill px-4 py-3 fw-semibold me-2 mb-2 mb-md-0 shadow-sm">
                                     Our Services <i className="bi bi-arrow-down-circle ms-2"></i>
                                 </a>
                                 <Link href="/contact" className="btn btn-outline-light btn-lg rounded-pill px-4 py-3 fw-semibold">
@@ -53,14 +39,9 @@ const IncorporationServices = () => {
                     </div>
                 </div>
 
-                {/* Wave Separator */}
                 <div className="wave-separator text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
-                        <path
-                            fill="#ffffff"
-                            fillOpacity="1"
-                            d="M0,32L80,42.7C160,53,320,75,480,74.7C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,100L1360,100C1280,100,1120,100,960,100C800,100,640,100,480,100C320,100,160,100,80,100L0,100Z"
-                        ></path>
+                        <path fill="#ffffff" fillOpacity="1" d="M0,32L80,42.7C160,53,320,75,480,74.7C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,100L1360,100C1280,100,1120,100,960,100C800,100,640,100,480,100C320,100,160,100,80,100L0,100Z"></path>
                     </svg>
                 </div>
             </section>
@@ -75,24 +56,17 @@ const IncorporationServices = () => {
                                     <div className="row align-items-center">
                                         <div className="col-lg-3 text-center text-lg-start mb-4 mb-lg-0">
                                             <div className="intro-icon d-inline-flex">
-                                                <i
-                                                    className="bi bi-briefcase text-primary"
-                                                    style={{ fontSize: '4rem' }}
-                                                ></i>
+                                                <i className="bi bi-shield-lock text-primary" style={{ fontSize: '4rem' }}></i>
                                             </div>
                                         </div>
                                         <div className="col-lg-9">
-                                            <h2 className="fw-bold text-dark mb-3">End-to-End Company Formation</h2>
+                                            <h2 className="fw-bold text-dark mb-3">Continuity, Control & Protection</h2>
                                             <p className="lead text-dark mb-0">
-                                                We specialise in end-to-end company formation services across major jurisdictions including Singapore, UAE, Hong Kong, Indonesia, Vietnam, and key offshore centres such as the British Virgin Islands (BVI) and the Cayman Islands. From pre-incorporation advisory to post-setup support, we help entrepreneurs, investors, and corporates build compliant and strategically structured entities to meet both local and international goals.
+                                                Legacy planning is not just about passing on wealth—it's about ensuring long-term continuity, control, and protection. We support high-net-worth individuals, families, and business owners in structuring their wealth and operations through vehicles that provide flexibility, confidentiality, and cross-border control.
                                             </p>
                                         </div>
                                     </div>
-                                    {/* Accent Bar */}
-                                    <div
-                                        className="accent-bar position-absolute bg-primary"
-                                        style={{ height: '6px', width: '100%', bottom: 0, left: 0 }}
-                                    ></div>
+                                    <div className="accent-bar position-absolute bg-primary" style={{ height: '6px', width: '100%', bottom: 0, left: 0 }}></div>
                                 </div>
                             </div>
                         </div>
@@ -104,55 +78,54 @@ const IncorporationServices = () => {
             <section id="services" className="services py-5">
                 <div className="container">
                     <div className="text-center mb-5">
-                        <h2 className="display-4 fw-bold text-dark mb-2">Our Incorporation Services</h2>
+                        <h2 className="display-4 fw-bold text-dark mb-2">Our Legacy Planning Services</h2>
                         <div className="divider-center mb-4"><span className="bg-primary"></span></div>
-                        <p className="lead col-md-8 mx-auto text-dark">Comprehensive support for global company formation</p>
+                        <p className="lead col-md-8 mx-auto text-dark">Flexible, confidential, and cross-border legacy solutions</p>
                     </div>
 
                     <div className="row g-4">
-                        {/* Service Cards */}
                         {[
                             {
-                                icon: 'bi-building',
-                                title: 'Entity Incorporation',
-                                description: 'Incorporation of Private Limited Companies, LLCs, Branches, and Representative Offices',
-                                features: ['Private Limited Companies', 'LLCs', 'Branches', 'Representative Offices']
+                                icon: 'bi-house-lock',
+                                title: 'Family Trusts',
+                                description: 'Setup and management of family trusts (discretionary, purpose, revocable, and irrevocable)',
+                                features: ['Discretionary trusts', 'Purpose trusts', 'Revocable & irrevocable']
                             },
                             {
-                                icon: 'bi-globe2',
-                                title: 'Jurisdiction Analysis',
-                                description: 'Jurisdiction analysis and entity type recommendation based on business objectives',
-                                features: ['Jurisdiction analysis', 'Entity type recommendation', 'Business objectives alignment']
+                                icon: 'bi-building-lock',
+                                title: 'Holding Companies',
+                                description: 'Formation of holding companies to consolidate business and investment assets',
+                                features: ['Corporate holding structures', 'Asset consolidation', 'Multi-jurisdiction setup']
                             },
                             {
-                                icon: 'bi-diagram-3',
-                                title: 'Legal Structure Advisory',
-                                description: 'Advisory on legal structure, shareholding, and directorship setup',
-                                features: ['Legal structure', 'Shareholding', 'Directorship setup']
+                                icon: 'bi-arrow-left-right',
+                                title: 'Succession & Inheritance',
+                                description: 'Structuring intergenerational succession and inheritance plans',
+                                features: ['Inheritance planning', 'Next-gen engagement', 'Intergenerational transfer']
                             },
                             {
-                                icon: 'bi-file-earmark-medical',
-                                title: 'Documentation Support',
-                                description: 'End-to-end documentation support, including MOA/AOA drafting, registration forms, and statutory filings',
-                                features: ['MOA/AOA drafting', 'Registration forms', 'Statutory filings']
+                                icon: 'bi-diagram-3-fill',
+                                title: 'Family Governance',
+                                description: 'Governance frameworks for family offices and family-owned businesses',
+                                features: ['Family constitutions', 'Office governance', 'Decision protocols']
                             },
                             {
-                                icon: 'bi-card-checklist',
-                                title: 'Licensing & Tax Registration',
-                                description: 'Assistance with business license applications and tax registrations',
-                                features: ['Business license applications', 'Tax registrations']
+                                icon: 'bi-globe-europe-africa',
+                                title: 'Cross-Border Planning',
+                                description: 'Cross-border estate planning and jurisdictional structuring',
+                                features: ['Cross-border estates', 'Global compliance', 'Tax optimization']
                             },
                             {
-                                icon: 'bi-bank',
-                                title: 'Liaison & Account Opening',
-                                description: 'Liaison with local authorities and banks for registration and account opening',
-                                features: ['Local authority liaison', 'Bank account opening', 'Registration support']
+                                icon: 'bi-shield-check',
+                                title: 'Asset Ring-Fencing',
+                                description: 'Ring-fencing of assets to segregate personal and business interests',
+                                features: ['Legal separation', 'Business/personal shields', 'Creditor protection']
                             },
                             {
-                                icon: 'bi-calendar2-check',
-                                title: 'Post-Incorporation Services',
-                                description: 'Post-incorporation services such as compliance calendar setup and regulatory onboarding',
-                                features: ['Compliance calendar', 'Regulatory onboarding', 'Ongoing support']
+                                icon: 'bi-lock-fill',
+                                title: 'Offshore Vehicles',
+                                description: 'Offshore vehicles for privacy, asset protection, and long-term control',
+                                features: ['Privacy', 'Asset protection', 'Offshore trusts & entities']
                             }
                         ].map((service, index, arr) => {
                             // For the last (7th) card, center it on large screens
@@ -216,12 +189,12 @@ const IncorporationServices = () => {
                         <div className="col-lg-10">
                             <div className="card border-0 shadow-lg rounded-4 overflow-hidden">
                                 <div className="card-body p-5 text-center">
-                                    <h2 className="fw-bold mb-4">Simplify Your Global Expansion</h2>
+                                    <h2 className="fw-bold mb-4">Future-Ready Legacy Structures</h2>
                                     <p className="lead mb-4">
-                                        We also provide region-specific incorporation packages designed to simplify market entry while addressing regulatory and tax implications.
+                                        We work with legal advisors, trustees, and financial institutions to create resilient and future-ready structures.
                                     </p>
                                     <Link href="/contact" className="btn btn-primary btn-lg rounded-pill px-5 py-3 fw-semibold">
-                                        Get Started <i className="bi bi-arrow-right ms-2"></i>
+                                        Start Planning <i className="bi bi-arrow-right ms-2"></i>
                                     </Link>
                                 </div>
                             </div>
@@ -231,16 +204,6 @@ const IncorporationServices = () => {
             </section>
 
             <style jsx>{`
-                :global(:root) {
-                    --primary-color: #fcb900;
-                }
-
-                .hero {
-                    background: linear-gradient(90deg, var(--primary-color), #e59b00);
-                    overflow: hidden;
-                    position: relative;
-                }
-
                 .animated-bg {
                     position: absolute;
                     width: 100%;
@@ -249,14 +212,12 @@ const IncorporationServices = () => {
                     left: 0;
                     z-index: 1;
                 }
-
                 .circle-1, .circle-2, .circle-3 {
                     position: absolute;
                     border-radius: 50%;
                     background: rgba(255, 255, 255, 0.1);
                     animation: float 6s ease-in-out infinite;
                 }
-
                 .circle-1 {
                     width: 300px;
                     height: 300px;
@@ -264,7 +225,6 @@ const IncorporationServices = () => {
                     right: -150px;
                     animation-delay: 0s;
                 }
-
                 .circle-2 {
                     width: 200px;
                     height: 200px;
@@ -272,7 +232,6 @@ const IncorporationServices = () => {
                     left: -100px;
                     animation-delay: 2s;
                 }
-
                 .circle-3 {
                     width: 150px;
                     height: 150px;
@@ -280,7 +239,6 @@ const IncorporationServices = () => {
                     right: 10%;
                     animation-delay: 4s;
                 }
-
                 @keyframes float {
                     0%, 100% {
                         transform: translateY(0);
@@ -289,90 +247,9 @@ const IncorporationServices = () => {
                         transform: translateY(-20px);
                     }
                 }
-
-                .text-shadow {
-                    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-                }
-
-                .wave-separator {
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    width: 100%;
-                    line-height: 0;
-                }
-
-                .intro-icon i {
-                    font-size: 4rem;
-                }
-
-                .accent-bar {
-                    height: 6px;
-                    width: 100%;
-                    bottom: 0;
-                    left: 0;
-                }
-
-                .services {
-                    background-color: rgba(252, 185, 0, 0.05);
-                }
-
-                .divider-center {
-                    position: relative;
-                    height: 4px;
-                    width: 80px;
-                    margin: 0 auto;
-                }
-
-                .divider-center span {
-                    position: absolute;
-                    height: 100%;
-                    width: 100%;
-                    border-radius: 2px;
-                }
-
-                .feature-check {
-                    width: 24px;
-                    height: 24px;
-                    display: inline-flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-
-                .service-card {
-                    transition: transform 0.3s ease, box-shadow 0.3s ease;
-                }
-
-                .service-card:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 1rem 3rem rgba(0,0,0,0.175) !important;
-                }
-
-                .btn {
-                    transition: all 0.3s ease;
-                }
-
-                .btn:hover {
-                    transform: translateY(-2px);
-                }
-
-                .badge {
-                    transition: all 0.3s ease;
-                }
-
-                .badge:hover {
-                    transform: scale(1.05);
-                }
-
-                /* Responsive adjustments */
-                @media (max-width: 768px) {
-                    .col-md-6 {
-                        margin-bottom: 1.5rem;
-                    }
-                }
             `}</style>
         </>
     );
 };
 
-export default IncorporationServices; 
+export default LegacyPlanning;

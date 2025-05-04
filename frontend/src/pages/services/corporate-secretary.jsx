@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const IncorporationServices = () => {
+const CorporateSecretarial = () => {
     return (
         <>
             {/* Hero Section */}
@@ -22,21 +22,21 @@ const IncorporationServices = () => {
                 </div>
 
                 <div className="container position-relative py-5" style={{ zIndex: 2 }}>
-                    <div className="row py-5 min-vh-40">
+                    <div className="row py-5 min-vh-20">
                         <div className="col-lg-8 mx-auto text-center">
                             <div className="hero-badge mb-3 d-inline-block">
                                 <span
                                     className="badge bg-white px-3 py-2 rounded-pill fs-6 fw-semibold"
                                     style={{ color: 'var(--primary-color)' }}
                                 >
-                                    Global Incorporation
+                                    Corporate Governance
                                 </span>
                             </div>
                             <h1 className="display-3 fw-bold text-white mb-4 text-shadow">
-                                Incorporation Services
+                                Corporate Secretarial Services
                             </h1>
                             <p className="lead text-white mb-5 fs-4 fw-light">
-                                Your gateway to global business presence
+                                Governance support that keeps your business compliant
                             </p>
                             <div className="hero-buttons">
                                 <a
@@ -76,15 +76,15 @@ const IncorporationServices = () => {
                                         <div className="col-lg-3 text-center text-lg-start mb-4 mb-lg-0">
                                             <div className="intro-icon d-inline-flex">
                                                 <i
-                                                    className="bi bi-briefcase text-primary"
+                                                    className="bi bi-shield-check text-primary"
                                                     style={{ fontSize: '4rem' }}
                                                 ></i>
                                             </div>
                                         </div>
                                         <div className="col-lg-9">
-                                            <h2 className="fw-bold text-dark mb-3">End-to-End Company Formation</h2>
+                                            <h2 className="fw-bold text-dark mb-3">Comprehensive Governance Support</h2>
                                             <p className="lead text-dark mb-0">
-                                                We specialise in end-to-end company formation services across major jurisdictions including Singapore, UAE, Hong Kong, Indonesia, Vietnam, and key offshore centres such as the British Virgin Islands (BVI) and the Cayman Islands. From pre-incorporation advisory to post-setup support, we help entrepreneurs, investors, and corporates build compliant and strategically structured entities to meet both local and international goals.
+                                                With ever-changing regulatory frameworks, our corporate secretarial team ensures your business stays compliant, transparent, and well-governed. Whether you're managing a single-entity business or a multi-jurisdictional group, we help maintain statutory obligations and act as the first line of defence during audits or regulatory reviews.
                                             </p>
                                         </div>
                                     </div>
@@ -104,55 +104,55 @@ const IncorporationServices = () => {
             <section id="services" className="services py-5">
                 <div className="container">
                     <div className="text-center mb-5">
-                        <h2 className="display-4 fw-bold text-dark mb-2">Our Incorporation Services</h2>
+                        <h2 className="display-4 fw-bold text-dark mb-2">Our Corporate Secretarial Services</h2>
                         <div className="divider-center mb-4"><span className="bg-primary"></span></div>
-                        <p className="lead col-md-8 mx-auto text-dark">Comprehensive support for global company formation</p>
+                        <p className="lead col-md-8 mx-auto text-dark">Comprehensive support for all your corporate governance needs</p>
                     </div>
 
                     <div className="row g-4">
                         {/* Service Cards */}
                         {[
                             {
-                                icon: 'bi-building',
-                                title: 'Entity Incorporation',
-                                description: 'Incorporation of Private Limited Companies, LLCs, Branches, and Representative Offices',
-                                features: ['Private Limited Companies', 'LLCs', 'Branches', 'Representative Offices']
+                                icon: 'bi-file-earmark-text',
+                                title: 'Document Preparation',
+                                description: 'Drafting of company constitution, shareholder agreements, and board resolutions',
+                                features: ['Company constitution', 'Shareholder agreements', 'Board resolutions']
                             },
                             {
-                                icon: 'bi-globe2',
-                                title: 'Jurisdiction Analysis',
-                                description: 'Jurisdiction analysis and entity type recommendation based on business objectives',
-                                features: ['Jurisdiction analysis', 'Entity type recommendation', 'Business objectives alignment']
+                                icon: 'bi-calendar-check',
+                                title: 'Compliance Filing',
+                                description: 'Preparation and filing of annual returns, AGM/EGM documents, and other mandatory filings',
+                                features: ['Annual returns', 'AGM/EGM documents', 'Mandatory filings']
                             },
                             {
-                                icon: 'bi-diagram-3',
-                                title: 'Legal Structure Advisory',
-                                description: 'Advisory on legal structure, shareholding, and directorship setup',
-                                features: ['Legal structure', 'Shareholding', 'Directorship setup']
+                                icon: 'bi-journal-text',
+                                title: 'Register Maintenance',
+                                description: 'Maintenance of statutory registers including directors, shareholders, charges, and beneficial ownership',
+                                features: ['Directors register', 'Shareholders register', 'Beneficial ownership']
                             },
                             {
-                                icon: 'bi-file-earmark-medical',
-                                title: 'Documentation Support',
-                                description: 'End-to-end documentation support, including MOA/AOA drafting, registration forms, and statutory filings',
-                                features: ['MOA/AOA drafting', 'Registration forms', 'Statutory filings']
+                                icon: 'bi-graph-up',
+                                title: 'Financial Reporting',
+                                description: 'Preparation and submission of XBRL financial statements',
+                                features: ['XBRL statements', 'Financial reporting', 'Regulatory compliance']
                             },
                             {
-                                icon: 'bi-card-checklist',
-                                title: 'Licensing & Tax Registration',
-                                description: 'Assistance with business license applications and tax registrations',
-                                features: ['Business license applications', 'Tax registrations']
+                                icon: 'bi-people',
+                                title: 'Officer Management',
+                                description: 'Appointment and resignation of directors, officers, auditors, and secretaries',
+                                features: ['Director appointments', 'Officer changes', 'Auditor management']
                             },
                             {
-                                icon: 'bi-bank',
-                                title: 'Liaison & Account Opening',
-                                description: 'Liaison with local authorities and banks for registration and account opening',
-                                features: ['Local authority liaison', 'Bank account opening', 'Registration support']
+                                icon: 'bi-clock-history',
+                                title: 'Compliance Monitoring',
+                                description: 'Real-time compliance tracking and calendar-based monitoring of deadlines',
+                                features: ['Deadline tracking', 'Compliance alerts', 'Calendar management']
                             },
                             {
-                                icon: 'bi-calendar2-check',
-                                title: 'Post-Incorporation Services',
-                                description: 'Post-incorporation services such as compliance calendar setup and regulatory onboarding',
-                                features: ['Compliance calendar', 'Regulatory onboarding', 'Ongoing support']
+                                icon: 'bi-lightbulb',
+                                title: 'Advisory & Restructuring',
+                                description: 'Advisory on changes in shareholding, capital structure, and business activities',
+                                features: ['Shareholding changes', 'Capital structure', 'Business activities']
                             }
                         ].map((service, index, arr) => {
                             // For the last (7th) card, center it on large screens
@@ -216,9 +216,9 @@ const IncorporationServices = () => {
                         <div className="col-lg-10">
                             <div className="card border-0 shadow-lg rounded-4 overflow-hidden">
                                 <div className="card-body p-5 text-center">
-                                    <h2 className="fw-bold mb-4">Simplify Your Global Expansion</h2>
+                                    <h2 className="fw-bold mb-4">Ready to Strengthen Your Corporate Governance?</h2>
                                     <p className="lead mb-4">
-                                        We also provide region-specific incorporation packages designed to simplify market entry while addressing regulatory and tax implications.
+                                        We support companies through every phase—formation, restructuring, or dissolution—with integrity, confidentiality, and local expertise.
                                     </p>
                                     <Link href="/contact" className="btn btn-primary btn-lg rounded-pill px-5 py-3 fw-semibold">
                                         Get Started <i className="bi bi-arrow-right ms-2"></i>
@@ -375,4 +375,4 @@ const IncorporationServices = () => {
     );
 };
 
-export default IncorporationServices; 
+export default CorporateSecretarial; 

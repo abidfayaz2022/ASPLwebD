@@ -87,7 +87,7 @@ export default function ServicesSection() {
 
                             <SwiperSlide>
                                 <div className="px-2">
-                                    <Link href="/services/incorporation" className="text-decoration-none">
+                                    <Link href="/services#corporate-secretary" className="text-decoration-none">
                                         <div className="service-card h-100 position-relative p-4">
                                             <div className="position-absolute top-0 end-0 mt-3 me-3">
                                                 <span className="badge badge-orange rounded-pill px-3 py-2">Featured</span>
@@ -117,7 +117,7 @@ export default function ServicesSection() {
                             {/* Service Card 2 */}
                             <SwiperSlide>
                                 <div className="px-2">
-                                    <Link href="/services" className="text-decoration-none">
+                                    <Link href="/services#corporate-secretary" className="text-decoration-none">
                                         <div className="service-card h-100 p-4">
                                             <div className="d-flex align-items-center mb-4">
                                                 <div className="service-icon me-3">
@@ -144,7 +144,7 @@ export default function ServicesSection() {
                             {/* Service Card 3 */}
                             <SwiperSlide>
                                 <div className="px-2">
-                                    <Link href="/services" className="text-decoration-none">
+                                    <Link href="/services#accounting" className="text-decoration-none">
                                         <div className="service-card h-100 p-4">
                                             <div className="d-flex align-items-center mb-4">
                                                 <div className="service-icon me-3">
@@ -171,7 +171,7 @@ export default function ServicesSection() {
                             {/* Service Card 4 */}
                             <SwiperSlide>
                                 <div className="px-2">
-                                    <Link href="/services" className="text-decoration-none">
+                                    <Link href="/services#tax-advisory" className="text-decoration-none">
                                         <div className="service-card h-100 p-4">
                                             <div className="d-flex align-items-center mb-4">
                                                 <div className="service-icon me-3">
@@ -198,7 +198,7 @@ export default function ServicesSection() {
                             {/* Service Card 5 */}
                             <SwiperSlide>
                                 <div className="px-2">
-                                    <Link href="/services" className="text-decoration-none">
+                                    <Link href="/services#legacy-planning" className="text-decoration-none">
                                         <div className="service-card h-100 p-4">
                                             <div className="d-flex align-items-center mb-4">
                                                 <div className="service-icon me-3">
@@ -225,7 +225,7 @@ export default function ServicesSection() {
                             {/* Service Card 6 */}
                             <SwiperSlide>
                                 <div className="px-2">
-                                    <Link href="/services" className="text-decoration-none">
+                                    <Link href="/services#fund-administration" className="text-decoration-none">
                                         <div className="service-card h-100 p-4">
                                             <div className="d-flex align-items-center mb-4">
                                                 <div className="service-icon me-3">
