@@ -13,7 +13,7 @@ hooks:
 
   BeforeInstall:
     # Install Node 20.x as root
-    - location: scripts/setup_node.sh
+    - location: scripts/node_setup.sh
       timeout: 300
       runas: root
 
