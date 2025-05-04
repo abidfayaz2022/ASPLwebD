@@ -11,16 +11,24 @@ hooks:
       timeout: 60
       runas: ubuntu
 
-  # First, setup Node & npm as root
   BeforeInstall:
+    # Install Node 20.x as root
     - location: scripts/setup_node.sh
       timeout: 300
       runas: root
+
+    # Stop the old app (if still running)
     - location: scripts/stop.sh
       timeout: 60
       runas: ubuntu
 
+    # Fix ownership so ubuntu can write files
+    - location: scripts/fix_perms.sh
+      timeout: 60
+      runas: root
+
   AfterInstall:
+    # Now run your existing install (npm install/build) as ubuntu
     - location: scripts/install.sh
       timeout: 300
       runas: ubuntu
