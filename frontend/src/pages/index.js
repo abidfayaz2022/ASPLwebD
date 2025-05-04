@@ -4,6 +4,7 @@ import ServicesSection from "../components/ui/services";
 import ToolsSection from "../components/ui/tools";
 import CtaSection from "../components/ui/cta";
 import { useEffect } from 'react';
+import Link from "next/link";
 
 export default function Home() {
   useEffect(() => {
@@ -14,7 +15,7 @@ export default function Home() {
       consentPopup?.classList.remove('d-none');
     }
 
-    acceptBtn?.addEventListener('click', function() {
+    acceptBtn?.addEventListener('click', function () {
       localStorage.setItem('cookiesAccepted', 'true');
       consentPopup?.classList.add('d-none');
     });
@@ -25,7 +26,7 @@ export default function Home() {
       <div className="cookie-box">
         <p>
           We use cookies to enhance your experience. By continuing to visit this site, you agree to our use of cookies and privacy policy.
-          <a href="/privacy">Learn more</a>.
+          <Link href="/privacy">Learn more</Link>.
         </p>
         <button id="acceptCookies" className="btn btn-orange btn-sm mt-2">Got it!</button>
       </div>
@@ -81,7 +82,7 @@ export default function Home() {
         font-size: 0.9rem;
     }
         `}
-        </style>
+    </style>
 
 
   </div>
