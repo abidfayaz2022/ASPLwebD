@@ -1,0 +1,41 @@
+version: 0.0
+os: linux
+
+files:
+  - source: frontend
+    destination: /home/ubuntu/angel/frontend
+
+hooks:
+  ApplicationStop:
+    - location: scripts/stop.sh
+      timeout: 60
+      runas: ubuntu
+
+  BeforeInstall:
+    - location: scripts/setup_node.sh
+      timeout: 300
+      runas: root
+    - location: scripts/stop.sh
+      timeout: 60
+      runas: ubuntu
+
+  AfterInstall:
+    # Fix ownership so root can run npm
+    - location: scripts/fix_perms.sh
+      timeout: 60
+      runas: root
+
+    # Run your build as root so npm can mkdir node_modules
+    - location: scripts/install.sh
+      timeout: 300
+      runas: root
+
+    # (Optional) Chown the built files back to ubuntu
+    - location: scripts/fix_perms.sh
+      timeout: 60
+      runas: root
+
+  ApplicationStart:
+    - location: scripts/start.sh
+      timeout: 300
+      runas: root
