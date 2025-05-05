@@ -108,8 +108,8 @@ export default function Services() {
               </div>
             </div>
             <div className="col-md-3 col-sm-12 text-md-end text-center">
-              <Link href="/tax-calculator" className="btn btn-light btn-responsive">
-                <i className="bi bi-calculator" /> Try Calculator
+              {/*<Link href="/tax-calculator" className="btn btn-light btn-responsive">
+                <i className="bi bi-calculator" /> Try Calculator*/}
               </Link>
             </div>
           </div>
