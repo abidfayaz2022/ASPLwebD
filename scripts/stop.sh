@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PORT=3000
+pkill -f "npx next start"
 
 PID=$(lsof -ti tcp:$PORT)
 
