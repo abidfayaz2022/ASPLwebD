@@ -131,9 +131,9 @@ const Resources = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <Link href="/tax-calculator" className="btn btn-orange btn-lg px-4 shadow-sm">
+                                {/*<Link href="/tax-calculator" className="btn btn-orange btn-lg px-4 shadow-sm">
                                     <i className="bi bi-calculator me-2"></i> Use Tax Calculator
-                                </Link>
+                                </Link>*/}
                             </div>
                         </div>
                     </div>
