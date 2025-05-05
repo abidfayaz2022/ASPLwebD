@@ -35,7 +35,7 @@ export default function Contact() {
                             <div className="connect-options-card bg-white shadow-sm rounded-4 p-5">
                                 <div className="row g-4">
                                     <div className="col-md-6">
-                                        <a href="https://wa.me/919259049836" target="_blank" className="connect-link d-flex flex-column align-items-center text-decoration-none">
+                                        <a href="https://wa.me/6582002370" target="_blank" className="connect-link d-flex flex-column align-items-center text-decoration-none">
                                             <div className="connect-icon-wrapper bg-success text-white rounded-circle d-flex align-items-center justify-content-center mb-3" style={{ width: '90px', height: '90px' }}>
                                                 <i className="bi bi-whatsapp fs-1"></i>
                                             </div>
@@ -45,7 +45,7 @@ export default function Contact() {
                                     </div>
 
                                     <div className="col-md-6">
-                                        <a href="mailto:contact@asplconsultancy.com" className="connect-link d-flex flex-column align-items-center text-decoration-none">
+                                        <a href="mailto:contact@theangelservices.com" className="connect-link d-flex flex-column align-items-center text-decoration-none">
                                             <div className="connect-icon-wrapper bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mb-3" style={{ width: '90px', height: '90px' }}>
                                                 <i className="bi bi-envelope fs-1"></i>
                                             </div>

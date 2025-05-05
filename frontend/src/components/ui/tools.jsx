@@ -1,5 +1,6 @@
-'use client';
+'use client'; 
 import React from 'react';
+import Link from 'next/link';
 
 const ToolsSection = () => {
     return (
@@ -18,16 +19,16 @@ const ToolsSection = () => {
                     <div className="col-lg-6">
                         <div className="p-4 bg-light rounded-4 shadow-sm mb-4">
                             <div className="d-flex justify-content-between align-items-center mb-3">
-                                <h4 className="fw-bold mb-0">NRI Tax Calculator</h4>
+                                <h4 className="fw-bold mb-0">Corporate Tax Calculator</h4>
                                 <span className="badge badge-orange rounded-pill px-3 py-2">Free</span>
                             </div>
                             <p className="mb-4">
-                                Estimate your tax liability as a Non-Resident Indian with our comprehensive calculator. Get instant results and personalized recommendations.
+                            Compute tax liability with applicable deductions & surcharges.
                             </p>
                             <div className="d-flex justify-content-end">
-                                <a className="btn btn-orange px-4">
+                                <Link href="/resources/corporate-tax" className="btn btn-orange px-4">
                                     Try Calculator <i className="bi bi-arrow-right ms-2"></i>
-                                </a>
+                                </Link>
                             </div>
                         </div>
 
@@ -40,10 +41,17 @@ const ToolsSection = () => {
                                 Comprehensive guide to help NRIs understand their tax obligations and maximize benefits.
                             </p>
                             <div className="d-flex justify-content-end">
-                                <a href="/resources" className="btn btn-orange px-4">
+                                <Link href="/resources" className="btn btn-orange px-4">
                                     View Resources <i className="bi bi-arrow-right ms-2"></i>
-                                </a>
+                                </Link>
                             </div>
+                        </div>
+
+                        {/* More Resources Button */}
+                        <div className="text-center mt-4">
+                            <Link href="/resources" className="btn btn-outline-dark rounded-pill px-5 py-2">
+                                More Resources
+                            </Link>
                         </div>
                     </div>
 
@@ -57,52 +65,63 @@ const ToolsSection = () => {
                 </div>
             </div>
 
-            {/* Inline CSS */}
             <style jsx>{`
-        .tools-section {
-          background-color: #f8f9fa;
-        }
+                .tools-section {
+                    background-color: #f8f9fa;
+                }
 
-        .btn-orange {
-          background-color: #f7c600;
-          color: black;
-          border-radius: 50px;
-          padding: 8px 16px;
-          font-size: 0.875rem;
-        }
+                .btn-orange {
+                    background-color: #f7c600;
+                    color: black;
+                    border-radius: 50px;
+                    padding: 8px 16px;
+                    font-size: 0.875rem;
+                }
 
-        .btn-orange:hover {
-          background-color: #e6b800;
-        }
+                .btn-orange:hover {
+                    background-color: #e6b800;
+                }
 
-        .badge {
-          background-color: #fcb900;
-          color: black;
-          font-size: 0.875rem;
-          padding: 0.5rem 1rem;
-        }
+                .btn-outline-dark {
+                    border: 2px solid #333;
+                    color: #333;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                }
 
-        .img-fluid {
-          max-width: 100%;
-          height: auto;
-        }
+                .btn-outline-dark:hover {
+                    background-color: #333;
+                    color: #fff;
+                }
 
-        .container {
-          max-width: 1140px;
-        }
+                .badge {
+                    background-color: #fcb900;
+                    color: black;
+                    font-size: 0.875rem;
+                    padding: 0.5rem 1rem;
+                }
 
-        .shadow-sm {
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+                .img-fluid {
+                    max-width: 100%;
+                    height: auto;
+                }
 
-        .rounded-4 {
-          border-radius: 16px;
-        }
+                .container {
+                    max-width: 1140px;
+                }
 
-        .fw-bold {
-          font-weight: 700;
-        }
-      `}</style>
+                .shadow-sm {
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                }
+
+                .rounded-4 {
+                    border-radius: 16px;
+                }
+
+                .fw-bold {
+                    font-weight: 700;
+                }
+            `}</style>
         </section>
     );
 };

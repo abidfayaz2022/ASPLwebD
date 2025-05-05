@@ -33,7 +33,7 @@ const Footer = () => {
                                     <img
                                         src="/images/angelserviceslogo (2).png"
                                         alt="Angel Services Logo"
-                                        style={{ height: '50px', objectFit: 'contain' }}
+                                        style={{ height: '60px', objectFit: 'contain' }}
                                     />
                                 </div>
                                 <p className="mb-4 pe-lg-3">
@@ -427,7 +427,7 @@ const Footer = () => {
                             <div className="footer-links text-center text-md-end">
                                 <a
                                     href="/privacy"
-                                    className="footer-link text-white px-2"
+                                    className="footer-link1 text-white px-2"
                                     style={{
                                         textDecoration: 'none',
                                         fontSize: '14px',
@@ -437,7 +437,7 @@ const Footer = () => {
                                 </a>
                                 <a
                                     href="/terms"
-                                    className="footer-link text-white px-2"
+                                    className="footer-link1 text-white px-2"
                                     style={{
                                         textDecoration: 'none',
                                         fontSize: '14px',
@@ -452,6 +452,12 @@ const Footer = () => {
             </div>
             <style jsx>{`
         .footer-link {
+          color: #444;
+          text-decoration: none;
+          transition: all 0.3s ease;
+        }
+        
+        .footer-link1 {
           color: #444;
           text-decoration: none;
           transition: all 0.3s ease;

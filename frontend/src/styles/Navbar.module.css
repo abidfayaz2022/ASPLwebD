@@ -1,40 +1,80 @@
+/* Navbar container */
 .navbarCustom {
-    background-color: white;
-    border-bottom: 2px solid #fcb900;
-    transition: all 0.3s ease;
-    padding-top: 8px;     /* Reduced from default */
-    padding-bottom: 8px;  /* Reduced from default */
-  }
-  
+  background-color: white;
+  border-bottom: 2px solid #fcb900;
+  padding: 6px 0; /* Uniform vertical spacing */
+  transition: all 0.3s ease;
+}
+
+/* Logo container inside navbar-brand */
+.logoImage {
+  height: auto;
+  max-height: 60px; /* 10% more than original 48px */
+  object-fit: contain;
+  width: auto;
+}
+
+.logoWrapper {
+  height: 64px;
+}
+
+/* Navigation links */
+.navLinks {
+  gap: 25px;
+}
+
+/* Each individual nav link */
+.navItem {
+  position: relative;
+  font-weight: 500;
+  font-size: 1.05rem;
+  color: #222 !important;
+  transition: color 0.3s ease;
+  padding: 6px 10px;
+}
+
+.navItem:hover {
+  color: #fcb900 !important;
+}
+
+/* Underline effect on hover */
+.navItem::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #fcb900;
+  left: 0;
+  bottom: -4px;
+  transition: width 0.3s ease;
+}
+
+.navItem:hover::after {
+  width: 100%;
+}
+
+.navbarCustom {
+  background-color: white;
+  border-bottom: 2px solid #fcb900;
+  height: 80px;            /* Increased from 64px */
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
   .navLinks {
-    gap: 25px;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    padding-top: 10px;
   }
-  
+
   .navItem {
-    position: relative;
-    font-weight: 500;
-    font-size: 1.05rem;
-    color: #222 !important;
-    transition: color 0.3s ease;
-    padding: 6px 10px;     /* Helps reduce link block height */
+    font-size: 1rem;
+    padding: 4px 8px;
   }
-  
-  .navItem:hover {
-    color: #fcb900 !important;
+
+  .logoImage {
+    max-height: 40px;
   }
-  
-  .navItem::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background-color: #fcb900;
-    left: 0;
-    bottom: -4px;
-    transition: width 0.3s ease;
-  }
-  
-  .navItem:hover::after {
-    width: 100%;
-  }
-  
+}

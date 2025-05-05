@@ -57,14 +57,14 @@ const AboutUs = () => {
                     <div className="row align-items-center">
                         <div className="col-md-6">
                             <h2>Who We Are</h2>
-                            <p>
+                            <p style={{ textAlign: 'justify' }}>
                                 At Angel Services, we enable businesses to start, grow, and scale with confidence.
                                 we bring together the agility of a dedicated consultancy with the expertise of a global corporate services provider.
                                 We specialize in incorporation, accounting, tax compliance, and financial outsourcing services across Asia and beyond—including Singapore, Indonesia, Vietnam, UAE, Hong Kong, BVI, and the Cayman Islands.
                                 Whether you're launching a startup or expanding internationally, we provide tailored support to help you
                                 navigate jurisdictional regulations, structure your operations efficiently, and stay compliant.
                             </p>
-                            <p>
+                            <p style={{ textAlign: 'justify' }}>
                                 With a collaborative team, regional presence, and technology-driven processes, we are committed to
                                 delivering timely, reliable, and strategic solutions—so that you can focus on what matters most: your business.
                             </p>
@@ -93,7 +93,7 @@ const AboutUs = () => {
                                         </div>
                                         <h3 className="card-title mb-0">Our Mission</h3>
                                     </div>
-                                    <p className="card-text">
+                                    <p className="card-text" style={{ textAlign: 'justify' }}>
                                         Our mission is to provide agile, client-focused corporate and financial services—ranging from
                                         incorporation and licensing to accounting and regulatory compliance—helping businesses launch confidently
                                         and grow sustainably in diverse markets.
@@ -110,7 +110,7 @@ const AboutUs = () => {
                                         </div>
                                         <h3 className="card-title mb-0">Our Vision</h3>
                                     </div>
-                                    <p className="card-text">
+                                    <p className="card-text" style={{ textAlign: 'justify' }}>
                                         To be the trusted partner for businesses across the globe, empowering them to start, structure, and scale
                                         through seamless incorporation, compliance, and financial solutions.
                                     </p>
@@ -127,7 +127,7 @@ const AboutUs = () => {
                     <h2 className="text-center mb-5">Our Core Values</h2>
                     <div className="row g-4">
                         {/* Core Value Card - Client-Centricity */}
-                        <div className="col-md-4">
+                        <div className="col-md-4 mb-4">
                             <div className="card h-100 shadow-sm">
                                 <div className="card-body text-center">
                                     <div
