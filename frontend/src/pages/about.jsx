@@ -60,8 +60,7 @@ const AboutUs = () => {
                             <p>
                                 At Angel Services, we enable businesses to start, grow, and scale with confidence.
                                 We bring together the agility of a dedicated consultancy with the expertise of a global corporate services provider.
-                                We specialize in incorporation, accounting, tax compliance, and financial outsourcing services across
-                                Asia and beyond—including Singapore, Indonesia, Vietnam, UAE, Hong Kong, BVI, and the Cayman Islands.
+                                We specialize in incorporation, accounting, tax compliance, and financial outsourcing services across Asia and beyond—including Singapore, Indonesia, Vietnam, UAE, Hong Kong, BVI, and the Cayman Islands.
                                 Whether you're launching a startup or expanding internationally, we provide tailored support to help you
                                 navigate jurisdictional regulations, structure your operations efficiently, and stay compliant.
                             </p>
