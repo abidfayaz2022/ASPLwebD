@@ -23,13 +23,17 @@ const TaxCalculator = () => {
 
     const [result, setResult] = useState(null);
 
-    useEffect(() => {
-        // Initialize tooltips
-        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-        tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new Tooltip(tooltipTriggerEl);
-        });
-    }, []);
+useEffect(() => {
+  if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+    const tooltipTriggerList = [].slice.call(
+      document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    );
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new Tooltip(tooltipTriggerEl);
+    });
+  }
+}, []);
+
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
