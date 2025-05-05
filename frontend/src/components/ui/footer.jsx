@@ -382,7 +382,7 @@ const Footer = () => {
                                         </div>
                                         <div className="content">
                                             <h6 className="mb-1" style={{ fontWeight: 600, color: '#333', fontSize: '15px' }}>Email Us</h6>
-                                            <a href="mailto:contact@asplconsultancy.com" style={{ color: '#444', textDecoration: 'none', fontSize: '14px' }}>contact@asplconsultancy.com</a>
+                                            <a href="mailto:contact@asplconsultancy.com" style={{ color: '#444', textDecoration: 'none', fontSize: '14px' }}>contact@theangelservices.com</a>
                                         </div>
                                     </div>
 
@@ -392,7 +392,7 @@ const Footer = () => {
                                         </div>
                                         <div className="content">
                                             <h6 className="mb-1" style={{ fontWeight: 600, color: '#333', fontSize: '15px' }}>Call Us</h6>
-                                            <a href="tel:+91-9259049836" style={{ color: '#444', textDecoration: 'none', fontSize: '14px' }}>+91-9259049836</a>
+                                            <a href="tel:+91-9259049836" style={{ color: '#444', textDecoration: 'none', fontSize: '14px' }}>+65-82002370</a>
                                         </div>
                                     </div>
 
