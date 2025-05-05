@@ -108,9 +108,10 @@ export default function Services() {
               </div>
             </div>
             <div className="col-md-3 col-sm-12 text-md-end text-center">
-              <Link className="btn btn-light btn-responsive">
-                <i className="bi bi-calculator" /> Try Calculator
-              </Link>
+             <button className="btn btn-orange btn-lg px-4 shadow-sm" disabled>
+  <i className="bi bi-calculator me-2"></i> Coming Soon
+</button>
+
             </div>
           </div>
         </div>
