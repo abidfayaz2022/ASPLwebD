@@ -45,33 +45,55 @@ export default function HeroSection() {
 
             <div className="container position-relative" style={{ zIndex: 1 }}>
                 <div className="row min-vh-75 align-items-center py-5">
-                    <div className="col-lg-6 col-xl-5 mb-5 mb-lg-0">
-                        <div
-                            className="hero-content p-4 rounded-3"
-                            style={{
-                                backdropFilter: 'blur(5px)',
-                                backgroundColor: 'rgba(255,255,255,0.9)',
-                            }}
-                        >
-                            <h1
-                                className="display-4 fw-bold mb-6"
-                                style={{ fontSize: '3.5rem', color: 'var(--text-dark)' }}
-                            >
-                                Angel Services
-                            </h1>
-                            <p className="lead mb-4" style={{ color: 'var(--text-dark)' }}>
-                                Your trusted partner in finance and business solutions
-                            </p>
-                            <div className="d-flex flex-wrap gap-3">
-                                <Link href="/contact" className="cta-primary">
-                                    Get Started <i className="bi bi-arrow-right ms-2" />
-                                </Link>
-                                <Link href="/services" className="cta-secondary">
-                                    Explore Services
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
+                <div className="col-lg-6 col-xl-5 mb-5 mb-lg-0 d-flex flex-column justify-content-center align-items-center text-center">
+  <div
+    className="hero-content p-4 p-md-5 rounded-3 w-100"
+    style={{
+      backgroundColor: '#ffffff', // hides the dot background
+      maxWidth: '480px',
+      transform: 'translateX(-4px)'
+    }}
+  >
+    <h1
+      className="display-4 fw-bold mb-3"
+      style={{ fontSize: '3.5rem', color: '#212529' }}
+    >
+      Angel Services
+    </h1>
+    <p
+      className="lead mb-4"
+      style={{ fontSize: '1.25rem', color: '#555', marginBottom: '1.5rem' }}
+    >
+      Your partner for business growth
+    </p>
+    <div className="d-flex flex-wrap justify-content-center gap-3">
+    <Link
+  href="/contact"
+  className="btn btn-warning rounded-pill px-4 py-2 fw-semibold"
+  style={{
+    transition: 'all 0.3s ease',
+    boxShadow: '0 0 0 rgba(0,0,0,0)',
+  }}
+>
+  Get Started <i className="bi bi-arrow-right ms-2" />
+</Link>
+
+<Link
+  href="/services"
+  className="btn btn-dark rounded-pill px-4 py-2 fw-semibold text-white"
+  style={{
+    transition: 'all 0.3s ease',
+    boxShadow: '0 0 0 rgba(0,0,0,0)',
+  }}
+>
+  Explore Services
+</Link>
+
+    </div>
+  </div>
+</div>
+
+
 
                     <div className="col-lg-7 d-flex justify-content-center align-items-center">
                         <div
@@ -242,7 +264,14 @@ export default function HeroSection() {
           --transition-speed: 0.3s;
           --border-radius-lg: 1rem;
         }
+  .btn {
+    transition: all 0.3s ease;
+  }
 
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
         /* Custom Styles for Homepage */
         .service-card h4,
         .service-card p,

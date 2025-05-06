@@ -33,11 +33,11 @@ const Footer = () => {
                                     <img
                                         src="/images/angelserviceslogo (2).png"
                                         alt="Angel Services Logo"
-                                        style={{ height: '60px', objectFit: 'contain' }}
+                                        style={{ height: '75px', objectFit: 'contain' }}
                                     />
                                 </div>
                                 <p className="mb-4 pe-lg-3">
-                                    Your trusted partner in finance and business solutions
+                                    
                                 </p>
 
                                 <div className="social-links d-flex gap-3 mb-3">
@@ -55,7 +55,8 @@ const Footer = () => {
                                             justifyContent: 'center',
                                             transition: 'all 0.3s ease',
                                             fontSize: '24px',
-                                            color: '#0A66C2'
+                                            color: '#0A66C2',
+                                            marginLeft: '40px'
                                         }}
                                     >
                                         <i className="bi bi-linkedin" ></i>
