@@ -179,7 +179,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2">
                                         <a
-                                            href="https://asplconsultancy.com/angel"
+                                            href="/global"
                                             className="footer-link d-block py-1"
                                             style={{
                                                 color: '#444',
@@ -233,7 +233,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2">
                                         <a
-                                            href="/services"
+                                            href="/services/corporate-secretary"
                                             className="footer-link d-block py-1"
                                             style={{
                                                 color: '#444',
@@ -246,7 +246,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2">
                                         <a
-                                            href="/services"
+                                            href="/services/accounting"
                                             className="footer-link d-block py-1"
                                             style={{
                                                 color: '#444',
@@ -259,7 +259,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2">
                                         <a
-                                            href="/nri-tax-return"
+                                            href="/services/tax-advisory"
                                             className="footer-link d-block py-1"
                                             style={{
                                                 color: '#444',
@@ -272,7 +272,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2">
                                         <a
-                                            href="/services"
+                                            href="/services/legacy-planning"
                                             className="footer-link d-block py-1"
                                             style={{
                                                 color: '#444',
@@ -285,7 +285,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2">
                                         <a
-                                            href="/services"
+                                            href="/services/fund-administration"
                                             className="footer-link d-block py-1"
                                             style={{
                                                 color: '#444',

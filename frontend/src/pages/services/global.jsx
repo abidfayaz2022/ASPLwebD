@@ -18,10 +18,10 @@ const GlobalPresence = () => {
           <div className="row justify-content-center py-5">
             <div className="col-lg-10 text-center">
               <span className="badge bg-white text-dark px-3 py-2 rounded-pill fw-semibold mb-3">
-                Global Presence
+                Global
               </span>
               <h1 className="display-4 fw-bold text-shadow">
-                Global Presence Across Strategic Jurisdictions
+                Global Support Across Strategic Jurisdictions
               </h1>
               <p className="lead fs-4 fw-light">
                 Supporting businesses in Asia, the Middle East, and offshore territories
@@ -54,11 +54,10 @@ const GlobalPresence = () => {
         <div className="container">
           <div className="text-center mb-5">
             <h2 className="display-5 fw-bold text-dark">Our Global Jurisdictions</h2>
-            <p className="lead text-muted mx-auto" style={{ maxWidth: '700px' }}>
-              We operate in key business hubs worldwide to support your expansion and compliance.
-            </p>
           </div>
-
+          <div className="text-center mb-4">
+            <h2 className="display-7 fw-bold text-dark">Global Presence</h2>
+          </div>
           <div className="row g-4">
             <JurisdictionCard
               flag="/images/flags/singapore.svg"
@@ -70,11 +69,57 @@ const GlobalPresence = () => {
               flag="/images/flags/uae.svg"
               image="/images/corporate/uae.jpg"
               title="United Arab Emirates"
-              features={['Free zones', '0% Corporate Tax', 'Strategic Gateway']}
+              features={['Free zones', 'Strategic Gateway']}
             />
+           <div className="col-md-6 col-lg-4">
+  <a
+    href="https://asplconsultancy.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{ textDecoration: 'none', color: 'inherit' }}
+  >
+    <div className="card border-0 shadow-sm h-100">
+      <div className="position-relative" style={{ height: '180px', overflow: 'hidden' }}>
+        <Image
+          src="/images/corporate/india.jpg"
+          alt="India"
+          width={400}
+          height={180}
+          className="object-fit-cover w-100 h-100"
+        />
+        <div className="position-absolute bottom-0 start-0 p-3 bg-dark bg-opacity-50 w-100">
+          <div className="d-flex align-items-center">
+            <Image src="/images/flags/india.svg" alt="flag" width={28} height={20} className="me-2" />
+            <h5 className="text-white mb-0 fw-bold">India</h5>
+          </div>
+        </div>
+      </div>
+      <div className="card-body">
+        <ul className="list-unstyled mb-0">
+          <li className="d-flex align-items-start mb-2">
+            <i className="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+            <span>NRI Services</span>
+          </li>
+          <li className="d-flex align-items-start mb-2">
+            <i className="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+            <span>Compliance Tools</span>
+          </li>
+          <li className="d-flex align-items-start mb-2">
+            <i className="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+            <span>Regional Experts</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </a>
+</div>
+
+            <div className="text-center mb-3 mt-5">
+            <h2 className="display-7 fw-bold text-dark">Global Support</h2>
+          </div>
             <JurisdictionCard
               flag="/images/flags/indonesia.svg"
-              image="/images/corporate/indonesia.jpg"
+              image="/images/corporate/indonesia.png"
               title="Indonesia"
               features={['Manufacturing base', 'Young workforce', 'Economic growth']}
             />
@@ -103,23 +148,12 @@ const GlobalPresence = () => {
               features={['Investment hub', 'Regulatory strength', 'Offshore structures']}
             />
             <JurisdictionCard
-              flag="/images/flags/india.svg"
-              image="/images/corporate/india.jpg"
-              title="India (ASPL Consultancy)"
+              flag="/images/flags/nigeria-flag.png"
+              image="/images/corporate/nigeria.jpg"
+              title="Nigeria"
               features={['NRI Services', 'Compliance Tools', 'Regional Experts']}
             />
-          </div>
-
-          <div className="text-center mt-5">
-            <p className="lead">For India-specific tools and services:</p>
-            <a
-              href="https://asplconsultancy.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-warning rounded-pill px-4 py-2"
-            >
-              Visit ASPL Consultancy <i className="bi bi-arrow-right ms-2"></i>
-            </a>
+ 
           </div>
         </div>
       </section>

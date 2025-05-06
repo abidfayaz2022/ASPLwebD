@@ -346,7 +346,7 @@ const Resources = () => {
                                                 </div>
                                                 <div>
                                                     <h6 className="mb-0">Email Us</h6>
-                                                    <a href="mailto:contact@asplconsultancy.com" className="text-dark text-decoration-none">contact@asplconsultancy.com</a>
+                                                    <a href="mailto:contact@theangelservices.com" className="text-dark text-decoration-none">contact@theangelservices.com</a>
                                                 </div>
                                             </div>
                                             <div className="contact-item d-flex align-items-center mb-3">
@@ -355,7 +355,7 @@ const Resources = () => {
                                                 </div>
                                                 <div>
                                                     <h6 className="mb-0">Call Us</h6>
-                                                    <a href="tel:+91-9259049836" className="text-dark text-decoration-none">+91-9259049836</a>
+                                                    <a href="tel:+65-82002370" className="text-dark text-decoration-none">+6582002370</a>
                                                 </div>
                                             </div>
                                             <div className="contact-item d-flex align-items-center">
@@ -364,7 +364,7 @@ const Resources = () => {
                                                 </div>
                                                 <div>
                                                     <h6 className="mb-0">WhatsApp</h6>
-                                                    <a href="https://wa.me/919259049836" className="text-dark text-decoration-none">Message us on WhatsApp</a>
+                                                    <a href="https://wa.me/6582002370" className="text-dark text-decoration-none">Message us on WhatsApp</a>
                                                 </div>
                                             </div>
                                         </div>

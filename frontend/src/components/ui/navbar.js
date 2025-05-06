@@ -15,25 +15,27 @@ const Navbar = () => {
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Resources', path: '/resources' },
-    { name: 'Global Presence', path: '/services/global' },
+    { name: 'Global', path: '/services/global' },
     { name: 'Contact', path: '/contact' },
   ];
 
   return (
     <nav className={`navbar navbar-expand-lg fixed-top shadow-sm ${styles.navbarCustom}`}>
       <div className="container d-flex justify-content-between align-items-center">
-        <Link href="/" legacyBehavior>
-          <a className={`navbar-brand d-flex align-items-center ${styles.logoWrapper}`} style={{ height: '64px' }}>
-            <Image
-              src="/images/angelserviceslogo (2).png"
-              alt="Angel Services Logo"
-              width={190}
-              height={56}
-              priority
-              className={styles.logoImage}
-            />
-          </a>
-        </Link>
+      <Link
+  href="/"
+  className={`navbar-brand d-flex align-items-center ${styles.logoWrapper}`}
+  style={{ height: '64px' }}
+>
+  <Image
+    src="/images/angelserviceslogo (2).png"
+    alt="Angel Services Logo"
+    width={190}
+    height={56}
+    priority
+    className={styles.logoImage}
+  />
+</Link>
 
         <button
           className="navbar-toggler"
@@ -51,9 +53,10 @@ const Navbar = () => {
           <ul className={`navbar-nav ${styles.navLinks}`}>
             {navItems.map((item) => (
               <li className="nav-item" key={item.name}>
-                <Link href={item.path} legacyBehavior>
-                  <a className={`nav-link ${styles.navItem}`}>{item.name}</a>
-                </Link>
+                <Link href={item.path} className={`nav-link ${styles.navItem}`}>
+  {item.name}
+</Link>
+
               </li>
             ))}
           </ul>
