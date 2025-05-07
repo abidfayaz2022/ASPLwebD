@@ -165,7 +165,8 @@ const AccountingServices = () => {
                             // For the last (8th) card, center it on large screens
                             if (arr.length === 8 && index === 7) {
                                 return (
-                                    <div key={index} className="col-md-6 col-lg-4 mb-4 mx-lg-auto">
+                                  <div key={index} className="col-md-6 col-lg-4 mb-4">
+                              
                                         <div className="card h-100 service-card border-0 shadow-lg rounded-4 overflow-hidden">
                                             <div className="card-body p-4">
                                                 <div className="service-icon mb-4">
@@ -238,6 +239,8 @@ const AccountingServices = () => {
             </section>
 
             <style jsx>{`
+
+            
                 :global(:root) {
                     --primary-color: #fcb900;
                 }
@@ -320,40 +323,55 @@ const AccountingServices = () => {
                     left: 0;
                 }
 
-                .services {
-                    background-color: rgba(252, 185, 0, 0.05);
-                }
+               .service-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  background: #fff;
+  padding: 1rem;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+}
 
-                .divider-center {
-                    position: relative;
-                    height: 4px;
-                    width: 80px;
-                    margin: 0 auto;
-                }
+.service-card:hover {
+  transform: translateY(-6px);
+  border-color: #fcb900;
+  box-shadow: 0 0 20px rgba(252, 185, 0, 0.4);
+}
 
-                .divider-center span {
-                    position: absolute;
-                    height: 100%;
-                    width: 100%;
-                    border-radius: 2px;
-                }
+.service-icon {
+  margin-bottom: 1rem;
+}
 
-                .feature-check {
-                    width: 24px;
-                    height: 24px;
-                    display: inline-flex;
-                    align-items: center;
-                    justify-content: center;
-                }
+.service-icon i {
+  font-size: 2.5rem;
+  color: #fcb900;
+}
 
-                .service-card {
-                    transition: transform 0.3s ease, box-shadow 0.3s ease;
-                }
+.card-title {
+  font-weight: 600;
+  font-size: 1.25rem;
+}
 
-                .service-card:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 1rem 3rem rgba(0,0,0,0.175) !important;
-                }
+.feature-check {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fcb900;
+}
+
+.feature-check i {
+  font-size: 1rem;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #333;
+}
 
                 .btn {
                     transition: all 0.3s ease;
