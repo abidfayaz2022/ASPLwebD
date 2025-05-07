@@ -77,7 +77,7 @@ const TeamCard = ({ member }) => (
               </div>
               <h3 className="fw-bold">
                 <span style={{ color: '#fcb900' }}>
-                  {inView ? <CountUp end={7} duration={2} /> : 7}
+                  {inView ? <CountUp end={9} duration={2} /> : 9}
                 </span>{' '}
 
               </h3>
