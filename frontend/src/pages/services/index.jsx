@@ -11,41 +11,79 @@ export default function Services() {
   return (
     <>
       {/* Hero Section with Parallax Effect */}
-      <section className="services-hero position-relative overflow-hidden">
-        <div 
-          className="services-hero-bg" 
-          style={{ 
-            background: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80") no-repeat center/cover',
-            height: '400px'
-          }}
-        />
-        <div className="container position-relative" style={{ zIndex: 1 }}>
-          <div className="row min-vh-40 align-items-center py-4 py-md-5">
-            <div className="col-lg-8 col-md-10 col-sm-12 mx-auto text-center text-white">
-              <h1 className="display-4 fw-bold mb-3 mb-md-4 animate__animated animate__fadeInDown" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}>
-                Our Services
-              </h1>
-              <p className="lead mb-4 mb-md-5 animate__animated animate__fadeInUp" style={{ fontSize: 'clamp(1rem, 3vw, 1.25rem)' }}>
-                We empower businesses and families across the globe with structured, compliant, and forward-thinking solutions. Our presence across Singapore, Indonesia, Vietnam, UAE, Hong Kong, BVI, and Cayman Islands allows us to serve a truly global clientele—supporting their ambitions with local insights and international best practices.
-              </p>
-              <Link href="#services_section" className="btn btn-primary btn-lg rounded-pill animate__animated animate__fadeInUp btn-responsive">
-                Explore Our Services <i className="bi bi-arrow-down-circle ms-2" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <section
+  className="services-hero position-relative text-white"
+  style={{
+    background: 'linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")',
+    backgroundColor: '#f8f9fa',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    overflow: 'hidden',
+    minHeight: '500px'
+  }}
+>
+  {/* Floating Elements */}
+  <div className="animated-bg">
+    <div className="circle-1"></div>
+    <div className="circle-2"></div>
+    <div className="circle-3"></div>
+  </div>
+
+  <div className="container position-relative py-5" style={{ zIndex: 2 }}>
+    <div className="row py-5 min-vh-40">
+      <div className="col-lg-8 mx-auto text-center">
+        <h1 className="display-3 fw-bold text-white mb-4 text-shadow">Our Services</h1>
+        <p className="lead text-white mb-5 fs-4 fw-light">
+          We empower businesses and families across the globe with structured, compliant, and forward-thinking solutions. Our presence across Singapore, Indonesia, Vietnam, UAE, Hong Kong, BVI, and Cayman Islands allows us to serve a truly global clientele—supporting their ambitions with local insights and international best practices.
+        </p>
+        <Link
+  href="#services_section"
+  className="btn btn-yellow btn-lg rounded-pill px-4 py-3 fw-semibold me-2 shadow-sm"
+>
+  Explore Our Services <i className="bi bi-arrow-down-circle ms-2"></i>
+</Link>
+
+      </div>
+    </div>
+  </div>
+
+  {/* Wave Separator (same as incorporation page) */}
+  <div className="wave-separator text-white">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <path
+        fill="#ffffff"
+        fillOpacity="1"
+        d="M0,32L80,42.7C160,53,320,75,480,74.7C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,100L1360,100C1280,100,1120,100,960,100C800,100,640,100,480,100C320,100,160,100,80,100L0,100Z"
+      ></path>
+    </svg>
+  </div>
+</section>
+
 
        {/* Service Workflow Section with Modern Design */}
-       <section id="serviceWorkflow" className="workflow-section py-5" style={{ backgroundColor: '#f8f9fa' }}>
+       <section
+  id="serviceWorkflow"
+  className="workflow-section py-5"
+  style={{ backgroundColor: '#ffffff' }} // Replace with your preferred tone
+>
+
                 <div className="container">
-                    <div className="row mb-5">
+                    <div className="row mb-3">
                         <div className="col-lg-8 mx-auto text-center">
-                            <h2 className="fw-bold mb-4 text-primary">Our Service Workflow</h2>
-                            <p className="lead text-dark">A seamless process designed to deliver exceptional results for your business</p>
+                        <h2 className="fw-bold mb-3 text-primary" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>
+  Our Service Workflow
+</h2>
+<div className="underline-center mx-auto mb-4"></div>
+
+
+<p className="lead text-dark mb-1">
+  A seamless process designed to deliver exceptional results for your business
+</p>
+
                         </div>
                     </div>
-                    <div className="workflow-container position-relative">
+                    <div className="workflow-container position-relative ">
                         <div className="row g-4">
                             {[
                                 {
@@ -94,7 +132,7 @@ export default function Services() {
                 </div>
             </section>
 
-      {/* Featured Service Banner */}
+      {/* Featured Service Banner 
       <section className="featured-service py-4 bg-primary text-white">
         <div className="container">
           <div className="row align-items-center">
@@ -115,7 +153,7 @@ export default function Services() {
             </div>
           </div>
         </div>
-      </section>
+      </section>*/}
 
       {/* Services Grid Section */}
       <section id="services_section" className="services-list py-4 py-md-5" style={{ backgroundColor: '#ffffff' }}>
@@ -328,6 +366,121 @@ export default function Services() {
       </section>
 
       <style jsx>{`
+:global(.btn-yellow) {
+    background-color: #fcb900;
+    border: none;
+    color: #000;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  :global(.btn-yellow:hover) {
+    background-color: #e0a800;
+    color: #000;
+    transform: translateY(-2px);
+  }
+
+  :global(.btn-yellow:hover) {
+  background-color: #e0a800;
+  color: #000;
+  box-shadow: 0 0 10px rgba(252, 185, 0, 0.6);
+  transform: translateY(-2px);
+}
+
+.underline-center {
+  height: 4px;
+  width: 80px;
+  background-color: #fcb900;
+  border-radius: 4px;
+}
+.yellow-glow-border {
+  border: 2px solid #fcb900;
+  box-shadow: 0 0 10px rgba(252, 185, 0, 0.4);
+  transition: all 0.3s ease-in-out;
+}
+
+.yellow-glow-border:hover {
+  box-shadow: 0 0 20px rgba(252, 185, 0, 0.6);
+}
+      .services-hero {
+  position: relative;
+  min-height: 500px;
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+}
+
+.btn-yellow {
+  background-color: #fcb900;
+  border: none;
+  color: #000;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-yellow:hover {
+  background-color: #e0a800;
+  color: #000;
+  transform: translateY(-2px);
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.wave-separator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  line-height: 0;
+  z-index: 1;
+}
+
+.animated-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.circle-1, .circle-2, .circle-3 {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  animation: float 6s ease-in-out infinite;
+}
+.circle-1 {
+  width: 300px;
+  height: 300px;
+  top: -150px;
+  right: -150px;
+  animation-delay: 0s;
+}
+.circle-2 {
+  width: 200px;
+  height: 200px;
+  bottom: -100px;
+  left: -100px;
+  animation-delay: 2s;
+}
+.circle-3 {
+  width: 150px;
+  height: 150px;
+  top: 50%;
+  right: 10%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
         /* Enhanced Styles for Services Page */
         .services-hero-bg {
           position: absolute;

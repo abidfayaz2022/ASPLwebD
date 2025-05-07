@@ -66,7 +66,7 @@ export default async function handler(req, res) {
     await transporter.sendMail(userMailOptions);
 
   } catch (error) {
-    console.error("❌ Email Sending Error:", error);
+    console.error("Email Sending Error:", error);
   }
 }
 

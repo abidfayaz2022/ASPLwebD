@@ -1,29 +1,32 @@
-/* Navbar container */
+/* === DESKTOP STYLES – DO NOT MODIFY === */
 .navbarCustom {
   background-color: white;
   border-bottom: 2px solid #fcb900;
-  padding: 6px 0; /* Uniform vertical spacing */
+  height: 80px;
+  padding: 0;
   transition: all 0.3s ease;
+  z-index: 999;
 }
 
-/* Logo container inside navbar-brand */
 .logoImage {
   height: auto;
-  max-height: 60px; /* 10% more than original 48px */
+  max-height: 60px;
   object-fit: contain;
   width: auto;
+  display: block;
 }
 
 .logoWrapper {
   height: 64px;
+  display: flex;
+  align-items: center;
 }
 
-/* Navigation links */
 .navLinks {
+  display: flex;
   gap: 25px;
 }
 
-/* Each individual nav link */
 .navItem {
   position: relative;
   font-weight: 500;
@@ -31,13 +34,13 @@
   color: #222 !important;
   transition: color 0.3s ease;
   padding: 6px 10px;
+  text-decoration: none;
 }
 
 .navItem:hover {
   color: #fcb900 !important;
 }
 
-/* Underline effect on hover */
 .navItem::after {
   content: '';
   position: absolute;
@@ -53,28 +56,108 @@
   width: 100%;
 }
 
-.navbarCustom {
-  background-color: white;
-  border-bottom: 2px solid #fcb900;
-  height: 80px;            /* Increased from 64px */
-  padding: 0;
-  transition: all 0.3s ease;
+/* === MOBILE ONLY STYLES === */
+.navbarToggler {
+  background: none;
+  border: none;
+  padding: 8px;
 }
 
+.navbarTogglerIcon {
+  width: 24px;
+  height: 24px;
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba%280, 0, 0, 0.8%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Mobile dropdown menu */
+.mobileMenu {
+  position: absolute;
+  top: 80px;
+  right: 0;
+  width: 220px;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 0 0 0 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  z-index: 998;
+  animation: slideDown 0.3s ease;
+}
+
+.navLinksMobile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navLinksMobile .navItem {
+  font-size: 1.05rem;
+  padding: 8px 12px;
+  width: 100%;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.navLinksMobile .navItem:last-child {
+  border-bottom: none;
+}
+
+/* Hide body scroll when mobile menu is open */
+body.offcanvas-open {
+  overflow: hidden;
+}
+
+.backdrop {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 997;
+}
+
+/* Mobile logo size tweak */
 @media (max-width: 768px) {
-  .navLinks {
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-    padding-top: 10px;
-  }
-
-  .navItem {
-    font-size: 1rem;
-    padding: 4px 8px;
-  }
-
   .logoImage {
     max-height: 40px;
+  }
+}
+
+/* Slide down animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Force hamburger icon to appear on small screens */
+@media (max-width: 991.98px) {
+  .navbarToggler {
+    display: block !important;
+    position: absolute;
+    top: 22px;
+    right: 20px;
+    z-index: 1000;
+  }
+
+  .navbarTogglerIcon {
+    display: block !important;
+    width: 28px;
+    height: 28px;
+    background-size: contain;
+  }
+
+  /* Ensure desktop nav stays hidden on mobile */
+  .navLinks {
+    display: none !important;
   }
 }

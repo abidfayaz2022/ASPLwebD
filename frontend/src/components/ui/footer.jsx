@@ -179,7 +179,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mb-2">
                                         <a
-                                            href="/global"
+                                            href="/services/global"
                                             className="footer-link d-block py-1"
                                             style={{
                                                 color: '#444',
@@ -191,6 +191,7 @@ const Footer = () => {
                                         </a>
                                     </li>
                                 </ul>
+                                
                             </div>
                         </div>
 

@@ -2,6 +2,11 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+
+import { useInView } from 'react-intersection-observer';
+import CountUp from 'react-countup';
+import { FaUserFriends, FaGlobe, FaStar } from 'react-icons/fa';
+
 const TeamCard = ({ member }) => (
     <div className="card team-card h-100 shadow-sm">
       <div className="card-body text-center p-3 p-md-4">
@@ -38,6 +43,61 @@ const TeamCard = ({ member }) => (
     </div>
   );
   
+  const WhyChooseStats = () => {
+    const [ref, inView] = useInView({ triggerOnce: true });
+  
+    return (
+      <section className="why-choose-section py-5 bg-light" ref={ref}>
+        <div className="container text-center">
+        <h2
+  className="text-center mb-3 mb-md-4 text-dark"
+  style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)' }}
+>
+  Why choose Angel Services?
+</h2>
+<div className="underline-center mx-auto mb-4" style={{ color: '#fcb900' }}></div>
+
+
+          <p className="text-muted mb-5">Our track record speaks for itself</p>
+  
+          <div className="row g-4">
+            <div className="col-md-4">
+              <div className="mb-3" style={{ color: '#fcb900' }}>
+                <FaUserFriends size={40} />
+              </div>
+              <h3 className="fw-bold" style={{ color: '#fcb900' }}>
+                {inView ? <CountUp end={125} duration={2} /> : 125}
+              </h3>
+              <p className="text-muted">Clients Served</p>
+            </div>
+  
+            <div className="col-md-4">
+              <div className="mb-3" style={{ color: '#fcb900' }}>
+                <FaGlobe size={40} />
+              </div>
+              <h3 className="fw-bold">
+                <span style={{ color: '#fcb900' }}>
+                  {inView ? <CountUp end={7} duration={2} /> : 7}
+                </span>{' '}
+
+              </h3>
+              <p className="text-muted">Countries</p>
+            </div>
+  
+            <div className="col-md-4">
+              <div className="mb-3" style={{ color: '#fcb900' }}>
+                <FaStar size={40} />
+              </div>
+              <h3 className="fw-bold" style={{ color: '#fcb900' }}>2010</h3>
+              <p className="text-muted">Serving Clients Globally Since</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  };
+  
+
 const AboutUs = () => {
     return (
         <div>
@@ -81,11 +141,11 @@ const AboutUs = () => {
             </section>
 
             {/* Mission and Vision */}
-            <section className="mission-vision py-5 bg-light">
+            <section className="mission-vision py-5 bg-white">
                 <div className="container">
                     <div className="row g-4">
                         <div className="col-md-6">
-                            <div className="card h-100 shadow-sm">
+                        <div className="card h-100 shadow-sm yellow-glow-border">
                                 <div className="card-body">
                                     <div className="d-flex align-items-center mb-3">
                                         <div className="me-3 bg-primary-subtle p-3 rounded-circle">
@@ -102,7 +162,7 @@ const AboutUs = () => {
                             </div>
                         </div>
                         <div className="col-md-6">
-                            <div className="card h-100 shadow-sm">
+                        <div className="card h-100 shadow-sm yellow-glow-border">
                                 <div className="card-body">
                                     <div className="d-flex align-items-center mb-3">
                                         <div className="me-3 bg-primary-subtle p-3 rounded-circle">
@@ -124,7 +184,8 @@ const AboutUs = () => {
             {/* Core Values */}
             <section className="values py-5">
                 <div className="container">
-                    <h2 className="text-center mb-5">Our Core Values</h2>
+                    <h2 className="fw-bold mb-4 text-center" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>Our Core Values</h2>
+                    <div className="underline-center mx-auto mb-5"></div>
                     <div className="row g-4">
                         {/* Core Value Card - Client-Centricity */}
                         <div className="col-md-4 mb-4">
@@ -363,9 +424,33 @@ const AboutUs = () => {
 
                 </div>
             </section>
+            <WhyChooseStats />
+
 
             {/* Inline CSS */}
             <style jsx>{`
+
+.why-choose-section {
+  background-color: #f9fafb;
+}
+
+.underline-center {
+  height: 4px;
+  width: 80px;
+  background-color: #fcb900;
+  border-radius: 4px;
+}
+.yellow-glow-border {
+  border: 2px solid #fcb900;
+  box-shadow: 0 0 10px rgba(252, 185, 0, 0.4);
+  transition: all 0.3s ease-in-out;
+}
+
+.yellow-glow-border:hover {
+  box-shadow: 0 0 20px rgba(252, 185, 0, 0.6);
+}
+
+
         .bg-primary-subtle {
           background-color: #f4f4f4 !important;
         }

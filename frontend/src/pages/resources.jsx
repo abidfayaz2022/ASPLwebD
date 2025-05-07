@@ -76,144 +76,23 @@ const Resources = () => {
                 </div>
             </section>
 
-            {/* NRI Tax Calculator Section */}
-            <section id="calculator_section" className="py-5 bg-light resource-section">
-                <div className="container">
-                    <div className="row g-4 align-items-center">
-                        <div className="col-lg-6 order-lg-2">
-                            <div className="resource-image">
-                                <Image
-                                    src="/images/tax_calc.jpg"
-                                    alt="NRI Tax Calculator"
-                                    width={600}
-                                    height={400}
-                                    className="img-fluid rounded-4 shadow-lg"
-                                />
-                                <div className="resource-badge">
-                                    <span className="badge badge-orange rounded-pill px-3 py-2 fs-6">Popular Tool</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-6 order-lg-1">
-                            <div className="pe-lg-5">
-                                <div className="section-tag mb-2">
-                                    <span className="badge badge-orange px-3 py-2">FREE TOOL</span>
-                                </div>
-                                <h2 className="display-6 fw-bold mb-4">NRI Tax Calculator</h2>
-                                <div className="accent-underline mb-4"></div>
-                                <p className="lead mb-4">Calculate your estimated tax liability for FY 2025-26 (AY 2026-27) with our comprehensive tax calculator designed specifically for Non-Resident Indians.</p>
-                                <div className="benefits-list mb-4">
-                                    <div className="benefit-item d-flex align-items-start mb-3">
-                                        <div className="benefit-icon me-3">
-                                            <i className="bi bi-check-circle-fill text-primary fs-4"></i>
-                                        </div>
-                                        <div>
-                                            <h5 className="mb-1">Accurate Tax Estimation</h5>
-                                            <p className="text-muted mb-0">Based on latest NRI tax slabs and regulations</p>
-                                        </div>
-                                    </div>
-                                    <div className="benefit-item d-flex align-items-start mb-3">
-                                        <div className="benefit-icon me-3">
-                                            <i className="bi bi-check-circle-fill text-primary fs-4"></i>
-                                        </div>
-                                        <div>
-                                            <h5 className="mb-1">Instant Results</h5>
-                                            <p className="text-muted mb-0">Detailed breakdown of your tax liability</p>
-                                        </div>
-                                    </div>
-                                    <div className="benefit-item d-flex align-items-start">
-                                        <div className="benefit-icon me-3">
-                                            <i className="bi bi-check-circle-fill text-primary fs-4"></i>
-                                        </div>
-                                        <div>
-                                            <h5 className="mb-1">Smart Recommendations</h5>
-                                            <p className="text-muted mb-0">Personalized tax saving suggestions</p>
-                                        </div>
-                                    </div>
-                                </div>
-<button className="btn btn-orange btn-lg px-4 shadow-sm" disabled>
-  <i className="bi bi-calculator me-2"></i> Coming Soon
-</button>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
-            {/* NRI Tax Filing Section */}
-            <section id="filing_section" className="py-5 bg-white resource-section">
-                <div className="container">
-                    <div className="row g-4 align-items-center">
-                        <div className="col-lg-6">
-                            <div className="resource-image">
-                                <Image
-                                    src="/images/tax_file.jpg"
-                                    alt="NRI Tax Return Filing"
-                                    width={600}
-                                    height={400}
-                                    className="img-fluid rounded-4 shadow-lg"
-                                />
-                                <div className="resource-badge">
-                                    <span className="badge badge-orange rounded-pill px-3 py-2 fs-6">Step-by-Step</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-6">
-                            <div className="ps-lg-5">
-                                <div className="section-tag mb-2">
-                                    <span className="badge badge-orange px-3 py-2">EXPERT SERVICE</span>
-                                </div>
-                                <h2 className="display-6 fw-bold mb-4">NRI Tax Return Filing</h2>
-                                <div className="accent-underline mb-4"></div>
-                                <p className="lead mb-4">A guided step-by-step process for filing your Indian tax returns as an NRI, with expert support at every stage.</p>
-                                <div className="process-timeline mb-4">
-                                    <div className="process-step d-flex">
-                                        <div className="process-number rounded-circle me-3">1</div>
-                                        <div className="process-content mb-3">
-                                            <h5 className="mb-1">Basic Information</h5>
-                                            <p className="text-muted mb-0">Complete your personal and residency details</p>
-                                        </div>
-                                    </div>
-                                    <div className="process-step d-flex">
-                                        <div className="process-number rounded-circle me-3">2</div>
-                                        <div className="process-content mb-3">
-                                            <h5 className="mb-1">Income & Deductions</h5>
-                                            <p className="text-muted mb-0">Enter your income sources and applicable deductions</p>
-                                        </div>
-                                    </div>
-                                    <div className="process-step d-flex">
-                                        <div className="process-number rounded-circle me-3">3</div>
-                                        <div className="process-content">
-                                            <h5 className="mb-1">Review & Submit</h5>
-                                            <p className="text-muted mb-0">Our experts handle the filing process</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <Link href="/nri-tax-return" className="btn btn-orange btn-lg px-4 shadow-sm">
-                                    <i className="bi bi-file-earmark-text me-2"></i> Start Tax Filing
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Coming Soon Section */}
+            
 {/* Tools and Blogs Section */}
 <section className="py-5 bg-light">
   <div className="container">
 
-    {/* Section Heading */}
+    {/* Section Heading 
     <div className="row text-center mb-5">
       <div className="col-12">
         <h2 className="section-heading">Explore Our Tools & Insights</h2>
         <div className="accent-center-underline mx-auto mb-3"></div>
         <p className="lead">Use our expert calculators and stay updated with practical knowledge tailored for NRIs.</p>
       </div>
-    </div>
+    </div>*/}
 
-    {/* Calculator Cards 2x2 */}
+    {/* Calculator Cards 2x2 
     <div className="row g-4 mb-5">
       {[
         {
@@ -260,52 +139,297 @@ const Resources = () => {
           </div>
         </div>
       ))}
-    </div>
+    </div> */}
 
-    {/* Blog Teasers */}
-    <div className="row mb-4">
-      <div className="col-12 text-center">
-        <h3 className="fw-bold text-dark mb-3">Recent Blog Highlights</h3>
-        <p className="text-muted">Catch up with our latest knowledge drops from LinkedIn</p>
+
+<section id="tools_section" className="py-5 bg-light resource-section">
+  <div className="container">
+
+    {/* Section Heading */}
+    <div className="row text-center mb-5">
+      <div className="col-12">
+        <h2 className="section-heading">Explore Our Expert Tools</h2>
+        <div className="accent-center-underline mx-auto mb-3"></div>
+        <p className="lead">Empowering you with accurate calculators and timely compliance updates tailored for businesses.</p>
       </div>
     </div>
 
-    <div className="row g-4 justify-content-center mb-4">
-      {[
-        {
-          url: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7309249758286528513?collapsed=1",
-          date: "April 1, 2024"
-        },
-        {
-          url: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7306616750173736960?collapsed=1",
-          date: "March 28, 2024"
-        },
-        {
-          url: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7304068620878327808?collapsed=1",
-          date: "March 20, 2024"
-        }
-      ].map((blog, idx) => (
-        <div className="col-md-6 col-lg-4" key={idx}>
-          <div className="bg-white shadow-sm rounded-4 overflow-hidden">
-            <iframe
-              src={blog.url}
-              height="360"
-              width="100%"
-              frameBorder="0"
-              allowFullScreen
-              title={`Blog ${idx}`}
-            ></iframe>
-            <div className="p-3 text-end text-muted small">🗓 {blog.date}</div>
+    {/* Tool: Audit Requirement Calculator */}
+    <div className="row g-4 align-items-center mb-5">
+      <div className="col-lg-6 order-lg-2">
+        <div className="resource-image">
+          <img
+            src="/images/audit_tool.jpg"
+            alt="Audit Requirement Calculator"
+            className="img-fluid rounded-4 shadow-lg"
+          />
+          <div className="resource-badge">
+            <span className="badge badge-orange rounded-pill px-3 py-2 fs-6">Check Eligibility</span>
           </div>
         </div>
-      ))}
+      </div>
+      <div className="col-lg-6 order-lg-1">
+        <div className="pe-lg-5">
+          <div className="section-tag mb-2">
+            <span className="badge badge-orange px-3 py-2">FREE TOOL</span>
+          </div>
+          <h2 className="display-6 fw-bold mb-4">Audit Requirement Calculator</h2>
+          <div className="accent-underline mb-4"></div>
+          <p className="lead mb-4">Determine if your business requires a statutory audit based on turnover and activity type.</p>
+          <ul className="list-unstyled text-muted mb-4">
+            <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Based on latest audit thresholds</li>
+            <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> For businesses & professionals</li>
+            <li><i className="bi bi-check-circle-fill text-primary me-2"></i> Instant eligibility status</li>
+          </ul>
+          <a href="/resources/audit-calculator" className="btn btn-orange btn-lg px-4 shadow-sm">
+            <i className="bi bi-journal-check me-2"></i> Use Audit Calculator
+          </a>
+        </div>
+      </div>
     </div>
 
-    <div className="text-center">
-      <Link href="/resources/blogs" className="btn btn-outline-dark rounded-pill px-4">
-        <i className="bi bi-newspaper me-2"></i>View All Blogs
-      </Link>
+    {/* Tool: Corporate Tax Calculator */}
+    <div className="row g-4 align-items-center mb-5">
+      <div className="col-lg-6">
+        <div className="resource-image">
+          <img
+            src="/images/corporate_tax.jpg"
+            alt="Corporate Tax Calculator"
+            className="img-fluid rounded-4 shadow-lg"
+          />
+          <div className="resource-badge">
+            <span className="badge badge-orange rounded-pill px-3 py-2 fs-6">Tax Tool</span>
+          </div>
+        </div>
+      </div>
+      <div className="col-lg-6">
+        <div className="ps-lg-5">
+          <div className="section-tag mb-2">
+            <span className="badge badge-orange px-3 py-2">CALCULATOR</span>
+          </div>
+          <h2 className="display-6 fw-bold mb-4">Corporate Tax Calculator</h2>
+          <div className="accent-underline mb-4"></div>
+          <p className="lead mb-4">Calculate corporate income tax liability under Indian tax laws including cess and surcharges.</p>
+          <ul className="list-unstyled text-muted mb-4">
+            <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Based on current fiscal slabs</li>
+            <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Includes surcharge & cess</li>
+            <li><i className="bi bi-check-circle-fill text-primary me-2"></i> Optimized for private limited companies</li>
+          </ul>
+          <a href="/resources/corporate-tax" className="btn btn-orange btn-lg px-4 shadow-sm">
+            <i className="bi bi-calculator me-2"></i> Use Corporate Calculator
+          </a>
+        </div>
+      </div>
     </div>
+
+    {/* Tool: Compliance Calendar */}
+    <div className="row g-4 align-items-center mb-5">
+      <div className="col-lg-6 order-lg-2">
+        <div className="resource-image">
+          <img
+            src="/images/compliance_calendar.jpg"
+            alt="Compliance Calendar"
+            className="img-fluid rounded-4 shadow-lg"
+          />
+          <div className="resource-badge">
+            <span className="badge badge-orange rounded-pill px-3 py-2 fs-6">Due Dates</span>
+          </div>
+        </div>
+      </div>
+      <div className="col-lg-6 order-lg-1">
+        <div className="pe-lg-5">
+          <div className="section-tag mb-2">
+            <span className="badge badge-orange px-3 py-2">CALENDAR</span>
+          </div>
+          <h2 className="display-6 fw-bold mb-4">Compliance Calendar</h2>
+          <div className="accent-underline mb-4"></div>
+          <p className="lead mb-4">Track important tax and regulatory due dates to avoid penalties and stay compliant.</p>
+          <ul className="list-unstyled text-muted mb-4">
+            <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Covers GST, Income Tax, TDS, ROC</li>
+            <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Real-time updates for deadlines</li>
+            <li><i className="bi bi-check-circle-fill text-primary me-2"></i> Year-round tracking</li>
+          </ul>
+          <a href="/resources/compliance-calendar" className="btn btn-orange btn-lg px-4 shadow-sm">
+            <i className="bi bi-calendar2-event me-2"></i> Use Compliance Calendar
+          </a>
+        </div>
+      </div>
+    </div>
+
+    {/* Tool: GST Requirement Checker */}
+    <div className="row g-4 align-items-center">
+      <div className="col-lg-6">
+        <div className="resource-image">
+          <img
+            src="/images/gst_checker.jpg"
+            alt="GST Requirement Checker"
+            className="img-fluid rounded-4 shadow-lg"
+          />
+          <div className="resource-badge">
+            <span className="badge badge-orange rounded-pill px-3 py-2 fs-6">GST Eligibility</span>
+          </div>
+        </div>
+      </div>
+      <div className="col-lg-6">
+        <div className="ps-lg-5">
+          <div className="section-tag mb-2">
+            <span className="badge badge-orange px-3 py-2">CHECKER</span>
+          </div>
+          <h2 className="display-6 fw-bold mb-4">GST Requirement Checker</h2>
+          <div className="accent-underline mb-4"></div>
+          <p className="lead mb-4">Check if your business needs GST registration based on turnover and services provided.</p>
+          <ul className="list-unstyled text-muted mb-4">
+            <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Based on current GST threshold</li>
+            <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Suitable for services & trading</li>
+            <li><i className="bi bi-check-circle-fill text-primary me-2"></i> Instant result with suggestion</li>
+          </ul>
+          <a href="/resources/gst-requirement" className="btn btn-orange btn-lg px-4 shadow-sm">
+            <i className="bi bi-receipt me-2"></i> Use GST Checker
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{/* NRI Tax Calculator Section */}
+<section id="calculator_section" className="py-5 resource-section">
+  <div className="container">
+    <div className="row g-4 align-items-center">
+      <div className="col-lg-6 order-lg-2">
+        <div className="resource-image">
+          <Image
+            src="/images/tax_calc.jpg"
+            alt="NRI Tax Calculator"
+            width={600}
+            height={400}
+            className="img-fluid"
+          />
+          <div className="resource-badge">
+            <span className="badge">Popular Tool</span>
+          </div>
+        </div>
+      </div>
+      <div className="col-lg-6 order-lg-1">
+        <div className="pe-lg-5">
+          <div className="section-tag mb-2">
+            <span className="badge">FREE TOOL</span>
+          </div>
+          <h2 className="display-6 fw-bold">NRI Tax Calculator</h2>
+          <div className="accent-underline mb-4"></div>
+          <p className="lead mb-4">
+            Calculate your estimated tax liability for FY 2025-26 (AY 2026-27) with our comprehensive calculator built for NRIs.
+          </p>
+          <ul className="list-unstyled text-muted mb-4">
+            <li><i className="bi bi-check-circle-fill"></i> Accurate tax estimation based on latest slabs</li>
+            <li><i className="bi bi-check-circle-fill"></i> Instant breakdown of liability</li>
+            <li><i className="bi bi-check-circle-fill"></i> Personalized tax-saving suggestions</li>
+          </ul>
+          <button className="btn btn-orange btn-lg px-4 shadow-sm" disabled>
+            <i className="bi bi-calculator me-2"></i> Coming Soon
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* NRI Tax Filing Section */}
+<section id="filing_section" className="py-5 resource-section">
+  <div className="container">
+    <div className="row g-4 align-items-center">
+      <div className="col-lg-6 order-lg-2">
+        <div className="resource-image">
+          <Image
+            src="/images/tax_file.jpg"
+            alt="NRI Tax Return Filing"
+            width={600}
+            height={400}
+            className="img-fluid"
+          />
+          <div className="resource-badge">
+            <span className="badge">Step-by-Step</span>
+          </div>
+        </div>
+      </div>
+      <div className="col-lg-6 order-lg-1">
+        <div className="pe-lg-5">
+          <div className="section-tag mb-2">
+            <span className="badge">EXPERT SERVICE</span>
+          </div>
+          <h2 className="display-6 fw-bold">NRI Tax Return Filing</h2>
+          <div className="accent-underline mb-4"></div>
+          <p className="lead mb-4">
+            A guided process to help NRIs file Indian tax returns easily and accurately with expert assistance.
+          </p>
+          <ul className="list-unstyled text-muted mb-4">
+            <li><i className="bi bi-check-circle-fill"></i> Fill basic personal & residency details</li>
+            <li><i className="bi bi-check-circle-fill"></i> Submit income and deduction info</li>
+            <li><i className="bi bi-check-circle-fill"></i> Expert-assisted review and filing</li>
+          </ul>
+          <Link href="/nri-tax-return" className="btn btn-orange btn-lg px-4 shadow-sm">
+            <i className="bi bi-file-earmark-text me-2"></i> Start Tax Filing
+          </Link>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    {/* Blog Highlights Section */}
+<div className="row mb-4">
+  <div className="col-12 text-center">
+    <h3 className="fw-bold text-dark mb-3">Recent Blog Highlights</h3>
+    <div className="accent-center-underline mx-auto mb-3"></div>
+    <p className="text-muted">Catch up with our latest knowledge drops from LinkedIn</p>
+  </div>
+</div>
+
+<div className="row g-4 justify-content-center mb-5">
+  {[
+    {
+      url: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7309249758286528513",
+      date: "April 1, 2024"
+    },
+    {
+      url: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7306616750173736960",
+      date: "March 28, 2024"
+    },
+    {
+      url: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7304068620878327808",
+      date: "March 20, 2024"
+    }
+  ].map((blog, idx) => (
+    <div className="col-md-6 col-lg-4" key={idx}>
+      <div className="bg-white rounded-4 shadow-sm overflow-hidden d-flex flex-column h-100">
+        <iframe
+          src={blog.url}
+          width="100%"
+          height="500" // 👈 Increased height for full post visibility
+          frameBorder="0"
+          allowFullScreen
+          title={`Blog ${idx}`}
+          style={{
+            border: "none",
+            borderRadius: "16px 16px 0 0",
+            width: "100%",
+            minHeight: "500px"
+          }}
+        ></iframe>
+        <div className="p-3 text-end text-muted small border-top">
+          <i className="bi bi-calendar-event me-1"></i>{blog.date}
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+<div className="text-center">
+  <Link href="/resources/blogs" className="btn btn-outline-dark rounded-pill px-4">
+    <i className="bi bi-newspaper me-2"></i>View All Blogs
+  </Link>
+</div>
+
+
   </div>
 
 </section>
@@ -377,8 +501,153 @@ const Resources = () => {
             </section>
 
             <style jsx>{`
-       
+
+       .ratio-16x9 {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  display: block;
+}
+
+.accent-center-underline {
+  height: 4px;
+  width: 80px;
+  background: linear-gradient(to right, #fcb900, rgba(252, 185, 0, 0.5));
+  border-radius: 4px;
+}
+
+
         /*calculators*/
+/* Match layout to NRI tool sections */
+/* Wrapper with more edge spacing and curved background */
+.resource-section {
+  padding: 80px 20px;
+  background-color: #f9fafa;
+}
+
+/* Inner container with white background and soft shadow */
+.resource-section .container {
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 60px;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.05);
+}
+
+/* Resource image box */
+.resource-image {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.resource-image img {
+  border-radius: 20px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.resource-image:hover {
+  transform: scale(1.02);
+}
+
+/* Small badge above image */
+.resource-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+.section-tag .badge,
+.resource-badge .badge {
+  background-color: #fcb900;
+  color: #000;
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+/* Heading */
+.resource-section h2.display-6 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2a44;
+  margin-bottom: 1rem;
+}
+
+/* Underline accent below heading */
+.accent-underline {
+  height: 4px;
+  width: 60px;
+  background-color: #fcb900;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+}
+
+/* Description text */
+.resource-section .lead {
+  font-size: 1.125rem;
+  color: #444;
+}
+
+/* Bullet points */
+ul.list-unstyled li {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  line-height: 1.6;
+}
+ul.list-unstyled i {
+  color: #fcb900;
+  font-size: 1.2rem;
+  margin-right: 8px;
+}
+
+/* Button styles */
+.btn-orange {
+  background-color: #fcb900;
+  color: #000;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+.btn-orange:hover {
+  background-color: #e6a700;
+  color: #000;
+}
+
+/* Mobile responsive tweaks */
+@media (max-width: 992px) {
+  .resource-section .container {
+    padding: 40px 20px;
+  }
+  .resource-section h2.display-6 {
+    font-size: 1.6rem;
+  }
+  .resource-section .lead {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .resource-section {
+    padding: 60px 10px;
+  }
+  .resource-section .container {
+    padding: 30px 15px;
+  }
+  .resource-section h2.display-6 {
+    font-size: 1.4rem;
+  }
+  .accent-underline {
+    width: 50px;
+  }
+  ul.list-unstyled li {
+    font-size: 0.95rem;
+  }
+}
+
+
+
          .section-heading {
       color: #1F2A44;
       font-weight: 700;

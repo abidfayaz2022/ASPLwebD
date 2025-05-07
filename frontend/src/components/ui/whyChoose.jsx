@@ -40,6 +40,7 @@ export default function WhyChooseASPL() {
                         <h2 className="display-5 fw-bold mb-4" style={{ color: 'var(--text-dark)' }}>
                             Why Choose Us
                         </h2>
+                        <div className="underline-center mx-auto mb-4"></div>
                         <p className="lead text-muted">
                             We deliver excellence through expertise, innovation, and commitment to your success
                         </p>
@@ -65,6 +66,21 @@ export default function WhyChooseASPL() {
         </section>
         <style jsx>
             {`
+            .underline-center {
+  height: 4px;
+  width: 80px;
+  background-color: #fcb900;
+  border-radius: 4px;
+}
+.yellow-glow-border {
+  border: 2px solid #fcb900;
+  box-shadow: 0 0 10px rgba(252, 185, 0, 0.4);
+  transition: all 0.3s ease-in-out;
+}
+
+.yellow-glow-border:hover {
+  box-shadow: 0 0 20px rgba(252, 185, 0, 0.6);
+}
                 .feature-card p {display: block;
     margin-block-start: 1em;
     margin-block-end: 1em;

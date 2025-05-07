@@ -8,12 +8,16 @@ const CorporateSecretarial = () => {
         <>
             {/* Hero Section */}
             <section
-                className="hero position-relative"
-                style={{
-                    background: 'linear-gradient(90deg, var(--primary-color), #e59b00)',
-                    overflow: 'hidden',
-                }}
-            >
+    className="hero position-relative"
+    style={{
+        backgroundImage: 'url("/images/corporate-secretarial-hero.jpg")',  // 👈 Use your own image path
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        overflow: 'hidden',
+    }}
+>
+
                 {/* Animated Background Elements */}
                 <div className="animated-bg">
                     <div className="circle-1"></div>
@@ -24,27 +28,21 @@ const CorporateSecretarial = () => {
                 <div className="container position-relative py-5" style={{ zIndex: 2 }}>
                     <div className="row py-5 min-vh-20">
                         <div className="col-lg-8 mx-auto text-center">
-                            <div className="hero-badge mb-3 d-inline-block">
-                                <span
-                                    className="badge bg-white px-3 py-2 rounded-pill fs-6 fw-semibold"
-                                    style={{ color: 'var(--primary-color)' }}
-                                >
-                                    Corporate Governance
-                                </span>
-                            </div>
+                            
                             <h1 className="display-3 fw-bold text-white mb-4 text-shadow">
-                                Corporate Secretarial Services
+                            Company Secretary
                             </h1>
                             <p className="lead text-white mb-5 fs-4 fw-light">
                                 Governance support that keeps your business compliant
                             </p>
                             <div className="hero-buttons">
-                                <a
-                                    href="#services"
-                                    className="btn btn-light btn-lg rounded-pill px-4 py-3 fw-semibold me-2 mb-2 mb-md-0 shadow-sm"
-                                >
-                                    Our Services <i className="bi bi-arrow-down-circle ms-2"></i>
-                                </a>
+                            <a
+  href="#services"
+  className="btn btn-yellow btn-lg rounded-pill px-4 py-3 fw-semibold me-2 mb-2 mb-md-0 shadow-sm"
+>
+  Our Services <i className="bi bi-arrow-down-circle ms-2"></i>
+</a>
+
                                 <Link href="/contact" className="btn btn-outline-light btn-lg rounded-pill px-4 py-3 fw-semibold">
                                     Contact Us <i className="bi bi-arrow-right ms-2"></i>
                                 </Link>
@@ -101,7 +99,7 @@ const CorporateSecretarial = () => {
             </section>
 
             {/* Services Section */}
-            <section id="services" className="services py-5">
+            <section id="services" className="services bg-white py-5">
                 <div className="container">
                     <div className="text-center mb-5">
                         <h2 className="display-4 fw-bold text-dark mb-2">Our Corporate Secretarial Services</h2>
@@ -236,10 +234,28 @@ const CorporateSecretarial = () => {
                 }
 
                 .hero {
-                    background: linear-gradient(90deg, var(--primary-color), #e59b00);
-                    overflow: hidden;
-                    position: relative;
-                }
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    position: relative;
+    min-height: 500px;
+    color: #fff;
+}
+.btn-yellow {
+  background-color: #fcb900;
+  border: none;
+  color: #000;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-yellow:hover {
+  background-color: #e0a800;
+  color: #000;
+  transform: translateY(-2px);
+}
+
 
                 .animated-bg {
                     position: absolute;
