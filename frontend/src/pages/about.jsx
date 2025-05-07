@@ -23,7 +23,7 @@ const TeamCard = ({ member }) => (
   
         {/* 🔽 Wrap this section in a .team-member-description div */}
         <div className="team-member-description">
-          <p style={{ fontSize: 'clamp(0.9rem, 2vw, 1rem)' }}>{member.description}</p>
+        <p style={{ fontSize: 'clamp(0.9rem, 2vw, 1rem)', textAlign: 'justify' }}>{member.description}</p>
           {(member.linkedin || member.email) && (
             <div className="d-flex justify-content-center gap-3 mb-3">
               {member.linkedin && (
@@ -378,7 +378,7 @@ const AboutUs = () => {
       img: '/images/Gaurav Bansal.jpg',
       linkedin: 'https://in.linkedin.com/in/gaurav-bansal-91a5228b',
       email: 'gaurav.bansal@theangelservices.com',
-      description: `Gaurav Bansal is a Fellow Chartered Accountant with 20+ years of experience in consulting, auditing, taxation, and financial management. A trusted advisor to multinationals, banks, and startups, he excels in guiding local setups and international expansion. As an expert in indirect taxation—including GST, excise, and customs—Gaurav delivers strategic solutions for regulatory compliance and operational efficiency, empowering businesses to scale globally through effective finance and accounting outsourcing.`,
+      description: `Gaurav Bansal, a Fellow Chartered Accountant with 20+ years in consulting, auditing, taxation, and financial management, advises multinationals, banks, and startups. He specializes in local setups, global expansion, and indirect taxation—GST, excise, and customs. Gaurav drives growth through regulatory compliance and efficient finance and accounting outsourcing.`,
     }
   ].map(member => (
     <div className="col-md-4" key={member.name}>
@@ -397,7 +397,7 @@ const AboutUs = () => {
       img: '/images/Gaurav Agarwal.jpg',
       linkedin: 'https://in.linkedin.com/in/gaurav-agarwal-374a49114',
       email: 'gaurav.agarwal@theangelservices.com',
-      description: `With over 13 years of experience in accounting, finance, and operational strategy, Gaurav Agarwal specializes in optimizing financial processes and ensuring compliance excellence. As a key contributor to our finance & accounting outsourcing and overseas business setup solutions, he streamlines financial operations and drives regulatory adherence. His collaborative approach and problem-solving mindset empower businesses to scale sustainably and achieve long-term success.`,
+      description: `With 13+ years of experience in accounting, finance, and operational strategy, Gaurav Agarwal specializes in streamlining financial processes and ensuring compliance. A key contributor to our outsourcing and overseas setup services, he drives efficiency and regulatory adherence to support sustainable growth.`,
     },
     {
       name: 'Mohd. Samad',
@@ -405,7 +405,7 @@ const AboutUs = () => {
       img: '/images/Samad.jpg',
       linkedin: 'https://in.linkedin.com/in/mohd-samad-99368125b',
       email: 'mohd.samad@theangelservices.com',
-      description: `Samad is a Chartered Accountant specializing in financial reporting under Ind AS and SFRS, tax advisory, and process improvement. His technical expertise and leadership ensure compliance and accurate corporate financial management. By optimizing financial processes and navigating complex tax landscapes, Samad empowers businesses to achieve sustainable growth and operational efficiency.`,
+      description: `Samad, a Chartered Accountant, specializes in financial reporting under Ind AS and SFRS, tax advisory, and process improvement. His expertise ensures compliance and accurate financial management, helping businesses optimize processes and navigate complex tax landscapes for sustainable growth.`,
     },
     {
       name: 'Pinak Pani Dixit',
@@ -413,7 +413,7 @@ const AboutUs = () => {
       img: '/images/Pinak.jpg',
       linkedin: 'https://in.linkedin.com/in/pinakpanidixit',
       email: 'pinak.dixit@theangelservices.com',
-      description: `Pinak Pani Dixit drives the development of scalable technology solutions by aligning engineering innovation with business goals. As Product Engineering Manager, he leads cross-functional teams to deliver robust, future-ready platforms that support organizational growth. His expertise in managing product lifecycles, optimizing technical operations, and fostering collaboration ensures the company's technology initiatives are executed with precision and impact.`,
+      description: `Pinak Pani Dixit drives scalable tech development by aligning engineering with business goals. As Product Engineering Manager, he leads cross-functional teams to build robust, future-ready platforms that support growth. His expertise ensures precise, high-impact execution across product lifecycles and technical operations.`,
     }
   ].map(member => (
     <div className="col-md-4" key={member.name}>
@@ -450,6 +450,9 @@ const AboutUs = () => {
   box-shadow: 0 0 20px rgba(252, 185, 0, 0.6);
 }
 
+.team-member-description p {
+  text-align: justify;
+}
 
         .bg-primary-subtle {
           background-color: #f4f4f4 !important;
