@@ -33,20 +33,17 @@ export default function ServicesSection() {
     return (<>
         <section className="services-section py-4 py-md-5 bg-light">
             <div className="container">
-                <div className="row align-items-center mb-4 mb-md-5">
-                    <div className="col-12 col-md-8 mb-3 mb-md-0">
-                        <h2 className="display-5 fw-bold mb-2 mb-md-3" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>
+                <div className="row justify-content-center mb-5">
+                    <div className="col-lg-7 text-center">
+                        <h2 className="display-5 fw-bold mb-2 mb-md-3" style={{ fontSize: 'var(--font-size-main-heading)' }}>
                             Our Comprehensive Services
                         </h2>
-                        <p className="lead mb-0" style={{ fontSize: 'clamp(1rem, 3vw, 1.25rem)' }}>
+                        <div className="underline-center mx-auto mb-4"></div>
+                        <p className="lead text-muted" style={{ fontSize: 'var(--font-size-subheading)' }}>
                             Discover our full range of financial and accounting solutions designed for global businesses and NRIs
                         </p>
                     </div>
-                    <div className="col-12 col-md-4 text-md-end">
-                        <Link href="/services" className="btn btn-outline-primary px-4 btn-responsive">
-                            View All Services <i className="bi bi-arrow-right ms-2"></i>
-                        </Link>
-                    </div>
+
                 </div>
 
                 <div className="services-slider-wrapper position-relative mb-4" data-aos="fade-up">
@@ -57,17 +54,17 @@ export default function ServicesSection() {
                             <i className="bi bi-chevron-left"></i>
                         </button>
                         <Swiper
-                         loop={true}
+                            loop={true}
                             modules={[Autoplay, Navigation]}
                             autoplay={{ delay: 2000 }}
-                           
+
                             slidesPerView={3}
                             spaceBetween={5}
                             breakpoints={{
                                 0: { slidesPerView: 1, spaceBetween: 8 },
                                 770: { slidesPerView: 2, spaceBetween: 8 },
                                 990: { slidesPerView: 3, spaceBetween: 12 },
-                               
+
                             }}
                             navigation={{
                                 prevEl: prevRef.current,
@@ -81,7 +78,7 @@ export default function ServicesSection() {
                                 swiper.navigation.update();
                             }}
                             onSwiper={setSwiperInstance}
-                         
+
                         >
 
 
@@ -96,9 +93,9 @@ export default function ServicesSection() {
                                                 <div className="service-icon me-3">
                                                     <i className="bi bi-building fs-1"></i>
                                                 </div>
-                                                <h4 className="mb-0">Incorporation Services</h4>
+                                                <h4 className="mb-0" style={{ fontSize: 'var(--font-size-feature-title)' }}>Incorporation Services</h4>
                                             </div>
-                                            <p className="mb-4">
+                                            <p className="mb-4" style={{ fontSize: 'var(--font-size-feature-desc)' }}>
                                                 Seamless company setup across Singapore, UAE, Hong Kong, BVI, Cayman Islands, and more.
                                             </p>
                                             <ul className="list-unstyled mb-4">
@@ -123,9 +120,9 @@ export default function ServicesSection() {
                                                 <div className="service-icon me-3">
                                                     <i className="bi bi-file-earmark-text fs-1"></i>
                                                 </div>
-                                                <h4 className="mb-0">Corporate Secretarial</h4>
+                                                <h4 className="mb-0" style={{ fontSize: 'var(--font-size-feature-title)' }}>Corporate Secretarial</h4>
                                             </div>
-                                            <p className="mb-4">
+                                            <p className="mb-4" style={{ fontSize: 'var(--font-size-feature-desc)' }}>
                                                 End-to-end governance and compliance support to keep your business fully aligned with regulations.
                                             </p>
                                             <ul className="list-unstyled mb-4">
@@ -150,9 +147,9 @@ export default function ServicesSection() {
                                                 <div className="service-icon me-3">
                                                     <i className="bi bi-calculator fs-1"></i>
                                                 </div>
-                                                <h4 className="mb-0">Accounting Services</h4>
+                                                <h4 className="mb-0" style={{ fontSize: 'var(--font-size-feature-title)' }}>Accounting Services</h4>
                                             </div>
-                                            <p className="mb-4">
+                                            <p className="mb-4" style={{ fontSize: 'var(--font-size-feature-desc)' }}>
                                                 Accurate, timely, and insightful accounting solutions to empower smart business decisions.
                                             </p>
                                             <ul className="list-unstyled mb-4">
@@ -177,9 +174,9 @@ export default function ServicesSection() {
                                                 <div className="service-icon me-3">
                                                     <i className="bi bi-cash-coin fs-1"></i>
                                                 </div>
-                                                <h4 className="mb-0">Tax Advisory</h4>
+                                                <h4 className="mb-0" style={{ fontSize: 'var(--font-size-feature-title)' }}>Tax Advisory</h4>
                                             </div>
-                                            <p className="mb-4">
+                                            <p className="mb-4" style={{ fontSize: 'var(--font-size-feature-desc)' }}>
                                                 Tailored tax planning and compliance services for businesses and individuals across jurisdictions.
                                             </p>
                                             <ul className="list-unstyled mb-4">
@@ -204,9 +201,9 @@ export default function ServicesSection() {
                                                 <div className="service-icon me-3">
                                                     <i className="bi bi-people fs-1"></i>
                                                 </div>
-                                                <h4 className="mb-0">Legacy Planning</h4>
+                                                <h4 className="mb-0" style={{ fontSize: 'var(--font-size-feature-title)' }}>Legacy Planning</h4>
                                             </div>
-                                            <p className="mb-4">
+                                            <p className="mb-4" style={{ fontSize: 'var(--font-size-feature-desc)' }}>
                                                 Structuring personal and family wealth for protection, succession, and long-term sustainability.
                                             </p>
                                             <ul className="list-unstyled mb-4">
@@ -231,9 +228,9 @@ export default function ServicesSection() {
                                                 <div className="service-icon me-3">
                                                     <i className="bi bi-graph-up fs-1"></i>
                                                 </div>
-                                                <h4 className="mb-0">Fund Administration</h4>
+                                                <h4 className="mb-0" style={{ fontSize: 'var(--font-size-feature-title)' }}>Fund Administration</h4>
                                             </div>
-                                            <p className="mb-4">
+                                            <p className="mb-4" style={{ fontSize: 'var(--font-size-feature-desc)' }}>
                                                 Efficient, compliant, and customized administrative solutions for investment funds and family offices.
                                             </p>
                                             <ul className="list-unstyled mb-4">
@@ -257,7 +254,16 @@ export default function ServicesSection() {
                     </div>
 
                     {/* Slider Arrows */}
-                  
+
+                </div>
+
+
+            </div>
+            <div className="row justify-content-center">
+                <div className="col-12 col-md-4 text-center">
+                    <Link href="/services" className="btn btn-outline-primary px-4 btn-responsive">
+                        View All Services <i className="bi bi-arrow-right ms-2"></i>
+                    </Link>
                 </div>
             </div>
         </section>
@@ -273,6 +279,7 @@ export default function ServicesSection() {
 
     .service-icon i {
         color: #f7c600 !important; /* keep the icon yellow */
+        fontSize: var( --font-size-icon) !important;
     }
 
     .service-card .bi-check-circle-fill {
@@ -284,6 +291,13 @@ export default function ServicesSection() {
         overflow: hidden; 
         position: relative;
     }
+
+    .underline-center {
+  height: 4px;
+  width: 80px;
+  background-color: #fcb900;
+  border-radius: 4px;
+}
 
     .slider-controls {
         position: absolute;
@@ -362,7 +376,7 @@ export default function ServicesSection() {
 
     .service-card p {
         margin-bottom: 1rem; /* reduce space after paragraph */
-        color: #000 !important;
+        color: var(--text-muted) !important;
     }
 
     .service-card ul {
@@ -371,6 +385,8 @@ export default function ServicesSection() {
 
     .service-card ul li {
         margin-bottom: 0.5rem; /* reduce gap between list items */
+        color: var(--text-muted) !important;
+        fontSize: var(--font-size-feature-title) !important;
     }
 
 .service-card .btn {
@@ -470,7 +486,7 @@ export default function ServicesSection() {
         min-height: 220px;
     }
     .service-card h4 {
-        font-size: 1rem;
+        font-size: 1.5 rem;
     }
     .service-card p,
     .service-card ul {

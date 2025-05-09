@@ -10,38 +10,39 @@ export default function WhyChooseASPL() {
             icon: 'bi-buildings',
             title: 'Setup to Expansion',
             description:
-                'Comprehensive support from business setup to scaling with compliance.',
+                'Complete assistance from setting up your business to compliant scaling.',
         },
         {
             icon: 'bi-geo-alt',
             title: 'Regional Expertise',
             description:
-                'Present in key Asian and offshore markets, we combine jurisdictional expertise with hands-on execution.',
+                'We blend local market insight with skilled jurisdictional execution.',
         },
         {
             icon: 'bi-link',
             title: 'Global Network',
             description:
-                'Operating under Angel Services, we give you the flexibility of a boutique firm with global network strength.',
+                'Angel Services offers boutique flexibility with strong global connections.',
         },
         {
             icon: 'bi-speedometer2',
             title: 'Responsive & Reliable',
             description:
-                'Our team responds quickly, meets deadlines, and delivers tailored solutions.',
+                'Fast responses, on-time delivery, and customized solutions from our team.',
         },
-    ]
+    ];
+
 
     return (<>
         <section className="features-section py-5">
             <div className="container">
                 <div className="row justify-content-center mb-5">
                     <div className="col-lg-7 text-center">
-                        <h2 className="display-5 fw-bold mb-4" style={{ color: 'var(--text-dark)' }}>
+                        <h2 className="display-5 fw-bold mb-4" style={{ color: 'var(--text-dark)', fontSize: 'var( --font-size-main-heading)' }}>
                             Why Choose Us
                         </h2>
                         <div className="underline-center mx-auto mb-4"></div>
-                        <p className="lead text-muted">
+                        <p className="lead text-muted" style={{ fontSize: 'var( --font-size-subheading)' }}>
                             We deliver excellence through expertise, innovation, and commitment to your success
                         </p>
                     </div>
@@ -52,12 +53,12 @@ export default function WhyChooseASPL() {
                         <div className="col-md-6 col-lg-3" key={idx}>
                             <div className="feature-card p-4 text-center shadow-sm rounded-4 h-100">
                                 <div className="feature-icon mb-4">
-                                    <i className={`bi ${feature.icon}`} style={{ fontSize: '2.5rem', color: 'var(--primary-color)' }} />
+                                    <i className={`bi ${feature.icon}`} style={{ fontSize: 'var(--font-size-icon)', color: 'var(--primary-color)' }} />
                                 </div>
-                                <h4 className="mb-3 fw-bold" style={{ color: 'var(--text-dark)' }}>
+                                <h4 className="mb-3 fw-bold" style={{ fontSize: 'var(--font-size-feature-title)', color: 'var(--text-dark)' }}>
                                     {feature.title}
                                 </h4>
-                                <p className="text-muted">{feature.description}</p>
+                                <p className="text-muted" style={{ fontSize: 'var(--font-size-feature-desc)' }}>{feature.description}</p>
                             </div>
                         </div>
                     ))}

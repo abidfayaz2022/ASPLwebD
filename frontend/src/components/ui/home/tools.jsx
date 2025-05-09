@@ -1,4 +1,4 @@
-'use client'; 
+'use client';
 import React from 'react';
 import Link from 'next/link';
 
@@ -8,8 +8,8 @@ const ToolsSection = () => {
             <div className="container">
                 <div className="row justify-content-center mb-5">
                     <div className="col-lg-8 text-center">
-                        <h2 className="display-5 fw-bold mb-4">Powerful Tools & Resources</h2>
-                        <p className="lead text-muted mb-5">
+                        <h2 className="display-5 fw-bold mb-4" style={{ fontSize: 'var(--font-size-main-heading)' }}>Powerful Tools & Resources</h2>
+                        <p className="lead text-muted mb-5" style={{ fontSize: 'var(--font-size-subheading)' }}>
                             Simplify your financial decisions with our free tools
                         </p>
                     </div>
@@ -23,7 +23,7 @@ const ToolsSection = () => {
                                 <span className="badge badge-orange rounded-pill px-3 py-2">Free</span>
                             </div>
                             <p className="mb-4">
-                            Compute tax liability with applicable deductions & surcharges.
+                                Compute tax liability with applicable deductions & surcharges.
                             </p>
                             <div className="d-flex justify-content-end">
                                 <Link href="/resources/corporate-tax" className="btn btn-orange px-4">
