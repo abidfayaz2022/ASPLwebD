@@ -13,11 +13,8 @@
     "bootstrap": "^5.3.5",
     "bootstrap-icons": "^1.11.3",
     "canvas-confetti": "^1.9.3",
-<<<<<<< HEAD
     "framer-motion": "^12.10.4",
-=======
     "dotenv": "^16.5.0",
->>>>>>> 0e69479a81ba2b6c1895acd4e52ba43d7ae002d5
     "next": "15.3.1",
     "nodemailer": "^7.0.2",
     "react": "^19.0.0",
