@@ -2,9 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import ServicesOffered from '../../components/incorporation/serviceoffered';
-import WhyUs from '../../components/incorporation/whyUs';
-import ContactCTA from '../../components/incorporation/contactCta';
+import ServicesOffered from '../../components/ui/global-incorporation/serviceoffered';
+import WhyUs from '../../components/ui/global-incorporation/whyUs';
+import ContactCTA from '../../components/ui/global-incorporation/contactCta';
 
 const ServicesIncorporation = () => {
     return (
