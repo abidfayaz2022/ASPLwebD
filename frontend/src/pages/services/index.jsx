@@ -12,56 +12,56 @@ export default function Services() {
     <>
       {/* Hero Section with Parallax Effect */}
       <section
-  className="services-hero position-relative text-white"
-  style={{
-    background: 'linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")',
-    backgroundColor: '#f8f9fa',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    overflow: 'hidden',
-    minHeight: '500px'
-  }}
->
-  {/* Floating Elements */}
-  <div className="animated-bg">
-    <div className="circle-1"></div>
-    <div className="circle-2"></div>
-    <div className="circle-3"></div>
-  </div>
+        className="services-hero position-relative text-white"
+        style={{
+          background: 'linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")',
+          backgroundColor: '#f8f9fa',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          overflow: 'hidden',
+          minHeight: '500px'
+        }}
+      >
+        {/* Floating Elements */}
+        <div className="animated-bg">
+          <div className="circle-1"></div>
+          <div className="circle-2"></div>
+          <div className="circle-3"></div>
+        </div>
 
-  <div className="container position-relative py-5" style={{ zIndex: 2 }}>
-    <div className="row py-5 min-vh-40">
-      <div className="col-lg-8 mx-auto text-center">
-        <h1 className="display-3 fw-bold text-white mb-4 text-shadow">Our Services</h1>
-        <p className="lead text-white mb-5 fs-4 fw-light">
-          We empower businesses and families across the globe with structured, compliant, and forward-thinking solutions. Our presence across Singapore, Indonesia, Vietnam, UAE, Hong Kong, BVI, and Cayman Islands allows us to serve a truly global clientele—supporting their ambitions with local insights and international best practices.
-        </p>
-        <Link
-  href="#services_section"
-  className="btn btn-yellow btn-lg rounded-pill px-4 py-3 fw-semibold me-2 shadow-sm"
->
-  Explore Our Services <i className="bi bi-arrow-down-circle ms-2"></i>
-</Link>
+        <div className="container position-relative py-5" style={{ zIndex: 2 }}>
+          <div className="row py-5 min-vh-40">
+            <div className="col-lg-8 mx-auto text-center">
+              <h1 className="display-3 fw-bold text-white mb-4 text-shadow">Our Services</h1>
+              <p className="lead text-white mb-5 fs-4 fw-light">
+                We empower businesses and families across the globe with structured, compliant, and forward-thinking solutions. Our presence across Singapore, Indonesia, Vietnam, UAE, Hong Kong, BVI, and Cayman Islands allows us to serve a truly global clientele—supporting their ambitions with local insights and international best practices.
+              </p>
+              <Link
+                href="#services_section"
+                className="btn btn-yellow btn-lg rounded-pill px-4 py-3 fw-semibold me-2 shadow-sm"
+              >
+                Explore Our Services <i className="bi bi-arrow-down-circle ms-2"></i>
+              </Link>
 
-      </div>
-    </div>
-  </div>
+            </div>
+          </div>
+        </div>
 
-  {/* Wave Separator (same as incorporation page) */}
-  <div className="wave-separator text-white">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
-      <path
-        fill="#ffffff"
-        fillOpacity="1"
-        d="M0,32L80,42.7C160,53,320,75,480,74.7C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,100L1360,100C1280,100,1120,100,960,100C800,100,640,100,480,100C320,100,160,100,80,100L0,100Z"
-      ></path>
-    </svg>
-  </div>
-</section>
+        {/* Wave Separator (same as incorporation page) */}
+        <div className="wave-separator text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
+            <path
+              fill="#ffffff"
+              fillOpacity="1"
+              d="M0,32L80,42.7C160,53,320,75,480,74.7C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,100L1360,100C1280,100,1120,100,960,100C800,100,640,100,480,100C320,100,160,100,80,100L0,100Z"
+            ></path>
+          </svg>
+        </div>
+      </section>
 
 
-   
+
 
       {/* Featured Service Banner 
       <section className="featured-service py-4 bg-primary text-white">
@@ -96,7 +96,7 @@ export default function Services() {
               </h2>
             </div>
           </div>
-          
+
           <div className="row g-4 justify-content-center">
             {/* Featured Service Card */}
             <div className="col-md-6 col-lg-4" id="incorporation">
@@ -219,76 +219,77 @@ export default function Services() {
           </div>
         </div>
       </section>
-    {/* Service Workflow Section with Modern Design */}
-    <section
-  id="serviceWorkflow"
-  className="workflow-section py-5"
-  style={{ backgroundColor: '#ffffff' }} // Replace with your preferred tone
->
+      {/* Service Workflow Section with Modern Design */}
+      <section
+        id="serviceWorkflow"
+        className="workflow-section py-5"
+        style={{ backgroundColor: '#ffffff' }} // Replace with your preferred tone
+      >
 
-                <div className="container">
-                    <div className="row mb-3">
-                        <div className="col-lg-8 mx-auto text-center">
-                        <h2 className="fw-bold mb-3 text-primary" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>
-  Our Service Workflow
-</h2>
-<div className="underline-center mx-auto mb-4"></div>
+        <div className="container">
+          <div className="row mb-3">
+            <div className="col-lg-8 mx-auto text-center">
+              <h2 className="fw-bold mb-3 text-primary" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>
+                Our Service Workflow
+              </h2>
+              <div className="underline-center mx-auto mb-4"></div>
 
 
-<p className="lead text-dark mb-1">
-  A seamless process designed to deliver exceptional results for your business
-</p>
+              <p className="lead text-dark mb-1">
+                A seamless process designed to deliver exceptional results for your business
+              </p>
 
-                        </div>
+            </div>
+          </div>
+          <div className="workflow-container position-relative ">
+            <div className="row g-4">
+              {[
+                {
+                  icon: 'bi-calendar-check',
+                  title: 'Initial Consultation',
+                  desc: 'We understand your business needs and goals clearly.',
+                },
+                {
+                  icon: 'bi-graph-up-arrow',
+                  title: 'Analysis & Planning',
+                  desc: 'We create tailored strategies to suit your needs.',
+                },
+                {
+                  icon: 'bi-gear',
+                  title: 'Implementation',
+                  desc: 'We carry out all planned solutions efficiently.',
+                },
+                {
+                  icon: 'bi-shield-check',
+                  title: 'Continuous Support',
+                  desc: 'We monitor and improve performance consistently.',
+                }
+              ]
+                .map((step, index) => (
+                  <div className="col-md-3" key={index}>
+                    <div className="workflow-step text-center p-4 bg-white rounded-3 shadow-sm hover-lift h-100 visible">
+                      <div
+                        className="workflow-icon-container mb-3 mx-auto rounded-circle bg-primary d-flex align-items-center justify-content-center"
+                        style={{ width: '80px', height: '80px' }}
+                      >
+                        <i className={`bi ${step.icon} text-white fs-3`}></i>
+                      </div>
+                      <h4 className="text-dark">{step.title}</h4>
+                      <p className="text-muted">{step.desc}</p>
                     </div>
-                    <div className="workflow-container position-relative ">
-                        <div className="row g-4">
-                            {[
-                                {
-                                    icon: 'bi-calendar-check',
-                                    title: 'Initial Consultation',
-                                    desc: 'Understanding your business needs and requirements'
-                                },
-                                {
-                                    icon: 'bi-graph-up-arrow',
-                                    title: 'Analysis & Planning',
-                                    desc: 'Developing customized solutions'
-                                },
-                                {
-                                    icon: 'bi-gear',
-                                    title: 'Implementation',
-                                    desc: 'Executing the planned solutions'
-                                },
-                                {
-                                    icon: 'bi-shield-check',
-                                    title: 'Continuous Support',
-                                    desc: 'Ongoing monitoring and optimization'
-                                }
-                            ].map((step, index) => (
-                                <div className="col-md-3" key={index}>
-                                    <div className="workflow-step text-center p-4 bg-white rounded-3 shadow-sm hover-lift h-100 visible">
-                                        <div
-                                            className="workflow-icon-container mb-3 mx-auto rounded-circle bg-primary d-flex align-items-center justify-content-center"
-                                            style={{ width: '80px', height: '80px' }}
-                                        >
-                                            <i className={`bi ${step.icon} text-white fs-3`}></i>
-                                        </div>
-                                        <h4 className="text-dark">{step.title}</h4>
-                                        <p className="text-muted">{step.desc}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                        {/* Connecting Lines (CSS-based) */}
-                         <div
-                            className="workflow-connector d-none d-md-block"
-                            style={{
-                                background: 'linear-gradient(to right, rgba(13,110,253,0.1), rgba(13,110,253,0.7), rgba(13,110,253,0.1))'
-                            }}
-                        ></div> 
-                    </div>
-                </div>
-            </section>
+                  </div>
+                ))}
+            </div>
+            {/* Connecting Lines (CSS-based) */}
+            <div
+              className="workflow-connector d-none d-md-block"
+              style={{
+                background: 'linear-gradient(to right, rgba(13,110,253,0.1), rgba(13,110,253,0.7), rgba(13,110,253,0.1))'
+              }}
+            ></div>
+          </div>
+        </div>
+      </section>
 
       {/* Why Partner With Us Section */}
       <section className="why-partner-section py-4 py-md-5 bg-light">
@@ -305,33 +306,33 @@ export default function Services() {
               {
                 icon: 'globe',
                 title: 'Global Reach',
-                description: 'Global reach with local expertise'
+                description: 'Worldwide reach backed by deep, local market-specific expertise.',
               },
               {
                 icon: 'laptop',
                 title: 'Technology',
-                description: 'Technology-enabled services for efficiency and transparency'
+                description: 'Tech-enabled services that ensure efficiency, clarity, and transparency.',
               },
               {
                 icon: 'shield-check',
                 title: 'Compliance',
-                description: 'Commitment to compliance, confidentiality, and client success'
+                description: 'Focused on compliance, confidentiality, integrity, and client success.',
               },
               {
                 icon: 'person-check',
                 title: 'Personal Touch',
-                description: 'Personalized service with a boutique firm approach'
+                description: 'Tailored support with a boutique-style, client-first service approach.',
               },
               {
                 icon: 'diagram-3',
                 title: 'Seamless Integration',
-                description: 'Seamless integration across multiple jurisdictions'
+                description: 'Smooth operational integration across all legal and regional borders.',
               }
             ].map((feature, index) => (
               <div key={index} className="col-sm-6 col-lg-4">
                 <div className="why-partner-card bg-white p-3 p-md-4 h-100 rounded-4 shadow-sm">
                   <div className="d-flex align-items-center mb-2 mb-md-3">
-                    <div 
+                    <div
                       className="why-partner-icon me-3 d-flex align-items-center justify-content-center rounded-circle"
                       style={{ width: 'clamp(40px, 8vw, 50px)', height: 'clamp(40px, 8vw, 50px)', backgroundColor: '#fcb900' }}
                     >
