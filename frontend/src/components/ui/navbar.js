@@ -49,16 +49,33 @@ const Navbar = () => {
           <span className={styles.navbarTogglerIcon}></span>
         </button>
 
-        {/* Desktop Nav: Do NOT touch */}
+        {/* Desktop Nav */}
         <div className="collapse navbar-collapse justify-content-end d-none d-lg-block">
           <ul className={`navbar-nav ${styles.navLinks}`}>
-            {navItems.map((item) => (
-              <li className="nav-item" key={item.name}>
-                <Link href={item.path} className={`nav-link ${styles.navItem}`}>
-                  {item.name}
-                </Link>
-              </li>
-            ))}
+            {navItems.map((item) => {
+              if (item.name === 'Global') {
+                return (
+                  <li className={`nav-item ${styles.dropdownWrapper}`} key="Global">
+                    <Link href={item.path} className={`nav-link ${styles.navItem}`}>
+                      Global
+                    </Link>
+                    <div className={styles.dropdownMenu}>
+                      <Link href="/singapore" className={styles.dropdownItem}>Singapore</Link>
+                      <Link href="/uae" className={styles.dropdownItem}>UAE</Link>
+                      <Link href="/india" className={styles.dropdownItem}>India</Link>
+                    </div>
+                  </li>
+                );
+              }
+
+              return (
+                <li className="nav-item" key={item.name}>
+                  <Link href={item.path} className={`nav-link ${styles.navItem}`}>
+                    {item.name}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
@@ -78,6 +95,15 @@ const Navbar = () => {
                 </Link>
               </li>
             ))}
+            <li className={styles.mobileSubLink}>
+              <Link href="/singapore" onClick={() => setMenuOpen(false)}>→ Singapore</Link>
+            </li>
+            <li className={styles.mobileSubLink}>
+              <Link href="/uae" onClick={() => setMenuOpen(false)}>→ UAE</Link>
+            </li>
+            <li className={styles.mobileSubLink}>
+              <Link href="/india" onClick={() => setMenuOpen(false)}>→ India</Link>
+            </li>
           </ul>
         </div>
       )}
