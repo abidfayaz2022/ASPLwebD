@@ -1,6 +1,6 @@
-import Header from '../components/Header';
+import Navbar from '../components/ui/navbar';
 import { useWizard } from '../context/WizardContext';
-import StepIndicator from '../components/StepIndicator';
+import StepIndicator from '../components/ui/StepIndicator';
 //import OrderSummary from '../components/OrderSummary';
 import styles from '../styles/IncorporationLayout.module.css';
 
@@ -9,7 +9,7 @@ export default function IncorporationLayout({ children }) {
 
   return (
     <div className={styles.layout}>
-      <Header />
+      <Navbar />
       <StepIndicator currentStep={currentStep} />
       <div className={styles.contentWrapper}>
         <main className={styles.mainContent}>

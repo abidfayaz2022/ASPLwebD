@@ -1,0 +1,59 @@
+.stepIndicator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 60px;
+  padding: 16px 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.step {
+  flex: 1;
+  text-align: center;
+  min-width: 80px;
+  scroll-snap-align: center;
+}
+
+.stepNumber {
+  width: 36px;
+  height: 36px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #555;
+  transition: 0.3s ease;
+}
+
+.stepLabel {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.active .stepNumber {
+  border-color: #0047AB;
+  color: #0047AB;
+  transform: scale(1.1);
+}
+.active .stepLabel {
+  color: #0047AB;
+  font-weight: bold;
+}
+
+.completed .stepNumber {
+  border-color: #28a745;
+  color: #28a745;
+}
+.completed .stepLabel {
+  font-weight: bold;
+  color: #28a745;
+}

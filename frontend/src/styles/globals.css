@@ -26,6 +26,18 @@
   --bs-secondary-rgb: 51, 51, 51;
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
+
+  --font-size-main-heading: 2.5rem;
+  /* 40px */
+  --font-size-subheading: 1.25rem;
+  /* 20px */
+  --font-size-icon: 2.5rem;
+  /* 40px */
+  --font-size-feature-title: 1.5rem;
+  /* 24px */
+  --font-size-feature-desc: 1rem;
+  /* 16px */
+
 }
 
 /* Global styles */

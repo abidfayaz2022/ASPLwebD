@@ -1,0 +1,104 @@
+.stepTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0047AB;
+  text-align: center;
+  margin-bottom: 32px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Group: Label + Input */
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+.inputGroup label {
+  font-weight: 600;
+  color: #1F2A44;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+/* Clean Input Field */
+.inputGroup input {
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #ccd6e0;
+  font-size: 1rem;
+  background: #ffffff;
+  color: #1F2A44;
+  transition: border 0.3s, box-shadow 0.2s ease-in-out;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+.inputGroup input:focus {
+  border-color: #0047AB;
+  box-shadow: 0 0 0 4px rgba(0, 71, 171, 0.15);
+  outline: none;
+}
+
+/* Availability / Feedback */
+.availabilityMessage {
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 14px;
+  color: #1F2A44;
+  background: #f0f7ff;
+  border: 1px solid #b5d4ff;
+  padding: 14px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 71, 171, 0.05);
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* CTA Button */
+.addBtn {
+  background: linear-gradient(135deg, #0047AB, #007FFF);
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 71, 171, 0.25);
+}
+
+.addBtn:hover {
+  background: linear-gradient(135deg, #00308f, #0060cc);
+  transform: translateY(-2px);
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.rightAlign {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 28px;
+}
+
+/* Responsive spacing if needed */
+@media (max-width: 600px) {
+  .stepTitle {
+    font-size: 1.6rem;
+  }
+
+  .addBtn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px;
+  }
+
+  .inputGroup input {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+}

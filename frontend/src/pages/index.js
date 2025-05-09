@@ -1,8 +1,8 @@
-import HeroSection from "../components/ui/hero"
-import WhyChooseASPL from "../components/ui/whyChoose";
-import ServicesSection from "../components/ui/services";
-import ToolsSection from "../components/ui/tools";
-import CtaSection from "../components/ui/cta";
+import HeroSection from "../components/ui/home/hero"
+import WhyChooseASPL from "../components/ui/home/whyChoose";
+import ServicesSection from "../components/ui/home/services";
+import ToolsSection from "../components/ui/home/tools";
+import CtaSection from "../components/ui/home/cta";
 import { useEffect } from 'react';
 import Link from "next/link";
 
