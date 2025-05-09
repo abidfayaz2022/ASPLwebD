@@ -68,7 +68,7 @@ const ToolsSection = () => {
 
             <style jsx>{`
                 .tools-section {
-                    background-color: #f8f9fa;
+                    background-color:rgb(255, 255, 255);
                 }
 
                 .btn-orange {
