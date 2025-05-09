@@ -25,6 +25,10 @@
 .navLinks {
   display: flex;
   gap: 25px;
+
+  /* ✅ ADD THIS TO REMOVE SPACE AFTER LAST ITEM */
+  margin-right: 0 !important;
+  padding-right: 0 !important;
 }
 
 .navItem {
@@ -122,7 +126,6 @@ body.offcanvas-open {
 }
 
 /* === Dropdown Styles for Global === */
-/* Dropdown Menu Styling */
 .dropdownWrapper {
   position: relative;
   z-index: 9999;
@@ -164,11 +167,9 @@ body.offcanvas-open {
 .dropdownItem:hover {
   background-color: #f9f9f9;
   padding-left: 1.25rem;
-  border-left: 3px solid #fcb900; /* your brand yellow */
+  border-left: 3px solid #fcb900;
   color: #000;
 }
-
-
 
 /* Mobile logo size tweak */
 @media (max-width: 768px) {
@@ -188,7 +189,7 @@ body.offcanvas-open {
     transform: translateY(0);
   }
 }
-/* Force hamburger icon to appear on small screens */
+
 @media (max-width: 991.98px) {
   .navbarToggler {
     display: block !important;
@@ -205,8 +206,12 @@ body.offcanvas-open {
     background-size: contain;
   }
 
-  /* Ensure desktop nav stays hidden on mobile */
   .navLinks {
     display: none !important;
   }
 }
+.navbar-nav {
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+}
+

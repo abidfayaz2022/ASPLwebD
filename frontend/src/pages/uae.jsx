@@ -101,9 +101,9 @@ export default function UAE() {
         title="Speak with Our UAE Advisor"
         subtitle="Have questions or want to explore setup options? Connect with our UAE desk:"
         name="Srinwas Nandiraju"
-        role="Angel Services – UAE Desk"
-        email="sriniwas@theangelservices.com"
-        phone="+971 [Insert Contact Number]"
+        role="Business Head, UAE"
+        email="sriniwas.nandiraju@theangelservices.com"
+        phone="+971-508506581"
       />
 
       {/* Final CTA */}

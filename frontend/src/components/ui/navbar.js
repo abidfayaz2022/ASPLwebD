@@ -23,12 +23,15 @@ const Navbar = () => {
     { name: 'Services', path: '/services' },
     { name: 'Resources', path: '/resources' },
     { name: 'Global', path: '/services/global' },
+    { name: 'Career', path: '/career' },
     { name: 'Contact', path: '/contact' },
   ];
 
   return (
     <nav className={`navbar navbar-expand-lg fixed-top shadow-sm ${styles.navbarCustom}`}>
-      <div className="container d-flex justify-content-between align-items-center">
+      {/* Logo Section (left-aligned) */}
+      <div className="ps-5 d-flex align-items-center">
+
         <Link href="/" className={`navbar-brand d-flex align-items-center ${styles.logoWrapper}`}>
           <Image
             src="/images/angelserviceslogo (2).png"
@@ -39,46 +42,46 @@ const Navbar = () => {
             className={styles.logoImage}
           />
         </Link>
+      </div>
 
-        {/* Hamburger for mobile only */}
-        <button
-          className={`d-lg-none ${styles.navbarToggler}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle navigation"
-        >
-          <span className={styles.navbarTogglerIcon}></span>
-        </button>
-
-        {/* Desktop Nav */}
-        <div className="collapse navbar-collapse justify-content-end d-none d-lg-block">
-          <ul className={`navbar-nav ${styles.navLinks}`}>
-            {navItems.map((item) => {
-              if (item.name === 'Global') {
-                return (
-                  <li className={`nav-item ${styles.dropdownWrapper}`} key="Global">
-                    <Link href={item.path} className={`nav-link ${styles.navItem}`}>
-                      Global
-                    </Link>
-                    <div className={styles.dropdownMenu}>
-                      <Link href="/singapore" className={styles.dropdownItem}>Singapore</Link>
-                      <Link href="/uae" className={styles.dropdownItem}>UAE</Link>
-                      <Link href="/india" className={styles.dropdownItem}>India</Link>
-                    </div>
-                  </li>
-                );
-              }
-
+      {/* Desktop Nav (right-aligned outside container) */}
+      <div className="d-none d-lg-flex align-items-center justify-content-end w-100 px-4">
+        <ul className={`navbar-nav ${styles.navLinks}`}>
+          {navItems.map((item) => {
+            if (item.name === 'Global') {
               return (
-                <li className="nav-item" key={item.name}>
+                <li className={`nav-item ${styles.dropdownWrapper}`} key="Global">
                   <Link href={item.path} className={`nav-link ${styles.navItem}`}>
-                    {item.name}
+                    Global
                   </Link>
+                  <div className={styles.dropdownMenu}>
+                    <Link href="/singapore" className={styles.dropdownItem}>Singapore</Link>
+                    <Link href="/uae" className={styles.dropdownItem}>UAE</Link>
+                    <Link href="/india" className={styles.dropdownItem}>India</Link>
+                  </div>
                 </li>
               );
-            })}
-          </ul>
-        </div>
+            }
+
+            return (
+              <li className="nav-item" key={item.name}>
+                <Link href={item.path} className={`nav-link ${styles.navItem}`}>
+                  {item.name}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </div>
+
+      {/* Mobile Hamburger */}
+      <button
+        className={`d-lg-none ${styles.navbarToggler}`}
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle navigation"
+      >
+        <span className={styles.navbarTogglerIcon}></span>
+      </button>
 
       {/* Mobile Menu */}
       {menuOpen && (

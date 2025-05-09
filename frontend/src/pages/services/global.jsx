@@ -38,7 +38,6 @@ const GlobalPresence = () => {
           </div>
         </div>
 
-        {/* SVG Separator */}
         <div className="wave-separator">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
             <path
@@ -57,72 +56,55 @@ const GlobalPresence = () => {
           </div>
           <div className="text-center mb-4">
             <h2 className="display-7 fw-bold text-dark">Global Presence</h2>
-            <p className="lead fs-4 fw-light">
-            We operate as Angel Services in these locations
-              </p>
+            <p className="lead fs-4 fw-light">We operate as Angel Services in these locations</p>
           </div>
           <div className="row g-4">
-            <JurisdictionCard
-              flag="/images/flags/singapore.svg"
-              image="/images/corporate/singapore.jpg"
-              title="Singapore"
-              features={['Attractive Tax Regime', 'World-Class Business Environment', 'Gateway to Asia with Robust Infrastructure']}
-            />
-            <JurisdictionCard
-              flag="/images/flags/uae.svg"
-              image="/images/corporate/uae.jpg"
-              title="United Arab Emirates"
-              features={['100% Foreign Ownership & Free Zones', 'Tax-Efficient & Business-Friendly Jurisdiction', 'Strategic Location with Global Connectivity']}
-            />
-           <div className="col-md-6 col-lg-4">
-  <a
-    href="https://asplconsultancy.com/"
-    target="_blank"
-    rel="noopener noreferrer"
-    style={{ textDecoration: 'none', color: 'inherit' }}
-  >
-    <div className="card border-0 shadow-sm h-100">
-      <div className="position-relative" style={{ height: '180px', overflow: 'hidden' }}>
-        <Image
-          src="/images/corporate/india.jpg"
-          alt="India"
-          width={400}
-          height={180}
-          className="object-fit-cover w-100 h-100"
-        />
-        <div className="position-absolute bottom-0 start-0 p-3 bg-dark bg-opacity-50 w-100">
-          <div className="d-flex align-items-center">
-            <Image src="/images/flags/india.svg" alt="flag" width={28} height={20} className="me-2" />
-            <h5 className="text-white mb-0 fw-bold">India</h5>
-          </div>
-        </div>
-      </div>
-      <div className="card-body">
-        <ul className="list-unstyled mb-0">
-          <li className="d-flex align-items-start mb-2">
-            <i className="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-            <span>Diverse Entry Structures</span>
-          </li>
-          <li className="d-flex align-items-start mb-2">
-            <i className="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-            <span>Regulatory Approvals & Tax Incentives</span>
-          </li>
-          <li className="d-flex align-items-start mb-2">
-            <i className="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-            <span>Growing Market with Skilled Talent</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </a>
-</div>
+            <Link href="/singapore" className="col-md-6 col-lg-4" style={{ textDecoration: 'none', color: 'inherit' }}>
+              <JurisdictionCard
+                flag="/images/flags/singapore.svg"
+                image="/images/corporate/singapore.jpg"
+                title="Singapore"
+                features={[
+                  'Attractive Tax Regime',
+                  'World-Class Business Environment',
+                  'Gateway to Asia with Robust Infrastructure',
+                ]}
+              />
+            </Link>
+
+            <Link href="/uae" className="col-md-6 col-lg-4" style={{ textDecoration: 'none', color: 'inherit' }}>
+              <JurisdictionCard
+                flag="/images/flags/uae.svg"
+                image="/images/corporate/uae.jpg"
+                title="United Arab Emirates"
+                features={[
+                  '100% Foreign Ownership & Free Zones',
+                  'Tax-Efficient & Business-Friendly Jurisdiction',
+                  'Strategic Location with Global Connectivity',
+                ]}
+              />
+            </Link>
+
+            <Link href="/india" className="col-md-6 col-lg-4" style={{ textDecoration: 'none', color: 'inherit' }}>
+              <JurisdictionCard
+                flag="/images/flags/india.svg"
+                image="/images/corporate/india.jpg"
+                title="India"
+                features={[
+                  'Diverse Entry Structures',
+                  'Regulatory Approvals & Tax Incentives',
+                  'Growing Market with Skilled Talent',
+                ]}
+              />
+            </Link>
 
             <div className="text-center mb-3 mt-5">
-            <h2 className="display-7 fw-bold text-dark">Global Support</h2>
-            <p className="lead fs-4 fw-light">
-            We operate in these locations together with our trusted partners
+              <h2 className="display-7 fw-bold text-dark">Global Support</h2>
+              <p className="lead fs-4 fw-light">
+                We operate in these locations together with our trusted partners
               </p>
-          </div>
+            </div>
+
             <JurisdictionCard
               flag="/images/flags/indonesia.svg"
               image="/images/corporate/indonesia.png"
@@ -157,9 +139,12 @@ const GlobalPresence = () => {
               flag="/images/flags/Nigeria-flag.png"
               image="/images/corporate/nigeria.jpg"
               title="Nigeria"
-              features={['Investment incentives', 'Emerging start-up ecosystem', "Africa's largest consumer market"]}
+              features={[
+                'Investment incentives',
+                'Emerging start-up ecosystem',
+                "Africa's largest consumer market",
+              ]}
             />
- 
           </div>
         </div>
       </section>
@@ -208,7 +193,8 @@ const GlobalPresence = () => {
           animation-delay: 4s;
         }
         @keyframes float {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateY(0);
           }
           50% {
@@ -230,39 +216,35 @@ const GlobalPresence = () => {
 };
 
 const JurisdictionCard = ({ flag, flagGroup, image, title, features }) => (
-  <div className="col-md-6 col-lg-4">
-    <div className="card border-0 shadow-sm h-100">
-      <div className="position-relative" style={{ height: '180px', overflow: 'hidden' }}>
-        <Image
-          src={image}
-          alt={title}
-          width={400}
-          height={180}
-          className="object-fit-cover w-100 h-100"
-        />
-        <div className="position-absolute bottom-0 start-0 p-3 bg-dark bg-opacity-50 w-100">
-          <div className="d-flex align-items-center">
-            {flag && (
-              <Image src={flag} alt="flag" width={28} height={20} className="me-2" />
-            )}
-            {flagGroup &&
-              flagGroup.map((f, i) => (
-                <Image key={i} src={f} alt="flag" width={24} height={20} className="me-1" />
-              ))}
-            <h5 className="text-white mb-0 fw-bold">{title}</h5>
-          </div>
+  <div className="card border-0 shadow-sm h-100">
+    <div className="position-relative" style={{ height: '180px', overflow: 'hidden' }}>
+      <Image
+        src={image}
+        alt={title}
+        width={400}
+        height={180}
+        className="object-fit-cover w-100 h-100"
+      />
+      <div className="position-absolute bottom-0 start-0 p-3 bg-dark bg-opacity-50 w-100">
+        <div className="d-flex align-items-center">
+          {flag && <Image src={flag} alt="flag" width={28} height={20} className="me-2" />}
+          {flagGroup &&
+            flagGroup.map((f, i) => (
+              <Image key={i} src={f} alt="flag" width={24} height={20} className="me-1" />
+            ))}
+          <h5 className="text-white mb-0 fw-bold">{title}</h5>
         </div>
       </div>
-      <div className="card-body">
-        <ul className="list-unstyled mb-0">
-          {features.map((f, i) => (
-            <li key={i} className="d-flex align-items-start mb-2">
-              <i className="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-              <span>{f}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+    </div>
+    <div className="card-body">
+      <ul className="list-unstyled mb-0">
+        {features.map((f, i) => (
+          <li key={i} className="d-flex align-items-start mb-2">
+            <i className="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+            <span>{f}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   </div>
 );
