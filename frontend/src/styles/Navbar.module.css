@@ -121,6 +121,55 @@ body.offcanvas-open {
   z-index: 997;
 }
 
+/* === Dropdown Styles for Global === */
+/* Dropdown Menu Styling */
+.dropdownWrapper {
+  position: relative;
+  z-index: 9999;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background-color: #fff;
+  padding: 0.5rem 0;
+  margin-top: 0.3rem;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.dropdownWrapper:hover .dropdownMenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdownItem {
+  display: block;
+  padding: 0.6rem 1rem;
+  color: #111;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background 0.2s, padding-left 0.2s;
+  border-left: 3px solid transparent;
+}
+
+.dropdownItem:hover {
+  background-color: #f9f9f9;
+  padding-left: 1.25rem;
+  border-left: 3px solid #fcb900; /* your brand yellow */
+  color: #000;
+}
+
+
+
 /* Mobile logo size tweak */
 @media (max-width: 768px) {
   .logoImage {

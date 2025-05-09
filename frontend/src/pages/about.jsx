@@ -65,10 +65,10 @@ const TeamCard = ({ member }) => (
               <div className="mb-3" style={{ color: '#fcb900' }}>
                 <FaUserFriends size={40} />
               </div>
-              <h3 className="fw-bold" style={{ color: '#fcb900' }}>
+              <h3 className="fw-bold" style={{ color: '#000' }}>
                 {inView ? <CountUp end={125} duration={2} /> : 125}
               </h3>
-              <p className="text-muted">Clients Served</p>
+              <p className="fw-bold">Clients Served</p>
             </div>
   
             <div className="col-md-4">
@@ -76,20 +76,20 @@ const TeamCard = ({ member }) => (
                 <FaGlobe size={40} />
               </div>
               <h3 className="fw-bold">
-                <span style={{ color: '#fcb900' }}>
+                <span style={{ color: '#000' }}>
                   {inView ? <CountUp end={9} duration={2} /> : 9}
                 </span>{' '}
 
               </h3>
-              <p className="text-muted">Countries</p>
+              <p className="fw-bold">Countries</p>
             </div>
   
             <div className="col-md-4">
               <div className="mb-3" style={{ color: '#fcb900' }}>
                 <FaStar size={40} />
               </div>
-              <h3 className="fw-bold" style={{ color: '#fcb900' }}>2010</h3>
-              <p className="text-muted">Serving Clients Globally Since</p>
+              <h3 className="fw-bold" style={{ color: '#000' }}>2010</h3>
+              <p className="fw-bold">Serving Clients Globally Since</p>
             </div>
           </div>
         </div>

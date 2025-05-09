@@ -29,7 +29,7 @@ export default function CountryHero({
 
       {/* Text Content */}
       <div className="container position-relative" style={{ zIndex: 2 }}>
-        <div className="row min-vh-75 align-items-center py-5">
+        <div className="row min-vh-75 align-items-center py-3">
           <div className="col-lg-6 col-xl-5">
             <div className="hero-box bg-white p-4 p-md-5 rounded-4">
               <h1 className="display-4 fw-bold mb-3">{title}</h1>
