@@ -57,19 +57,22 @@ const GlobalPresence = () => {
           </div>
           <div className="text-center mb-4">
             <h2 className="display-7 fw-bold text-dark">Global Presence</h2>
+            <p className="lead fs-4 fw-light">
+            We operate as Angel Services in these locations
+              </p>
           </div>
           <div className="row g-4">
             <JurisdictionCard
               flag="/images/flags/singapore.svg"
               image="/images/corporate/singapore.jpg"
               title="Singapore"
-              features={['Financial hub', 'Robust legal system', 'Tax incentives']}
+              features={['Attractive Tax Regime', 'World-Class Business Environment', 'Gateway to Asia with Robust Infrastructure']}
             />
             <JurisdictionCard
               flag="/images/flags/uae.svg"
               image="/images/corporate/uae.jpg"
               title="United Arab Emirates"
-              features={['Free zones', 'Strategic Gateway']}
+              features={['100% Foreign Ownership & Free Zones', 'Tax-Efficient & Business-Friendly Jurisdiction', 'Strategic Location with Global Connectivity']}
             />
            <div className="col-md-6 col-lg-4">
   <a
@@ -98,15 +101,15 @@ const GlobalPresence = () => {
         <ul className="list-unstyled mb-0">
           <li className="d-flex align-items-start mb-2">
             <i className="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-            <span>NRI Services</span>
+            <span>Diverse Entry Structures</span>
           </li>
           <li className="d-flex align-items-start mb-2">
             <i className="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-            <span>Compliance Tools</span>
+            <span>Regulatory Approvals & Tax Incentives</span>
           </li>
           <li className="d-flex align-items-start mb-2">
             <i className="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-            <span>Regional Experts</span>
+            <span>Growing Market with Skilled Talent</span>
           </li>
         </ul>
       </div>
@@ -116,6 +119,9 @@ const GlobalPresence = () => {
 
             <div className="text-center mb-3 mt-5">
             <h2 className="display-7 fw-bold text-dark">Global Support</h2>
+            <p className="lead fs-4 fw-light">
+            We operate in these locations together with our trusted partners
+              </p>
           </div>
             <JurisdictionCard
               flag="/images/flags/indonesia.svg"
@@ -148,10 +154,10 @@ const GlobalPresence = () => {
               features={['Investment hub', 'Regulatory strength', 'Offshore structures']}
             />
             <JurisdictionCard
-              flag="/images/flags/nigeria-flag.png"
+              flag="/images/flags/Nigeria-flag.png"
               image="/images/corporate/nigeria.jpg"
               title="Nigeria"
-              features={['NRI Services', 'Compliance Tools', 'Regional Experts']}
+              features={['Investment incentives', 'Emerging start-up ecosystem', "Africa's largest consumer market"]}
             />
  
           </div>

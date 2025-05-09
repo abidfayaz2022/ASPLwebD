@@ -61,76 +61,7 @@ export default function Services() {
 </section>
 
 
-       {/* Service Workflow Section with Modern Design */}
-       <section
-  id="serviceWorkflow"
-  className="workflow-section py-5"
-  style={{ backgroundColor: '#ffffff' }} // Replace with your preferred tone
->
-
-                <div className="container">
-                    <div className="row mb-3">
-                        <div className="col-lg-8 mx-auto text-center">
-                        <h2 className="fw-bold mb-3 text-primary" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>
-  Our Service Workflow
-</h2>
-<div className="underline-center mx-auto mb-4"></div>
-
-
-<p className="lead text-dark mb-1">
-  A seamless process designed to deliver exceptional results for your business
-</p>
-
-                        </div>
-                    </div>
-                    <div className="workflow-container position-relative ">
-                        <div className="row g-4">
-                            {[
-                                {
-                                    icon: 'bi-calendar-check',
-                                    title: 'Initial Consultation',
-                                    desc: 'Understanding your business needs and requirements'
-                                },
-                                {
-                                    icon: 'bi-graph-up-arrow',
-                                    title: 'Analysis & Planning',
-                                    desc: 'Developing customized solutions'
-                                },
-                                {
-                                    icon: 'bi-gear',
-                                    title: 'Implementation',
-                                    desc: 'Executing the planned solutions'
-                                },
-                                {
-                                    icon: 'bi-shield-check',
-                                    title: 'Continuous Support',
-                                    desc: 'Ongoing monitoring and optimization'
-                                }
-                            ].map((step, index) => (
-                                <div className="col-md-3" key={index}>
-                                    <div className="workflow-step text-center p-4 bg-white rounded-3 shadow-sm hover-lift h-100 visible">
-                                        <div
-                                            className="workflow-icon-container mb-3 mx-auto rounded-circle bg-primary d-flex align-items-center justify-content-center"
-                                            style={{ width: '80px', height: '80px' }}
-                                        >
-                                            <i className={`bi ${step.icon} text-white fs-3`}></i>
-                                        </div>
-                                        <h4 className="text-dark">{step.title}</h4>
-                                        <p className="text-muted">{step.desc}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                        {/* Connecting Lines (CSS-based) */}
-                        {/* <div
-                            className="workflow-connector d-none d-md-block"
-                            style={{
-                                background: 'linear-gradient(to right, rgba(13,110,253,0.1), rgba(13,110,253,0.7), rgba(13,110,253,0.1))'
-                            }}
-                        ></div> */}
-                    </div>
-                </div>
-            </section>
+   
 
       {/* Featured Service Banner 
       <section className="featured-service py-4 bg-primary text-white">
@@ -288,6 +219,76 @@ export default function Services() {
           </div>
         </div>
       </section>
+    {/* Service Workflow Section with Modern Design */}
+    <section
+  id="serviceWorkflow"
+  className="workflow-section py-5"
+  style={{ backgroundColor: '#ffffff' }} // Replace with your preferred tone
+>
+
+                <div className="container">
+                    <div className="row mb-3">
+                        <div className="col-lg-8 mx-auto text-center">
+                        <h2 className="fw-bold mb-3 text-primary" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>
+  Our Service Workflow
+</h2>
+<div className="underline-center mx-auto mb-4"></div>
+
+
+<p className="lead text-dark mb-1">
+  A seamless process designed to deliver exceptional results for your business
+</p>
+
+                        </div>
+                    </div>
+                    <div className="workflow-container position-relative ">
+                        <div className="row g-4">
+                            {[
+                                {
+                                    icon: 'bi-calendar-check',
+                                    title: 'Initial Consultation',
+                                    desc: 'Understanding your business needs and requirements'
+                                },
+                                {
+                                    icon: 'bi-graph-up-arrow',
+                                    title: 'Analysis & Planning',
+                                    desc: 'Developing customized solutions'
+                                },
+                                {
+                                    icon: 'bi-gear',
+                                    title: 'Implementation',
+                                    desc: 'Executing the planned solutions'
+                                },
+                                {
+                                    icon: 'bi-shield-check',
+                                    title: 'Continuous Support',
+                                    desc: 'Ongoing monitoring and optimization'
+                                }
+                            ].map((step, index) => (
+                                <div className="col-md-3" key={index}>
+                                    <div className="workflow-step text-center p-4 bg-white rounded-3 shadow-sm hover-lift h-100 visible">
+                                        <div
+                                            className="workflow-icon-container mb-3 mx-auto rounded-circle bg-primary d-flex align-items-center justify-content-center"
+                                            style={{ width: '80px', height: '80px' }}
+                                        >
+                                            <i className={`bi ${step.icon} text-white fs-3`}></i>
+                                        </div>
+                                        <h4 className="text-dark">{step.title}</h4>
+                                        <p className="text-muted">{step.desc}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        {/* Connecting Lines (CSS-based) */}
+                         <div
+                            className="workflow-connector d-none d-md-block"
+                            style={{
+                                background: 'linear-gradient(to right, rgba(13,110,253,0.1), rgba(13,110,253,0.7), rgba(13,110,253,0.1))'
+                            }}
+                        ></div> 
+                    </div>
+                </div>
+            </section>
 
       {/* Why Partner With Us Section */}
       <section className="why-partner-section py-4 py-md-5 bg-light">

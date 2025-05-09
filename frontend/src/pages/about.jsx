@@ -102,13 +102,60 @@ const AboutUs = () => {
     return (
         <div>
             {/* About Header */}
-            <section className="about-header py-5 bg-light">
-                <div className="container">
-                    <h1 className="text-center text-dark">About Angel Services</h1>
-                    <p className="lead text-center text-dark">
-                        Your trusted partner in finance and business solutions
-                    </p>
-                </div>
+            
+            <section
+  className="about-hero position-relative text-white"
+  style={{
+    background:
+      'linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("/images/about-hero.jpg")',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    overflow: 'hidden',
+    minHeight: '500px',
+  }}
+>
+  <div className="container position-relative py-5" style={{ zIndex: 2 }}>
+    <div className="row py-5 min-vh-40">
+      <div className="col-lg-10 mx-auto text-center">
+        <h1 className="display-3 fw-bold text-white mb-4 text-shadow">About Us</h1>
+        <p className="lead text-white mb-5 fs-4 fw-light">
+          Angel Services is your trusted partner in finance, compliance, and cross-border incorporation. With a presence across Asia and key offshore jurisdictions, we support businesses and NRIs with strategic, reliable, and tailored solutions.
+        </p>
+        <Link
+  href="#about_section"
+  className="btn btn-yellow-dark text-black fw-semibold rounded-pill px-4 py-3"
+  style={{ backgroundColor: '#fcb900', border: 'none' }}
+>
+  Learn More <i className="bi bi-arrow-down-circle ms-2" />
+</Link>
+
+      </div>
+    </div>
+  </div>
+
+  {/* Wave Separator */}
+  <div className="wave-separator text-white">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <path
+        fill="#ffffff"
+        fillOpacity="1"
+        d="M0,32L80,42.7C160,53,320,75,480,74.7C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,100L1360,100C1280,100,1120,100,960,100C800,100,640,100,480,100C320,100,160,100,80,100L0,100Z"
+      ></path>
+    </svg>
+  </div>
+
+
+  <div className="wave-separator text-white">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <path
+        fill="#ffffff"
+        fillOpacity="1"
+        d="M0,32L80,42.7C160,53,320,75,480,74.7C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,100L1360,100C1280,100,1120,100,960,100C800,100,640,100,480,100C320,100,160,100,80,100L0,100Z"
+      ></path>
+    </svg>
+  </div>
+
             </section>
 
             {/* About Content */}
@@ -429,6 +476,101 @@ const AboutUs = () => {
 
             {/* Inline CSS */}
             <style jsx>{`
+ .text-shadow {
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
+    }
+
+    .btn-yellow {
+      background-color: #fcb900;
+      border: none;
+      color: #000;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+   .btn-yellow-dark {
+      background-color: #fcb900;
+      border: none;
+      color: #000;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-yellow-dark:hover {
+      background-color: #e0a800;
+      transform: translateY(-2px);
+      box-shadow: 0 0 12px rgba(252, 185, 0, 0.5);
+    }
+
+    .btn-yellow:hover {
+      background-color: #e0a800;
+      color: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 0 10px rgba(252, 185, 0, 0.5);
+    }
+
+    .animated-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .circle-1,
+    .circle-2,
+    .circle-3 {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(244, 200, 67, 0.5);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .circle-1 {
+      width: 300px;
+      height: 300px;
+      top: -150px;
+      right: -150px;
+    }
+
+    .circle-2 {
+      width: 200px;
+      height: 200px;
+      bottom: -100px;
+      left: -100px;
+      animation-delay: 2s;
+    }
+
+    .circle-3 {
+      width: 150px;
+      height: 150px;
+      top: 50%;
+      right: 10%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .wave-separator {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      line-height: 0;
+      z-index: 1;
+    }
+
+    .min-vh-40 {
+      min-height: 40vh;
+    }
 
 .why-choose-section {
   background-color: #f9fafb;

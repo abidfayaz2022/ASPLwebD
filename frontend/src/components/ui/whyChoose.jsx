@@ -8,15 +8,15 @@ export default function WhyChooseASPL() {
     const features = [
         {
             icon: 'bi-buildings',
-            title: 'Incorporation to Expansion',
+            title: 'Setup to Expansion',
             description:
-                'Seamless support from setting up your business to scaling across jurisdictions with compliance and clarity.',
+                'Comprehensive support from business setup to scaling with compliance.',
         },
         {
             icon: 'bi-geo-alt',
             title: 'Regional Expertise',
             description:
-                'With presence in key Asian and offshore markets, we combine jurisdictional know-how with hands-on execution.',
+                'Present in key Asian and offshore markets, we combine jurisdictional expertise with hands-on execution.',
         },
         {
             icon: 'bi-link',
@@ -28,7 +28,7 @@ export default function WhyChooseASPL() {
             icon: 'bi-speedometer2',
             title: 'Responsive & Reliable',
             description:
-                'Our team is quick to respond, committed to deadlines, and focused on delivering tailored solutions.',
+                'Our team responds quickly, meets deadlines, and delivers tailored solutions.',
         },
     ]
 

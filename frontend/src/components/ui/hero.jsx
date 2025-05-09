@@ -140,8 +140,8 @@ export default function HeroSection() {
                                                 </h6>
                                                 <ul className="list-unstyled mb-3">
                                                     {(idx === 0
-                                                        ? ['Expert Tax Filing', 'DTAA Benefits', 'Maximum Tax Savings']
-                                                        : ['Multiple Jurisdictions', 'End-to-End Support', 'Tax-Efficient Structures']
+                                                        ? ['Expert assisted tax filing', 'Get quick refund of tax deducted', 'Be compliant, avoid penalties']
+                                                        : ['Multiple Jurisdictions', 'End-to-End Support', 'Quick Turnaround Time']
                                                     ).map((li) => (
                                                         <li key={li} className="mb-2 d-flex align-items-center">
                                                             <i className="bi bi-check-circle-fill text-success me-2" />

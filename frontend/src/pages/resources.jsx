@@ -291,7 +291,7 @@ const Resources = () => {
     </div>
   </div>
 </section>
-{/* NRI Tax Calculator Section */}
+{/* NRI Tax Calculator Section 
 <section id="calculator_section" className="py-5 resource-section">
   <div className="container">
     <div className="row g-4 align-items-center">
@@ -331,9 +331,9 @@ const Resources = () => {
       </div>
     </div>
   </div>
-</section>
+</section>*/}
 
-{/* NRI Tax Filing Section */}
+{/* NRI Tax Filing Section 
 <section id="filing_section" className="py-5 resource-section">
   <div className="container">
     <div className="row g-4 align-items-center">
@@ -373,7 +373,7 @@ const Resources = () => {
       </div>
     </div>
   </div>
-</section>
+</section>*/}
 
     {/* Blog Highlights Section */}
 <div className="row mb-4">
