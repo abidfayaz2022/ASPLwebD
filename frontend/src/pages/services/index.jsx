@@ -92,8 +92,9 @@ export default function Services() {
           <div className="row mb-4 mb-md-5">
             <div className="col-lg-8 col-md-10 mx-auto text-center">
               <h2 className="fw-bold mb-3 text-dark" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>
-                We specialize in the following core verticals:
+                We specialize in the following core verticals
               </h2>
+              <div className="underline-center mx-auto mb-4"></div>
             </div>
           </div>
 
@@ -229,9 +230,10 @@ export default function Services() {
         <div className="container">
           <div className="row mb-3">
             <div className="col-lg-8 mx-auto text-center">
-              <h2 className="fw-bold mb-3 text-primary" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>
+              <h2 className="fw-bold mb-3 text-dark" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>
                 Our Service Workflow
               </h2>
+              
               <div className="underline-center mx-auto mb-4"></div>
 
 

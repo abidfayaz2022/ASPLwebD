@@ -100,7 +100,7 @@ export default function UAE() {
       <CountryContact
         title="Speak with Our UAE Advisor"
         subtitle="Have questions or want to explore setup options? Connect with our UAE desk:"
-        name="Srinwas Nandiraju"
+        name="Sriniwas Nandiraju"
         role="Business Head, UAE"
         email="sriniwas.nandiraju@theangelservices.com"
         phone="+971-508506581"

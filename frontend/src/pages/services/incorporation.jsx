@@ -9,13 +9,6 @@ const IncorporationServices = () => {
             {/* Hero Section */}
             <section
     className="hero position-relative"
-    style={{
-        backgroundImage: 'url("/images/incorporation-hero.jpg")', // 👈 Replace with your actual image path
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        overflow: 'hidden',
-    }}
 >
 
                 {/* Animated Background Elements */}
@@ -233,14 +226,26 @@ const IncorporationServices = () => {
                 }
 
                 .hero {
-                   background-size: cover;
+  background-image: url("/images/incorporation-hero.jpg");
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
   position: relative;
   overflow: hidden;
-  min-height: 500px;
-  color: #fff;
-                }
+}
+
+.wave-separator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  line-height: 0;
+  z-index: 2;
+}
+
 .btn-yellow {
   background-color: #fcb900;
   border: none;

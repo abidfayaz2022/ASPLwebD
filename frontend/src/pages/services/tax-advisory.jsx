@@ -10,7 +10,10 @@ const TaxAdvisory = () => {
             <section
                 className="hero position-relative"
                 style={{
-                    background: 'linear-gradient(90deg, var(--primary-color), #e59b00)',
+                    backgroundImage: 'url("/images/tax-hero.jpg")',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
                     overflow: 'hidden',
                 }}
             >
@@ -24,14 +27,7 @@ const TaxAdvisory = () => {
                 <div className="container position-relative py-5" style={{ zIndex: 2 }}>
                     <div className="row py-5 min-vh-40">
                         <div className="col-lg-8 mx-auto text-center">
-                            <div className="hero-badge mb-3 d-inline-block">
-                                <span
-                                    className="badge bg-white px-3 py-2 rounded-pill fs-6 fw-semibold"
-                                    style={{ color: 'var(--primary-color)' }}
-                                >
-                                    Tax Solutions
-                                </span>
-                            </div>
+                            
                             <h1 className="display-3 fw-bold text-white mb-4 text-shadow">
                                 Tax Advisory & Support
                             </h1>
@@ -41,7 +37,7 @@ const TaxAdvisory = () => {
                             <div className="hero-buttons">
                                 <a
                                     href="#services"
-                                    className="btn btn-light btn-lg rounded-pill px-4 py-3 fw-semibold me-2 mb-2 mb-md-0 shadow-sm"
+                                    className="btn btn-yellow btn-lg rounded-pill px-4 py-3 fw-semibold me-2 mb-2 mb-md-0 shadow-sm"
                                 >
                                     Our Services <i className="bi bi-arrow-down-circle ms-2"></i>
                                 </a>
@@ -249,7 +245,19 @@ const TaxAdvisory = () => {
                     left: 0;
                     z-index: 1;
                 }
+.btn-yellow {
+  background-color: #fcb900;
+  border: none;
+  color: #000;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
 
+.btn-yellow:hover {
+  background-color: #e0a800;
+  color: #000;
+  transform: translateY(-2px);
+}
                 .circle-1, .circle-2, .circle-3 {
                     position: absolute;
                     border-radius: 50%;

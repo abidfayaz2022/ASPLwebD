@@ -122,13 +122,7 @@ const AboutUs = () => {
         <p className="lead text-white mb-5 fs-4 fw-light">
           Angel Services is your trusted partner in finance, compliance, and cross-border incorporation. With a presence across Asia and key offshore jurisdictions, we support businesses and NRIs with strategic, reliable, and tailored solutions.
         </p>
-        <Link
-  href="#about_section"
-  className="btn btn-yellow-dark text-black fw-semibold rounded-pill px-4 py-3"
-  style={{ backgroundColor: '#fcb900', border: 'none' }}
->
-  Learn More <i className="bi bi-arrow-down-circle ms-2" />
-</Link>
+ 
 
       </div>
     </div>
@@ -364,7 +358,7 @@ const AboutUs = () => {
 </h2>
 <div className="underline-center mx-auto mb-4"></div>
 
-                 {/* Leadership Section */}
+                {/* Leadership Section */}
 <h3 className="text-center mb-3 mb-md-4 text-dark">Leadership</h3>
 <div className="row g-4 justify-content-center">
   {[
@@ -391,13 +385,22 @@ const AboutUs = () => {
       linkedin: 'https://in.linkedin.com/in/monika-jain-ab545914',
       email: 'monika.jain@theangelservices.com',
       description: `Monika Jain is a Chartered Accountant with 15+ years of experience in finance, compliance, and BPO. A former PwC specialist, she excels in statutory audits, IFRS, US GAAP, and financial advisory. Monika drives global business expansion by facilitating regulatory compliance, and scalable finance outsourcing from an India-based back office, streamlining processes and empowering growth.`,
+    },
+    {
+      name: 'Sriniwas Nandiraju',
+      role: 'Director – UAE Operations',
+      img: '/images/Sriniwas.jpg', // Ensure this image exists in your /public/images folder
+      linkedin: '', // Add LinkedIn if available
+      email: 'sriniwas.nandiraju@theangelservices.com',
+      description: `Sriniwas Nandiraju brings over 20 years of global experience in private banking, wealth tech, and regulatory consulting. As a strategic partner to Angel Services, he supports clients in cross-border structuring, DIFC-based setups, and family office advisory—combining deep regulatory insight with practical expertise in wealth management and institutional engagement across the GCC.`,
     }
   ].map(member => (
-    <div className="col-md-4" key={member.name}>
+    <div className="col-md-6" key={member.name}>
       <TeamCard member={member} />
     </div>
   ))}
 </div>
+
 
 {/* Advisors Section */}
 <h3 className="text-center text-dark mt-5 mb-4">Advisors</h3>

@@ -8,9 +8,24 @@ export default function WhyCountry({
   points = [],
 }) {
   return (
-    <section className="why-country-section py-5 mt-5">
-      <div className="container text-center">
-        {/* Section Title */}
+    <section className="why-country-section py-5 position-relative">
+      {/* Animated Background */}
+      <div className="animated-bg"></div>
+
+      {/* Corner Floating Squares */}
+      <div className="corner-shapes">
+        <div className="shape square top-left"></div>
+        <div className="shape square top-right small"></div>
+        <div className="shape square bottom-left small"></div>
+        <div className="shape square bottom-right"></div>
+      </div>
+
+      {/* Fades */}
+      <div className="fade-top"></div>
+      <div className="fade-bottom"></div>
+
+      <div className="container text-center position-relative z-1">
+        {/* Title */}
         <motion.h2
           className="fw-bold display-5 mb-4"
           initial={{ opacity: 0, y: 20 }}
@@ -20,7 +35,7 @@ export default function WhyCountry({
           {title}
         </motion.h2>
 
-        {/* Intro Paragraph in Card */}
+        {/* Intro */}
         <motion.div
           className="intro-card mx-auto mb-5"
           initial={{ opacity: 0 }}
@@ -30,7 +45,7 @@ export default function WhyCountry({
           <p className="lead text-muted mb-0 intro-text">{intro}</p>
         </motion.div>
 
-        {/* Grid of Points */}
+        {/* Points Grid */}
         <div className="row g-4 justify-content-center">
           {points.slice(0, 4).map((point, index) => (
             <motion.div
@@ -41,21 +56,102 @@ export default function WhyCountry({
               transition={{ duration: 0.4, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <div className="card shadow-sm border-0 h-100 p-4 d-flex align-items-start gap-3 why-box">
-                <div className="icon-circle d-flex align-items-center justify-content-center">
-                  <FaCheckCircle className="text-white" style={{ fontSize: '2.5rem' }} />
+              <div className="card why-box p-4 d-flex align-items-center gap-3 h-100 text-start">
+                <div className="icon-circle d-flex align-items-center justify-content-center flex-shrink-0">
+                  <FaCheckCircle className="text-white" style={{ fontSize: '1.5rem' }} />
                 </div>
-                <p className="mb-0 text-start fs-6">{point}</p>
+                <span className="fs-6 fw-medium">{point}</span>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
 
-      {/* Styling */}
+      {/* Styles */}
       <style jsx>{`
         .why-country-section {
           background-color: #fff;
+          overflow: hidden;
+          position: relative;
+        }
+
+        .animated-bg {
+          position: absolute;
+          top: -100px;
+          left: -100px;
+          width: 200%;
+          height: 200%;
+          background: radial-gradient(circle at 30% 30%, #f5f5f5, #fff 60%);
+          animation: moveBg 15s ease-in-out infinite;
+          z-index: 0;
+        }
+
+        @keyframes moveBg {
+          0%, 100% {
+            transform: translate(0, 0);
+          }
+          50% {
+            transform: translate(-40px, -25px);
+          }
+        }
+
+        .corner-shapes {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        .shape.square {
+          position: absolute;
+          width: 60px;
+          height: 60px;
+          background: rgba(0, 0, 0, 0.05);
+          transform: rotate(45deg);
+          border-radius: 6px;
+          animation: floatSquare 10s ease-in-out infinite;
+        }
+
+        .shape.small {
+          width: 30px;
+          height: 30px;
+        }
+
+        .top-left { top: 30px; left: 30px; animation-delay: 0s; }
+        .top-right { top: 40px; right: 40px; animation-delay: 2s; }
+        .bottom-left { bottom: 30px; left: 30px; animation-delay: 3s; }
+        .bottom-right { bottom: 30px; right: 30px; animation-delay: 4s; }
+
+        @keyframes floatSquare {
+          0%, 100% {
+            transform: rotate(45deg) translateY(0);
+          }
+          50% {
+            transform: rotate(45deg) translateY(-10px);
+          }
+        }
+
+        .fade-top,
+        .fade-bottom {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          height: 60px;
+          z-index: 1;
+        }
+
+        .fade-top {
+          top: 0;
+          background: linear-gradient(to bottom, #fff, transparent);
+        }
+
+        .fade-bottom {
+          bottom: 0;
+          background: linear-gradient(to top, #fff, transparent);
         }
 
         .intro-card {
@@ -67,37 +163,33 @@ export default function WhyCountry({
           max-width: 1100px;
         }
 
+        .intro-text {
+          text-align: justify;
+        }
+
         .why-box {
-          background-color: #f9fafa;
-          border-radius: 14px;
+          background-color: #fff;
+          border-radius: 16px;
+          box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
           transition: transform 0.3s ease, box-shadow 0.3s ease;
-          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
         }
 
         .why-box:hover {
           transform: translateY(-6px);
-          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
         }
 
         .icon-circle {
-          background-color: #fcb900;
           width: 48px;
           height: 48px;
+          background-color: #fcb900;
           border-radius: 50%;
         }
-.intro-text {
-  text-align: justify;
-}
 
         @media (max-width: 576px) {
           .why-box {
-            text-align: center;
             flex-direction: column;
-            align-items: center;
-          }
-
-          .icon-circle {
-            margin-bottom: 1rem;
+            text-align: center;
           }
         }
       `}</style>
