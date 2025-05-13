@@ -16,7 +16,7 @@ const LegacyPlanning = () => {
                 <div className="container position-relative py-5" style={{ zIndex: 2 }}>
                     <div className="row py-5 min-vh-40">
                         <div className="col-lg-8 mx-auto text-center">
-                            
+
                             <h1 className="display-3 fw-bold text-white mb-4 text-shadow">
                                 Legacy Planning
                             </h1>
@@ -205,7 +205,7 @@ const LegacyPlanning = () => {
                 }
 
 .hero {
-  background-image: url("/images/legacy-hero.jpg");
+  background-image: url("https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/legacy-hero.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

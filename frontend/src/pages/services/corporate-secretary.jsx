@@ -8,8 +8,8 @@ const CorporateSecretarial = () => {
         <>
             {/* Hero Section */}
             <section
-    className="hero position-relative"
->
+                className="hero position-relative"
+            >
 
                 {/* Animated Background Elements */}
                 <div className="animated-bg">
@@ -21,20 +21,20 @@ const CorporateSecretarial = () => {
                 <div className="container position-relative py-5" style={{ zIndex: 2 }}>
                     <div className="row py-5 min-vh-20">
                         <div className="col-lg-8 mx-auto text-center">
-                            
+
                             <h1 className="display-3 fw-bold text-white mb-4 text-shadow">
-                            Company Secretary
+                                Company Secretary
                             </h1>
                             <p className="lead text-white mb-5 fs-4 fw-light">
                                 Governance support that keeps your business compliant
                             </p>
                             <div className="hero-buttons">
-                            <a
-  href="#services"
-  className="btn btn-yellow btn-lg rounded-pill px-4 py-3 fw-semibold me-2 mb-2 mb-md-0 shadow-sm"
->
-  Our Services <i className="bi bi-arrow-down-circle ms-2"></i>
-</a>
+                                <a
+                                    href="#services"
+                                    className="btn btn-yellow btn-lg rounded-pill px-4 py-3 fw-semibold me-2 mb-2 mb-md-0 shadow-sm"
+                                >
+                                    Our Services <i className="bi bi-arrow-down-circle ms-2"></i>
+                                </a>
 
                                 <Link href="/contact" className="btn btn-outline-light btn-lg rounded-pill px-4 py-3 fw-semibold">
                                     Contact Us <i className="bi bi-arrow-right ms-2"></i>
@@ -227,7 +227,7 @@ const CorporateSecretarial = () => {
                 }
 
  .hero {
-  background-image: url("/images/corporate-secretarial-hero.jpg");
+  background-image: url("https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/corporate-secretarial-hero.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

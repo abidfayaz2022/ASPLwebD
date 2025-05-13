@@ -10,7 +10,7 @@ export default function CountryContact({
   phone
 }) {
   return (
-    <section className="py-5 position-relative contact-section">
+    <section className="py-5 position-relative contact-section" id="contact">
       {/* Background glow */}
       <div className="animated-bg"></div>
 

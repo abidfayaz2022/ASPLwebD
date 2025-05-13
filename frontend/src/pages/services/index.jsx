@@ -32,10 +32,10 @@ export default function Services() {
 
         <div className="container position-relative py-5" style={{ zIndex: 2 }}>
           <div className="row py-5 min-vh-40">
-            <div className="col-lg-8 mx-auto text-center">
+            <div className="col-lg-10 mx-auto text-center">
               <h1 className="display-3 fw-bold text-white mb-4 text-shadow">Our Services</h1>
               <p className="lead text-white mb-5 fs-4 fw-light">
-                We empower businesses and families across the globe with structured, compliant, and forward-thinking solutions. Our presence across Singapore, Indonesia, Vietnam, UAE, Hong Kong, BVI, and Cayman Islands allows us to serve a truly global clientele—supporting their ambitions with local insights and international best practices.
+                We empower global businesses and families with structured, compliant solutions. With presence in Singapore, Indonesia, Vietnam, UAE, Hong Kong, BVI, and Cayman Islands, we offer local insights and global expertise.
               </p>
               <Link
                 href="#services_section"
@@ -233,7 +233,7 @@ export default function Services() {
               <h2 className="fw-bold mb-3 text-dark" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>
                 Our Service Workflow
               </h2>
-              
+
               <div className="underline-center mx-auto mb-4"></div>
 
 
