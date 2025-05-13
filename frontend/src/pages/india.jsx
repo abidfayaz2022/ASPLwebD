@@ -16,7 +16,7 @@ export default function India() {
       <CountryHero
         title="Doing Business in India"
         subtitle="India is one of the fastest-growing major economies—offering vast market potential, skilled talent, and a pro-business environment. With economic liberalisation, digital transformation, and strong government support for entrepreneurship, India is the ideal destination for long-term expansion."
-        image="/images/india-illustration.png"
+        image="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/Rajat.jpg/images/india-illustration.png"
         cta1Text="Start Your Journey"
         cta2Text="Explore Services"
         cta1Link="#contact"
@@ -112,7 +112,7 @@ export default function India() {
         subtitle="Use the contact form to schedule a consultation or request a proposal tailored to your business goals."
         ctaText="Get in Touch"
         ctaLink="/contact"
-        image="/images/india-cta.jpg"
+        image="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/Rajat.jpg/images/india-cta.jpg"
       />
     </>
   );

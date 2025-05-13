@@ -365,7 +365,7 @@ const AboutUs = () => {
     {
       name: 'Rajat Gupta',
       role: 'Managing Director',
-      img: '/images/Rajat.jpg',
+      img: 'https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/Rajat.jpg',
       linkedin: 'https://www.linkedin.com/in/guptarajat13/',
       email: 'rajat.gupta@theangelservices.com',
       description: 'Rajat is an accomplished professional with over 18 years of experience in finance and business administration across multiple industries. His expertise includes financial management, capital raising, accounting, taxation, secretarial, and human resources with a strong understanding of regional laws and regulations.',
@@ -373,7 +373,7 @@ const AboutUs = () => {
     {
       name: "Malcolm D'souza",
       role: 'Director',
-      img: '/images/Malcolm.jpg',
+      img: 'https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/Malcolm.jpg',
       linkedin: 'https://www.linkedin.com/in/malcolmdsouza/',
       email: 'malcolmd.dsouza@gmail.com',
       description: 'Malcolm brings over 14 years of deep knowledge and experience in Enterprise Risk Management and Structured Trade Finance across global Commodity Trade Houses and International Banks in Singapore, Dubai and Abu Dhabi. His expertise includes Credit and Operational Risk Management, Counterpart Due Diligence, and Sanctions/Compliance Risk Management.',
@@ -381,7 +381,7 @@ const AboutUs = () => {
     {
       name: 'Monika Jain',
       role: 'Director – India Operations',
-      img: '/images/Monika.jpg',
+      img: 'https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/Monika.jpg',
       linkedin: 'https://in.linkedin.com/in/monika-jain-ab545914',
       email: 'monika.jain@theangelservices.com',
       description: `Monika Jain is a Chartered Accountant with 15+ years of experience in finance, compliance, and BPO. A former PwC specialist, she excels in statutory audits, IFRS, US GAAP, and financial advisory. Monika drives global business expansion by facilitating regulatory compliance, and scalable finance outsourcing from an India-based back office, streamlining processes and empowering growth.`,
@@ -389,7 +389,7 @@ const AboutUs = () => {
     {
       name: 'Sriniwas Nandiraju',
       role: 'Director – UAE Operations',
-      img: '/images/Sriniwas.jpg', // Ensure this image exists in your /public/images folder
+      img: 'https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/Sriniwas.jpg', // Ensure this image exists in your /public/images folder
       linkedin: '', // Add LinkedIn if available
       email: 'sriniwas.nandiraju@theangelservices.com',
       description: `Sriniwas Nandiraju brings over 20 years of global experience in private banking, wealth tech, and regulatory consulting. As a strategic partner to Angel Services, he supports clients in cross-border structuring, DIFC-based setups, and family office advisory—combining deep regulatory insight with practical expertise in wealth management and institutional engagement across the GCC.`,
