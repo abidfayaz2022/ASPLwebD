@@ -1,6 +1,7 @@
 import axios from 'axios';
 import config from '../config/config';
 import { handleRequest, handleResponse, handleError } from './interceptors';
+import axiosRetry from 'axios-retry';
 
 // Create axios instance with default config
 const axiosInstance = axios.create({
@@ -20,5 +21,17 @@ axiosInstance.interceptors.response.use(
     handleResponse,
     handleError
 );
+
+// Enable retry on network error & 5xx server errors
+axiosRetry(axiosInstance, {
+  retries: config.MAX_RETRIES,            // e.g., 3
+  retryDelay: (retryCount) => {
+    return retryCount * config.RETRY_DELAY; // exponential backoff: 1s, 2s, 3s
+  },
+  retryCondition: (error) => {
+    // Retry only if network error or 5xx error
+    return axiosRetry.isNetworkOrIdempotentRequestError(error);
+  }
+});
 
 export default axiosInstance; 

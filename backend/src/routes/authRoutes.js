@@ -7,7 +7,8 @@ import {
     requestPasswordReset,
     resetPassword,
     sendOtpToUser,
-    verifyUserOtp
+    verifyUserOtp,
+    refreshToken
 } from '../controllers/authController.js';
 
 
@@ -19,8 +20,10 @@ router.post('/login', login);
 router.post('/request-reset', requestPasswordReset);         // generate reset token
 router.post('/reset-password', resetPassword);               // use token to reset password
 
-router.post('/send-otp', sendOtpToUser);                     // send OTP
-router.post('/verify-otp', verifyUserOtp);                   // verify OTP
+router.post('/send-otp', sendOtpToUser);                     
+router.post('/verify-otp', verifyUserOtp);  
+router.post('/refresh-token', refreshToken);
+               
 
 
 router.get('/profile', passport.authenticate('jwt', { session: false }), getProfile);

@@ -1,7 +1,31 @@
 import prisma from '../lib/prismaClient.js';
-import { hashPassword, comparePassword, generateToken } from '../utils/passwordUtils.js';
+import { hashPassword, comparePassword, generateToken ,generateRefreshToken} from '../utils/passwordUtils.js';
 import crypto from 'crypto';
 import sendEmail from '../utils/email.js';
+import jwt from 'jsonwebtoken';
+
+
+
+
+export const refreshAccessToken = async (refreshToken) => {
+  if (!refreshToken) throw new Error('Refresh token missing');
+
+  let payload;
+  try {
+    payload = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET);
+  } catch {
+    throw new Error('Invalid or expired refresh token');
+  }
+
+  const user = await prisma.user.findUnique({ where: { id: payload.userId } });
+
+  if (!user || user.refreshToken !== refreshToken) {
+    throw new Error('Invalid session or user');
+  }
+
+  const newAccessToken = generateToken(user.id);
+  return { token: newAccessToken };
+};
 
 export const registerUser = async ({ username, email, password, mobile, country, role }) => {
   const existingUser = await prisma.user.findFirst({
@@ -25,13 +49,9 @@ export const registerUser = async ({ username, email, password, mobile, country,
 };
 
 export const loginUser = async ({ emailOrUsername, password }) => {
-  // Try to find user by email or username
   const user = await prisma.user.findFirst({
     where: {
-      OR: [
-        { email: emailOrUsername },
-        { username: emailOrUsername }
-      ]
+      OR: [{ email: emailOrUsername }, { username: emailOrUsername }]
     }
   });
 
@@ -41,9 +61,16 @@ export const loginUser = async ({ emailOrUsername, password }) => {
   if (!isMatch) throw new Error('Invalid credentials p');
 
   const token = generateToken(user.id);
+  const refreshToken = generateRefreshToken(user.id);
+
+  await prisma.user.update({
+    where: { id: user.id },
+    data: { refreshToken }
+  });
 
   return {
     token,
+    refreshToken,
     user: {
       id: user.id,
       username: user.username,
@@ -52,6 +79,7 @@ export const loginUser = async ({ emailOrUsername, password }) => {
     },
   };
 };
+
 
 
 export const generateResetToken = async (email) => {

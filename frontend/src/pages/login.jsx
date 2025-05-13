@@ -4,40 +4,55 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import endpoints from '../network/config/endpoints';
+import callApi from '../network/core/apiCaller';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
+  const [successMsg, setSuccessMsg] = useState('');
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setErrorMsg('');
+    setSuccessMsg('');
+    setLoading(true);
 
     try {
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          emailOrUsername: email,
-          password: password
-        })
+      const response = await callApi(endpoints.auth.login, {
+        emailOrUsername: email,
+        password
       });
 
-      const data = await response.json();
+      if (response.success && response.user) {
+        setSuccessMsg(response.message || 'Login successful');
+        toast.success(response.message || 'Login successful');
 
-      if (!response.ok) {
-        throw new Error(data.message || `Login failed with status ${response.status}`);
+        // Redirect based on role
+        const role = response.user.role?.toLowerCase();
+        setTimeout(() => {
+          if (role === 'admin') {
+            router.push('/dashboard/admin');
+          } else {
+            router.push('/dashboard/client');
+          }
+        }, 1000);
+      } else {
+        setErrorMsg(response.message || 'Login failed');
+        toast.error(response.message || 'Login failed');
       }
-
-      // Token is set in HTTP-only cookie by the API route
-      router.push('/');
     } catch (err) {
       console.error('Login error:', err);
-      setError(err.message || 'An error occurred. Please try again.');
+      const msg = err?.message || err?.data?.message || 'Something went wrong';
+      setErrorMsg(msg);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -60,11 +75,24 @@ const LoginPage = () => {
                   </Link>
                 </div>
                 <h2 className="text-center fw-bold mb-4">Welcome Back</h2>
-                {error && (
-                  <div className="alert alert-danger" role="alert">
-                    {error}
+
+                {/* Alerts */}
+                {loading && (
+                  <div className="alert alert-info" role="alert">
+                    Logging in...
                   </div>
                 )}
+                {errorMsg && (
+                  <div className="alert alert-danger" role="alert">
+                    {errorMsg}
+                  </div>
+                )}
+                {successMsg && (
+                  <div className="alert alert-success" role="alert">
+                    {successMsg}
+                  </div>
+                )}
+
                 <form onSubmit={handleSubmit}>
                   <div className="mb-4">
                     <label htmlFor="email" className="form-label fw-semibold">Email Address</label>
@@ -101,17 +129,12 @@ const LoginPage = () => {
                   </div>
                   <button
                     type="submit"
-                    className="btn btn-lg w-100 mb-4 text-dark fw-semibold"
+                    className="btn btn-lg w-100 mb-2 text-dark fw-semibold"
                     style={{ backgroundColor: '#fcb900' }}
+                    disabled={loading}
                   >
-                    Sign In
+                    {loading ? 'Signing In...' : 'Sign In'}
                   </button>
-                  <p className="text-center mb-0">
-                    Don't have an account?{' '}
-                    <Link href="/register" className="text-decoration-none" style={{ color: '#fcb900' }}>
-                      Sign Up
-                    </Link>
-                  </p>
                 </form>
               </div>
             </div>

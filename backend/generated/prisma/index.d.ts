@@ -3258,6 +3258,7 @@ export namespace Prisma {
     resetPasswordExpires: Date | null
     otp: string | null
     otpExpires: Date | null
+    refreshToken: string | null
     isVerified: boolean | null
     isDeactivated: boolean | null
     isDeleted: boolean | null
@@ -3281,6 +3282,7 @@ export namespace Prisma {
     resetPasswordExpires: Date | null
     otp: string | null
     otpExpires: Date | null
+    refreshToken: string | null
     isVerified: boolean | null
     isDeactivated: boolean | null
     isDeleted: boolean | null
@@ -3304,6 +3306,7 @@ export namespace Prisma {
     resetPasswordExpires: number
     otp: number
     otpExpires: number
+    refreshToken: number
     isVerified: number
     isDeactivated: number
     isDeleted: number
@@ -3337,6 +3340,7 @@ export namespace Prisma {
     resetPasswordExpires?: true
     otp?: true
     otpExpires?: true
+    refreshToken?: true
     isVerified?: true
     isDeactivated?: true
     isDeleted?: true
@@ -3360,6 +3364,7 @@ export namespace Prisma {
     resetPasswordExpires?: true
     otp?: true
     otpExpires?: true
+    refreshToken?: true
     isVerified?: true
     isDeactivated?: true
     isDeleted?: true
@@ -3383,6 +3388,7 @@ export namespace Prisma {
     resetPasswordExpires?: true
     otp?: true
     otpExpires?: true
+    refreshToken?: true
     isVerified?: true
     isDeactivated?: true
     isDeleted?: true
@@ -3493,6 +3499,7 @@ export namespace Prisma {
     resetPasswordExpires: Date | null
     otp: string | null
     otpExpires: Date | null
+    refreshToken: string | null
     isVerified: boolean
     isDeactivated: boolean
     isDeleted: boolean
@@ -3535,6 +3542,7 @@ export namespace Prisma {
     resetPasswordExpires?: boolean
     otp?: boolean
     otpExpires?: boolean
+    refreshToken?: boolean
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -3572,6 +3580,7 @@ export namespace Prisma {
     resetPasswordExpires?: boolean
     otp?: boolean
     otpExpires?: boolean
+    refreshToken?: boolean
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -3595,6 +3604,7 @@ export namespace Prisma {
     resetPasswordExpires?: boolean
     otp?: boolean
     otpExpires?: boolean
+    refreshToken?: boolean
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -3618,6 +3628,7 @@ export namespace Prisma {
     resetPasswordExpires?: boolean
     otp?: boolean
     otpExpires?: boolean
+    refreshToken?: boolean
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -3626,7 +3637,7 @@ export namespace Prisma {
     createdAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "email" | "password" | "mobile" | "country" | "role" | "profilePic" | "profileThumbnail" | "lastLogin" | "resetPasswordToken" | "resetPasswordExpires" | "otp" | "otpExpires" | "isVerified" | "isDeactivated" | "isDeleted" | "isSuspended" | "suspendMessage" | "createdAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "email" | "password" | "mobile" | "country" | "role" | "profilePic" | "profileThumbnail" | "lastLogin" | "resetPasswordToken" | "resetPasswordExpires" | "otp" | "otpExpires" | "refreshToken" | "isVerified" | "isDeactivated" | "isDeleted" | "isSuspended" | "suspendMessage" | "createdAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     assignedTasks?: boolean | User$assignedTasksArgs<ExtArgs>
     messagesReceived?: boolean | User$messagesReceivedArgs<ExtArgs>
@@ -3678,6 +3689,7 @@ export namespace Prisma {
       resetPasswordExpires: Date | null
       otp: string | null
       otpExpires: Date | null
+      refreshToken: string | null
       isVerified: boolean
       isDeactivated: boolean
       isDeleted: boolean
@@ -4134,6 +4146,7 @@ export namespace Prisma {
     readonly resetPasswordExpires: FieldRef<"User", 'DateTime'>
     readonly otp: FieldRef<"User", 'String'>
     readonly otpExpires: FieldRef<"User", 'DateTime'>
+    readonly refreshToken: FieldRef<"User", 'String'>
     readonly isVerified: FieldRef<"User", 'Boolean'>
     readonly isDeactivated: FieldRef<"User", 'Boolean'>
     readonly isDeleted: FieldRef<"User", 'Boolean'>
@@ -29294,6 +29307,7 @@ export namespace Prisma {
     resetPasswordExpires: 'resetPasswordExpires',
     otp: 'otp',
     otpExpires: 'otpExpires',
+    refreshToken: 'refreshToken',
     isVerified: 'isVerified',
     isDeactivated: 'isDeactivated',
     isDeleted: 'isDeleted',
@@ -29843,6 +29857,7 @@ export namespace Prisma {
     resetPasswordExpires?: DateTimeNullableFilter<"User"> | Date | string | null
     otp?: StringNullableFilter<"User"> | string | null
     otpExpires?: DateTimeNullableFilter<"User"> | Date | string | null
+    refreshToken?: StringNullableFilter<"User"> | string | null
     isVerified?: BoolFilter<"User"> | boolean
     isDeactivated?: BoolFilter<"User"> | boolean
     isDeleted?: BoolFilter<"User"> | boolean
@@ -29879,6 +29894,7 @@ export namespace Prisma {
     resetPasswordExpires?: SortOrderInput | SortOrder
     otp?: SortOrderInput | SortOrder
     otpExpires?: SortOrderInput | SortOrder
+    refreshToken?: SortOrderInput | SortOrder
     isVerified?: SortOrder
     isDeactivated?: SortOrder
     isDeleted?: SortOrder
@@ -29918,6 +29934,7 @@ export namespace Prisma {
     resetPasswordExpires?: DateTimeNullableFilter<"User"> | Date | string | null
     otp?: StringNullableFilter<"User"> | string | null
     otpExpires?: DateTimeNullableFilter<"User"> | Date | string | null
+    refreshToken?: StringNullableFilter<"User"> | string | null
     isVerified?: BoolFilter<"User"> | boolean
     isDeactivated?: BoolFilter<"User"> | boolean
     isDeleted?: BoolFilter<"User"> | boolean
@@ -29954,6 +29971,7 @@ export namespace Prisma {
     resetPasswordExpires?: SortOrderInput | SortOrder
     otp?: SortOrderInput | SortOrder
     otpExpires?: SortOrderInput | SortOrder
+    refreshToken?: SortOrderInput | SortOrder
     isVerified?: SortOrder
     isDeactivated?: SortOrder
     isDeleted?: SortOrder
@@ -29985,6 +30003,7 @@ export namespace Prisma {
     resetPasswordExpires?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     otp?: StringNullableWithAggregatesFilter<"User"> | string | null
     otpExpires?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    refreshToken?: StringNullableWithAggregatesFilter<"User"> | string | null
     isVerified?: BoolWithAggregatesFilter<"User"> | boolean
     isDeactivated?: BoolWithAggregatesFilter<"User"> | boolean
     isDeleted?: BoolWithAggregatesFilter<"User"> | boolean
@@ -31668,6 +31687,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -31704,6 +31724,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -31739,6 +31760,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -31775,6 +31797,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -31811,6 +31834,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -31833,6 +31857,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -31856,6 +31881,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -33775,6 +33801,7 @@ export namespace Prisma {
     resetPasswordExpires?: SortOrder
     otp?: SortOrder
     otpExpires?: SortOrder
+    refreshToken?: SortOrder
     isVerified?: SortOrder
     isDeactivated?: SortOrder
     isDeleted?: SortOrder
@@ -33802,6 +33829,7 @@ export namespace Prisma {
     resetPasswordExpires?: SortOrder
     otp?: SortOrder
     otpExpires?: SortOrder
+    refreshToken?: SortOrder
     isVerified?: SortOrder
     isDeactivated?: SortOrder
     isDeleted?: SortOrder
@@ -33825,6 +33853,7 @@ export namespace Prisma {
     resetPasswordExpires?: SortOrder
     otp?: SortOrder
     otpExpires?: SortOrder
+    refreshToken?: SortOrder
     isVerified?: SortOrder
     isDeactivated?: SortOrder
     isDeleted?: SortOrder
@@ -37873,6 +37902,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -37908,6 +37938,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -38262,6 +38293,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -38297,6 +38329,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -38611,6 +38644,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -38646,6 +38680,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -38774,6 +38809,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -38809,6 +38845,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -39215,6 +39252,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -39250,6 +39288,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -39289,6 +39328,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -39324,6 +39364,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -39452,6 +39493,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -39487,6 +39529,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -39532,6 +39575,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -39567,6 +39611,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -39698,6 +39743,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -39733,6 +39779,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -39934,6 +39981,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -39969,6 +40017,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -40361,6 +40410,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -40396,6 +40446,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -40446,6 +40497,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -40481,6 +40533,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -40515,6 +40568,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -40550,6 +40604,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -40600,6 +40655,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -40635,6 +40691,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -40669,6 +40726,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -40704,6 +40762,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -40815,6 +40874,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -40850,6 +40910,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -40900,6 +40961,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -40935,6 +40997,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -41058,6 +41121,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -41093,6 +41157,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -41127,6 +41192,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -41162,6 +41228,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -41201,6 +41268,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -41236,6 +41304,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -41286,6 +41355,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -41321,6 +41391,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -41366,6 +41437,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -41401,6 +41473,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -41585,6 +41658,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -41620,6 +41694,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -41742,6 +41817,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -41777,6 +41853,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -41942,6 +42019,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -41977,6 +42055,7 @@ export namespace Prisma {
     resetPasswordExpires?: Date | string | null
     otp?: string | null
     otpExpires?: Date | string | null
+    refreshToken?: string | null
     isVerified?: boolean
     isDeactivated?: boolean
     isDeleted?: boolean
@@ -42099,6 +42178,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
@@ -42134,6 +42214,7 @@ export namespace Prisma {
     resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     otp?: NullableStringFieldUpdateOperationsInput | string | null
     otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     isDeactivated?: BoolFieldUpdateOperationsInput | boolean
     isDeleted?: BoolFieldUpdateOperationsInput | boolean

@@ -1,9 +1,33 @@
 import * as authService from '../services/authService.js';
 
+
+
+export const refreshToken = async (req, res) => {
+  try {
+    const refreshToken = req.cookies.refreshToken;
+    if (!refreshToken) return res.status(401).json({ message: 'No refresh token' });
+
+    const { token } = await authService.refreshAccessToken(refreshToken);
+
+    // ✅ Set new access token cookie
+    res.cookie('token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 24 * 60 * 60 * 1000 // 1 day
+    });
+
+    res.json({ success: true, message: 'Token refreshed' });
+  } catch (err) {
+    res.status(401).json({ message: err.message || 'Unauthorized' });
+  }
+};
+
 export const register = async (req, res) => {
   try {
     const user = await authService.registerUser(req.body);
     res.status(201).json({
+      success: true,
       message: 'User registered successfully',
       user: {
         id: user.id,
@@ -13,33 +37,39 @@ export const register = async (req, res) => {
       },
     });
   } catch (error) {
-    res.status(500).json({ message: 'Error registering user', error: error.message });
+    res.status(500).json({ success: false, message: 'Error registering user', error: error.message });
   }
 };
 
 export const login = async (req, res) => {
   try {
-    const { token, user } = await authService.loginUser(req.body);
+    const { token, refreshToken, user } = await authService.loginUser(req.body);
 
-    // Set HTTP-only cookie with JWT token
+    // ✅ Set HTTP-only cookie for refresh token
+    res.cookie('refreshToken', refreshToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+    });
+
+    // ✅ Set JWT access token (also in cookie if needed)
     res.cookie('token', token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', // Use HTTPS in prod
+      secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
-      maxAge: 24 * 60 * 60 * 1000, // 1 day
+      maxAge: 24 * 60 * 60 * 1000 // 1 day
     });
-    
 
-    // Return success response with user details
     res.status(200).json({
+      success: true,
       message: 'Login successful',
-      user,
-      token,   //remove this token in deployment..................................................
+      user
+      // ❌ Don't send token in body in production
     });
 
   } catch (error) {
-    console.error('Login error:', error);
-    res.status(401).json({ message: error.message || 'Invalid credentials' });
+    res.status(401).json({ success: false, message: error.message || 'Invalid credentials' });
   }
 };
 

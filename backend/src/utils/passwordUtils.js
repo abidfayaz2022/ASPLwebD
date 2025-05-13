@@ -9,3 +9,9 @@ export const comparePassword = (inputPassword, hashedPassword) =>
 export const generateToken = (userId) =>
   jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '1d' });
 
+export const generateRefreshToken = (userId) => {
+  return jwt.sign({ userId }, process.env.JWT_REFRESH_SECRET, {
+    expiresIn: '7d',
+  });
+};
+

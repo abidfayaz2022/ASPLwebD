@@ -1,69 +1,98 @@
 import { logRequest, logResponse, logError } from '../utils/logger';
 import { handleApiError } from '../utils/exceptions';
+import axiosInstance from './axiosInstance'; // required for retrying original request
+
+let isRefreshing = false;
+let failedQueue = [];
+
+const processQueue = (error, token = null) => {
+    failedQueue.forEach(prom => {
+        if (error) {
+            prom.reject(error);
+        } else {
+            prom.resolve(token);
+        }
+    });
+    failedQueue = [];
+};
 
 // Request interceptor
 export const handleRequest = (config) => {
-    // Get token from localStorage or your auth state management
     const token = localStorage.getItem('token');
-    
-    // Add token to headers if it exists
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }
-    
-    // Add timestamp to prevent caching
     config.headers['Cache-Control'] = 'no-cache';
     config.headers['Pragma'] = 'no-cache';
-    
-    // Log the request
     logRequest(config);
-    
     return config;
 };
 
 // Response interceptor
 export const handleResponse = (response) => {
-    // Log the response
     logResponse(response);
-    
-    // Check if response has data property
+
     if (response.data) {
-        // If the response has a success flag, return the data directly
         if (response.data.success !== undefined) {
             return response.data;
         }
-        // Otherwise, wrap the data in a success response
         return {
             success: true,
             data: response.data,
             status: response.status
         };
     }
-    
+
     return response;
 };
 
-// Error interceptor
+// Error interceptor with refresh logic
 export const handleError = async (error) => {
-    // Log the error
     logError(error);
-    
-    // Handle different types of errors
-    if (error.response) {
-        // Server responded with a status code outside the 2xx range
-        const errorResponse = handleApiError(error.response);
-        
-        // Handle specific error cases
-        if (error.response.status === 401) {
-            // Clear any stored tokens
-            localStorage.removeItem('token');
-            // Redirect to login page
-            window.location.href = '/login';
+    const originalRequest = error.config;
+
+    // If unauthorized & request not retried yet
+    if (error.response?.status === 401 && !originalRequest._retry) {
+        originalRequest._retry = true;
+
+        if (isRefreshing) {
+            return new Promise((resolve, reject) => {
+                failedQueue.push({ resolve, reject });
+            }).then((newToken) => {
+                originalRequest.headers['Authorization'] = 'Bearer ' + newToken;
+                return axiosInstance(originalRequest);
+            }).catch((err) => Promise.reject(err));
         }
-        
-        return Promise.reject(errorResponse);
+
+        isRefreshing = true;
+
+        try {
+            const response = await axiosInstance.post('/api/auth/refresh-token', null, {
+                withCredentials: true // ⬅️ sends the cookie
+            });
+
+            const newToken = response.data.token;
+            localStorage.setItem('token', newToken);
+
+            axiosInstance.defaults.headers['Authorization'] = `Bearer ${newToken}`;
+            processQueue(null, newToken);
+
+            originalRequest.headers['Authorization'] = 'Bearer ' + newToken;
+            return axiosInstance(originalRequest);
+
+        } catch (refreshError) {
+            processQueue(refreshError, null);
+            localStorage.removeItem('token');
+            window.location.href = '/login';
+            return Promise.reject(refreshError);
+        } finally {
+            isRefreshing = false;
+        }
+    }
+
+    if (error.response) {
+        return Promise.reject(handleApiError(error.response));
     } else if (error.request) {
-        // Request was made but no response received
         return Promise.reject({
             success: false,
             status: 0,
@@ -71,7 +100,6 @@ export const handleError = async (error) => {
             data: null
         });
     } else {
-        // Something happened in setting up the request
         return Promise.reject({
             success: false,
             status: 0,
@@ -79,4 +107,4 @@ export const handleError = async (error) => {
             data: null
         });
     }
-}; 
+};
