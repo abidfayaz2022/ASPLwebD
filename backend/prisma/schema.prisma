@@ -1,0 +1,419 @@
+// ---------- Generators ----------
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+generator erd {
+  provider = "prisma-erd-generator"
+  output   = "erd.svg"
+}
+
+// ---------- Datasource ----------
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------- Enums ----------
+enum UserRole {
+  Admin
+  preparer
+  approver
+  client
+}
+
+enum DocumentPurpose {
+  MOA
+  AOA
+  ID_PROOF
+  ADDRESS_PROOF
+  BOARD_RESOLUTION
+  INVOICE
+  OTHER
+}
+
+enum ShareholderType {
+  Individual
+  Corporate
+}
+
+enum CompanyStatus {
+  Draft
+  Submitted
+  PreparerApproved
+  ApproverApproved
+  AdminApproved
+  RevertedToClient
+  RevertedToPreparer
+  Completed
+}
+
+enum PaymentStatus {
+  Pending
+  Completed
+  Failed
+  Refunded
+  Disputed
+}
+
+enum DocumentType {
+  PDF
+  DOCX
+  XLSX
+  JPG
+  PNG
+}
+
+enum RefundStatus {
+  Requested
+  Processed
+  Failed
+}
+
+// ---------- Models ----------
+model User {
+  id               Int      @id @default(autoincrement())
+  username         String   @unique @db.VarChar(50)
+  email            String   @unique @db.VarChar(100)
+  password         String   @db.VarChar(255)
+  mobile           String   @db.VarChar(20)
+  country          String   @db.VarChar(100)
+  role             UserRole
+  profilePic       String?  @db.VarChar(255) // main image path / URL
+  profileThumbnail String?  @db.VarChar(255) // ✅ optional thumbnail
+
+  lastLogin            DateTime?
+  resetPasswordToken   String?   @db.VarChar(255)
+  resetPasswordExpires DateTime?
+  otp                  String?   @db.VarChar(10)
+  otpExpires           DateTime?
+
+  isVerified       Boolean                 @default(false)
+  isDeactivated    Boolean                 @default(false)
+  isDeleted        Boolean                 @default(false)
+  isSuspended      Boolean                 @default(false)
+  suspendMessage   String                  @default("Account is not suspended")
+  createdAt        DateTime                @default(now())
+  assignedTasks    CalendarAction[]
+  messagesReceived ChatMessage[]           @relation("Receiver")
+  messagesSent     ChatMessage[]           @relation("Sender")
+  companies        Company[]
+  insights         InsightRecommendation[]
+  notifications    Notification[]
+  payments         Payment[]
+  assignedRoles    RoleAssignment[]        @relation("Agent")
+
+  revertMessage CompanyStatusMessage[]
+  uploadedDocs  CompanyDocument[]      @relation("UploadedBy")
+  receivedDocs  CompanyDocument[]      @relation("UploadedFor")
+  auditLogs     AuditLog[]             @relation("ActorAuditLogs")
+
+  CalendarAction CalendarAction[] @relation("CreatedCalendarActions")
+}
+
+model Company {
+  companyId             Int                    @id @default(autoincrement())
+  companyName           String                 @db.VarChar(255)
+  registrationDate      DateTime
+  addressLine1          String                 @db.VarChar(255)
+  addressLine2          String                 @db.VarChar(255)
+  country               String                 @db.VarChar(100)
+  postalCode            String                 @db.VarChar(20)
+  proposedShares        Int
+  currency              String                 @db.VarChar(10)
+  proposedShareCapital  Decimal                @db.Decimal(15, 2)
+  businessActivity1     String                 @db.VarChar(255)
+  businessActivity1Desc String                 @db.VarChar(255)
+  businessActivity2     String                 @db.VarChar(255)
+  businessActivity2Desc String                 @db.VarChar(255)
+  createdAt             DateTime               @default(now())
+  status                CompanyStatus          @default(Draft)
+  statusRemarks         String?                @db.VarChar(500)
+  isDeleted             Boolean                @default(false)
+  userId                Int
+  canEditC             Boolean @default(false)
+  canEditD             Boolean @default(false)
+  canEditS            Boolean @default(false)
+  tasks                 CalendarAction[]
+  user                  User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  documents             CompanyDocument[]
+  companyServices       CompanyService[]
+  dashboardState        DashboardState?
+  directors             Director[]
+  payments              Payment[]
+  roleAssignments       RoleAssignment[]       @relation("AssignedCompany")
+  shareholders          Shareholder[]
+  revertMessage         CompanyStatusMessage[]
+  auditLogs             AuditLog[]
+
+  @@index([userId])
+}
+
+model CompanyStatusMessage {
+  id         Int           @id @default(autoincrement())
+  companyId  Int
+  senderId   Int
+  senderRole UserRole
+  fromStatus CompanyStatus
+  toStatus   CompanyStatus
+  message    String        @db.VarChar(1000)
+  createdAt  DateTime      @default(now())
+  company    Company       @relation(fields: [companyId], references: [companyId])
+  sender     User          @relation(fields: [senderId], references: [id])
+
+  @@index([companyId])
+}
+
+model Director {
+  id            Int      @id @default(autoincrement())
+  companyId     Int
+  directorName  String   @db.VarChar(255)
+  email         String   @db.VarChar(100)
+  addressLine1  String   @db.VarChar(255)
+  addressLine2  String   @db.VarChar(255)
+  country       String   @db.VarChar(100)
+  postalCode    String   @db.VarChar(20)
+  contactNumber String   @db.VarChar(20)
+  nationality   String   @db.VarChar(100)
+  idType        String   @db.VarChar(50)
+  idExpiryDate  DateTime
+  idNumber      String   @db.VarChar(100)
+  isShareholder Boolean
+  identityProof String   @db.VarChar(255)
+  addressProof  String   @db.VarChar(255)
+  dateOfBirth   DateTime
+  createdAt     DateTime @default(now())
+  company       Company  @relation(fields: [companyId], references: [companyId], onDelete: Cascade)
+
+  @@index([companyId])
+}
+
+model Shareholder {
+  id                     Int             @id @default(autoincrement())
+  companyId              Int
+  shareholderName        String          @db.VarChar(255)
+  email                  String          @db.VarChar(100)
+  type                   ShareholderType
+  addressLine1           String          @db.VarChar(255)
+  addressLine2           String          @db.VarChar(255)
+  country                String          @db.VarChar(100)
+  postalCode             String          @db.VarChar(20)
+  contactNumber          String          @db.VarChar(20)
+  nationality            String          @db.VarChar(100)
+  idType                 String          @db.VarChar(50)
+  idExpiryDate           DateTime
+  idNumber               String          @db.VarChar(100)
+  dateOfBirth            DateTime
+  numberOfShares         Int
+  shareCapitalAllocation Decimal         @db.Decimal(15, 2)
+  createdAt              DateTime        @default(now())
+  company                Company         @relation(fields: [companyId], references: [companyId], onDelete: Cascade)
+
+  @@index([companyId])
+}
+
+model CompanyDocument {
+  id            Int             @id @default(autoincrement())
+  companyId     Int
+  documentLabel String
+  documentPath  String
+  documentType  DocumentType
+  purpose       DocumentPurpose @default(OTHER)
+  thumbnail     String?
+  uploadedAt    DateTime        @default(now())
+  isVerified    Boolean         @default(false) // ✅ New field
+
+  uploadedBy   Int
+  uploadedRole UserRole
+  uploadedFor  Int?
+
+  company  Company @relation(fields: [companyId], references: [companyId])
+  uploader User    @relation("UploadedBy", fields: [uploadedBy], references: [id])
+  forUser  User?   @relation("UploadedFor", fields: [uploadedFor], references: [id])
+}
+
+
+model Payment {
+  id               Int             @id @default(autoincrement())
+  companyId        Int?
+  userId           Int?
+  stagingCompanyId String?
+  paymentDate      DateTime
+  amount           Decimal         @db.Decimal(10, 2)
+  currency         String          @db.VarChar(10)
+  paymentMethod    String          @db.VarChar(50)
+  paymentStatus    PaymentStatus   @default(Pending)
+  paymentReference String          @unique
+  services         String          @db.VarChar(255)
+  refunds          Refund[]
+  company          Company?        @relation(fields: [companyId], references: [companyId])
+  user             User?           @relation(fields: [userId], references: [id])
+  stagingCompany   StagingCompany? @relation(fields: [stagingCompanyId], references: [id])
+}
+
+model Refund {
+  id        Int          @id @default(autoincrement())
+  paymentId Int
+  refundId  String       @unique
+  amount    Decimal      @db.Decimal(10, 2)
+  status    RefundStatus @default(Requested)
+  createdAt DateTime     @default(now())
+
+  payment Payment @relation(fields: [paymentId], references: [id])
+}
+
+model Service {
+  id                 Int              @id @default(autoincrement())
+  serviceName        String           @db.VarChar(255)
+  serviceDescription String
+  cost               Decimal          @db.Decimal(10, 2)
+  status             String           @db.VarChar(255)
+  createdAt          DateTime         @default(now())
+  companyServices    CompanyService[]
+}
+
+model CompanyService {
+  id         Int      @id @default(autoincrement())
+  companyId  Int
+  serviceId  Int
+  updateDate DateTime
+  company    Company  @relation(fields: [companyId], references: [companyId])
+  service    Service  @relation(fields: [serviceId], references: [id])
+}
+
+model Notification {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  title     String
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model InsightRecommendation {
+  id             Int      @id @default(autoincrement())
+  userId         Int
+  content        String
+  sampleDocUrls  String[] @db.Text  // ✅ Add this
+  createdAt      DateTime @default(now())
+
+  user           User     @relation(fields: [userId], references: [id])
+}
+
+model CalendarAction {
+  id             Int       @id @default(autoincrement())
+  title          String
+  userId         Int
+  companyId      Int
+  dueDate        DateTime
+  notes          String?
+  status         String    @default("Pending")
+  createdBy      Int?
+  createdByRole  UserRole
+
+  user           User      @relation(fields: [userId], references: [id])
+  company        Company   @relation(fields: [companyId], references: [companyId])
+  creator        User?     @relation("CreatedCalendarActions", fields: [createdBy], references: [id])
+}
+
+model ChatMessage {
+  id         Int      @id @default(autoincrement())
+  senderId   Int
+  receiverId Int
+  content    String
+  sentAt     DateTime @default(now())
+  receiver   User     @relation("Receiver", fields: [receiverId], references: [id])
+  sender     User     @relation("Sender", fields: [senderId], references: [id])
+}
+
+model DashboardState {
+  id          Int       @id @default(autoincrement())
+  companyId   Int       @unique
+  step        String    @db.VarChar(100)
+  completedAt DateTime?
+  company     Company   @relation(fields: [companyId], references: [companyId])
+}
+
+model RoleAssignment {
+  id         Int      @id @default(autoincrement())
+  agentId    Int
+  companyId  Int
+  role       UserRole
+  assignedAt DateTime @default(now())
+  agent      User     @relation("Agent", fields: [agentId], references: [id])
+  company    Company  @relation("AssignedCompany", fields: [companyId], references: [companyId])
+}
+
+model Article {
+  id          Int      @id @default(autoincrement())
+  title       String   @db.VarChar(255)
+  content     String
+  status      String   @db.VarChar(20)
+  createdAt   DateTime @default(now())
+  publishedAt DateTime
+  imagePath   String   @db.VarChar(225)
+  views       Int
+  hashtag     String   @db.VarChar(255)
+}
+
+model ContactUs {
+  id           Int      @id @default(autoincrement())
+  name         String   @db.VarChar(255)
+  email        String   @db.VarChar(255)
+  phone        String   @db.VarChar(50)
+  subject      String   @db.VarChar(225)
+  details      String
+  status       String   @db.VarChar(20)
+  ticketUpdate String   @db.VarChar(225)
+  createdAt    DateTime @default(now())
+}
+
+model FAQ {
+  id       Int    @id @default(autoincrement())
+  question String
+  answer   String
+}
+
+model StagingCompany {
+  id               String    @id @default(cuid())
+  companyName      String
+  contactEmail     String?
+  contactNumber    String?
+  isEmailVerified  Boolean   @default(false)
+  isPaid           Boolean   @default(false)
+  isCompleted      Boolean   @default(false) // ✅ New flag
+  isRejected       Boolean   @default(false) // ✅ NEW FIELD
+  step             Int
+  registrationDate DateTime?
+  directorData     String?
+  shareholderData  String?
+  servicesSelected String?
+  createdAt        DateTime  @default(now())
+  razorpayOrderId  String?
+  emailOtp         String?
+  emailOtpExpires  DateTime?
+
+  payments Payment[]
+}
+
+model AuditLog {
+  id        Int      @id @default(autoincrement())
+  actorId   Int
+  role      UserRole
+  action    String   @db.VarChar(255)
+  target    String   @db.VarChar(255)
+  companyId Int?
+
+  timestamp DateTime @default(now())
+
+  actor   User     @relation("ActorAuditLogs", fields: [actorId], references: [id])
+  company Company? @relation(fields: [companyId], references: [companyId])
+}
+
+model RegisteredCompanyName {
+  id          Int      @id @default(autoincrement())
+  companyName String   @unique @db.VarChar(255)
+  createdAt   DateTime @default(now())
+}

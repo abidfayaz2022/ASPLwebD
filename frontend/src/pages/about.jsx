@@ -390,7 +390,7 @@ const AboutUs = () => {
       name: 'Sriniwas Nandiraju',
       role: 'Director – UAE Operations',
       img: '/images/Sriniwas.jpg', // Ensure this image exists in your /public/images folder
-      linkedin: '', // Add LinkedIn if available
+      linkedin: 'https://ae.linkedin.com/in/sriniwas-nandiraju-9545566', // Add LinkedIn if available
       email: 'sriniwas.nandiraju@theangelservices.com',
       description: `Sriniwas Nandiraju brings over 20 years of global experience in private banking, wealth tech, and regulatory consulting. As a strategic partner to Angel Services, he supports clients in cross-border structuring, DIFC-based setups, and family office advisory—combining deep regulatory insight with practical expertise in wealth management and institutional engagement across the GCC.`,
     }
