@@ -160,7 +160,7 @@ body {
   right: 0;
   width: 55%;
   height: 100%;
-  background-image: url("/images/hero1.jpg");
+  background-image: url("https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/hero1.jpg");
   /* update path if needed */
   background-size: cover;
   background-position: center;

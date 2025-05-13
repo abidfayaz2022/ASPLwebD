@@ -5,85 +5,85 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const Resources = () => {
-    return (
-        <>
-            {/* Hero Section with Enhanced Design */}
-            <section className="resources-hero position-relative overflow-hidden">
-                <div className="resources-hero-bg"></div>
+  return (
+    <>
+      {/* Hero Section with Enhanced Design */}
+      <section className="resources-hero position-relative overflow-hidden">
+        <div className="resources-hero-bg"></div>
 
-                {/* Decorative Elements */}
-                <div className="hero-circles d-none d-md-block">
-                    <div className="circle circle-1"></div>
-                    <div className="circle circle-2"></div>
-                    <div className="circle circle-3"></div>
+        {/* Decorative Elements */}
+        <div className="hero-circles d-none d-md-block">
+          <div className="circle circle-1"></div>
+          <div className="circle circle-2"></div>
+          <div className="circle circle-3"></div>
+        </div>
+
+        <div className="container position-relative" style={{ zIndex: 2 }}>
+          <div className="row min-vh-50 align-items-center py-5">
+            <div className="col-lg-7 text-black">
+              <div className="animate__animated animate__fadeInLeft">
+                <h1 className="display-4 fw-bold mb-2">Financial & Business Resources</h1>
+                <div className="accent-line mb-4"></div>
+                <p className="lead fs-4 mb-4">Expert tools and resources specifically designed for NRIs and global entrepreneurs</p>
+                <div className="d-flex flex-wrap gap-3 mt-4">
+                  <Link href="#calculator_section" className="btn btn-white btn-lg rounded-pill px-4 shadow-sm">
+                    <i className="bi bi-calculator me-2"></i>NRI Tax Calculator
+                  </Link>
+                  <Link href="#filing_section" className="btn btn-orange btn-lg rounded-pill px-4">
+                    <i className="bi bi-file-earmark-text me-2"></i>Tax Filing
+                  </Link>
                 </div>
-
-                <div className="container position-relative" style={{ zIndex: 2 }}>
-                    <div className="row min-vh-50 align-items-center py-5">
-                        <div className="col-lg-7 text-black">
-                            <div className="animate__animated animate__fadeInLeft">
-                                <h1 className="display-4 fw-bold mb-2">Financial & Business Resources</h1>
-                                <div className="accent-line mb-4"></div>
-                                <p className="lead fs-4 mb-4">Expert tools and resources specifically designed for NRIs and global entrepreneurs</p>
-                                <div className="d-flex flex-wrap gap-3 mt-4">
-                                    <Link href="#calculator_section" className="btn btn-white btn-lg rounded-pill px-4 shadow-sm">
-                                        <i className="bi bi-calculator me-2"></i>NRI Tax Calculator
-                                    </Link>
-                                    <Link href="#filing_section" className="btn btn-orange btn-lg rounded-pill px-4">
-                                        <i className="bi bi-file-earmark-text me-2"></i>Tax Filing
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-5 d-none d-lg-block">
-                            <div className="floating-image animate__animated animate__fadeInRight">
-                                <div className="stats-card bg-white p-4 rounded-4 shadow-lg text-dark">
-                                    <div className="d-flex justify-content-between align-items-center mb-3">
-                                        <h4 className="fw-bold mb-0">NRI Tax Benefits</h4>
-                                        <div className="badge badge-orange px-3 py-2">FY 2025-26</div>
-                                    </div>
-                                    <div className="stat-item d-flex align-items-center mb-3">
-                                        <div className="stat-icon bg-light rounded-circle p-2 me-3">
-                                            <i className="bi bi-bank fs-4"></i>
-                                        </div>
-                                        <div>
-                                            <h6 className="mb-0">NRE Account Interest</h6>
-                                            <p className="fs-5 fw-bold mb-0 text-success">Tax Exempt</p>
-                                        </div>
-                                    </div>
-                                    <div className="stat-item d-flex align-items-center mb-3">
-                                        <div className="stat-icon bg-light rounded-circle p-2 me-3">
-                                            <i className="bi bi-currency-exchange fs-4"></i>
-                                        </div>
-                                        <div>
-                                            <h6 className="mb-0">FCNR Deposits</h6>
-                                            <p className="fs-5 fw-bold mb-0 text-success">Tax Exempt</p>
-                                        </div>
-                                    </div>
-                                    <div className="stat-item d-flex align-items-center">
-                                        <div className="stat-icon bg-light rounded-circle p-2 me-3">
-                                            <i className="bi bi-globe fs-4"></i>
-                                        </div>
-                                        <div>
-                                            <h6 className="mb-0">Foreign Income</h6>
-                                            <p className="fs-5 fw-bold mb-0 text-success">Not Taxable in India</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+              </div>
+            </div>
+            <div className="col-lg-5 d-none d-lg-block">
+              <div className="floating-image animate__animated animate__fadeInRight">
+                <div className="stats-card bg-white p-4 rounded-4 shadow-lg text-dark">
+                  <div className="d-flex justify-content-between align-items-center mb-3">
+                    <h4 className="fw-bold mb-0">NRI Tax Benefits</h4>
+                    <div className="badge badge-orange px-3 py-2">FY 2025-26</div>
+                  </div>
+                  <div className="stat-item d-flex align-items-center mb-3">
+                    <div className="stat-icon bg-light rounded-circle p-2 me-3">
+                      <i className="bi bi-bank fs-4"></i>
                     </div>
+                    <div>
+                      <h6 className="mb-0">NRE Account Interest</h6>
+                      <p className="fs-5 fw-bold mb-0 text-success">Tax Exempt</p>
+                    </div>
+                  </div>
+                  <div className="stat-item d-flex align-items-center mb-3">
+                    <div className="stat-icon bg-light rounded-circle p-2 me-3">
+                      <i className="bi bi-currency-exchange fs-4"></i>
+                    </div>
+                    <div>
+                      <h6 className="mb-0">FCNR Deposits</h6>
+                      <p className="fs-5 fw-bold mb-0 text-success">Tax Exempt</p>
+                    </div>
+                  </div>
+                  <div className="stat-item d-flex align-items-center">
+                    <div className="stat-icon bg-light rounded-circle p-2 me-3">
+                      <i className="bi bi-globe fs-4"></i>
+                    </div>
+                    <div>
+                      <h6 className="mb-0">Foreign Income</h6>
+                      <p className="fs-5 fw-bold mb-0 text-success">Not Taxable in India</p>
+                    </div>
+                  </div>
                 </div>
-            </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
 
 
-            
-{/* Tools and Blogs Section */}
-<section className="py-5 bg-light">
-  <div className="container">
 
-    {/* Section Heading 
+      {/* Tools and Blogs Section */}
+      <section className="py-5 bg-light">
+        <div className="container">
+
+          {/* Section Heading 
     <div className="row text-center mb-5">
       <div className="col-12">
         <h2 className="section-heading">Explore Our Tools & Insights</h2>
@@ -92,7 +92,7 @@ const Resources = () => {
       </div>
     </div>*/}
 
-    {/* Calculator Cards 2x2 
+          {/* Calculator Cards 2x2 
     <div className="row g-4 mb-5">
       {[
         {
@@ -142,156 +142,156 @@ const Resources = () => {
     </div> */}
 
 
-<section id="tools_section" className="py-5 bg-light resource-section">
-  <div className="container">
+          <section id="tools_section" className="py-5 bg-light resource-section">
+            <div className="container">
 
-    {/* Section Heading */}
-    <div className="row text-center mb-5">
-      <div className="col-12">
-        <h2 className="section-heading">Explore Our Expert Tools</h2>
-        <div className="accent-center-underline mx-auto mb-3"></div>
-        <p className="lead">Empowering you with accurate calculators and timely compliance updates tailored for businesses.</p>
-      </div>
-    </div>
+              {/* Section Heading */}
+              <div className="row text-center mb-5">
+                <div className="col-12">
+                  <h2 className="section-heading">Explore Our Expert Tools</h2>
+                  <div className="accent-center-underline mx-auto mb-3"></div>
+                  <p className="lead">Empowering you with accurate calculators and timely compliance updates tailored for businesses.</p>
+                </div>
+              </div>
 
-    {/* Tool: Audit Requirement Calculator */}
-    <div className="row g-4 align-items-center mb-5">
-      <div className="col-lg-6 order-lg-2">
-        <div className="resource-image">
-          <img
-            src="/images/audit_tool.jpg"
-            alt="Audit Requirement Calculator"
-            className="img-fluid rounded-4 shadow-lg"
-          />
-          <div className="resource-badge">
-            <span className="badge badge-orange rounded-pill px-3 py-2 fs-6">Check Eligibility</span>
-          </div>
-        </div>
-      </div>
-      <div className="col-lg-6 order-lg-1">
-        <div className="pe-lg-5">
-          <div className="section-tag mb-2">
-            <span className="badge badge-orange px-3 py-2">FREE TOOL</span>
-          </div>
-          <h2 className="display-6 fw-bold mb-4">Audit Requirement Calculator</h2>
-          <div className="accent-underline mb-4"></div>
-          <p className="lead mb-4">Determine if your business requires a statutory audit based on turnover and activity type.</p>
-          <ul className="list-unstyled text-muted mb-4">
-            <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Based on latest audit thresholds</li>
-            <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> For businesses & professionals</li>
-            <li><i className="bi bi-check-circle-fill text-primary me-2"></i> Instant eligibility status</li>
-          </ul>
-          <a href="/resources/audit-calculator" className="btn btn-orange btn-lg px-4 shadow-sm">
-            <i className="bi bi-journal-check me-2"></i> Use Audit Calculator
-          </a>
-        </div>
-      </div>
-    </div>
+              {/* Tool: Audit Requirement Calculator */}
+              <div className="row g-4 align-items-center mb-5">
+                <div className="col-lg-6 order-lg-2">
+                  <div className="resource-image">
+                    <img
+                      src="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/audit_tool.jpg"
+                      alt="Audit Requirement Calculator"
+                      className="img-fluid rounded-4 shadow-lg"
+                    />
+                    <div className="resource-badge">
+                      <span className="badge badge-orange rounded-pill px-3 py-2 fs-6">Check Eligibility</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-6 order-lg-1">
+                  <div className="pe-lg-5">
+                    <div className="section-tag mb-2">
+                      <span className="badge badge-orange px-3 py-2">FREE TOOL</span>
+                    </div>
+                    <h2 className="display-6 fw-bold mb-4">Audit Requirement Calculator</h2>
+                    <div className="accent-underline mb-4"></div>
+                    <p className="lead mb-4">Determine if your business requires a statutory audit based on turnover and activity type.</p>
+                    <ul className="list-unstyled text-muted mb-4">
+                      <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Based on latest audit thresholds</li>
+                      <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> For businesses & professionals</li>
+                      <li><i className="bi bi-check-circle-fill text-primary me-2"></i> Instant eligibility status</li>
+                    </ul>
+                    <a href="/resources/audit-calculator" className="btn btn-orange btn-lg px-4 shadow-sm">
+                      <i className="bi bi-journal-check me-2"></i> Use Audit Calculator
+                    </a>
+                  </div>
+                </div>
+              </div>
 
-    {/* Tool: Corporate Tax Calculator */}
-    <div className="row g-4 align-items-center mb-5">
-      <div className="col-lg-6">
-        <div className="resource-image">
-          <img
-            src="/images/corporate_tax.jpg"
-            alt="Corporate Tax Calculator"
-            className="img-fluid rounded-4 shadow-lg"
-          />
-          <div className="resource-badge">
-            <span className="badge badge-orange rounded-pill px-3 py-2 fs-6">Tax Tool</span>
-          </div>
-        </div>
-      </div>
-      <div className="col-lg-6">
-        <div className="ps-lg-5">
-          <div className="section-tag mb-2">
-            <span className="badge badge-orange px-3 py-2">CALCULATOR</span>
-          </div>
-          <h2 className="display-6 fw-bold mb-4">Corporate Tax Calculator</h2>
-          <div className="accent-underline mb-4"></div>
-          <p className="lead mb-4">Calculate corporate income tax liability under Indian tax laws including cess and surcharges.</p>
-          <ul className="list-unstyled text-muted mb-4">
-            <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Based on current fiscal slabs</li>
-            <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Includes surcharge & cess</li>
-            <li><i className="bi bi-check-circle-fill text-primary me-2"></i> Optimized for private limited companies</li>
-          </ul>
-          <a href="/resources/corporate-tax" className="btn btn-orange btn-lg px-4 shadow-sm">
-            <i className="bi bi-calculator me-2"></i> Use Corporate Calculator
-          </a>
-        </div>
-      </div>
-    </div>
+              {/* Tool: Corporate Tax Calculator */}
+              <div className="row g-4 align-items-center mb-5">
+                <div className="col-lg-6">
+                  <div className="resource-image">
+                    <img
+                      src="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/corporate_tax.jpg"
+                      alt="Corporate Tax Calculator"
+                      className="img-fluid rounded-4 shadow-lg"
+                    />
+                    <div className="resource-badge">
+                      <span className="badge badge-orange rounded-pill px-3 py-2 fs-6">Tax Tool</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-6">
+                  <div className="ps-lg-5">
+                    <div className="section-tag mb-2">
+                      <span className="badge badge-orange px-3 py-2">CALCULATOR</span>
+                    </div>
+                    <h2 className="display-6 fw-bold mb-4">Corporate Tax Calculator</h2>
+                    <div className="accent-underline mb-4"></div>
+                    <p className="lead mb-4">Calculate corporate income tax liability under Indian tax laws including cess and surcharges.</p>
+                    <ul className="list-unstyled text-muted mb-4">
+                      <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Based on current fiscal slabs</li>
+                      <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Includes surcharge & cess</li>
+                      <li><i className="bi bi-check-circle-fill text-primary me-2"></i> Optimized for private limited companies</li>
+                    </ul>
+                    <a href="/resources/corporate-tax" className="btn btn-orange btn-lg px-4 shadow-sm">
+                      <i className="bi bi-calculator me-2"></i> Use Corporate Calculator
+                    </a>
+                  </div>
+                </div>
+              </div>
 
-    {/* Tool: Compliance Calendar */}
-    <div className="row g-4 align-items-center mb-5">
-      <div className="col-lg-6 order-lg-2">
-        <div className="resource-image">
-          <img
-            src="/images/compliance_calendar.jpg"
-            alt="Compliance Calendar"
-            className="img-fluid rounded-4 shadow-lg"
-          />
-          <div className="resource-badge">
-            <span className="badge badge-orange rounded-pill px-3 py-2 fs-6">Due Dates</span>
-          </div>
-        </div>
-      </div>
-      <div className="col-lg-6 order-lg-1">
-        <div className="pe-lg-5">
-          <div className="section-tag mb-2">
-            <span className="badge badge-orange px-3 py-2">CALENDAR</span>
-          </div>
-          <h2 className="display-6 fw-bold mb-4">Compliance Calendar</h2>
-          <div className="accent-underline mb-4"></div>
-          <p className="lead mb-4">Track important tax and regulatory due dates to avoid penalties and stay compliant.</p>
-          <ul className="list-unstyled text-muted mb-4">
-            <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Covers GST, Income Tax, TDS, ROC</li>
-            <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Real-time updates for deadlines</li>
-            <li><i className="bi bi-check-circle-fill text-primary me-2"></i> Year-round tracking</li>
-          </ul>
-          <a href="/resources/compliance-calendar" className="btn btn-orange btn-lg px-4 shadow-sm">
-            <i className="bi bi-calendar2-event me-2"></i> Use Compliance Calendar
-          </a>
-        </div>
-      </div>
-    </div>
+              {/* Tool: Compliance Calendar */}
+              <div className="row g-4 align-items-center mb-5">
+                <div className="col-lg-6 order-lg-2">
+                  <div className="resource-image">
+                    <img
+                      src="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/compliance_calendar.jpg"
+                      alt="Compliance Calendar"
+                      className="img-fluid rounded-4 shadow-lg"
+                    />
+                    <div className="resource-badge">
+                      <span className="badge badge-orange rounded-pill px-3 py-2 fs-6">Due Dates</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-6 order-lg-1">
+                  <div className="pe-lg-5">
+                    <div className="section-tag mb-2">
+                      <span className="badge badge-orange px-3 py-2">CALENDAR</span>
+                    </div>
+                    <h2 className="display-6 fw-bold mb-4">Compliance Calendar</h2>
+                    <div className="accent-underline mb-4"></div>
+                    <p className="lead mb-4">Track important tax and regulatory due dates to avoid penalties and stay compliant.</p>
+                    <ul className="list-unstyled text-muted mb-4">
+                      <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Covers GST, Income Tax, TDS, ROC</li>
+                      <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Real-time updates for deadlines</li>
+                      <li><i className="bi bi-check-circle-fill text-primary me-2"></i> Year-round tracking</li>
+                    </ul>
+                    <a href="/resources/compliance-calendar" className="btn btn-orange btn-lg px-4 shadow-sm">
+                      <i className="bi bi-calendar2-event me-2"></i> Use Compliance Calendar
+                    </a>
+                  </div>
+                </div>
+              </div>
 
-    {/* Tool: GST Requirement Checker */}
-    <div className="row g-4 align-items-center">
-      <div className="col-lg-6">
-        <div className="resource-image">
-          <img
-            src="/images/gst_checker.jpg"
-            alt="GST Requirement Checker"
-            className="img-fluid rounded-4 shadow-lg"
-          />
-          <div className="resource-badge">
-            <span className="badge badge-orange rounded-pill px-3 py-2 fs-6">GST Eligibility</span>
-          </div>
-        </div>
-      </div>
-      <div className="col-lg-6">
-        <div className="ps-lg-5">
-          <div className="section-tag mb-2">
-            <span className="badge badge-orange px-3 py-2">CHECKER</span>
-          </div>
-          <h2 className="display-6 fw-bold mb-4">GST Requirement Checker</h2>
-          <div className="accent-underline mb-4"></div>
-          <p className="lead mb-4">Check if your business needs GST registration based on turnover and services provided.</p>
-          <ul className="list-unstyled text-muted mb-4">
-            <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Based on current GST threshold</li>
-            <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Suitable for services & trading</li>
-            <li><i className="bi bi-check-circle-fill text-primary me-2"></i> Instant result with suggestion</li>
-          </ul>
-          <a href="/resources/gst-requirement" className="btn btn-orange btn-lg px-4 shadow-sm">
-            <i className="bi bi-receipt me-2"></i> Use GST Checker
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-{/* NRI Tax Calculator Section 
+              {/* Tool: GST Requirement Checker */}
+              <div className="row g-4 align-items-center">
+                <div className="col-lg-6">
+                  <div className="resource-image">
+                    <img
+                      src="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/gst_checker.jpg"
+                      alt="GST Requirement Checker"
+                      className="img-fluid rounded-4 shadow-lg"
+                    />
+                    <div className="resource-badge">
+                      <span className="badge badge-orange rounded-pill px-3 py-2 fs-6">GST Eligibility</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-6">
+                  <div className="ps-lg-5">
+                    <div className="section-tag mb-2">
+                      <span className="badge badge-orange px-3 py-2">CHECKER</span>
+                    </div>
+                    <h2 className="display-6 fw-bold mb-4">GST Requirement Checker</h2>
+                    <div className="accent-underline mb-4"></div>
+                    <p className="lead mb-4">Check if your business needs GST registration based on turnover and services provided.</p>
+                    <ul className="list-unstyled text-muted mb-4">
+                      <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Based on current GST threshold</li>
+                      <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Suitable for services & trading</li>
+                      <li><i className="bi bi-check-circle-fill text-primary me-2"></i> Instant result with suggestion</li>
+                    </ul>
+                    <a href="/resources/gst-requirement" className="btn btn-orange btn-lg px-4 shadow-sm">
+                      <i className="bi bi-receipt me-2"></i> Use GST Checker
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          {/* NRI Tax Calculator Section 
 <section id="calculator_section" className="py-5 resource-section">
   <div className="container">
     <div className="row g-4 align-items-center">
@@ -333,7 +333,7 @@ const Resources = () => {
   </div>
 </section>*/}
 
-{/* NRI Tax Filing Section 
+          {/* NRI Tax Filing Section 
 <section id="filing_section" className="py-5 resource-section">
   <div className="container">
     <div className="row g-4 align-items-center">
@@ -375,132 +375,132 @@ const Resources = () => {
   </div>
 </section>*/}
 
-    {/* Blog Highlights Section */}
-<div className="row mb-4">
-  <div className="col-12 text-center">
-    <h3 className="fw-bold text-dark mb-3">Recent Blog Highlights</h3>
-    <div className="accent-center-underline mx-auto mb-3"></div>
-    <p className="text-muted">Catch up with our latest knowledge drops from LinkedIn</p>
-  </div>
-</div>
+          {/* Blog Highlights Section */}
+          <div className="row mb-4">
+            <div className="col-12 text-center">
+              <h3 className="fw-bold text-dark mb-3">Recent Blog Highlights</h3>
+              <div className="accent-center-underline mx-auto mb-3"></div>
+              <p className="text-muted">Catch up with our latest knowledge drops from LinkedIn</p>
+            </div>
+          </div>
 
-<div className="row g-4 justify-content-center mb-5">
-  {[
-    {
-      url: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7309249758286528513",
-      date: "April 1, 2024"
-    },
-    {
-      url: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7306616750173736960",
-      date: "March 28, 2024"
-    },
-    {
-      url: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7304068620878327808",
-      date: "March 20, 2024"
-    }
-  ].map((blog, idx) => (
-    <div className="col-md-6 col-lg-4" key={idx}>
-      <div className="bg-white rounded-4 shadow-sm overflow-hidden d-flex flex-column h-100">
-        <iframe
-          src={blog.url}
-          width="100%"
-          height="500" // 👈 Increased height for full post visibility
-          frameBorder="0"
-          allowFullScreen
-          title={`Blog ${idx}`}
-          style={{
-            border: "none",
-            borderRadius: "16px 16px 0 0",
-            width: "100%",
-            minHeight: "500px"
-          }}
-        ></iframe>
-        <div className="p-3 text-end text-muted small border-top">
-          <i className="bi bi-calendar-event me-1"></i>{blog.date}
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
-
-<div className="text-center">
-  <Link href="/resources/blogs" className="btn btn-outline-dark rounded-pill px-4">
-    <i className="bi bi-newspaper me-2"></i>View All Blogs
-  </Link>
-</div>
-
-
-  </div>
-
-</section>
-
-
-            {/* Newsletter & CTA Section */}
-            <section className="cta-section py-5 bg-white">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-12">
-                            <div className="cta-card p-5 rounded-4 shadow text-white position-relative overflow-hidden">
-                                {/* Decorative elements */}
-                                <div className="cta-shapes">
-                                    <div className="shape shape-1"></div>
-                                    <div className="shape shape-2"></div>
-                                    <div className="shape shape-3"></div>
-                                </div>
-
-                                <div className="row align-items-center position-relative">
-                                    <div className="col-lg-7">
-                                        <h2 className="display-6 fw-bold mb-3">Need Personalized Assistance?</h2>
-                                        <p className="lead mb-4">Our team of global tax and incorporation experts is ready to help you navigate the complexities of international business and finance.</p>
-                                        <div className="d-flex flex-wrap gap-3">
-                                            <Link href="/contact" className="btn btn-light btn-lg px-4 shadow-sm">
-                                                <i className="bi bi-chat-dots me-2"></i> Contact Our Experts
-                                            </Link>
-                                            <Link href="/about" className="btn btn-outline-light btn-lg px-4">
-                                                <i className="bi bi-info-circle me-2"></i> About Our Team
-                                            </Link>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-5 mt-4 mt-lg-0">
-                                        <div className="contact-card bg-white p-4 rounded-4 shadow-sm text-dark">
-                                            <h4 className="mb-3">Quick Connect</h4>
-                                            <div className="contact-item d-flex align-items-center mb-3">
-                                                <div className="contact-icon me-3">
-                                                    <i className="bi bi-envelope"></i>
-                                                </div>
-                                                <div>
-                                                    <h6 className="mb-0">Email Us</h6>
-                                                    <a href="mailto:contact@theangelservices.com" className="text-dark text-decoration-none">contact@theangelservices.com</a>
-                                                </div>
-                                            </div>
-                                            <div className="contact-item d-flex align-items-center mb-3">
-                                                <div className="contact-icon me-3">
-                                                    <i className="bi bi-telephone"></i>
-                                                </div>
-                                                <div>
-                                                    <h6 className="mb-0">Call Us</h6>
-                                                    <a href="tel:+65-82002370" className="text-dark text-decoration-none">+6582002370</a>
-                                                </div>
-                                            </div>
-                                            <div className="contact-item d-flex align-items-center">
-                                                <div className="contact-icon me-3">
-                                                    <i className="bi bi-whatsapp"></i>
-                                                </div>
-                                                <div>
-                                                    <h6 className="mb-0">WhatsApp</h6>
-                                                    <a href="https://wa.me/6582002370" className="text-dark text-decoration-none">Message us on WhatsApp</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+          <div className="row g-4 justify-content-center mb-5">
+            {[
+              {
+                url: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7309249758286528513",
+                date: "April 1, 2024"
+              },
+              {
+                url: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7306616750173736960",
+                date: "March 28, 2024"
+              },
+              {
+                url: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7304068620878327808",
+                date: "March 20, 2024"
+              }
+            ].map((blog, idx) => (
+              <div className="col-md-6 col-lg-4" key={idx}>
+                <div className="bg-white rounded-4 shadow-sm overflow-hidden d-flex flex-column h-100">
+                  <iframe
+                    src={blog.url}
+                    width="100%"
+                    height="500" // 👈 Increased height for full post visibility
+                    frameBorder="0"
+                    allowFullScreen
+                    title={`Blog ${idx}`}
+                    style={{
+                      border: "none",
+                      borderRadius: "16px 16px 0 0",
+                      width: "100%",
+                      minHeight: "500px"
+                    }}
+                  ></iframe>
+                  <div className="p-3 text-end text-muted small border-top">
+                    <i className="bi bi-calendar-event me-1"></i>{blog.date}
+                  </div>
                 </div>
-            </section>
+              </div>
+            ))}
+          </div>
 
-            <style jsx>{`
+          <div className="text-center">
+            <Link href="/resources/blogs" className="btn btn-outline-dark rounded-pill px-4">
+              <i className="bi bi-newspaper me-2"></i>View All Blogs
+            </Link>
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+      {/* Newsletter & CTA Section */}
+      <section className="cta-section py-5 bg-white">
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <div className="cta-card p-5 rounded-4 shadow text-white position-relative overflow-hidden">
+                {/* Decorative elements */}
+                <div className="cta-shapes">
+                  <div className="shape shape-1"></div>
+                  <div className="shape shape-2"></div>
+                  <div className="shape shape-3"></div>
+                </div>
+
+                <div className="row align-items-center position-relative">
+                  <div className="col-lg-7">
+                    <h2 className="display-6 fw-bold mb-3">Need Personalized Assistance?</h2>
+                    <p className="lead mb-4">Our team of global tax and incorporation experts is ready to help you navigate the complexities of international business and finance.</p>
+                    <div className="d-flex flex-wrap gap-3">
+                      <Link href="/contact" className="btn btn-light btn-lg px-4 shadow-sm">
+                        <i className="bi bi-chat-dots me-2"></i> Contact Our Experts
+                      </Link>
+                      <Link href="/about" className="btn btn-outline-light btn-lg px-4">
+                        <i className="bi bi-info-circle me-2"></i> About Our Team
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="col-lg-5 mt-4 mt-lg-0">
+                    <div className="contact-card bg-white p-4 rounded-4 shadow-sm text-dark">
+                      <h4 className="mb-3">Quick Connect</h4>
+                      <div className="contact-item d-flex align-items-center mb-3">
+                        <div className="contact-icon me-3">
+                          <i className="bi bi-envelope"></i>
+                        </div>
+                        <div>
+                          <h6 className="mb-0">Email Us</h6>
+                          <a href="mailto:contact@theangelservices.com" className="text-dark text-decoration-none">contact@theangelservices.com</a>
+                        </div>
+                      </div>
+                      <div className="contact-item d-flex align-items-center mb-3">
+                        <div className="contact-icon me-3">
+                          <i className="bi bi-telephone"></i>
+                        </div>
+                        <div>
+                          <h6 className="mb-0">Call Us</h6>
+                          <a href="tel:+65-82002370" className="text-dark text-decoration-none">+6582002370</a>
+                        </div>
+                      </div>
+                      <div className="contact-item d-flex align-items-center">
+                        <div className="contact-icon me-3">
+                          <i className="bi bi-whatsapp"></i>
+                        </div>
+                        <div>
+                          <h6 className="mb-0">WhatsApp</h6>
+                          <a href="https://wa.me/6582002370" className="text-dark text-decoration-none">Message us on WhatsApp</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <style jsx>{`
 
        .ratio-16x9 {
   aspect-ratio: 16 / 9;
@@ -895,8 +895,8 @@ ul.list-unstyled i {
           }
         }
       `}</style>
-        </>
-    );
+    </>
+  );
 };
 
 export default Resources; 

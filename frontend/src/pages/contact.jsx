@@ -12,7 +12,7 @@ export default function Contact() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
-  const [isClient, setIsClient] = useState(false); // used to prevent hydration issues
+  const [isClient, setIsClient] = useState(false); // used to prevent hydration issue
 
   useEffect(() => {
     setIsClient(true); // ensures content runs only on the client

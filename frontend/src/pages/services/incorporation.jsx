@@ -226,7 +226,7 @@ const IncorporationServices = () => {
                 }
 
                 .hero {
-  background-image: url("/images/incorporation-hero.jpg");
+  background-image: url("https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/incorporation-hero.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

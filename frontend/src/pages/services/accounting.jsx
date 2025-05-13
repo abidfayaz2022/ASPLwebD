@@ -152,8 +152,8 @@ const AccountingServices = () => {
                             // For the last (8th) card, center it on large screens
                             if (arr.length === 8 && index === 7) {
                                 return (
-                                  <div key={index} className="col-md-6 col-lg-4 mb-4">
-                              
+                                    <div key={index} className="col-md-6 col-lg-4 mb-4">
+
                                         <div className="card h-100 service-card border-0 shadow-lg rounded-4 overflow-hidden">
                                             <div className="card-body p-4">
                                                 <div className="service-icon mb-4">
@@ -233,7 +233,7 @@ const AccountingServices = () => {
                 }
 
 .hero {
-  background-image: url("/images/accounting-hero.jpg");
+  background-image: url("https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/accounting-hero.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
