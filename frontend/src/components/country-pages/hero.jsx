@@ -15,13 +15,14 @@ export default function CountryHero({
     <section className="country-hero-section position-relative d-flex align-items-center overflow-hidden">
       {/* Diagonal Background Image */}
       <div className="diagonal-image-wrapper">
-        <Image
-          src={image?.startsWith('/') ? image : `/images/${image}`}
-          alt={title}
-          fill
-          className="diagonal-image"
-          priority
-        />
+<Image
+  src={image}
+  alt={title}
+  fill
+  className="diagonal-image"
+  priority
+/>
+
       </div>
 
       {/* Left Dotted Pattern */}

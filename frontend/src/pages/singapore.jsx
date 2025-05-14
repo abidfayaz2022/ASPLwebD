@@ -16,7 +16,7 @@ export default function Singapore() {
       <CountryHero
         title="Doing Business in Singapore"
         subtitle="Ranked among the world’s most business-friendly nations, Singapore is your strategic launchpad into Asia. With no capital gains tax, low corporate rates, and a transparent system—Singapore offers the perfect foundation for regional and global expansion."
-        image="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/Rajat.jpg/images/singapore-illustration.png"
+        image="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/singapore-illustration.png"
         cta1Text="Start Your Journey"
         cta2Text="Explore Services"
         cta1Link="#contact"
@@ -107,7 +107,7 @@ export default function Singapore() {
   subtitle="Use the contact form to schedule a consultation, request pricing, or ask specific questions about your business needs."
   ctaText="Get in Touch"
   ctaLink="/contact"
-  image="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/Rajat.jpg/images/singapore-cta.jpg"
+  image="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/singapore-cta.jpg"
 />
 
 

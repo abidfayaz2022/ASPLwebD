@@ -20,133 +20,59 @@ const JobApplicationForm = ({ jobTitle }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: Implement form submission logic
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
+
+    try {
+      let resumeUrl = null;
+
+      // Step 1: Upload CV to S3
+      if (formData.cv) {
+        const s3Res = await fetch('/api/s3-upload-url', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fileName: formData.cv.name,
+            fileType: formData.cv.type,
+          }),
+        });
+
+        const { uploadUrl, fileUrl } = await s3Res.json();
+
+        await fetch(uploadUrl, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': formData.cv.type,
+          },
+          body: formData.cv,
+        });
+
+        resumeUrl = fileUrl;
+      }
+
+      // Step 2: Send form data to sendEmail API
+      const emailRes = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          coverLetter: formData.coverLetter,
+          jobTitle,
+          resumeUrl,
+        }),
+      });
+
+      const result = await emailRes.json();
+      if (result.success) {
+        setIsSubmitted(true);
+      } else {
+        alert('Failed to send application.');
+      }
+    } catch (error) {
+      console.error('Submission Error:', error);
+      alert('An error occurred. Please try again.');
+    }
   };
-
-
-
-  // Handle form submission
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setIsLoading(true);
-  //   setError(null);
-
-  //   try {
-  //     // Create FormData object to handle file upload
-  //     const submitData = new FormData();
-  //     submitData.append('fullName', formData.fullName);
-  //     submitData.append('email', formData.email);
-  //     submitData.append('phone', formData.phone);
-  //     submitData.append('coverLetter', formData.coverLetter);
-  //     submitData.append('jobTitle', jobTitle);
-
-  //     // Append CV file if it exists
-  //     if (formData.cv) {
-  //       submitData.append('cv', formData.cv);
-  //     }
-
-  //     // Make API call to submit the application
-  //     const response = await fetch('/api/careers/apply', {
-  //       method: 'POST',
-  //       body: submitData,
-  //       // Don't set Content-Type header - browser will set it automatically with boundary for FormData
-  //     });
-
-  //     if (!response.ok) {
-  //       throw new Error('Failed to submit application. Please try again.');
-  //     }
-
-  //     const data = await response.json();
-
-  //     // Handle successful submission
-  //     setIsSubmitted(true);
-  //     console.log('Application submitted successfully:', data);
-
-  //   } catch (err) {
-  //     // Handle submission errors
-  //     setError(err.message || 'An error occurred while submitting your application. Please try again.');
-  //     console.error('Error submitting application:', err);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
-
-  // // Show loading state
-  // if (isLoading) {
-  //   return (
-  //     <div className="container py-5">
-  //       <div className="row justify-content-center">
-  //         <div className="col-md-8">
-  //           <div className="card shadow-lg border-0 rounded-4">
-  //             <div className="card-body p-5 text-center">
-  //               <div className="spinner-border text-warning mb-4" role="status" style={{ width: '3rem', height: '3rem' }}>
-  //                 <span className="visually-hidden">Loading...</span>
-  //               </div>
-  //               <h2 className="mb-3">Submitting Application...</h2>
-  //               <p className="lead text-muted">Please wait while we process your application.</p>
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
-  // }
-
-  // // Show success message
-  // if (isSubmitted) {
-  //   return (
-  //     <div className="container py-5">
-  //       <div className="row justify-content-center">
-  //         <div className="col-md-8">
-  //           <div className="card shadow-lg border-0 rounded-4">
-  //             <div className="card-body p-5 text-center">
-  //               <div className="mb-4">
-  //                 <i className="bi bi-check-circle-fill text-success" style={{ fontSize: '4rem' }}></i>
-  //               </div>
-  //               <h2 className="mb-3">Application Submitted!</h2>
-  //               <p className="lead text-muted mb-4">
-  //                 Thank you for applying for the {jobTitle} position. We will review your application and get back to you soon.
-  //               </p>
-  //               <a href="/career" className="btn btn-lg px-5 py-3 fw-semibold" style={{ backgroundColor: '#fcb900', color: '#000' }}>
-  //                 Back to Careers
-  //               </a>
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
-  // }
-
-  // // Show error message if there's an error
-  // if (error) {
-  //   return (
-  //     <div className="container py-5">
-  //       <div className="row justify-content-center">
-  //         <div className="col-md-8">
-  //           <div className="card shadow-lg border-0 rounded-4">
-  //             <div className="card-body p-5 text-center">
-  //               <div className="mb-4">
-  //                 <i className="bi bi-exclamation-circle-fill text-danger" style={{ fontSize: '4rem' }}></i>
-  //               </div>
-  //               <h2 className="mb-3">Submission Error</h2>
-  //               <p className="lead text-muted mb-4">{error}</p>
-  //               <button
-  //                 onClick={() => setError(null)}
-  //                 className="btn btn-lg px-5 py-3 fw-semibold"
-  //                 style={{ backgroundColor: '#fcb900', color: '#000' }}
-  //               >
-  //                 Try Again
-  //               </button>
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
-  // }
 
   if (isSubmitted) {
     return (

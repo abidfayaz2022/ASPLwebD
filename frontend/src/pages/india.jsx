@@ -15,8 +15,8 @@ export default function India() {
       {/* Hero Section */}
       <CountryHero
         title="Doing Business in India"
-        subtitle="India is one of the fastest-growing major economies—offering vast market potential, skilled talent, and a pro-business environment. With economic liberalisation, digital transformation, and strong government support for entrepreneurship, India is the ideal destination for long-term expansion."
-        image="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/Rajat.jpg/images/india-illustration.png"
+        subtitle="India is one of the fastest-growing major economies—offering vast market potential, skilled talent, and a pro-business environment. Economic liberalisation, digital transformation, and strong government support for entrepreneurship make India an ideal destination for long-term expansion."
+        image="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/india-illustration.png"
         cta1Text="Start Your Journey"
         cta2Text="Explore Services"
         cta1Link="#contact"
@@ -76,7 +76,7 @@ export default function India() {
           {
             title: "Incorporation Checklist",
             desc: "Step-by-step guide for setting up an entity in India as a foreign company.",
-            icon: "checklist"
+            icon: "clipboard-check"
           },
           {
             title: "India Tax Calendar",
@@ -112,7 +112,7 @@ export default function India() {
         subtitle="Use the contact form to schedule a consultation or request a proposal tailored to your business goals."
         ctaText="Get in Touch"
         ctaLink="/contact"
-        image="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/Rajat.jpg/images/india-cta.jpg"
+        image="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/india-cta.jpg"
       />
     </>
   );

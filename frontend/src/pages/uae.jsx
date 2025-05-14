@@ -16,7 +16,7 @@ export default function UAE() {
       <CountryHero
         title="Doing Business in the UAE"
         subtitle="UAE is a global business gateway—offering zero personal income tax, strategic connectivity, and over 40 free zones. Its world-class infrastructure, innovation hubs, and ease of doing business make it the preferred destination for Middle East and global expansion."
-        image="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/Rajat.jpg/images/uae-illustration.png"
+        image="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/uae-illustration.png"
         cta1Text="Start Your Journey"
         cta2Text="Explore Services"
         cta1Link="#contact"
@@ -112,7 +112,7 @@ export default function UAE() {
         subtitle="Use our contact form to start your UAE journey or book a tailored consultation."
         ctaText="Get in Touch"
         ctaLink="/contact"
-        image="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/Rajat.jpg/images/uae-cta.jpg"
+        image="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/uae-cta.jpg"
       />
     </>
   );

@@ -1,4 +1,12 @@
 import nodemailer from 'nodemailer';
+import AWS from 'aws-sdk';
+import path from 'path';
+
+const s3 = new AWS.S3({
+  accessKeyId: 'AKIAQRMGVE3O3DDDQBPB', // replace or move to env in production
+  secretAccessKey: 'q3A+tVk2RpFAMflViBz6F4fmLTRfE3z9a4hTD4+B',
+  region: 'ap-southeast-1',
+});
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -22,15 +30,28 @@ export default async function handler(req, res) {
       secure: true,
       auth: {
         user: "info@theangelservices.com",
-        pass: "klxl xwxi vuqt gprn" // 🔐 Remember to use environment variables in production!
+        pass: "klxl xwxi vuqt gprn" // replace with env in prod
       }
     });
 
-    const isContactForm = formData?.message !== undefined;
+    const isContactForm = formData?.message !== undefined && !formData?.jobTitle;
+    const isJobApplication = formData?.resumeUrl !== undefined;
 
     const formattedUserData = isContactForm
       ? formatContactSubmission(formData)
+      : isJobApplication
+      ? formatJobApplicationSubmission(formData)
       : formatIncorporationSubmission(formData);
+
+    // Resume attachment if job application
+    let attachment = null;
+    if (isJobApplication && formData.resumeUrl) {
+      try {
+        attachment = await fetchFileFromS3(formData.resumeUrl);
+      } catch (err) {
+        console.error("Failed to fetch resume from S3:", err);
+      }
+    }
 
     const emailBody = `
       <div style="font-family: Arial, sans-serif; max-width: 800px; margin: auto; border: 1px solid #ddd; padding: 30px; border-radius: 10px;">
@@ -43,8 +64,11 @@ export default async function handler(req, res) {
       to: "info@theangelservices.com",
       subject: isContactForm
         ? "New Contact Form Submission - Angel Services"
+        : isJobApplication
+        ? `New Job Application - ${formData.jobTitle || 'Unknown Position'}`
         : "New Incorporation Submission - Angel Services",
       html: emailBody,
+      attachments: attachment ? [attachment] : []
     };
 
     const userMailOptions = {
@@ -70,7 +94,27 @@ export default async function handler(req, res) {
   }
 }
 
-// Email formatting for contact form
+// Helper: Fetch file from S3 and return attachment object
+const fetchFileFromS3 = async (fileUrl) => {
+  const url = new URL(fileUrl);
+  const bucket = url.hostname.split('.')[0]; // 'angel-frontend'
+  const key = decodeURIComponent(url.pathname.slice(1)); // remove leading '/'
+
+  const s3Params = {
+    Bucket: bucket,
+    Key: key,
+  };
+
+  const s3Object = await s3.getObject(s3Params).promise();
+
+  return {
+    filename: path.basename(key),
+    content: s3Object.Body,
+    contentType: s3Object.ContentType,
+  };
+};
+
+// Contact form formatting
 const formatContactSubmission = (data) => {
   return `
     <h2 style="color: #333;">New Contact Form Submission</h2>
@@ -84,7 +128,7 @@ const formatContactSubmission = (data) => {
   `;
 };
 
-// Email formatting for incorporation forms
+// Incorporation formatting
 const formatIncorporationSubmission = (data) => {
   const renderNested = (obj, depth = 0) => {
     return Object.entries(obj)
@@ -116,6 +160,20 @@ const formatIncorporationSubmission = (data) => {
     <h2 style="color: #333;">New Incorporation Submission</h2>
     <table style="width: 100%; border-collapse: collapse; border: 1px solid #ccc;">
       ${renderNested(data)}
+    </table>
+  `;
+};
+
+// Job application formatting
+const formatJobApplicationSubmission = (data) => {
+  return `
+    <h2 style="color: #333;">New Job Application</h2>
+    <table style="border-collapse: collapse; width: 100%; border: 1px solid #ccc;">
+      <tr><td style="padding: 10px; border: 1px solid #ccc;"><strong>Full Name:</strong></td><td>${data.fullName || "N/A"}</td></tr>
+      <tr><td style="padding: 10px; border: 1px solid #ccc;"><strong>Email:</strong></td><td>${data.email || "N/A"}</td></tr>
+      <tr><td style="padding: 10px; border: 1px solid #ccc;"><strong>Phone:</strong></td><td>${data.phone || "N/A"}</td></tr>
+      <tr><td style="padding: 10px; border: 1px solid #ccc;"><strong>Job Title:</strong></td><td>${data.jobTitle || "N/A"}</td></tr>
+      <tr><td style="padding: 10px; border: 1px solid #ccc;"><strong>Cover Letter:</strong></td><td>${(data.coverLetter || "N/A").replace(/\n/g, "<br/>")}</td></tr>
     </table>
   `;
 };
