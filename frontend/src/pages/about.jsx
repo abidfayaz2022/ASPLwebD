@@ -21,7 +21,7 @@ const TeamCard = ({ member }) => (
       <h4 style={{ fontSize: 'clamp(1.1rem, 3vw, 1.5rem)' }}>{member.name}</h4>
       <p className="text-muted" style={{ fontSize: 'clamp(0.9rem, 2vw, 1rem)' }}>{member.role}</p>
 
-      {/* 🔽 Wrap this section in a .team-member-description div */}
+      {/* 🔽 Wrap this section in a.team-member-description div */}
       <div className="team-member-description">
         <p style={{ fontSize: 'clamp(0.9rem, 2vw, 1rem)', textAlign: 'justify' }}>{member.description}</p>
         {(member.linkedin || member.email) && (
