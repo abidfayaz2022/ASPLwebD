@@ -1,10 +1,55 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const Resources = () => {
+  const [selectedCountry, setSelectedCountry] = useState('all');
+
+  const tools = [
+    {
+      title: "Audit Requirement Calculator",
+      desc: "Determine if your business requires a statutory audit based on turnover and activity type.",
+      icon: "bi-journal-check",
+      link: "/resources/audit-calculator",
+      country: "india",
+      image: "https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/audit_tool.jpg"
+    },
+    {
+      title: "Corporate Tax Calculator",
+      desc: "Calculate corporate income tax liability under Indian tax laws including cess and surcharges.",
+      icon: "bi-calculator",
+      link: "/resources/corporate-tax",
+      country: ["india", "singapore"],
+      image: "https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/corporate_tax.jpg"
+    },
+    {
+      title: "Compliance Calendar",
+      desc: "Track important tax and regulatory due dates to avoid penalties and stay compliant.",
+      icon: "bi-calendar2-event",
+      link: "/resources/compliance-calendar",
+      country: "all",
+      image: "https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/compliance_calendar.jpg"
+    },
+    {
+      title: "GST Requirement Checker",
+      desc: "Check if your business needs GST registration based on turnover and services provided.",
+      icon: "bi-receipt",
+      link: "/resources/gst-requirement",
+      country: ["india", "uae"],
+      image: "https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/gst_checker.jpg"
+    },
+  ]
+
+  const filteredTools = tools.filter(tool => {
+    if (selectedCountry === 'all') return true;
+    if (Array.isArray(tool.country)) {
+      return tool.country.includes(selectedCountry);
+    }
+    return tool.country === selectedCountry;
+  });
+
   return (
     <>
       {/* Hero Section with Enhanced Design */}
@@ -144,7 +189,6 @@ const Resources = () => {
 
           <section id="tools_section" className="py-5 bg-light resource-section">
             <div className="container">
-
               {/* Section Heading */}
               <div className="row text-center mb-5">
                 <div className="col-12">
@@ -154,141 +198,77 @@ const Resources = () => {
                 </div>
               </div>
 
-              {/* Tool: Audit Requirement Calculator */}
-              <div className="row g-4 align-items-center mb-5">
-                <div className="col-lg-6 order-lg-2">
-                  <div className="resource-image">
-                    <img
-                      src="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/audit_tool.jpg"
-                      alt="Audit Requirement Calculator"
-                      className="img-fluid rounded-4 shadow-lg"
-                    />
-                    <div className="resource-badge">
-                      <span className="badge badge-orange rounded-pill px-3 py-2 fs-6">Check Eligibility</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-6 order-lg-1">
-                  <div className="pe-lg-5">
-                    <div className="section-tag mb-2">
-                      <span className="badge badge-orange px-3 py-2">FREE TOOL</span>
-                    </div>
-                    <h2 className="display-6 fw-bold mb-4">Audit Requirement Calculator</h2>
-                    <div className="accent-underline mb-4"></div>
-                    <p className="lead mb-4">Determine if your business requires a statutory audit based on turnover and activity type.</p>
-                    <ul className="list-unstyled text-muted mb-4">
-                      <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Based on latest audit thresholds</li>
-                      <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> For businesses & professionals</li>
-                      <li><i className="bi bi-check-circle-fill text-primary me-2"></i> Instant eligibility status</li>
-                    </ul>
-                    <a href="/resources/audit-calculator" className="btn btn-orange btn-lg px-4 shadow-sm">
-                      <i className="bi bi-journal-check me-2"></i> Use Audit Calculator
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Tool: Corporate Tax Calculator */}
-              <div className="row g-4 align-items-center mb-5">
-                <div className="col-lg-6">
-                  <div className="resource-image">
-                    <img
-                      src="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/corporate_tax.jpg"
-                      alt="Corporate Tax Calculator"
-                      className="img-fluid rounded-4 shadow-lg"
-                    />
-                    <div className="resource-badge">
-                      <span className="badge badge-orange rounded-pill px-3 py-2 fs-6">Tax Tool</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-6">
-                  <div className="ps-lg-5">
-                    <div className="section-tag mb-2">
-                      <span className="badge badge-orange px-3 py-2">CALCULATOR</span>
-                    </div>
-                    <h2 className="display-6 fw-bold mb-4">Corporate Tax Calculator</h2>
-                    <div className="accent-underline mb-4"></div>
-                    <p className="lead mb-4">Calculate corporate income tax liability under Indian tax laws including cess and surcharges.</p>
-                    <ul className="list-unstyled text-muted mb-4">
-                      <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Based on current fiscal slabs</li>
-                      <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Includes surcharge & cess</li>
-                      <li><i className="bi bi-check-circle-fill text-primary me-2"></i> Optimized for private limited companies</li>
-                    </ul>
-                    <a href="/resources/corporate-tax" className="btn btn-orange btn-lg px-4 shadow-sm">
-                      <i className="bi bi-calculator me-2"></i> Use Corporate Calculator
-                    </a>
+              {/* Filter Buttons */}
+              <div className="row mb-5">
+                <div className="col-12 text-center">
+                  <div className="d-flex flex-wrap justify-content-center gap-3">
+                    <button
+                      className={`d-flex align-items-center gap-2 rounded-pill px-4 py-2 fw-semibold ${selectedCountry === 'all' ? 'active-filter' : 'inactive-filter'}`}
+                      onClick={() => setSelectedCountry('all')}
+                    >
+                      <i className="bi bi-grid"></i> All Tools
+                    </button>
+                    <button
+                      className={`d-flex align-items-center gap-2 rounded-pill px-4 py-2 fw-semibold ${selectedCountry === 'india' ? 'active-filter' : 'inactive-filter'}`}
+                      onClick={() => setSelectedCountry('india')}
+                    >
+                      <i className="bi bi-geo-alt"></i> India
+                    </button>
+                    <button
+                      className={`d-flex align-items-center gap-2 rounded-pill px-4 py-2 fw-semibold ${selectedCountry === 'uae' ? 'active-filter' : 'inactive-filter'}`}
+                      onClick={() => setSelectedCountry('uae')}
+                    >
+                      <i className="bi bi-geo-alt"></i> UAE
+                    </button>
+                    <button
+                      className={`d-flex align-items-center gap-2 rounded-pill px-4 py-2 fw-semibold ${selectedCountry === 'singapore' ? 'active-filter' : 'inactive-filter'}`}
+                      onClick={() => setSelectedCountry('singapore')}
+                    >
+                      <i className="bi bi-geo-alt"></i> Singapore
+                    </button>
                   </div>
                 </div>
               </div>
 
-              {/* Tool: Compliance Calendar */}
-              <div className="row g-4 align-items-center mb-5">
-                <div className="col-lg-6 order-lg-2">
-                  <div className="resource-image">
-                    <img
-                      src="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/compliance_calendar.jpg"
-                      alt="Compliance Calendar"
-                      className="img-fluid rounded-4 shadow-lg"
-                    />
-                    <div className="resource-badge">
-                      <span className="badge badge-orange rounded-pill px-3 py-2 fs-6">Due Dates</span>
+              {/* Tools Grid */}
+              {filteredTools.map((tool, index) => (
+                <div className="row g-4 align-items-center mb-5" key={index}>
+                  <div className={`col-lg-6 ${index % 2 === 1 ? 'order-lg-2' : ''}`}>
+                    <div className="resource-image">
+                      <img
+                        src={tool.image}
+                        alt={tool.title}
+                        className="img-fluid rounded-4 shadow-lg"
+                      />
+                      <div className="resource-badge">
+                        <span className="badge badge-orange rounded-pill px-3 py-2 fs-6">
+                          {Array.isArray(tool.country)
+                            ? tool.country.map(c => c.charAt(0).toUpperCase() + c.slice(1)).join(' & ')
+                            : tool.country.charAt(0).toUpperCase() + tool.country.slice(1)}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className={`col-lg-6 ${index % 2 === 1 ? 'order-lg-1' : ''}`}>
+                    <div className={index % 2 === 1 ? 'pe-lg-5' : 'ps-lg-5'}>
+                      <div className="section-tag mb-2">
+                        <span className="badge badge-orange px-3 py-2">TOOL</span>
+                      </div>
+                      <h2 className="display-6 fw-bold mb-4">{tool.title}</h2>
+                      <div className="accent-underline mb-4"></div>
+                      <p className="lead mb-4">{tool.desc}</p>
+                      <ul className="list-unstyled text-muted mb-4">
+                        <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Based on latest regulations</li>
+                        <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Easy to use interface</li>
+                        <li><i className="bi bi-check-circle-fill text-primary me-2"></i> Instant results</li>
+                      </ul>
+                      <a href={tool.link} className="btn btn-orange btn-lg px-4 shadow-sm">
+                        <i className={`bi ${tool.icon} me-2`}></i> Use {tool.title.split(" ")[0]}
+                      </a>
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-6 order-lg-1">
-                  <div className="pe-lg-5">
-                    <div className="section-tag mb-2">
-                      <span className="badge badge-orange px-3 py-2">CALENDAR</span>
-                    </div>
-                    <h2 className="display-6 fw-bold mb-4">Compliance Calendar</h2>
-                    <div className="accent-underline mb-4"></div>
-                    <p className="lead mb-4">Track important tax and regulatory due dates to avoid penalties and stay compliant.</p>
-                    <ul className="list-unstyled text-muted mb-4">
-                      <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Covers GST, Income Tax, TDS, ROC</li>
-                      <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Real-time updates for deadlines</li>
-                      <li><i className="bi bi-check-circle-fill text-primary me-2"></i> Year-round tracking</li>
-                    </ul>
-                    <a href="/resources/compliance-calendar" className="btn btn-orange btn-lg px-4 shadow-sm">
-                      <i className="bi bi-calendar2-event me-2"></i> Use Compliance Calendar
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Tool: GST Requirement Checker */}
-              <div className="row g-4 align-items-center">
-                <div className="col-lg-6">
-                  <div className="resource-image">
-                    <img
-                      src="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/gst_checker.jpg"
-                      alt="GST Requirement Checker"
-                      className="img-fluid rounded-4 shadow-lg"
-                    />
-                    <div className="resource-badge">
-                      <span className="badge badge-orange rounded-pill px-3 py-2 fs-6">GST Eligibility</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-6">
-                  <div className="ps-lg-5">
-                    <div className="section-tag mb-2">
-                      <span className="badge badge-orange px-3 py-2">CHECKER</span>
-                    </div>
-                    <h2 className="display-6 fw-bold mb-4">GST Requirement Checker</h2>
-                    <div className="accent-underline mb-4"></div>
-                    <p className="lead mb-4">Check if your business needs GST registration based on turnover and services provided.</p>
-                    <ul className="list-unstyled text-muted mb-4">
-                      <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Based on current GST threshold</li>
-                      <li className="mb-2"><i className="bi bi-check-circle-fill text-primary me-2"></i> Suitable for services & trading</li>
-                      <li><i className="bi bi-check-circle-fill text-primary me-2"></i> Instant result with suggestion</li>
-                    </ul>
-                    <a href="/resources/gst-requirement" className="btn btn-orange btn-lg px-4 shadow-sm">
-                      <i className="bi bi-receipt me-2"></i> Use GST Checker
-                    </a>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </section>
           {/* NRI Tax Calculator Section 
@@ -893,6 +873,75 @@ ul.list-unstyled i {
           .contact-card {
             transform: none;
           }
+        }
+
+        .btn-outline-orange {
+            color: #fcb900;
+            border: 2px solid #fcb900;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-orange:hover {
+            background: #fcb900;
+            color: #000;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .filter-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-buttons .btn {
+                width: 200px;
+                margin: 0.25rem 0;
+            }
+        }
+
+        .active-filter,
+        .inactive-filter {
+            cursor: pointer;
+        }
+
+        .active-filter {
+            background-color: #fcb900;
+            color: #000;
+            border: none;
+            box-shadow: 0 4px 12px rgba(252, 185, 0, 0.25);
+            transform: scale(1.05);
+        }
+
+        .inactive-filter {
+            background-color: #fffbe6;
+            color: #000;
+            border: 2px solid #fcb900;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(252, 185, 0, 0.1);
+        }
+
+        .inactive-filter:hover {
+            background-color: #fcb900;
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .d-flex.flex-wrap {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .d-flex.flex-wrap button {
+                width: 200px;
+                margin: 0.25rem 0;
+            }
         }
       `}</style>
     </>

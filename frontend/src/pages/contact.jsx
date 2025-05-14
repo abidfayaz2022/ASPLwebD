@@ -7,6 +7,7 @@ export default function Contact() {
     email: '',
     company: '',
     phone: '',
+    service: '',
     message: '',
   });
 
@@ -44,6 +45,7 @@ export default function Contact() {
           email: '',
           company: '',
           phone: '',
+          service: '',
           message: '',
         });
       } else {
@@ -79,7 +81,7 @@ export default function Contact() {
                 <div className="row g-4">
                   <div className="col-md-6">
                     <a
-                      href="https://wa.me/6582002370"
+                      href="https://wa.me/6583308396"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="connect-link d-flex flex-column align-items-center text-decoration-none"
@@ -200,6 +202,27 @@ export default function Contact() {
                         onChange={handleChange}
                       />
                     </div>
+                  </div>
+
+                  <div className="mb-4">
+                    <label htmlFor="service" className="form-label">Service Required</label>
+                    <select
+                      id="service"
+                      name="service"
+                      className="form-select"
+                      value={formData.service}
+                      onChange={handleChange}
+                      required
+                    >
+                      <option value="">Select a service</option>
+                      {/* <option value="web-development">Web Development</option>
+                      <option value="mobile-app">Mobile App Development</option>
+                      <option value="ui-ux">UI/UX Design</option> */}
+                      <option value="digital-marketing">Digital Marketing</option>
+                      <option value="technical-support">Technical Support</option>
+                      <option value="consultation">Business Consultation</option>
+                      <option value="other">Other</option>
+                    </select>
                   </div>
 
                   <div className="mb-4">

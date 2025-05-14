@@ -37,12 +37,12 @@ const Footer = () => {
                                     />
                                 </div>
                                 <p className="mb-4 pe-lg-3">
-                                    
+
                                 </p>
 
                                 <div className="social-links d-flex gap-3 mb-3">
                                     <a
-                                        href="https://www.linkedin.com/company/aspl-consultancy-pvt-ltd/?originalSubdomain=in"
+                                        href="https://www.linkedin.com/company/theangelservices/"
                                         className="social-icon"
                                         style={{
 
@@ -191,7 +191,7 @@ const Footer = () => {
                                         </a>
                                     </li>
                                 </ul>
-                                
+
                             </div>
                         </div>
 
@@ -255,7 +255,7 @@ const Footer = () => {
                                                 transition: 'all 0.3s ease',
                                             }}
                                         >
-                                            Acounting
+                                            Accounting
                                         </a>
                                     </li>
                                     <li className="mb-2">

@@ -343,7 +343,7 @@ const CareerPage = () => {
                   </ul>
 
                   <Link 
-                    href={`/contact?job=${encodeURIComponent(job.title)}`}
+                    href={`/apply?job=${encodeURIComponent(job.title)}`}
                     className="btn d-flex justify-content-center align-items-center w-100 rounded-pill py-3 fw-semibold hover-scale"
                     style={{ backgroundColor: '#fcb900', color: '#000' }}
                   >

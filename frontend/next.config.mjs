@@ -13,7 +13,14 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: ['angel-frontend.s3.ap-southeast-1.amazonaws.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'angel-frontend.s3.ap-southeast-1.amazonaws.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
 };
 
