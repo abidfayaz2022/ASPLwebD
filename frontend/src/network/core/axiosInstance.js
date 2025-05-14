@@ -3,11 +3,12 @@ import config from '../config/config';
 import { handleRequest, handleResponse, handleError } from './interceptors';
 import axiosRetry from 'axios-retry';
 
-// Create axios instance with default config
+
 const axiosInstance = axios.create({
-    baseURL: config.API_BASE_URL,
-    timeout: config.API_TIMEOUT,
-    headers: config.DEFAULT_HEADERS,
+  baseURL: config.API_BASE_URL,
+  timeout: config.API_TIMEOUT,
+  headers: config.DEFAULT_HEADERS,
+  withCredentials: true 
 });
 
 // Add request interceptor

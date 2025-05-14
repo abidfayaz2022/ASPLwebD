@@ -1,55 +1,77 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation'; // ✅ App Router version
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
-import endpoints from '../network/config/endpoints';
-import callApi from '../network/core/apiCaller';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import endpoints from '../network/config/endpoints';
+import callApi from '../network/core/apiCaller';
+
 const LoginPage = () => {
+  const router = useRouter();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMsg, setErrorMsg] = useState('');
-  const [successMsg, setSuccessMsg] = useState('');
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
+  const [checkingAuth, setCheckingAuth] = useState(true);
+
+  useEffect(() => {
+    const checkIfLoggedIn = async () => {
+      try {
+        const res = await callApi(endpoints.auth.profile);
+        if (res.success && res.user) {
+          const role = res.user.role?.toLowerCase();
+          if (role === 'admin') {
+            router.replace('/dashboard/admin');
+          } else {
+            router.replace('/dashboard/client');
+          }
+        }
+      } catch (err) {
+        // not logged in
+      } finally {
+        setCheckingAuth(false);
+      }
+    };
+
+    checkIfLoggedIn();
+  }, [router]); // ✅ include router just in case
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMsg('');
-    setSuccessMsg('');
+    if (!email.trim() || !password.trim()) {
+      toast.error('Email and password are required');
+      return;
+    }
+
     setLoading(true);
 
     try {
       const response = await callApi(endpoints.auth.login, {
         emailOrUsername: email,
-        password
+        password,
       });
 
-      if (response.success && response.user) {
-        setSuccessMsg(response.message || 'Login successful');
+      if (response.success) {
         toast.success(response.message || 'Login successful');
+        const profile = await callApi(endpoints.auth.profile);
+        const role = profile?.user?.role?.toLowerCase();
 
-        // Redirect based on role
-        const role = response.user.role?.toLowerCase();
         setTimeout(() => {
           if (role === 'admin') {
-            router.push('/dashboard/admin');
+            router.replace('/dashboard/admin');
           } else {
-            router.push('/dashboard/client');
+            router.replace('/dashboard/client');
           }
-        }, 1000);
+        }, 800);
       } else {
-        setErrorMsg(response.message || 'Login failed');
         toast.error(response.message || 'Login failed');
       }
     } catch (err) {
-      console.error('Login error:', err);
-      const msg = err?.message || err?.data?.message || 'Something went wrong';
-      setErrorMsg(msg);
+      toast.error(err?.message || 'Login failed');
     } finally {
       setLoading(false);
     }
@@ -57,6 +79,7 @@ const LoginPage = () => {
 
   return (
     <div className="min-vh-100 d-flex align-items-center" style={{ backgroundColor: '#f8f9fa' }}>
+      <ToastContainer position="top-center" autoClose={2000} />
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-md-6 col-lg-5">
@@ -75,65 +98,50 @@ const LoginPage = () => {
                 </div>
                 <h2 className="text-center fw-bold mb-4">Welcome Back</h2>
 
-                {/* Alerts */}
-                {loading && (
-                  <div className="alert alert-info" role="alert">
-                    Logging in...
-                  </div>
-                )}
-                {errorMsg && (
-                  <div className="alert alert-danger" role="alert">
-                    {errorMsg}
-                  </div>
-                )}
-                {successMsg && (
-                  <div className="alert alert-success" role="alert">
-                    {successMsg}
-                  </div>
-                )}
-
                 <form onSubmit={handleSubmit}>
-                  <div className="mb-4">
-                    <label htmlFor="email" className="form-label fw-semibold">Email Address</label>
-                    <input
-                      type="email"
-                      className="form-control form-control-lg rounded-3"
-                      id="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label htmlFor="password" className="form-label fw-semibold">Password</label>
-                    <input
-                      type="password"
-                      className="form-control form-control-lg rounded-3"
-                      id="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="d-flex justify-content-between align-items-center mb-4">
-                    <div className="form-check">
-                      <input className="form-check-input" type="checkbox" id="remember" />
-                      <label className="form-check-label" htmlFor="remember">
-                        Remember me
-                      </label>
+                  <fieldset disabled={checkingAuth || loading}>
+                    <div className="mb-4">
+                      <label htmlFor="email" className="form-label fw-semibold">Email Address</label>
+                      <input
+                        type="email"
+                        className="form-control form-control-lg rounded-3"
+                        id="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                      />
                     </div>
-                    <Link href="/forgot-password" className="text-decoration-none" style={{ color: '#fcb900' }}>
-                      Forgot Password?
-                    </Link>
-                  </div>
-                  <button
-                    type="submit"
-                    className="btn btn-lg w-100 mb-2 text-dark fw-semibold"
-                    style={{ backgroundColor: '#fcb900' }}
-                    disabled={loading}
-                  >
-                    {loading ? 'Signing In...' : 'Sign In'}
-                  </button>
+                    <div className="mb-4">
+                      <label htmlFor="password" className="form-label fw-semibold">Password</label>
+                      <input
+                        type="password"
+                        className="form-control form-control-lg rounded-3"
+                        id="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                      />
+                    </div>
+                    <div className="d-flex justify-content-between align-items-center mb-4">
+                      <div className="form-check">
+                        <input className="form-check-input" type="checkbox" id="remember" />
+                        <label className="form-check-label" htmlFor="remember">
+                          Remember me
+                        </label>
+                      </div>
+                      <Link href="/forgot-password" className="text-decoration-none" style={{ color: '#fcb900' }}>
+                        Forgot Password?
+                      </Link>
+                    </div>
+                    <button
+                      type="submit"
+                      className="btn btn-lg w-100 mb-2 text-dark fw-semibold"
+                      style={{ backgroundColor: '#fcb900' }}
+                      disabled={loading}
+                    >
+                      {loading ? 'Signing In...' : 'Sign In'}
+                    </button>
+                  </fieldset>
                 </form>
               </div>
             </div>

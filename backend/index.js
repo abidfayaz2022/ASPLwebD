@@ -31,11 +31,20 @@ app.use(express.json());
 app.use(compression());
 app.use(passport.initialize());
 app.use(apiRateLimiter);
-
-// ✅ API Routes
+// Global handler to catch malformed JSON
+app.use((err, req, res, next) => {
+  if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+    return res.status(400).json({
+      success: false,
+      message: 'Invalid JSON in request body'
+    });
+  }
+  next();
+});
+//  API Routes
 app.use('/api', routes);
 
-// ✅ Swagger Docs (ONLY in development)
+//  Swagger Docs (ONLY in development)
 if (!isProd) {
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 }

@@ -28,6 +28,14 @@ const endpoints = {
         verifyOtp: {
             url: '/api/auth/verify-otp',
             method: 'POST'
+        },
+        logout: {
+            url: '/api/auth/logout',
+            method: 'POST'
+        },
+        refreshToken: {
+            url: '/api/auth/refresh-token',
+            method: 'POST'
         }
     },
     

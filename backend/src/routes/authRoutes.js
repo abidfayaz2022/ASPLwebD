@@ -8,9 +8,9 @@ import {
     resetPassword,
     sendOtpToUser,
     verifyUserOtp,
-    refreshToken
+    refreshToken,
+    logout
 } from '../controllers/authController.js';
-
 
 const router = express.Router();
 
@@ -23,6 +23,7 @@ router.post('/reset-password', resetPassword);               // use token to res
 router.post('/send-otp', sendOtpToUser);                     
 router.post('/verify-otp', verifyUserOtp);  
 router.post('/refresh-token', refreshToken);
+router.post('/logout',logout)
                
 
 
