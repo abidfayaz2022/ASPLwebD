@@ -218,9 +218,10 @@ export default function Contact() {
                       {/* <option value="web-development">Web Development</option>
                       <option value="mobile-app">Mobile App Development</option>
                       <option value="ui-ux">UI/UX Design</option> */}
-                      <option value="digital-marketing">Digital Marketing</option>
-                      <option value="technical-support">Technical Support</option>
-                      <option value="consultation">Business Consultation</option>
+                      <option value="Incorporation">Incorporation</option>
+                      <option value="Company Secretary">Company Secretary</option>
+                      <option value="Accounting">Accounting</option>
+                      <option value="Accounting">Tax Advisory</option>
                       <option value="other">Other</option>
                     </select>
                   </div>
