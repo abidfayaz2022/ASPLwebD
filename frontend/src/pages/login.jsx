@@ -1,44 +1,59 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation'; // ✅ App Router version
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import endpoints from '../network/config/endpoints';
-import callApi from '../network/core/apiCaller';
+import { loginUser, fetchProfile } from '../redux/auth/authActions';
+import { clearError } from '../redux/auth/authSlice';
 
 const LoginPage = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
   const [checkingAuth, setCheckingAuth] = useState(true);
 
-  useEffect(() => {
-    const checkIfLoggedIn = async () => {
-      try {
-        const res = await callApi(endpoints.auth.profile);
-        if (res.success && res.user) {
-          const role = res.user.role?.toLowerCase();
-          if (role === 'admin') {
-            router.replace('/dashboard/admin');
-          } else {
-            router.replace('/dashboard/client');
-          }
-        }
-      } catch (err) {
-        // not logged in
-      } finally {
-        setCheckingAuth(false);
-      }
-    };
+  const { loading, error, isAuthenticated, user } = useSelector((state) => state.auth);
 
-    checkIfLoggedIn();
-  }, [router]); // ✅ include router just in case
+  // Check session on load
+  useEffect(() => {
+  const checkIfLoggedIn = async () => {
+    try {
+      const res = await dispatch(fetchProfile()).unwrap();
+      if (res) {
+        const role = res.role?.toLowerCase();
+        router.replace(role === 'admin' ? '/dashboard/admin' : '/dashboard/client');
+      }
+    } catch {
+      
+    } finally {
+      setCheckingAuth(false);
+    }
+  };
+  checkIfLoggedIn();
+}, [dispatch, router]);
+
+  // Redirect if already logged in
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      const role = user.role?.toLowerCase();
+      router.replace(role === 'admin' ? '/dashboard/admin' : '/dashboard/client');
+    }
+  }, [isAuthenticated, user, router]);
+
+  // Show error toast
+  useEffect(() => {
+    if (error) {
+      
+      dispatch(clearError());
+    }
+  }, [error, dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,39 +62,23 @@ const LoginPage = () => {
       return;
     }
 
-    setLoading(true);
-
     try {
-      const response = await callApi(endpoints.auth.login, {
-        emailOrUsername: email,
-        password,
-      });
+      await dispatch(loginUser({ emailOrUsername: email, password })).unwrap();
+      toast.success('Login successful');
+      const res = await dispatch(fetchProfile()).unwrap();
 
-      if (response.success) {
-        toast.success(response.message || 'Login successful');
-        const profile = await callApi(endpoints.auth.profile);
-        const role = profile?.user?.role?.toLowerCase();
-
-        setTimeout(() => {
-          if (role === 'admin') {
-            router.replace('/dashboard/admin');
-          } else {
-            router.replace('/dashboard/client');
-          }
-        }, 800);
-      } else {
-        toast.error(response.message || 'Login failed');
-      }
+      const role = res.role?.toLowerCase();
+      setTimeout(() => {
+        router.replace(role === 'admin' ? '/dashboard/admin' : '/dashboard/client');
+      }, 800);
     } catch (err) {
-      toast.error(err?.message || 'Login failed');
-    } finally {
-      setLoading(false);
+      toast.error(typeof err === 'string' ? err : 'Login failed');
     }
   };
 
   return (
     <div className="min-vh-100 d-flex align-items-center" style={{ backgroundColor: '#f8f9fa' }}>
-      <ToastContainer position="top-center" autoClose={2000} />
+      <ToastContainer position="top-center" autoClose={2500} />
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-md-6 col-lg-5">
@@ -122,22 +121,18 @@ const LoginPage = () => {
                         required
                       />
                     </div>
-                    <div className="d-flex justify-content-between align-items-center mb-4">
-                      <div className="form-check">
-                        <input className="form-check-input" type="checkbox" id="remember" />
-                        <label className="form-check-label" htmlFor="remember">
-                          Remember me
-                        </label>
-                      </div>
+
+                    <div className="text-end mb-4">
                       <Link href="/forgot-password" className="text-decoration-none" style={{ color: '#fcb900' }}>
                         Forgot Password?
                       </Link>
                     </div>
+
                     <button
                       type="submit"
                       className="btn btn-lg w-100 mb-2 text-dark fw-semibold"
                       style={{ backgroundColor: '#fcb900' }}
-                      disabled={loading}
+                      disabled={loading || checkingAuth}
                     >
                       {loading ? 'Signing In...' : 'Sign In'}
                     </button>

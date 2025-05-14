@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import {
   FaChartLine,
   FaUsers,
@@ -12,53 +12,81 @@ import {
   FaRegCreditCard,
   FaKey,
 } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import styles from '../../styles/dashboard.module.css';
-import callApi from '../../network/core/apiCaller';
-import endpoints from '../../network/config/endpoints';
+import { fetchProfile, logoutUser } from '../../redux/auth/authActions';
+import { fetchAllUsers, createNewUser } from '../../redux/admin/adminActions';
+import { clearAdminError, clearAdminSuccess } from '../../redux/admin/adminSlice';
 
 export default function AdminDashboard() {
-  const [activeSection, setActiveSection] = useState('overview');
-  const [users, setUsers] = useState([]);
   const router = useRouter();
+  const dispatch = useDispatch();
 
-  // ✅ Auth check
+  const [activeSection, setActiveSection] = useState('overview');
+  const [newUser, setNewUser] = useState({ name: '', email: '', agent: '' });
+
+  const { users, loading, error, successMessage } = useSelector((state) => state.admin);
+  const { user } = useSelector((state) => state.auth);
+
   useEffect(() => {
     const checkAccess = async () => {
       try {
-        const res = await callApi(endpoints.auth.profile);
-        if (!res.success || res.user.role?.toLowerCase() !== 'admin') {
+        const profile = await dispatch(fetchProfile()).unwrap();
+        if (profile.role?.toLowerCase() !== 'admin') {
           toast.error('Access denied');
-          router.replace('/login');
+          router.push('/login');
         }
       } catch (err) {
         toast.error('Not logged in');
-        router.replace('/login');
+        router.push('/login');
       }
     };
     checkAccess();
-  }, []);
+  }, [dispatch, router]);
 
-  // 📦 Fetch users
   useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const res = await callApi({ url: '/api/admin/users', method: 'GET' });
-        setUsers(res.data || []);
-      } catch (err) {
-        toast.error('Failed to load users');
-      }
-    };
-    if (activeSection === 'users') fetchUsers();
-  }, [activeSection]);
+    if (activeSection === 'users') {
+      dispatch(fetchAllUsers());
+    }
+  }, [activeSection, dispatch]);
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+      dispatch(clearAdminError());
+    }
+    if (successMessage) {
+      toast.success(successMessage);
+      dispatch(clearAdminSuccess());
+    }
+  }, [error, successMessage, dispatch]);
+
+  const handleUserCreate = async (e) => {
+    e.preventDefault();
+    if (!newUser.name || !newUser.email || !newUser.agent) {
+      toast.error('Please fill all fields');
+      return;
+    }
+    await dispatch(createNewUser(newUser));
+    setNewUser({ name: '', email: '', agent: '' });
+  };
+
+  const handleLogout = async () => {
+    try {
+      await dispatch(logoutUser()).unwrap();
+      toast.success('Logged out');
+      setTimeout(() => router.push('/login'), 800);
+    } catch (err) {
+      toast.error(typeof err === 'string' ? err : 'Logout failed');
+    }
+  };
 
   return (
     <div className={styles.dashboardWrapper}>
       <ToastContainer position="top-center" autoClose={2000} />
-
-      {/* Sidebar */}
       <aside className={styles.sidebar}>
         <div className={styles.logo}>Admin Panel</div>
         <ul className={styles.nav}>
@@ -82,30 +110,18 @@ export default function AdminDashboard() {
         </ul>
       </aside>
 
-      {/* Main Content */}
       <main className={styles.mainContent}>
         <header className={styles.header}>
           <h1>Admin Dashboard</h1>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <button
-              onClick={async () => {
-                try {
-                  await callApi( endpoints.auth.logout);
-                  toast.success('Logged out');
-                  setTimeout(() => router.push('/login'), 800);
-                } catch (err) {
-                  toast.error('Logout failed');
-                }
-              }}
-              className={styles.logoutButton}
-            >
+          <div className={styles.headerRight}>
+            <button onClick={handleLogout} className={styles.logoutButton}>
               Logout
             </button>
             <Image
               src="/images/admin.jpg"
               width={45}
               height={45}
-              alt="Admin Profile"
+              alt="Admin"
               className={styles.profileImg}
             />
           </div>
@@ -113,65 +129,62 @@ export default function AdminDashboard() {
 
         <div className={styles.contentArea}>
           {activeSection === 'overview' && (
-            <section>
-              <h2>Overview</h2>
-              <p>Welcome to the admin dashboard. View charts and stats here.</p>
-            </section>
+            <section><h2>Overview</h2><p>Dashboard overview goes here.</p></section>
           )}
 
           {activeSection === 'users' && (
             <section>
               <h2>User Management</h2>
               <ul>
-                {users.length > 0 ? (
-                  users.map((user) => (
-                    <li key={user.id}>
-                      {user.name || user.username} - {user.email}
-                    </li>
-                  ))
-                ) : (
-                  <p>No users found.</p>
-                )}
+                {users.length > 0 ? users.map((u) => (
+                  <li key={u.id}>{u.name || u.username} — {u.email}</li>
+                )) : <p>No users found.</p>}
               </ul>
             </section>
           )}
 
           {activeSection === 'upload' && (
-            <section>
-              <h2>Upload Companies CSV</h2>
-              <p>Upload CSV logic here...</p>
-            </section>
+            <section><h2>Upload Companies CSV</h2><p>Upload feature placeholder.</p></section>
           )}
 
           {activeSection === 'agents' && (
-            <section>
-              <h2>Agent Assignment</h2>
-              <p>Agent assignment UI goes here.</p>
-            </section>
+            <section><h2>Agent Assignment</h2><p>Agent assignment UI here.</p></section>
           )}
 
           {activeSection === 'notifications' && (
-            <section>
-              <h2>Notifications</h2>
-              <p>Send and review notifications.</p>
-            </section>
+            <section><h2>Notifications</h2><p>Send/review notifications here.</p></section>
           )}
 
           {activeSection === 'invoices' && (
-            <section>
-              <h2>Invoices & Payments</h2>
-              <p>Display invoice records and payments.</p>
-            </section>
+            <section><h2>Invoices & Payments</h2><p>Invoice UI here.</p></section>
           )}
 
           {activeSection === 'newuser' && (
             <section>
               <h2>Add New User</h2>
-              <form>
-                <input placeholder="Full Name" className="form-control mb-2" />
-                <input type="email" placeholder="Email" className="form-control mb-2" />
-                <input placeholder="Agent Name" className="form-control mb-2" />
-                <button type="submit" className="btn btn-primary">Create User</button>
+              <form onSubmit={handleUserCreate}>
+                <input
+                  className="form-control mb-2"
+                  placeholder="Full Name"
+                  value={newUser.name}
+                  onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
+                />
+                <input
+                  className="form-control mb-2"
+                  placeholder="Email"
+                  type="email"
+                  value={newUser.email}
+                  onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+                />
+                <input
+                  className="form-control mb-2"
+                  placeholder="Agent Name"
+                  value={newUser.agent}
+                  onChange={(e) => setNewUser({ ...newUser, agent: e.target.value })}
+                />
+                <button type="submit" className="btn btn-primary" disabled={loading}>
+                  {loading ? 'Creating...' : 'Create User'}
+                </button>
               </form>
             </section>
           )}
