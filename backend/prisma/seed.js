@@ -5,47 +5,74 @@ import { hashPassword } from '../src/utils/passwordUtils.js';
 const prisma = new PrismaClient();
 
 async function main() {
-  const defaultPassword = await hashPassword('password123');
-  // Create Users
-  const adminUser = await prisma.user.create({
-    data: {
-      username: 'adminuser',
+  // Seed Users
+   const defaultPassword = await hashPassword('password123');
+  const adminUser = await prisma.user.upsert({
+    where: { email: 'admin@example.com' },
+    update: {},
+    create: {
+      username: 'admin',
       email: 'admin@example.com',
+      name: 'Admin User',
       password: defaultPassword,
-      mobile: '1234567890',
-      country: 'USA',
+      mobile: '+1234567890',
+      country: 'India',
       role: 'Admin',
+      isVerified: true
     },
   });
 
-  const clientUser = await prisma.user.create({
-    data: {
-      username: 'clientuser',
+  const clientUser = await prisma.user.upsert({
+    where: { email: 'client@example.com' },
+    update: {},
+    create: {
+      username: 'clientUser',
       email: 'client@example.com',
+      name: 'Client User',
       password: defaultPassword,
-      mobile: '9876543210',
-      country: 'Canada',
+      mobile: '+0987654321',
+      country: 'India',
       role: 'client',
+      isVerified: true
     },
   });
 
-  // Create Company
+  // Seed a Service
+  const service1 = await prisma.service.create({
+    data: {
+      serviceName: 'Company Registration',
+      serviceDescription: 'Complete registration services',
+      cost: 5000.00,
+      status: 'Available',
+    },
+  });
+
+  // Seed Company
   const company = await prisma.company.create({
     data: {
-      companyName: 'Example Corp',
-      registrationDate: new Date(),
-      addressLine1: '123 Main St',
-      addressLine2: 'Suite 100',
-      country: 'USA',
-      postalCode: '10001',
+      companyName: 'TechNova Pvt Ltd',
+      registrationDate: new Date('2023-01-01'),
+      addressLine1: '123 Tech Street',
+      addressLine2: 'Business Park',
+      country: 'India',
+      postalCode: '123456',
       proposedShares: 1000,
-      currency: 'USD',
-      proposedShareCapital: 100000.00,
-      businessActivity1: 'Tech',
-      businessActivity1Desc: 'Software Development',
+      currency: 'INR',
+      proposedShareCapital: 1000000.00,
+      businessActivity1: 'IT Services',
+      businessActivity1Desc: 'Software development',
       businessActivity2: 'Consulting',
-      businessActivity2Desc: 'IT Consulting',
-      userId: clientUser.id,
+      businessActivity2Desc: 'Business and IT consulting',
+      userId: clientUser.id
+    },
+  });
+
+  // Assign Service to Company
+  await prisma.companyService.create({
+    data: {
+      companyId: company.companyId,
+      serviceId: service1.id,
+      updateDate: new Date(),
     },
   });
 
@@ -54,101 +81,37 @@ async function main() {
     data: {
       companyId: company.companyId,
       directorName: 'John Doe',
-      email: 'john@example.com',
-      addressLine1: '456 Tech Ave',
-      addressLine2: 'Apt 12',
-      country: 'USA',
-      postalCode: '90210',
-      contactNumber: '5551234567',
-      nationality: 'American',
+      email: 'john.doe@example.com',
+      addressLine1: '456 Director St',
+      addressLine2: 'Suite 1',
+      country: 'India',
+      postalCode: '654321',
+      contactNumber: '+911234567890',
+      nationality: 'Indian',
       idType: 'Passport',
       idExpiryDate: new Date('2030-12-31'),
       idNumber: 'A1234567',
       isShareholder: true,
-      identityProof: '/path/to/id.jpg',
-      addressProof: '/path/to/address.jpg',
-      dateOfBirth: new Date('1980-05-20'),
-    },
+      identityProof: 'uploads/id.jpg',
+      addressProof: 'uploads/address.jpg',
+      dateOfBirth: new Date('1980-01-01'),
+    }
   });
 
-  // Create a Shareholder
-  await prisma.shareholder.create({
+  // Create Registered Company Name
+  await prisma.registeredCompanyName.create({
     data: {
-      companyId: company.companyId,
-      shareholderName: 'Jane Smith',
-      email: 'jane@example.com',
-      type: 'Individual',
-      addressLine1: '789 Market Rd',
-      addressLine2: 'Floor 2',
-      country: 'Canada',
-      postalCode: 'M5V 3L9',
-      contactNumber: '4447778888',
-      nationality: 'Canadian',
-      idType: 'Driver License',
-      idExpiryDate: new Date('2028-08-15'),
-      idNumber: 'D9876543',
-      dateOfBirth: new Date('1990-10-15'),
-      numberOfShares: 500,
-      shareCapitalAllocation: 50000.00,
-    },
+      companyName: 'TechNova Pvt Ltd'
+    }
   });
 
-  // Create a Service and assign it to the company
-  const service = await prisma.service.create({
-    data: {
-      serviceName: 'Incorporation',
-      serviceDescription: 'Complete business registration',
-      cost: 300.00,
-      status: 'Available',
-    },
-  });
-
-  await prisma.companyService.create({
-    data: {
-      companyId: company.companyId,
-      serviceId: service.id,
-      updateDate: new Date(),
-    },
-  });
-
-  // Create Payment and Refund
-  const payment = await prisma.payment.create({
-    data: {
-      userId: clientUser.id,
-      companyId: company.companyId,
-      paymentDate: new Date(),
-      amount: 300.00,
-      currency: 'USD',
-      paymentMethod: 'Credit Card',
-      paymentReference: 'REF123456',
-      services: 'Incorporation',
-    },
-  });
-
-  await prisma.refund.create({
-    data: {
-      paymentId: payment.id,
-      refundId: 'RFD987654',
-      amount: 50.00,
-    },
-  });
-
-  // Create Notification
-  await prisma.notification.create({
-    data: {
-      userId: clientUser.id,
-      title: 'Welcome!',
-      message: 'Your company profile has been created.',
-    },
-  });
+  console.log('✅ Seed complete');
 }
 
 main()
-  .then(() => {
-    console.log('Seeding completed.');
-  })
-  .catch((e) => {
-    console.error('Seeding failed:', e);
+  .catch(e => {
+    console.error(e);
+    process.exit(1);
   })
   .finally(async () => {
     await prisma.$disconnect();

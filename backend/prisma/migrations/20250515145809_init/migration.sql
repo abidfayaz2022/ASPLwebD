@@ -24,6 +24,7 @@ CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
     "username" VARCHAR(50) NOT NULL,
     "email" VARCHAR(100) NOT NULL,
+    "name" VARCHAR(100) NOT NULL DEFAULT 'Annonymous',
     "password" VARCHAR(255) NOT NULL,
     "mobile" VARCHAR(20) NOT NULL,
     "country" VARCHAR(100) NOT NULL,
@@ -35,6 +36,7 @@ CREATE TABLE "User" (
     "resetPasswordExpires" TIMESTAMP(3),
     "otp" VARCHAR(10),
     "otpExpires" TIMESTAMP(3),
+    "refreshToken" VARCHAR(500),
     "isVerified" BOOLEAN NOT NULL DEFAULT false,
     "isDeactivated" BOOLEAN NOT NULL DEFAULT false,
     "isDeleted" BOOLEAN NOT NULL DEFAULT false,
@@ -282,6 +284,7 @@ CREATE TABLE "Article" (
     "status" VARCHAR(20) NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "publishedAt" TIMESTAMP(3) NOT NULL,
+    "authorId" INTEGER NOT NULL,
     "imagePath" VARCHAR(225) NOT NULL,
     "views" INTEGER NOT NULL,
     "hashtag" VARCHAR(255) NOT NULL,
@@ -459,6 +462,9 @@ ALTER TABLE "RoleAssignment" ADD CONSTRAINT "RoleAssignment_agentId_fkey" FOREIG
 
 -- AddForeignKey
 ALTER TABLE "RoleAssignment" ADD CONSTRAINT "RoleAssignment_companyId_fkey" FOREIGN KEY ("companyId") REFERENCES "Company"("companyId") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Article" ADD CONSTRAINT "Article_authorId_fkey" FOREIGN KEY ("authorId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "AuditLog" ADD CONSTRAINT "AuditLog_actorId_fkey" FOREIGN KEY ("actorId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

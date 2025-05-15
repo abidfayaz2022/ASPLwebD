@@ -124,6 +124,7 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   username: 'username',
   email: 'email',
+  name: 'name',
   password: 'password',
   mobile: 'mobile',
   country: 'country',
@@ -335,6 +336,7 @@ exports.Prisma.ArticleScalarFieldEnum = {
   status: 'status',
   createdAt: 'createdAt',
   publishedAt: 'publishedAt',
+  authorId: 'authorId',
   imagePath: 'imagePath',
   views: 'views',
   hashtag: 'hashtag'
@@ -461,6 +463,11 @@ exports.RefundStatus = exports.$Enums.RefundStatus = {
   Requested: 'Requested',
   Processed: 'Processed',
   Failed: 'Failed'
+};
+
+exports.ArticleStatus = exports.$Enums.ArticleStatus = {
+  draft: 'draft',
+  published: 'published'
 };
 
 exports.Prisma.ModelName = {
