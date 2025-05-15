@@ -80,8 +80,16 @@ export const logout = (_req, res) => {
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'strict',
   });
-  res.json({ message: 'Logged out successfully' });
+
+  res.clearCookie('refreshToken', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict',
+  });
+
+  res.status(200).json({ success: true, message: 'Logged out successfully' });
 };
+
 
 // Request reset password link
 export const requestPasswordReset = async (req, res) => {
@@ -138,7 +146,7 @@ export const verifyUserOtp = async (req, res) => {
 export const getProfile = async (req, res) => {
   try {
     const user = await authService.fetchProfile(req.user.id);
-    res.json(user);
+    res.json({ success: true, user });
   } catch (error) {
     res.status(500).json({ message: 'Error fetching profile', error: error.message });
   }

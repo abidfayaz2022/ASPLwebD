@@ -5,27 +5,30 @@ import Script from 'next/script';
 import BootstrapClient from '../components/bootstrapClient';
 import Navbar from '../components/ui/navbar';
 import Footer from '../components/ui/home/footer';
-import "./../styles/globals.css";
+import './../styles/globals.css';
 import { WizardProvider } from '../context/WizardContext';
+import { Provider } from 'react-redux';
+import store from '../redux/store';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <WizardProvider>
+    <>
       <Script src="/js/main.js" strategy="afterInteractive" />
+      
+      <Provider store={store}>
+        <WizardProvider>
+          <Navbar />
 
-      {/* Navbar */}
-      <Navbar />
+          <main style={{ paddingTop: '80px' }}>
+            <Component {...pageProps} />
+          </main>
 
-      {/* Main content with padding */}
-      <main style={{ paddingTop: '80px' }}>
-        <Component {...pageProps} />
-      </main>
-
-      {/* Footer */}
-      <BootstrapClient>
-        <Footer />
-      </BootstrapClient>
-    </WizardProvider>
+          <BootstrapClient>
+            <Footer />
+          </BootstrapClient>
+        </WizardProvider>
+      </Provider>
+    </>
   );
 }
 

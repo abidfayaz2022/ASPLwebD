@@ -8,6 +8,7 @@ const JobApplicationForm = ({ jobTitle }) => {
     coverLetter: '',
     cv: null
   });
+  const [agreedToDeclaration, setAgreedToDeclaration] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (e) => {
@@ -21,10 +22,14 @@ const JobApplicationForm = ({ jobTitle }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!agreedToDeclaration) {
+      alert("You must agree to the declaration before submitting.");
+      return;
+    }
+
     try {
       let resumeUrl = null;
 
-      // Step 1: Upload CV to S3
       if (formData.cv) {
         const s3Res = await fetch('/api/s3-upload-url', {
           method: 'POST',
@@ -48,7 +53,6 @@ const JobApplicationForm = ({ jobTitle }) => {
         resumeUrl = fileUrl;
       }
 
-      // Step 2: Send form data to sendEmail API
       const emailRes = await fetch('/api/sendEmail', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -170,6 +174,32 @@ const JobApplicationForm = ({ jobTitle }) => {
                     onChange={handleChange}
                     required
                   ></textarea>
+                </div>
+
+                {/* ✅ Declaration Block */}
+                <div className="mb-4 p-3 bg-light border rounded">
+                  <p className="fw-semibold mb-2">By submitting this application form and uploading your resume, you hereby declare and agree as follows:</p>
+                  <ul className="small">
+                    <li><strong>Accuracy of Information:</strong> I confirm that all information provided is true and complete. Misrepresentation may disqualify me or lead to termination.</li>
+                    <li><strong>Consent to Use of Personal Data:</strong> I consent to Angel Services collecting, using, and disclosing my personal data for job consideration.</li>
+                    <li><strong>Data Storage & Cross-Border Use:</strong> I understand my data may be stored in Singapore, India, UAE, and handled securely.</li>
+                    <li><strong>Data Retention:</strong> My data may be retained unless I request deletion in writing.</li>
+                    <li><strong>Withdrawal of Consent:</strong> I can withdraw consent by contacting <a href="mailto:info@theangelservices.com">info@theangelservices.com</a>.</li>
+                  </ul>
+
+                  <div className="form-check mt-3">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="declaration"
+                      checked={agreedToDeclaration}
+                      onChange={(e) => setAgreedToDeclaration(e.target.checked)}
+                      required
+                    />
+                    <label htmlFor="declaration" className="form-check-label">
+                      ✅ I have read and understood the above declaration and consent to the collection and use of my personal data as described.
+                    </label>
+                  </div>
                 </div>
 
                 <button

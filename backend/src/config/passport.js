@@ -1,13 +1,24 @@
-import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
+import { Strategy as JwtStrategy } from 'passport-jwt';
 import prisma from '../lib/prismaClient.js';
 
 /**
- * Initializes Passport with JWT strategy.
+ * Extract JWT from cookies instead of headers.
+ */
+const cookieExtractor = (req) => {
+  let token = null;
+  if (req && req.cookies && req.cookies.token) {
+    token = req.cookies.token;
+  }
+  return token;
+};
+
+/**
+ * Initializes Passport with JWT strategy using cookies.
  * Adds user info to `req.user` if token is valid.
  */
 export default function initializePassport(passport) {
   const opts = {
-    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    jwtFromRequest: cookieExtractor, // ✅ use cookie instead of header
     secretOrKey: process.env.JWT_SECRET,
   };
 
@@ -27,7 +38,7 @@ export default function initializePassport(passport) {
           return done(null, false);
         }
 
-        return done(null, user); // ✅ req.user gets populated
+        return done(null, user); // ✅ sets req.user
       } catch (err) {
         return done(err, false);
       }

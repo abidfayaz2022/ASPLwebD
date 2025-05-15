@@ -13,7 +13,7 @@ const Resources = () => {
       desc: "Determine if your business requires a statutory audit based on turnover and activity type.",
       icon: "bi-journal-check",
       link: "/resources/audit-calculator",
-      country: "india",
+      country: "all",
       image: "https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/audit_tool.jpg"
     },
     {
@@ -37,7 +37,7 @@ const Resources = () => {
       desc: "Check if your business needs GST registration based on turnover and services provided.",
       icon: "bi-receipt",
       link: "/resources/gst-requirement",
-      country: ["india", "uae"],
+      country: "india",
       image: "https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/gst_checker.jpg"
     },
   ]

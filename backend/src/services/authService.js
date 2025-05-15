@@ -55,10 +55,10 @@ export const loginUser = async ({ emailOrUsername, password }) => {
     }
   });
 
-  if (!user) throw new Error('Invalid credentials e');
+  if (!user) throw new Error('Invalid credentials');
 
   const isMatch = await comparePassword(password, user.password);
-  if (!isMatch) throw new Error('Invalid credentials p');
+  if (!isMatch) throw new Error('Invalid credentials');
 
   const token = generateToken(user.id);
   const refreshToken = generateRefreshToken(user.id);
