@@ -71,11 +71,17 @@ enum RefundStatus {
   Failed
 }
 
+enum ArticleStatus {
+  draft
+  published
+}
+
 // ---------- Models ----------
 model User {
   id               Int      @id @default(autoincrement())
   username         String   @unique @db.VarChar(50)
   email            String   @unique @db.VarChar(100)
+  name             String   @default("Annonymous") @db.VarChar(100)
   password         String   @db.VarChar(255)
   mobile           String   @db.VarChar(20)
   country          String   @db.VarChar(100)
@@ -111,6 +117,8 @@ model User {
   auditLogs     AuditLog[]             @relation("ActorAuditLogs")
 
   CalendarAction CalendarAction[] @relation("CreatedCalendarActions")
+
+  articles Article[]
 }
 
 model Company {
@@ -347,15 +355,17 @@ model RoleAssignment {
 }
 
 model Article {
-  id          Int      @id @default(autoincrement())
-  title       String   @db.VarChar(255)
+  id          Int           @id @default(autoincrement())
+  title       String        @db.VarChar(255)
   content     String
-  status      String   @db.VarChar(20)
-  createdAt   DateTime @default(now())
-  publishedAt DateTime
-  imagePath   String   @db.VarChar(225)
-  views       Int
-  hashtag     String   @db.VarChar(255)
+  status      ArticleStatus @default(draft)
+  createdAt   DateTime      @default(now())
+  publishedAt DateTime?
+  authorId    Int
+  author      User          @relation(fields: [authorId], references: [id])
+  imagePath   String?       @db.VarChar(225)
+  views       Int           @default(0)
+  hashtag     String?       @db.VarChar(255)
 }
 
 model ContactUs {

@@ -203,6 +203,14 @@ export const RefundStatus: {
 
 export type RefundStatus = (typeof RefundStatus)[keyof typeof RefundStatus]
 
+
+export const ArticleStatus: {
+  draft: 'draft',
+  published: 'published'
+};
+
+export type ArticleStatus = (typeof ArticleStatus)[keyof typeof ArticleStatus]
+
 }
 
 export type UserRole = $Enums.UserRole
@@ -232,6 +240,10 @@ export const DocumentType: typeof $Enums.DocumentType
 export type RefundStatus = $Enums.RefundStatus
 
 export const RefundStatus: typeof $Enums.RefundStatus
+
+export type ArticleStatus = $Enums.ArticleStatus
+
+export const ArticleStatus: typeof $Enums.ArticleStatus
 
 /**
  * ##  Prisma Client ʲˢ
@@ -2902,6 +2914,7 @@ export namespace Prisma {
     receivedDocs: number
     auditLogs: number
     CalendarAction: number
+    articles: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2918,6 +2931,7 @@ export namespace Prisma {
     receivedDocs?: boolean | UserCountOutputTypeCountReceivedDocsArgs
     auditLogs?: boolean | UserCountOutputTypeCountAuditLogsArgs
     CalendarAction?: boolean | UserCountOutputTypeCountCalendarActionArgs
+    articles?: boolean | UserCountOutputTypeCountArticlesArgs
   }
 
   // Custom InputTypes
@@ -3020,6 +3034,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountCalendarActionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CalendarActionWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountArticlesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ArticleWhereInput
   }
 
 
@@ -3247,6 +3268,7 @@ export namespace Prisma {
     id: number | null
     username: string | null
     email: string | null
+    name: string | null
     password: string | null
     mobile: string | null
     country: string | null
@@ -3271,6 +3293,7 @@ export namespace Prisma {
     id: number | null
     username: string | null
     email: string | null
+    name: string | null
     password: string | null
     mobile: string | null
     country: string | null
@@ -3295,6 +3318,7 @@ export namespace Prisma {
     id: number
     username: number
     email: number
+    name: number
     password: number
     mobile: number
     country: number
@@ -3329,6 +3353,7 @@ export namespace Prisma {
     id?: true
     username?: true
     email?: true
+    name?: true
     password?: true
     mobile?: true
     country?: true
@@ -3353,6 +3378,7 @@ export namespace Prisma {
     id?: true
     username?: true
     email?: true
+    name?: true
     password?: true
     mobile?: true
     country?: true
@@ -3377,6 +3403,7 @@ export namespace Prisma {
     id?: true
     username?: true
     email?: true
+    name?: true
     password?: true
     mobile?: true
     country?: true
@@ -3488,6 +3515,7 @@ export namespace Prisma {
     id: number
     username: string
     email: string
+    name: string
     password: string
     mobile: string
     country: string
@@ -3531,6 +3559,7 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     email?: boolean
+    name?: boolean
     password?: boolean
     mobile?: boolean
     country?: boolean
@@ -3562,6 +3591,7 @@ export namespace Prisma {
     receivedDocs?: boolean | User$receivedDocsArgs<ExtArgs>
     auditLogs?: boolean | User$auditLogsArgs<ExtArgs>
     CalendarAction?: boolean | User$CalendarActionArgs<ExtArgs>
+    articles?: boolean | User$articlesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -3569,6 +3599,7 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     email?: boolean
+    name?: boolean
     password?: boolean
     mobile?: boolean
     country?: boolean
@@ -3593,6 +3624,7 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     email?: boolean
+    name?: boolean
     password?: boolean
     mobile?: boolean
     country?: boolean
@@ -3617,6 +3649,7 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     email?: boolean
+    name?: boolean
     password?: boolean
     mobile?: boolean
     country?: boolean
@@ -3637,7 +3670,7 @@ export namespace Prisma {
     createdAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "email" | "password" | "mobile" | "country" | "role" | "profilePic" | "profileThumbnail" | "lastLogin" | "resetPasswordToken" | "resetPasswordExpires" | "otp" | "otpExpires" | "refreshToken" | "isVerified" | "isDeactivated" | "isDeleted" | "isSuspended" | "suspendMessage" | "createdAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "email" | "name" | "password" | "mobile" | "country" | "role" | "profilePic" | "profileThumbnail" | "lastLogin" | "resetPasswordToken" | "resetPasswordExpires" | "otp" | "otpExpires" | "refreshToken" | "isVerified" | "isDeactivated" | "isDeleted" | "isSuspended" | "suspendMessage" | "createdAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     assignedTasks?: boolean | User$assignedTasksArgs<ExtArgs>
     messagesReceived?: boolean | User$messagesReceivedArgs<ExtArgs>
@@ -3652,6 +3685,7 @@ export namespace Prisma {
     receivedDocs?: boolean | User$receivedDocsArgs<ExtArgs>
     auditLogs?: boolean | User$auditLogsArgs<ExtArgs>
     CalendarAction?: boolean | User$CalendarActionArgs<ExtArgs>
+    articles?: boolean | User$articlesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -3673,11 +3707,13 @@ export namespace Prisma {
       receivedDocs: Prisma.$CompanyDocumentPayload<ExtArgs>[]
       auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
       CalendarAction: Prisma.$CalendarActionPayload<ExtArgs>[]
+      articles: Prisma.$ArticlePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       username: string
       email: string
+      name: string
       password: string
       mobile: string
       country: string
@@ -4103,6 +4139,7 @@ export namespace Prisma {
     receivedDocs<T extends User$receivedDocsArgs<ExtArgs> = {}>(args?: Subset<T, User$receivedDocsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     auditLogs<T extends User$auditLogsArgs<ExtArgs> = {}>(args?: Subset<T, User$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     CalendarAction<T extends User$CalendarActionArgs<ExtArgs> = {}>(args?: Subset<T, User$CalendarActionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CalendarActionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    articles<T extends User$articlesArgs<ExtArgs> = {}>(args?: Subset<T, User$articlesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4135,6 +4172,7 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'Int'>
     readonly username: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
+    readonly name: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
     readonly mobile: FieldRef<"User", 'String'>
     readonly country: FieldRef<"User", 'String'>
@@ -4850,6 +4888,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CalendarActionScalarFieldEnum | CalendarActionScalarFieldEnum[]
+  }
+
+  /**
+   * User.articles
+   */
+  export type User$articlesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Article
+     */
+    select?: ArticleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Article
+     */
+    omit?: ArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticleInclude<ExtArgs> | null
+    where?: ArticleWhereInput
+    orderBy?: ArticleOrderByWithRelationInput | ArticleOrderByWithRelationInput[]
+    cursor?: ArticleWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ArticleScalarFieldEnum | ArticleScalarFieldEnum[]
   }
 
   /**
@@ -22707,11 +22769,13 @@ export namespace Prisma {
 
   export type ArticleAvgAggregateOutputType = {
     id: number | null
+    authorId: number | null
     views: number | null
   }
 
   export type ArticleSumAggregateOutputType = {
     id: number | null
+    authorId: number | null
     views: number | null
   }
 
@@ -22719,9 +22783,10 @@ export namespace Prisma {
     id: number | null
     title: string | null
     content: string | null
-    status: string | null
+    status: $Enums.ArticleStatus | null
     createdAt: Date | null
     publishedAt: Date | null
+    authorId: number | null
     imagePath: string | null
     views: number | null
     hashtag: string | null
@@ -22731,9 +22796,10 @@ export namespace Prisma {
     id: number | null
     title: string | null
     content: string | null
-    status: string | null
+    status: $Enums.ArticleStatus | null
     createdAt: Date | null
     publishedAt: Date | null
+    authorId: number | null
     imagePath: string | null
     views: number | null
     hashtag: string | null
@@ -22746,6 +22812,7 @@ export namespace Prisma {
     status: number
     createdAt: number
     publishedAt: number
+    authorId: number
     imagePath: number
     views: number
     hashtag: number
@@ -22755,11 +22822,13 @@ export namespace Prisma {
 
   export type ArticleAvgAggregateInputType = {
     id?: true
+    authorId?: true
     views?: true
   }
 
   export type ArticleSumAggregateInputType = {
     id?: true
+    authorId?: true
     views?: true
   }
 
@@ -22770,6 +22839,7 @@ export namespace Prisma {
     status?: true
     createdAt?: true
     publishedAt?: true
+    authorId?: true
     imagePath?: true
     views?: true
     hashtag?: true
@@ -22782,6 +22852,7 @@ export namespace Prisma {
     status?: true
     createdAt?: true
     publishedAt?: true
+    authorId?: true
     imagePath?: true
     views?: true
     hashtag?: true
@@ -22794,6 +22865,7 @@ export namespace Prisma {
     status?: true
     createdAt?: true
     publishedAt?: true
+    authorId?: true
     imagePath?: true
     views?: true
     hashtag?: true
@@ -22890,12 +22962,13 @@ export namespace Prisma {
     id: number
     title: string
     content: string
-    status: string
+    status: $Enums.ArticleStatus
     createdAt: Date
-    publishedAt: Date
-    imagePath: string
+    publishedAt: Date | null
+    authorId: number
+    imagePath: string | null
     views: number
-    hashtag: string
+    hashtag: string | null
     _count: ArticleCountAggregateOutputType | null
     _avg: ArticleAvgAggregateOutputType | null
     _sum: ArticleSumAggregateOutputType | null
@@ -22924,9 +22997,11 @@ export namespace Prisma {
     status?: boolean
     createdAt?: boolean
     publishedAt?: boolean
+    authorId?: boolean
     imagePath?: boolean
     views?: boolean
     hashtag?: boolean
+    author?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["article"]>
 
   export type ArticleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -22936,9 +23011,11 @@ export namespace Prisma {
     status?: boolean
     createdAt?: boolean
     publishedAt?: boolean
+    authorId?: boolean
     imagePath?: boolean
     views?: boolean
     hashtag?: boolean
+    author?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["article"]>
 
   export type ArticleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -22948,9 +23025,11 @@ export namespace Prisma {
     status?: boolean
     createdAt?: boolean
     publishedAt?: boolean
+    authorId?: boolean
     imagePath?: boolean
     views?: boolean
     hashtag?: boolean
+    author?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["article"]>
 
   export type ArticleSelectScalar = {
@@ -22960,26 +23039,39 @@ export namespace Prisma {
     status?: boolean
     createdAt?: boolean
     publishedAt?: boolean
+    authorId?: boolean
     imagePath?: boolean
     views?: boolean
     hashtag?: boolean
   }
 
-  export type ArticleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "status" | "createdAt" | "publishedAt" | "imagePath" | "views" | "hashtag", ExtArgs["result"]["article"]>
+  export type ArticleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "status" | "createdAt" | "publishedAt" | "authorId" | "imagePath" | "views" | "hashtag", ExtArgs["result"]["article"]>
+  export type ArticleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ArticleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ArticleIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }
 
   export type $ArticlePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Article"
-    objects: {}
+    objects: {
+      author: Prisma.$UserPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       title: string
       content: string
-      status: string
+      status: $Enums.ArticleStatus
       createdAt: Date
-      publishedAt: Date
-      imagePath: string
+      publishedAt: Date | null
+      authorId: number
+      imagePath: string | null
       views: number
-      hashtag: string
+      hashtag: string | null
     }, ExtArgs["result"]["article"]>
     composites: {}
   }
@@ -23374,6 +23466,7 @@ export namespace Prisma {
    */
   export interface Prisma__ArticleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -23406,9 +23499,10 @@ export namespace Prisma {
     readonly id: FieldRef<"Article", 'Int'>
     readonly title: FieldRef<"Article", 'String'>
     readonly content: FieldRef<"Article", 'String'>
-    readonly status: FieldRef<"Article", 'String'>
+    readonly status: FieldRef<"Article", 'ArticleStatus'>
     readonly createdAt: FieldRef<"Article", 'DateTime'>
     readonly publishedAt: FieldRef<"Article", 'DateTime'>
+    readonly authorId: FieldRef<"Article", 'Int'>
     readonly imagePath: FieldRef<"Article", 'String'>
     readonly views: FieldRef<"Article", 'Int'>
     readonly hashtag: FieldRef<"Article", 'String'>
@@ -23429,6 +23523,10 @@ export namespace Prisma {
      */
     omit?: ArticleOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticleInclude<ExtArgs> | null
+    /**
      * Filter, which Article to fetch.
      */
     where: ArticleWhereUniqueInput
@@ -23447,6 +23545,10 @@ export namespace Prisma {
      */
     omit?: ArticleOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticleInclude<ExtArgs> | null
+    /**
      * Filter, which Article to fetch.
      */
     where: ArticleWhereUniqueInput
@@ -23464,6 +23566,10 @@ export namespace Prisma {
      * Omit specific fields from the Article
      */
     omit?: ArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticleInclude<ExtArgs> | null
     /**
      * Filter, which Article to fetch.
      */
@@ -23513,6 +23619,10 @@ export namespace Prisma {
      */
     omit?: ArticleOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticleInclude<ExtArgs> | null
+    /**
      * Filter, which Article to fetch.
      */
     where?: ArticleWhereInput
@@ -23561,6 +23671,10 @@ export namespace Prisma {
      */
     omit?: ArticleOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticleInclude<ExtArgs> | null
+    /**
      * Filter, which Articles to fetch.
      */
     where?: ArticleWhereInput
@@ -23604,6 +23718,10 @@ export namespace Prisma {
      */
     omit?: ArticleOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticleInclude<ExtArgs> | null
+    /**
      * The data needed to create a Article.
      */
     data: XOR<ArticleCreateInput, ArticleUncheckedCreateInput>
@@ -23637,6 +23755,10 @@ export namespace Prisma {
      */
     data: ArticleCreateManyInput | ArticleCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticleIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -23651,6 +23773,10 @@ export namespace Prisma {
      * Omit specific fields from the Article
      */
     omit?: ArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticleInclude<ExtArgs> | null
     /**
      * The data needed to update a Article.
      */
@@ -23703,6 +23829,10 @@ export namespace Prisma {
      * Limit how many Articles to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticleIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -23717,6 +23847,10 @@ export namespace Prisma {
      * Omit specific fields from the Article
      */
     omit?: ArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticleInclude<ExtArgs> | null
     /**
      * The filter to search for the Article to update in case it exists.
      */
@@ -23743,6 +23877,10 @@ export namespace Prisma {
      * Omit specific fields from the Article
      */
     omit?: ArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticleInclude<ExtArgs> | null
     /**
      * Filter which Article to delete.
      */
@@ -23775,6 +23913,10 @@ export namespace Prisma {
      * Omit specific fields from the Article
      */
     omit?: ArticleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArticleInclude<ExtArgs> | null
   }
 
 
@@ -29296,6 +29438,7 @@ export namespace Prisma {
     id: 'id',
     username: 'username',
     email: 'email',
+    name: 'name',
     password: 'password',
     mobile: 'mobile',
     country: 'country',
@@ -29555,6 +29698,7 @@ export namespace Prisma {
     status: 'status',
     createdAt: 'createdAt',
     publishedAt: 'publishedAt',
+    authorId: 'authorId',
     imagePath: 'imagePath',
     views: 'views',
     hashtag: 'hashtag'
@@ -29823,6 +29967,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'ArticleStatus'
+   */
+  export type EnumArticleStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ArticleStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'ArticleStatus[]'
+   */
+  export type ListEnumArticleStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ArticleStatus[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -29846,6 +30004,7 @@ export namespace Prisma {
     id?: IntFilter<"User"> | number
     username?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
+    name?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     mobile?: StringFilter<"User"> | string
     country?: StringFilter<"User"> | string
@@ -29877,12 +30036,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentListRelationFilter
     auditLogs?: AuditLogListRelationFilter
     CalendarAction?: CalendarActionListRelationFilter
+    articles?: ArticleListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
     username?: SortOrder
     email?: SortOrder
+    name?: SortOrder
     password?: SortOrder
     mobile?: SortOrder
     country?: SortOrder
@@ -29914,6 +30075,7 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentOrderByRelationAggregateInput
     auditLogs?: AuditLogOrderByRelationAggregateInput
     CalendarAction?: CalendarActionOrderByRelationAggregateInput
+    articles?: ArticleOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -29923,6 +30085,7 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
+    name?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     mobile?: StringFilter<"User"> | string
     country?: StringFilter<"User"> | string
@@ -29954,12 +30117,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentListRelationFilter
     auditLogs?: AuditLogListRelationFilter
     CalendarAction?: CalendarActionListRelationFilter
+    articles?: ArticleListRelationFilter
   }, "id" | "username" | "email">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     username?: SortOrder
     email?: SortOrder
+    name?: SortOrder
     password?: SortOrder
     mobile?: SortOrder
     country?: SortOrder
@@ -29992,6 +30157,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"User"> | number
     username?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
+    name?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
     mobile?: StringWithAggregatesFilter<"User"> | string
     country?: StringWithAggregatesFilter<"User"> | string
@@ -31257,12 +31423,14 @@ export namespace Prisma {
     id?: IntFilter<"Article"> | number
     title?: StringFilter<"Article"> | string
     content?: StringFilter<"Article"> | string
-    status?: StringFilter<"Article"> | string
+    status?: EnumArticleStatusFilter<"Article"> | $Enums.ArticleStatus
     createdAt?: DateTimeFilter<"Article"> | Date | string
-    publishedAt?: DateTimeFilter<"Article"> | Date | string
-    imagePath?: StringFilter<"Article"> | string
+    publishedAt?: DateTimeNullableFilter<"Article"> | Date | string | null
+    authorId?: IntFilter<"Article"> | number
+    imagePath?: StringNullableFilter<"Article"> | string | null
     views?: IntFilter<"Article"> | number
-    hashtag?: StringFilter<"Article"> | string
+    hashtag?: StringNullableFilter<"Article"> | string | null
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type ArticleOrderByWithRelationInput = {
@@ -31271,10 +31439,12 @@ export namespace Prisma {
     content?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
-    publishedAt?: SortOrder
-    imagePath?: SortOrder
+    publishedAt?: SortOrderInput | SortOrder
+    authorId?: SortOrder
+    imagePath?: SortOrderInput | SortOrder
     views?: SortOrder
-    hashtag?: SortOrder
+    hashtag?: SortOrderInput | SortOrder
+    author?: UserOrderByWithRelationInput
   }
 
   export type ArticleWhereUniqueInput = Prisma.AtLeast<{
@@ -31284,12 +31454,14 @@ export namespace Prisma {
     NOT?: ArticleWhereInput | ArticleWhereInput[]
     title?: StringFilter<"Article"> | string
     content?: StringFilter<"Article"> | string
-    status?: StringFilter<"Article"> | string
+    status?: EnumArticleStatusFilter<"Article"> | $Enums.ArticleStatus
     createdAt?: DateTimeFilter<"Article"> | Date | string
-    publishedAt?: DateTimeFilter<"Article"> | Date | string
-    imagePath?: StringFilter<"Article"> | string
+    publishedAt?: DateTimeNullableFilter<"Article"> | Date | string | null
+    authorId?: IntFilter<"Article"> | number
+    imagePath?: StringNullableFilter<"Article"> | string | null
     views?: IntFilter<"Article"> | number
-    hashtag?: StringFilter<"Article"> | string
+    hashtag?: StringNullableFilter<"Article"> | string | null
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type ArticleOrderByWithAggregationInput = {
@@ -31298,10 +31470,11 @@ export namespace Prisma {
     content?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
-    publishedAt?: SortOrder
-    imagePath?: SortOrder
+    publishedAt?: SortOrderInput | SortOrder
+    authorId?: SortOrder
+    imagePath?: SortOrderInput | SortOrder
     views?: SortOrder
-    hashtag?: SortOrder
+    hashtag?: SortOrderInput | SortOrder
     _count?: ArticleCountOrderByAggregateInput
     _avg?: ArticleAvgOrderByAggregateInput
     _max?: ArticleMaxOrderByAggregateInput
@@ -31316,12 +31489,13 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Article"> | number
     title?: StringWithAggregatesFilter<"Article"> | string
     content?: StringWithAggregatesFilter<"Article"> | string
-    status?: StringWithAggregatesFilter<"Article"> | string
+    status?: EnumArticleStatusWithAggregatesFilter<"Article"> | $Enums.ArticleStatus
     createdAt?: DateTimeWithAggregatesFilter<"Article"> | Date | string
-    publishedAt?: DateTimeWithAggregatesFilter<"Article"> | Date | string
-    imagePath?: StringWithAggregatesFilter<"Article"> | string
+    publishedAt?: DateTimeNullableWithAggregatesFilter<"Article"> | Date | string | null
+    authorId?: IntWithAggregatesFilter<"Article"> | number
+    imagePath?: StringNullableWithAggregatesFilter<"Article"> | string | null
     views?: IntWithAggregatesFilter<"Article"> | number
-    hashtag?: StringWithAggregatesFilter<"Article"> | string
+    hashtag?: StringNullableWithAggregatesFilter<"Article"> | string | null
   }
 
   export type ContactUsWhereInput = {
@@ -31676,6 +31850,7 @@ export namespace Prisma {
   export type UserCreateInput = {
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -31707,12 +31882,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
+    articles?: ArticleCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateInput = {
     id?: number
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -31744,11 +31921,13 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
+    articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUpdateInput = {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -31780,12 +31959,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -31817,12 +31998,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserCreateManyInput = {
     id?: number
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -31846,6 +32029,7 @@ export namespace Prisma {
   export type UserUpdateManyMutationInput = {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -31870,6 +32054,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -33160,82 +33345,88 @@ export namespace Prisma {
   export type ArticleCreateInput = {
     title: string
     content: string
-    status: string
+    status?: $Enums.ArticleStatus
     createdAt?: Date | string
-    publishedAt: Date | string
-    imagePath: string
-    views: number
-    hashtag: string
+    publishedAt?: Date | string | null
+    imagePath?: string | null
+    views?: number
+    hashtag?: string | null
+    author: UserCreateNestedOneWithoutArticlesInput
   }
 
   export type ArticleUncheckedCreateInput = {
     id?: number
     title: string
     content: string
-    status: string
+    status?: $Enums.ArticleStatus
     createdAt?: Date | string
-    publishedAt: Date | string
-    imagePath: string
-    views: number
-    hashtag: string
+    publishedAt?: Date | string | null
+    authorId: number
+    imagePath?: string | null
+    views?: number
+    hashtag?: string | null
   }
 
   export type ArticleUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    publishedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    imagePath?: StringFieldUpdateOperationsInput | string
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    imagePath?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
-    hashtag?: StringFieldUpdateOperationsInput | string
+    hashtag?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: UserUpdateOneRequiredWithoutArticlesNestedInput
   }
 
   export type ArticleUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    publishedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    imagePath?: StringFieldUpdateOperationsInput | string
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorId?: IntFieldUpdateOperationsInput | number
+    imagePath?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
-    hashtag?: StringFieldUpdateOperationsInput | string
+    hashtag?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ArticleCreateManyInput = {
     id?: number
     title: string
     content: string
-    status: string
+    status?: $Enums.ArticleStatus
     createdAt?: Date | string
-    publishedAt: Date | string
-    imagePath: string
-    views: number
-    hashtag: string
+    publishedAt?: Date | string | null
+    authorId: number
+    imagePath?: string | null
+    views?: number
+    hashtag?: string | null
   }
 
   export type ArticleUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    publishedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    imagePath?: StringFieldUpdateOperationsInput | string
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    imagePath?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
-    hashtag?: StringFieldUpdateOperationsInput | string
+    hashtag?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ArticleUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    publishedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    imagePath?: StringFieldUpdateOperationsInput | string
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorId?: IntFieldUpdateOperationsInput | number
+    imagePath?: NullableStringFieldUpdateOperationsInput | string | null
     views?: IntFieldUpdateOperationsInput | number
-    hashtag?: StringFieldUpdateOperationsInput | string
+    hashtag?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ContactUsCreateInput = {
@@ -33741,6 +33932,12 @@ export namespace Prisma {
     none?: AuditLogWhereInput
   }
 
+  export type ArticleListRelationFilter = {
+    every?: ArticleWhereInput
+    some?: ArticleWhereInput
+    none?: ArticleWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -33786,10 +33983,15 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type ArticleOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     username?: SortOrder
     email?: SortOrder
+    name?: SortOrder
     password?: SortOrder
     mobile?: SortOrder
     country?: SortOrder
@@ -33818,6 +34020,7 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     email?: SortOrder
+    name?: SortOrder
     password?: SortOrder
     mobile?: SortOrder
     country?: SortOrder
@@ -33842,6 +34045,7 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     email?: SortOrder
+    name?: SortOrder
     password?: SortOrder
     mobile?: SortOrder
     country?: SortOrder
@@ -34938,6 +35142,13 @@ export namespace Prisma {
     companyId?: SortOrder
   }
 
+  export type EnumArticleStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ArticleStatus | EnumArticleStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ArticleStatus[] | ListEnumArticleStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ArticleStatus[] | ListEnumArticleStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumArticleStatusFilter<$PrismaModel> | $Enums.ArticleStatus
+  }
+
   export type ArticleCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
@@ -34945,6 +35156,7 @@ export namespace Prisma {
     status?: SortOrder
     createdAt?: SortOrder
     publishedAt?: SortOrder
+    authorId?: SortOrder
     imagePath?: SortOrder
     views?: SortOrder
     hashtag?: SortOrder
@@ -34952,6 +35164,7 @@ export namespace Prisma {
 
   export type ArticleAvgOrderByAggregateInput = {
     id?: SortOrder
+    authorId?: SortOrder
     views?: SortOrder
   }
 
@@ -34962,6 +35175,7 @@ export namespace Prisma {
     status?: SortOrder
     createdAt?: SortOrder
     publishedAt?: SortOrder
+    authorId?: SortOrder
     imagePath?: SortOrder
     views?: SortOrder
     hashtag?: SortOrder
@@ -34974,6 +35188,7 @@ export namespace Prisma {
     status?: SortOrder
     createdAt?: SortOrder
     publishedAt?: SortOrder
+    authorId?: SortOrder
     imagePath?: SortOrder
     views?: SortOrder
     hashtag?: SortOrder
@@ -34981,7 +35196,18 @@ export namespace Prisma {
 
   export type ArticleSumOrderByAggregateInput = {
     id?: SortOrder
+    authorId?: SortOrder
     views?: SortOrder
+  }
+
+  export type EnumArticleStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ArticleStatus | EnumArticleStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ArticleStatus[] | ListEnumArticleStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ArticleStatus[] | ListEnumArticleStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumArticleStatusWithAggregatesFilter<$PrismaModel> | $Enums.ArticleStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumArticleStatusFilter<$PrismaModel>
+    _max?: NestedEnumArticleStatusFilter<$PrismaModel>
   }
 
   export type ContactUsCountOrderByAggregateInput = {
@@ -35281,6 +35507,13 @@ export namespace Prisma {
     connect?: CalendarActionWhereUniqueInput | CalendarActionWhereUniqueInput[]
   }
 
+  export type ArticleCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<ArticleCreateWithoutAuthorInput, ArticleUncheckedCreateWithoutAuthorInput> | ArticleCreateWithoutAuthorInput[] | ArticleUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ArticleCreateOrConnectWithoutAuthorInput | ArticleCreateOrConnectWithoutAuthorInput[]
+    createMany?: ArticleCreateManyAuthorInputEnvelope
+    connect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+  }
+
   export type CalendarActionUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<CalendarActionCreateWithoutUserInput, CalendarActionUncheckedCreateWithoutUserInput> | CalendarActionCreateWithoutUserInput[] | CalendarActionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: CalendarActionCreateOrConnectWithoutUserInput | CalendarActionCreateOrConnectWithoutUserInput[]
@@ -35370,6 +35603,13 @@ export namespace Prisma {
     connectOrCreate?: CalendarActionCreateOrConnectWithoutCreatorInput | CalendarActionCreateOrConnectWithoutCreatorInput[]
     createMany?: CalendarActionCreateManyCreatorInputEnvelope
     connect?: CalendarActionWhereUniqueInput | CalendarActionWhereUniqueInput[]
+  }
+
+  export type ArticleUncheckedCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<ArticleCreateWithoutAuthorInput, ArticleUncheckedCreateWithoutAuthorInput> | ArticleCreateWithoutAuthorInput[] | ArticleUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ArticleCreateOrConnectWithoutAuthorInput | ArticleCreateOrConnectWithoutAuthorInput[]
+    createMany?: ArticleCreateManyAuthorInputEnvelope
+    connect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -35578,6 +35818,20 @@ export namespace Prisma {
     deleteMany?: CalendarActionScalarWhereInput | CalendarActionScalarWhereInput[]
   }
 
+  export type ArticleUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<ArticleCreateWithoutAuthorInput, ArticleUncheckedCreateWithoutAuthorInput> | ArticleCreateWithoutAuthorInput[] | ArticleUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ArticleCreateOrConnectWithoutAuthorInput | ArticleCreateOrConnectWithoutAuthorInput[]
+    upsert?: ArticleUpsertWithWhereUniqueWithoutAuthorInput | ArticleUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: ArticleCreateManyAuthorInputEnvelope
+    set?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    disconnect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    delete?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    connect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    update?: ArticleUpdateWithWhereUniqueWithoutAuthorInput | ArticleUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: ArticleUpdateManyWithWhereWithoutAuthorInput | ArticleUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: ArticleScalarWhereInput | ArticleScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -35766,6 +36020,20 @@ export namespace Prisma {
     update?: CalendarActionUpdateWithWhereUniqueWithoutCreatorInput | CalendarActionUpdateWithWhereUniqueWithoutCreatorInput[]
     updateMany?: CalendarActionUpdateManyWithWhereWithoutCreatorInput | CalendarActionUpdateManyWithWhereWithoutCreatorInput[]
     deleteMany?: CalendarActionScalarWhereInput | CalendarActionScalarWhereInput[]
+  }
+
+  export type ArticleUncheckedUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<ArticleCreateWithoutAuthorInput, ArticleUncheckedCreateWithoutAuthorInput> | ArticleCreateWithoutAuthorInput[] | ArticleUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ArticleCreateOrConnectWithoutAuthorInput | ArticleCreateOrConnectWithoutAuthorInput[]
+    upsert?: ArticleUpsertWithWhereUniqueWithoutAuthorInput | ArticleUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: ArticleCreateManyAuthorInputEnvelope
+    set?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    disconnect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    delete?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    connect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    update?: ArticleUpdateWithWhereUniqueWithoutAuthorInput | ArticleUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: ArticleUpdateManyWithWhereWithoutAuthorInput | ArticleUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: ArticleScalarWhereInput | ArticleScalarWhereInput[]
   }
 
   export type CalendarActionCreateNestedManyWithoutCompanyInput = {
@@ -36657,6 +36925,24 @@ export namespace Prisma {
     update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutRoleAssignmentsInput, CompanyUpdateWithoutRoleAssignmentsInput>, CompanyUncheckedUpdateWithoutRoleAssignmentsInput>
   }
 
+  export type UserCreateNestedOneWithoutArticlesInput = {
+    create?: XOR<UserCreateWithoutArticlesInput, UserUncheckedCreateWithoutArticlesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutArticlesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type EnumArticleStatusFieldUpdateOperationsInput = {
+    set?: $Enums.ArticleStatus
+  }
+
+  export type UserUpdateOneRequiredWithoutArticlesNestedInput = {
+    create?: XOR<UserCreateWithoutArticlesInput, UserUncheckedCreateWithoutArticlesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutArticlesInput
+    upsert?: UserUpsertWithoutArticlesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutArticlesInput, UserUpdateWithoutArticlesInput>, UserUncheckedUpdateWithoutArticlesInput>
+  }
+
   export type PaymentCreateNestedManyWithoutStagingCompanyInput = {
     create?: XOR<PaymentCreateWithoutStagingCompanyInput, PaymentUncheckedCreateWithoutStagingCompanyInput> | PaymentCreateWithoutStagingCompanyInput[] | PaymentUncheckedCreateWithoutStagingCompanyInput[]
     connectOrCreate?: PaymentCreateOrConnectWithoutStagingCompanyInput | PaymentCreateOrConnectWithoutStagingCompanyInput[]
@@ -37074,6 +37360,23 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumRefundStatusFilter<$PrismaModel>
     _max?: NestedEnumRefundStatusFilter<$PrismaModel>
+  }
+
+  export type NestedEnumArticleStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ArticleStatus | EnumArticleStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ArticleStatus[] | ListEnumArticleStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ArticleStatus[] | ListEnumArticleStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumArticleStatusFilter<$PrismaModel> | $Enums.ArticleStatus
+  }
+
+  export type NestedEnumArticleStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ArticleStatus | EnumArticleStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ArticleStatus[] | ListEnumArticleStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ArticleStatus[] | ListEnumArticleStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumArticleStatusWithAggregatesFilter<$PrismaModel> | $Enums.ArticleStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumArticleStatusFilter<$PrismaModel>
+    _max?: NestedEnumArticleStatusFilter<$PrismaModel>
   }
 
   export type CalendarActionCreateWithoutUserInput = {
@@ -37499,6 +37802,39 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ArticleCreateWithoutAuthorInput = {
+    title: string
+    content: string
+    status?: $Enums.ArticleStatus
+    createdAt?: Date | string
+    publishedAt?: Date | string | null
+    imagePath?: string | null
+    views?: number
+    hashtag?: string | null
+  }
+
+  export type ArticleUncheckedCreateWithoutAuthorInput = {
+    id?: number
+    title: string
+    content: string
+    status?: $Enums.ArticleStatus
+    createdAt?: Date | string
+    publishedAt?: Date | string | null
+    imagePath?: string | null
+    views?: number
+    hashtag?: string | null
+  }
+
+  export type ArticleCreateOrConnectWithoutAuthorInput = {
+    where: ArticleWhereUniqueInput
+    create: XOR<ArticleCreateWithoutAuthorInput, ArticleUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type ArticleCreateManyAuthorInputEnvelope = {
+    data: ArticleCreateManyAuthorInput | ArticleCreateManyAuthorInput[]
+    skipDuplicates?: boolean
+  }
+
   export type CalendarActionUpsertWithWhereUniqueWithoutUserInput = {
     where: CalendarActionWhereUniqueInput
     update: XOR<CalendarActionUpdateWithoutUserInput, CalendarActionUncheckedUpdateWithoutUserInput>
@@ -37857,6 +38193,38 @@ export namespace Prisma {
     data: XOR<CalendarActionUpdateManyMutationInput, CalendarActionUncheckedUpdateManyWithoutCreatorInput>
   }
 
+  export type ArticleUpsertWithWhereUniqueWithoutAuthorInput = {
+    where: ArticleWhereUniqueInput
+    update: XOR<ArticleUpdateWithoutAuthorInput, ArticleUncheckedUpdateWithoutAuthorInput>
+    create: XOR<ArticleCreateWithoutAuthorInput, ArticleUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type ArticleUpdateWithWhereUniqueWithoutAuthorInput = {
+    where: ArticleWhereUniqueInput
+    data: XOR<ArticleUpdateWithoutAuthorInput, ArticleUncheckedUpdateWithoutAuthorInput>
+  }
+
+  export type ArticleUpdateManyWithWhereWithoutAuthorInput = {
+    where: ArticleScalarWhereInput
+    data: XOR<ArticleUpdateManyMutationInput, ArticleUncheckedUpdateManyWithoutAuthorInput>
+  }
+
+  export type ArticleScalarWhereInput = {
+    AND?: ArticleScalarWhereInput | ArticleScalarWhereInput[]
+    OR?: ArticleScalarWhereInput[]
+    NOT?: ArticleScalarWhereInput | ArticleScalarWhereInput[]
+    id?: IntFilter<"Article"> | number
+    title?: StringFilter<"Article"> | string
+    content?: StringFilter<"Article"> | string
+    status?: EnumArticleStatusFilter<"Article"> | $Enums.ArticleStatus
+    createdAt?: DateTimeFilter<"Article"> | Date | string
+    publishedAt?: DateTimeNullableFilter<"Article"> | Date | string | null
+    authorId?: IntFilter<"Article"> | number
+    imagePath?: StringNullableFilter<"Article"> | string | null
+    views?: IntFilter<"Article"> | number
+    hashtag?: StringNullableFilter<"Article"> | string | null
+  }
+
   export type CalendarActionCreateWithoutCompanyInput = {
     title: string
     dueDate: Date | string
@@ -37891,6 +38259,7 @@ export namespace Prisma {
   export type UserCreateWithoutCompaniesInput = {
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -37921,12 +38290,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
+    articles?: ArticleCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutCompaniesInput = {
     id?: number
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -37957,6 +38328,7 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
+    articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutCompaniesInput = {
@@ -38282,6 +38654,7 @@ export namespace Prisma {
   export type UserUpdateWithoutCompaniesInput = {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -38312,12 +38685,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCompaniesInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -38348,6 +38723,7 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type CompanyDocumentUpsertWithWhereUniqueWithoutCompanyInput = {
@@ -38633,6 +39009,7 @@ export namespace Prisma {
   export type UserCreateWithoutRevertMessageInput = {
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -38663,12 +39040,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
+    articles?: ArticleCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutRevertMessageInput = {
     id?: number
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -38699,6 +39078,7 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
+    articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutRevertMessageInput = {
@@ -38798,6 +39178,7 @@ export namespace Prisma {
   export type UserUpdateWithoutRevertMessageInput = {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -38828,12 +39209,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRevertMessageInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -38864,6 +39247,7 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type CompanyCreateWithoutDirectorsInput = {
@@ -39241,6 +39625,7 @@ export namespace Prisma {
   export type UserCreateWithoutUploadedDocsInput = {
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -39271,12 +39656,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
+    articles?: ArticleCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutUploadedDocsInput = {
     id?: number
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -39307,6 +39694,7 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
+    articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutUploadedDocsInput = {
@@ -39317,6 +39705,7 @@ export namespace Prisma {
   export type UserCreateWithoutReceivedDocsInput = {
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -39347,12 +39736,14 @@ export namespace Prisma {
     uploadedDocs?: CompanyDocumentCreateNestedManyWithoutUploaderInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
+    articles?: ArticleCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutReceivedDocsInput = {
     id?: number
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -39383,6 +39774,7 @@ export namespace Prisma {
     uploadedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutUploaderInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
+    articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutReceivedDocsInput = {
@@ -39482,6 +39874,7 @@ export namespace Prisma {
   export type UserUpdateWithoutUploadedDocsInput = {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -39512,12 +39905,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutUploadedDocsInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -39548,6 +39943,7 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUpsertWithoutReceivedDocsInput = {
@@ -39564,6 +39960,7 @@ export namespace Prisma {
   export type UserUpdateWithoutReceivedDocsInput = {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -39594,12 +39991,14 @@ export namespace Prisma {
     uploadedDocs?: CompanyDocumentUpdateManyWithoutUploaderNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutReceivedDocsInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -39630,6 +40029,7 @@ export namespace Prisma {
     uploadedDocs?: CompanyDocumentUncheckedUpdateManyWithoutUploaderNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type RefundCreateWithoutPaymentInput = {
@@ -39732,6 +40132,7 @@ export namespace Prisma {
   export type UserCreateWithoutPaymentsInput = {
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -39762,12 +40163,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
+    articles?: ArticleCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutPaymentsInput = {
     id?: number
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -39798,6 +40201,7 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
+    articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutPaymentsInput = {
@@ -39970,6 +40374,7 @@ export namespace Prisma {
   export type UserUpdateWithoutPaymentsInput = {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -40000,12 +40405,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPaymentsInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -40036,6 +40443,7 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type StagingCompanyUpsertWithoutPaymentsInput = {
@@ -40399,6 +40807,7 @@ export namespace Prisma {
   export type UserCreateWithoutNotificationsInput = {
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -40429,12 +40838,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
+    articles?: ArticleCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutNotificationsInput = {
     id?: number
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -40465,6 +40876,7 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
+    articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -40486,6 +40898,7 @@ export namespace Prisma {
   export type UserUpdateWithoutNotificationsInput = {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -40516,12 +40929,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutNotificationsInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -40552,11 +40967,13 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserCreateWithoutInsightsInput = {
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -40587,12 +41004,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
+    articles?: ArticleCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutInsightsInput = {
     id?: number
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -40623,6 +41042,7 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
+    articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutInsightsInput = {
@@ -40644,6 +41064,7 @@ export namespace Prisma {
   export type UserUpdateWithoutInsightsInput = {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -40674,12 +41095,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutInsightsInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -40710,11 +41133,13 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserCreateWithoutAssignedTasksInput = {
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -40745,12 +41170,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
+    articles?: ArticleCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutAssignedTasksInput = {
     id?: number
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -40781,6 +41208,7 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
+    articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutAssignedTasksInput = {
@@ -40863,6 +41291,7 @@ export namespace Prisma {
   export type UserCreateWithoutCalendarActionInput = {
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -40893,12 +41322,14 @@ export namespace Prisma {
     uploadedDocs?: CompanyDocumentCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
+    articles?: ArticleCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutCalendarActionInput = {
     id?: number
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -40929,6 +41360,7 @@ export namespace Prisma {
     uploadedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
+    articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutCalendarActionInput = {
@@ -40950,6 +41382,7 @@ export namespace Prisma {
   export type UserUpdateWithoutAssignedTasksInput = {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -40980,12 +41413,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAssignedTasksInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -41016,6 +41451,7 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type CompanyUpsertWithoutTasksInput = {
@@ -41110,6 +41546,7 @@ export namespace Prisma {
   export type UserUpdateWithoutCalendarActionInput = {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -41140,12 +41577,14 @@ export namespace Prisma {
     uploadedDocs?: CompanyDocumentUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
+    articles?: ArticleUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCalendarActionInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -41176,11 +41615,13 @@ export namespace Prisma {
     uploadedDocs?: CompanyDocumentUncheckedUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
+    articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserCreateWithoutMessagesReceivedInput = {
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -41211,12 +41652,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
+    articles?: ArticleCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutMessagesReceivedInput = {
     id?: number
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -41247,6 +41690,7 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
+    articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutMessagesReceivedInput = {
@@ -41257,6 +41701,7 @@ export namespace Prisma {
   export type UserCreateWithoutMessagesSentInput = {
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -41287,12 +41732,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
+    articles?: ArticleCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutMessagesSentInput = {
     id?: number
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -41323,6 +41770,7 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
+    articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutMessagesSentInput = {
@@ -41344,6 +41792,7 @@ export namespace Prisma {
   export type UserUpdateWithoutMessagesReceivedInput = {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -41374,12 +41823,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMessagesReceivedInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -41410,6 +41861,7 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUpsertWithoutMessagesSentInput = {
@@ -41426,6 +41878,7 @@ export namespace Prisma {
   export type UserUpdateWithoutMessagesSentInput = {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -41456,12 +41909,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMessagesSentInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -41492,6 +41947,7 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type CompanyCreateWithoutDashboardStateInput = {
@@ -41647,6 +42103,7 @@ export namespace Prisma {
   export type UserCreateWithoutAssignedRolesInput = {
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -41677,12 +42134,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
+    articles?: ArticleCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutAssignedRolesInput = {
     id?: number
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -41713,6 +42172,7 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
+    articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutAssignedRolesInput = {
@@ -41806,6 +42266,7 @@ export namespace Prisma {
   export type UserUpdateWithoutAssignedRolesInput = {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -41836,12 +42297,14 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAssignedRolesInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -41872,6 +42335,7 @@ export namespace Prisma {
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type CompanyUpsertWithoutRoleAssignmentsInput = {
@@ -41952,6 +42416,172 @@ export namespace Prisma {
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
+  export type UserCreateWithoutArticlesInput = {
+    username: string
+    email: string
+    name?: string
+    password: string
+    mobile: string
+    country: string
+    role: $Enums.UserRole
+    profilePic?: string | null
+    profileThumbnail?: string | null
+    lastLogin?: Date | string | null
+    resetPasswordToken?: string | null
+    resetPasswordExpires?: Date | string | null
+    otp?: string | null
+    otpExpires?: Date | string | null
+    refreshToken?: string | null
+    isVerified?: boolean
+    isDeactivated?: boolean
+    isDeleted?: boolean
+    isSuspended?: boolean
+    suspendMessage?: string
+    createdAt?: Date | string
+    assignedTasks?: CalendarActionCreateNestedManyWithoutUserInput
+    messagesReceived?: ChatMessageCreateNestedManyWithoutReceiverInput
+    messagesSent?: ChatMessageCreateNestedManyWithoutSenderInput
+    companies?: CompanyCreateNestedManyWithoutUserInput
+    insights?: InsightRecommendationCreateNestedManyWithoutUserInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    payments?: PaymentCreateNestedManyWithoutUserInput
+    assignedRoles?: RoleAssignmentCreateNestedManyWithoutAgentInput
+    revertMessage?: CompanyStatusMessageCreateNestedManyWithoutSenderInput
+    uploadedDocs?: CompanyDocumentCreateNestedManyWithoutUploaderInput
+    receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
+    auditLogs?: AuditLogCreateNestedManyWithoutActorInput
+    CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserUncheckedCreateWithoutArticlesInput = {
+    id?: number
+    username: string
+    email: string
+    name?: string
+    password: string
+    mobile: string
+    country: string
+    role: $Enums.UserRole
+    profilePic?: string | null
+    profileThumbnail?: string | null
+    lastLogin?: Date | string | null
+    resetPasswordToken?: string | null
+    resetPasswordExpires?: Date | string | null
+    otp?: string | null
+    otpExpires?: Date | string | null
+    refreshToken?: string | null
+    isVerified?: boolean
+    isDeactivated?: boolean
+    isDeleted?: boolean
+    isSuspended?: boolean
+    suspendMessage?: string
+    createdAt?: Date | string
+    assignedTasks?: CalendarActionUncheckedCreateNestedManyWithoutUserInput
+    messagesReceived?: ChatMessageUncheckedCreateNestedManyWithoutReceiverInput
+    messagesSent?: ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+    companies?: CompanyUncheckedCreateNestedManyWithoutUserInput
+    insights?: InsightRecommendationUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
+    assignedRoles?: RoleAssignmentUncheckedCreateNestedManyWithoutAgentInput
+    revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutSenderInput
+    uploadedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutUploaderInput
+    receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
+    auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
+    CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserCreateOrConnectWithoutArticlesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutArticlesInput, UserUncheckedCreateWithoutArticlesInput>
+  }
+
+  export type UserUpsertWithoutArticlesInput = {
+    update: XOR<UserUpdateWithoutArticlesInput, UserUncheckedUpdateWithoutArticlesInput>
+    create: XOR<UserCreateWithoutArticlesInput, UserUncheckedCreateWithoutArticlesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutArticlesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutArticlesInput, UserUncheckedUpdateWithoutArticlesInput>
+  }
+
+  export type UserUpdateWithoutArticlesInput = {
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    profilePic?: NullableStringFieldUpdateOperationsInput | string | null
+    profileThumbnail?: NullableStringFieldUpdateOperationsInput | string | null
+    lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    otp?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    isDeactivated?: BoolFieldUpdateOperationsInput | boolean
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isSuspended?: BoolFieldUpdateOperationsInput | boolean
+    suspendMessage?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assignedTasks?: CalendarActionUpdateManyWithoutUserNestedInput
+    messagesReceived?: ChatMessageUpdateManyWithoutReceiverNestedInput
+    messagesSent?: ChatMessageUpdateManyWithoutSenderNestedInput
+    companies?: CompanyUpdateManyWithoutUserNestedInput
+    insights?: InsightRecommendationUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    payments?: PaymentUpdateManyWithoutUserNestedInput
+    assignedRoles?: RoleAssignmentUpdateManyWithoutAgentNestedInput
+    revertMessage?: CompanyStatusMessageUpdateManyWithoutSenderNestedInput
+    uploadedDocs?: CompanyDocumentUpdateManyWithoutUploaderNestedInput
+    receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
+    auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
+    CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutArticlesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    profilePic?: NullableStringFieldUpdateOperationsInput | string | null
+    profileThumbnail?: NullableStringFieldUpdateOperationsInput | string | null
+    lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    otp?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    isDeactivated?: BoolFieldUpdateOperationsInput | boolean
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isSuspended?: BoolFieldUpdateOperationsInput | boolean
+    suspendMessage?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assignedTasks?: CalendarActionUncheckedUpdateManyWithoutUserNestedInput
+    messagesReceived?: ChatMessageUncheckedUpdateManyWithoutReceiverNestedInput
+    messagesSent?: ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+    companies?: CompanyUncheckedUpdateManyWithoutUserNestedInput
+    insights?: InsightRecommendationUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
+    assignedRoles?: RoleAssignmentUncheckedUpdateManyWithoutAgentNestedInput
+    revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutSenderNestedInput
+    uploadedDocs?: CompanyDocumentUncheckedUpdateManyWithoutUploaderNestedInput
+    receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
+    auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
+    CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
+  }
+
   export type PaymentCreateWithoutStagingCompanyInput = {
     paymentDate: Date | string
     amount: Decimal | DecimalJsLike | number | string
@@ -42008,6 +42638,7 @@ export namespace Prisma {
   export type UserCreateWithoutAuditLogsInput = {
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -42038,12 +42669,14 @@ export namespace Prisma {
     uploadedDocs?: CompanyDocumentCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
+    articles?: ArticleCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutAuditLogsInput = {
     id?: number
     username: string
     email: string
+    name?: string
     password: string
     mobile: string
     country: string
@@ -42074,6 +42707,7 @@ export namespace Prisma {
     uploadedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
+    articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutAuditLogsInput = {
@@ -42167,6 +42801,7 @@ export namespace Prisma {
   export type UserUpdateWithoutAuditLogsInput = {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -42197,12 +42832,14 @@ export namespace Prisma {
     uploadedDocs?: CompanyDocumentUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAuditLogsInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
@@ -42233,6 +42870,7 @@ export namespace Prisma {
     uploadedDocs?: CompanyDocumentUncheckedUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type CompanyUpsertWithoutAuditLogsInput = {
@@ -42453,6 +43091,18 @@ export namespace Prisma {
     notes?: string | null
     status?: string
     createdByRole: $Enums.UserRole
+  }
+
+  export type ArticleCreateManyAuthorInput = {
+    id?: number
+    title: string
+    content: string
+    status?: $Enums.ArticleStatus
+    createdAt?: Date | string
+    publishedAt?: Date | string | null
+    imagePath?: string | null
+    views?: number
+    hashtag?: string | null
   }
 
   export type CalendarActionUpdateWithoutUserInput = {
@@ -42888,6 +43538,41 @@ export namespace Prisma {
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     createdByRole?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  }
+
+  export type ArticleUpdateWithoutAuthorInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    status?: EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    imagePath?: NullableStringFieldUpdateOperationsInput | string | null
+    views?: IntFieldUpdateOperationsInput | number
+    hashtag?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ArticleUncheckedUpdateWithoutAuthorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    status?: EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    imagePath?: NullableStringFieldUpdateOperationsInput | string | null
+    views?: IntFieldUpdateOperationsInput | number
+    hashtag?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ArticleUncheckedUpdateManyWithoutAuthorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    status?: EnumArticleStatusFieldUpdateOperationsInput | $Enums.ArticleStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    imagePath?: NullableStringFieldUpdateOperationsInput | string | null
+    views?: IntFieldUpdateOperationsInput | number
+    hashtag?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CalendarActionCreateManyCompanyInput = {
