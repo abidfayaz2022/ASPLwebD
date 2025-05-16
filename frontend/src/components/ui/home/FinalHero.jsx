@@ -130,7 +130,7 @@ export default function FinalHero() {
                                                     ) : (
                                                         <div className="globe-icon rounded-circle shadow-sm d-inline-flex align-items-center justify-content-center"
                                                             style={{ width: '60px', height: '60px', backgroundColor: '#f8f9fa', padding: '5px' }}>
-                                                            <i className="bi bi-globe2" style={{ fontSize: '2rem', color: 'var(--primary-color)' }} />
+                                                            <i className="bi bi-globe2" style={{ fontSize: '2rem', color: '#0d6efd' }} />
                                                         </div>
                                                     )}
                                                 </div>
@@ -143,7 +143,7 @@ export default function FinalHero() {
                                                         : ['Multiple Jurisdictions', 'End-to-End Support', 'Quick Turnaround Time']
                                                     ).map((li) => (
                                                         <li key={li} className="mb-2 d-flex align-items-center">
-                                                            <i className="bi bi-check-circle-fill text-success me-2" />
+                                                            <i className="bi bi-check-circle-fill text-primary me-2" />
                                                             <span style={{ color: 'var(--text-dark)' }}>{li}</span>
                                                         </li>
                                                     ))}
@@ -176,7 +176,7 @@ export default function FinalHero() {
                 </div>
             </div>
 
-            <style jsx>{`
+            <style jsx global>{`
                 /* Global link styles */
 \
                 a, a:hover, a:focus, a:active, a:visited {
