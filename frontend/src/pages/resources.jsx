@@ -436,7 +436,7 @@ const Resources = () => {
                       <Link href="/contact" className="btn btn-light btn-lg px-4 shadow-sm">
                         <i className="bi bi-chat-dots me-2"></i> Contact Our Experts
                       </Link>
-                      <Link href="/about" className="btn btn-outline-light btn-lg px-4">
+                      <Link href="/about#team" className="btn btn-outline-light btn-lg px-4">
                         <i className="bi bi-info-circle me-2"></i> About Our Team
                       </Link>
                     </div>
@@ -468,7 +468,7 @@ const Resources = () => {
                         </div>
                         <div>
                           <h6 className="mb-0">WhatsApp</h6>
-                          <a href="https://wa.me/6582002370" className="text-dark text-decoration-none">Message us on WhatsApp</a>
+                          <a href="https://wa.me/6583308396" className="text-dark text-decoration-none">Message us on WhatsApp</a>
                         </div>
                       </div>
                     </div>

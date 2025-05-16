@@ -348,7 +348,7 @@ const AboutUs = () => {
       </section>
 
       {/* Team Section */}
-      <section className="team py-4 py-md-5 bg-light">
+      <section className="team py-4 py-md-5 bg-light" id="team">
         <div className="container">
           <h2
             className="text-center mb-3 mb-md-4 text-dark"

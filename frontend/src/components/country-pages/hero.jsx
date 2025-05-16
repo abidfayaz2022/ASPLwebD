@@ -15,14 +15,14 @@ export default function CountryHero({
     <section className="country-hero-section position-relative d-flex align-items-center overflow-hidden">
       {/* Diagonal Background Image */}
       <div className="diagonal-image-wrapper">
-<Image
-  src={image}
-  alt={title}
-  fill
-  className="diagonal-image"
-  priority
-/>
-
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="diagonal-image"
+          priority
+          sizes="(max-width: 768px) 100vw, 60vw"
+        />
       </div>
 
       {/* Left Dotted Pattern */}
@@ -52,6 +52,8 @@ export default function CountryHero({
       <style jsx>{`
         .country-hero-section {
           background-color: #fff;
+          min-height: 100vh;
+          position: relative;
         }
 
         .diagonal-image-wrapper {
@@ -67,38 +69,71 @@ export default function CountryHero({
 
         .diagonal-image {
           object-fit: cover;
-          
+          object-position: center;
         }
 
-.dot-pattern {
-  position: absolute;
-  left: 2;
-  top: 0;
-  width: 140px;
-  height: 100%;
-  background-image: radial-gradient(#fcb900 2.8px, transparent 2.8px);
-  background-size: 30px 30px;
-  opacity: 0.75;
-  z-index: 0;
-}
-
+        .dot-pattern {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 140px;
+          height: 100%;
+          background-image: radial-gradient(#fcb900 2.8px, transparent 2.8px);
+          background-size: 30px 30px;
+          opacity: 0.75;
+          z-index: 0;
+        }
 
         .hero-box {
           max-width: 580px;
           background: white;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 991px) {
+          .country-hero-section {
+            min-height: auto;
+            padding: 80px 0;
+          }
+
           .diagonal-image-wrapper {
-            clip-path: none;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
             width: 100%;
-            height: 50%;
-            top: auto;
-            bottom: 0;
+            height: 100%;
+            opacity: 0.15;
           }
 
           .hero-box {
             text-align: center;
+            margin: 0 auto;
+            max-width: 100%;
+          }
+
+          .dot-pattern {
+            display: none;
+          }
+        }
+
+        @media (max-width: 576px) {
+          .country-hero-section {
+            padding: 60px 0;
+          }
+
+          .hero-box {
+            padding: 1.5rem !important;
+          }
+
+          .display-4 {
+            font-size: 2rem;
+          }
+
+          .lead {
+            font-size: 1rem;
+          }
+
+          .btn {
+            width: 100%;
+            margin-bottom: 0.5rem;
           }
         }
       `}</style>
