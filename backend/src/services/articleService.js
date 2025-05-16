@@ -7,9 +7,11 @@ export const createArticle = async (authorId, data, file) => {
     data: {
       title: data.title || 'Untitled Post',
       content: data.content || '',
-      status: 'draft',
+      status: data.status,
       authorId,
-      imagePath
+      imagePath,
+      hashtag: data.hashtags || null,
+      createdAt: new Date(),
     }
   });
 };
@@ -33,6 +35,8 @@ export const updateArticle = async (articleId, data, file, authorId) => {
     data: {
       title: data.title || article.title,
       content: data.content || article.content,
+      hashtag: data.hashtags || null,
+      status: data.status,
       imagePath,
     }
   });

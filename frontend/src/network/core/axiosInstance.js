@@ -7,9 +7,8 @@ import axiosRetry from 'axios-retry';
 const axiosInstance = axios.create({
   baseURL: config.API_BASE_URL,
   timeout: config.API_TIMEOUT,
-  headers: config.DEFAULT_HEADERS,
-  withCredentials: true 
-});
+  withCredentials: true,
+}); 
 
 // Add request interceptor
 axiosInstance.interceptors.request.use(

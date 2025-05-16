@@ -1,56 +1,24 @@
-import { useState } from 'react';
+'use client';
+
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import MainLayout from '../../layouts/MainLayout';
 import SEO from '../../components/SEO';
 import styles from '../../styles/Blogs.module.css';
-
-const blogs = [
-  {
-    url: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7309249758286528513?collapsed=1",
-    date: "April 1, 2024",
-  },
-  {
-    url: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7306616750173736960?collapsed=1",
-    date: "March 28, 2024",
-  },
-  {
-    url: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7304068620878327808?collapsed=1",
-    date: "March 20, 2024",
-  },
-  {
-    url: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7301531362715451392?collapsed=1",
-    date: "March 14, 2024",
-  },
-  {
-    url: "https://www.linkedin.com/embed/feed/update/urn:li:share:7256609312934899712?collapsed=1",
-    date: "February 20, 2024",
-  },
-  {
-    url: "https://www.linkedin.com/embed/feed/update/urn:li:share:7248882199939178496?collapsed=1",
-    date: "February 1, 2024",
-  },
-  {
-    url: "https://www.linkedin.com/embed/feed/update/urn:li:share:7245729463135547392?collapsed=1",
-    date: "January 22, 2024",
-  },
-  {
-    url: "https://www.linkedin.com/embed/feed/update/urn:li:share:7243460010922385409?collapsed=1",
-    date: "January 12, 2024",
-  },
-  {
-    url: "https://www.linkedin.com/embed/feed/update/urn:li:share:7241407716995293184?collapsed=1",
-    date: "January 5, 2024",
-  },
-  {
-    url: "https://www.linkedin.com/embed/feed/update/urn:li:share:7238099100171124736?collapsed=1",
-    date: "December 25, 2023",
-  }
-];
+import { fetchPublishedBlogs } from '../../redux/blog/blogActions';
 
 export default function BlogsPage() {
+  const dispatch = useDispatch();
+  const { published } = useSelector((state) => state.blog);
   const [searchTerm, setSearchTerm] = useState('');
 
-  const filteredBlogs = blogs.filter(blog =>
-    blog.date.toLowerCase().includes(searchTerm.toLowerCase())
+  useEffect(() => {
+    dispatch(fetchPublishedBlogs());
+  }, [dispatch]);
+
+  const filteredBlogs = published.filter((blog) =>
+    blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    new Date(blog.createdAt).toLocaleDateString().toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -58,28 +26,40 @@ export default function BlogsPage() {
       <SEO title="Blogs | The Angel Services" />
       <div className={styles.blogsPage}>
         <h1 className={styles.pageTitle}>Angel Services Blogs</h1>
-        <p className={styles.description}>Explore our latest insights and updates on LinkedIn.</p>
+        <p className={styles.description}>Explore our latest insights and updates.</p>
 
         <input
           type="text"
-          placeholder="Search by date..."
+          placeholder="Search by title or date..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className={styles.searchInput}
         />
 
         <div className={styles.blogGrid}>
-          {filteredBlogs.map((blog, index) => (
-            <div className={styles.blogCard} key={index}>
-              <iframe
-                src={blog.url}
-                height="400"
-                width="100%"
-                frameBorder="0"
-                allowFullScreen
-                title={`LinkedIn blog ${index}`}
-              ></iframe>
-              <p className={styles.date}>🗓️ {blog.date}</p>
+          {filteredBlogs.map((blog) => (
+            <div className={styles.blogCard} key={blog.id}>
+              {blog.imagePath && (
+                <img
+                  src={blog.imagePath}
+                  alt="cover"
+                  className={styles.blogImage}
+                />
+              )}
+              <div className={styles.blogContent}>
+                <h3 className={styles.blogTitle}>{blog.title}</h3>
+                <p className={styles.date}>
+                  🗓️ {new Date(blog.publishedAt).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </p>
+                <div
+                  className={styles.blogBody}
+                  dangerouslySetInnerHTML={{ __html: blog.content }}
+                />
+              </div>
             </div>
           ))}
         </div>

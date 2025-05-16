@@ -3,6 +3,9 @@ import React from 'react';
 const BlogCard = ({ blog }) => {
   return (
     <div style={styles.card}>
+      {blog.imagePath && (
+        <img src={blog.imagePath} alt="cover" style={styles.image} />
+      )}
       <div style={styles.title}>{blog.title}</div>
       <div style={styles.meta}>
         <span style={styles.status}>{blog.status}</span>
@@ -17,6 +20,13 @@ const styles = {
     padding: '14px',
     borderBottom: '1px solid #eee',
     marginBottom: '8px',
+  },
+  image: {
+    width: '100%',
+    maxHeight: '140px',
+    objectFit: 'cover',
+    borderRadius: '10px',
+    marginBottom: '10px',
   },
   title: {
     fontSize: '16px',

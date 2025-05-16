@@ -1,14 +1,22 @@
 import React from 'react';
 import BlogCard from './BlogCard';
 
-const BlogList = ({ blogs }) => {
+const BlogList = ({ blogs, onEdit, onDelete, onPublish, showPublish = true }) => {
   return (
     <div style={styles.card}>
-      <h3 style={styles.title}>📚 Your Blog Posts</h3>
       {blogs.length === 0 ? (
-        <p style={styles.empty}>No blogs created yet.</p>
+        <p style={styles.empty}>No blogs found.</p>
       ) : (
-        blogs.map(blog => <BlogCard key={blog.id} blog={blog} />)
+        blogs.map((blog) => (
+          <div key={blog.id} style={styles.blogItem}>
+            <BlogCard blog={blog} />
+            <div style={styles.actions}>
+              <button onClick={() => onEdit(blog)}>✏️ Edit</button>
+              <button onClick={() => onDelete(blog.id)}>🗑️ Delete</button>
+              {showPublish && <button onClick={() => onPublish(blog.id)}>📢 Publish</button>}
+            </div>
+          </div>
+        ))
       )}
     </div>
   );
@@ -21,15 +29,19 @@ const styles = {
     borderRadius: '14px',
     boxShadow: '0 6px 18px rgba(0,0,0,0.05)',
   },
-  title: {
-    fontSize: '18px',
-    fontWeight: '700',
-    color: '#1F2A44',
-    marginBottom: '15px',
-  },
   empty: {
     color: '#777',
     fontStyle: 'italic',
+  },
+  blogItem: {
+    marginBottom: '15px',
+    paddingBottom: '10px',
+    borderBottom: '1px solid #eee',
+  },
+  actions: {
+    display: 'flex',
+    gap: '10px',
+    marginTop: '8px',
   },
 };
 

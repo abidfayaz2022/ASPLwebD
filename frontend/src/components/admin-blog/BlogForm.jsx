@@ -1,48 +1,84 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Underline from '@tiptap/extension-underline';
 import Link from '@tiptap/extension-link';
 
-const BlogForm = () => {
+const BlogForm = ({ onSubmit, loading, selected, onReset }) => {
   const [title, setTitle] = useState('');
   const [hashtags, setHashtags] = useState('');
-  const [status, setStatus] = useState('Draft');
   const [coverImage, setCoverImage] = useState(null);
 
   const editor = useEditor({
     extensions: [StarterKit, Underline, Link],
     content: '',
-    editorProps: {
-      attributes: {
-        class: 'content-editor',
-      },
-    },
   });
 
+  useEffect(() => {
+    if (selected) {
+      setTitle(selected.title || '');
+      setHashtags(selected.hashtag || '');
+      if (editor) editor.commands.setContent(selected.content || '');
+
+      if (selected.imagePath) {
+        setCoverImage({ preview: selected.imagePath });
+      } else {
+        setCoverImage(null);
+      }
+    }
+  }, [selected, editor]);
+
   const handleImageUpload = (e) => {
-    setCoverImage(e.target.files[0]);
+    const file = e.target.files[0];
+    if (file) {
+      file.preview = URL.createObjectURL(file);
+      setCoverImage(file);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Submitting blog:', {
-      title,
-      content: editor?.getHTML(),
-      hashtags,
-      status,
-      coverImage,
-    });
+
+    if (!title.trim() || !editor?.getHTML().trim()) {
+      alert('Title and content are required!');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('content', editor.getHTML());
+    formData.append('hashtags', hashtags.trim());
+    formData.append('status', 'draft'); // ✅ always create/update as draft
+
+    if (selected?.id) {
+      formData.append('id', selected.id);
+    }
+
+    if (coverImage instanceof File) {
+      formData.append('image', coverImage);
+    }
+
+    onSubmit(formData);
   };
 
   return (
     <div style={styles.card}>
-      <h2 style={styles.heading}>📝 Create a New Blog</h2>
+      <h2 style={styles.heading}>
+        {selected ? '✏️ Edit Blog' : '📝 Create a New Blog'}
+      </h2>
 
       <label style={styles.label}>
         📸 <span style={{ fontWeight: '500' }}>Upload Cover Image</span>
         <input type="file" onChange={handleImageUpload} style={styles.fileInput} />
       </label>
+
+      {coverImage?.preview && (
+        <img
+          src={coverImage.preview}
+          alt="Cover Preview"
+          style={{ width: '100%', marginBottom: '20px', borderRadius: '10px' }}
+        />
+      )}
 
       <input
         type="text"
@@ -54,7 +90,7 @@ const BlogForm = () => {
 
       <div style={styles.editorBox}>
         <Toolbar editor={editor} />
-        <EditorContent editor={editor} style={{ minHeight: '150px' }} />
+        <EditorContent editor={editor} />
       </div>
 
       <input
@@ -65,13 +101,13 @@ const BlogForm = () => {
         style={styles.input}
       />
 
-      <select value={status} onChange={(e) => setStatus(e.target.value)} style={styles.select}>
-        <option value="Draft">Draft</option>
-        <option value="Published">Published</option>
-      </select>
-
-      <button type="submit" onClick={handleSubmit} style={styles.button}>
-        🚀 Publish Blog
+      <button
+        type="submit"
+        onClick={handleSubmit}
+        style={styles.button}
+        disabled={loading}
+      >
+        {loading ? 'Saving...' : selected ? '💾 Update Draft' : '🚀 Save as Draft'}
       </button>
     </div>
   );
@@ -146,15 +182,6 @@ const styles = {
     borderRadius: '8px',
     backgroundColor: '#fafafa',
   },
-  select: {
-    width: '100%',
-    padding: '12px 15px',
-    fontSize: '16px',
-    border: '1px solid #ddd',
-    borderRadius: '8px',
-    marginBottom: '25px',
-    backgroundColor: '#fffce8',
-  },
   button: {
     backgroundColor: '#fcb900',
     color: '#000',
@@ -165,6 +192,7 @@ const styles = {
     fontSize: '16px',
     borderRadius: '30px',
     cursor: 'pointer',
+    marginTop: '10px',
   },
   fileInput: {
     display: 'block',
@@ -176,6 +204,7 @@ const styles = {
     marginBottom: '20px',
     padding: '12px',
     minHeight: '180px',
+    backgroundColor: '#fff',
   },
   toolbar: {
     marginBottom: '8px',
