@@ -1,3 +1,4 @@
+import IncorporationHero from "../components/ui/home/IncorporationHero"
 import HeroSection from "../components/ui/home/hero"
 import WhyChooseASPL from "../components/ui/home/whyChoose";
 import ServicesSection from "../components/ui/home/services";
@@ -5,6 +6,7 @@ import ToolsSection from "../components/ui/home/tools";
 import CtaSection from "../components/ui/home/cta";
 import { useEffect } from 'react';
 import Link from "next/link";
+import FinalHero from "../components/ui/home/FinalHero";
 
 export default function Home() {
   useEffect(() => {
@@ -31,13 +33,14 @@ export default function Home() {
         <button id="acceptCookies" className="btn btn-orange btn-sm mt-2">Got it!</button>
       </div>
     </div>
-    <HeroSection></HeroSection>
-    <WhyChooseASPL></WhyChooseASPL>
-    <ServicesSection></ServicesSection>
-    <ToolsSection></ToolsSection>
-    <CtaSection></CtaSection>
+    <FinalHero/>
 
-
+    {/* <IncorporationHero /> */}
+    {/* <HeroSection /> */}
+    <WhyChooseASPL />
+    <ServicesSection />
+    <ToolsSection />
+    <CtaSection />
 
     <style jsx>
       {`
@@ -83,8 +86,6 @@ export default function Home() {
     }
         `}
     </style>
-
-
   </div>
   );
 }

@@ -120,7 +120,7 @@ const AboutUs = () => {
             <div className="col-lg-10 mx-auto text-center">
               <h1 className="display-3 fw-bold text-white mb-4 text-shadow">About Us</h1>
               <p className="lead text-white mb-5 fs-4 fw-light">
-                Angel Services is your trusted partner in finance, compliance, and cross-border incorporation. With a presence across Asia and key offshore jurisdictions, we support businesses and NRIs with strategic, reliable, and tailored solutions.
+              Angel Services supports businesses and NRIs with strategic, reliable solutions in finance, compliance, and incorporation across Asia and offshore jurisdictions.
               </p>
 
 

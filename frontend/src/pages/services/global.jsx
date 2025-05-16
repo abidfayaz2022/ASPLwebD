@@ -33,8 +33,7 @@ const GlobalPresence = () => {
                   Global Business Services
                 </h1>
                 <p className="lead text-white mb-5 fs-4">
-                  Expert guidance and comprehensive solutions for your global
-                  business expansion
+                Get expert guidance and complete solutions to support your global business expansion with confidence and strategic success.
                 </p>
                 <a
                   href="/contact"
@@ -78,8 +77,8 @@ const GlobalPresence = () => {
             </div>
             <div className="row g-4">
               <JurisdictionCard
-                flag="/images/flags/singapore.svg"
-                image="/images/corporate/singapore.jpg"
+                flag="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/flags/singapore.svg"
+                image="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/corporate/singapore.jpg"
                 title="Singapore"
                 features={[
                   "Attractive Tax Regime",
@@ -88,8 +87,8 @@ const GlobalPresence = () => {
                 ]}
               />
               <JurisdictionCard
-                flag="/images/flags/uae.svg"
-                image="/images/corporate/uae.jpg"
+                flag="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/flags/uae.svg"
+                image="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/corporate/uae.jpg"
                 title="United Arab Emirates"
                 features={[
                   "100% Foreign Ownership & Free Zones",
@@ -99,7 +98,7 @@ const GlobalPresence = () => {
               />
               <div className="col-md-6 col-lg-4">
                 <a
-                  href="https://asplconsultancy.com/"
+                  href="/india"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ textDecoration: "none", color: "inherit" }}
@@ -294,58 +293,76 @@ const GlobalPresence = () => {
   );
 };
 
-const JurisdictionCard = ({ flag, flagGroup, image, title, features }) => (
-  <div className="col-md-6 col-lg-4">
-    <div className="card border-0 shadow-sm h-100">
-      <div
-        className="position-relative"
-        style={{ height: "180px", overflow: "hidden" }}
+const JurisdictionCard = ({ flag, flagGroup, image, title, features }) => {
+  const getJurisdictionLink = (title) => {
+    const links = {
+      'Singapore': '/singapore',
+      'United Arab Emirates': '/uae',
+      'India': '/india'
+    };
+    return links[title] || '#';
+  };
+
+  return (
+    <div className="col-md-6 col-lg-4">
+      <a
+        href={getJurisdictionLink(title)}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ textDecoration: 'none', color: 'inherit' }}
       >
-        <Image
-          src={image}
-          alt={title}
-          width={400}
-          height={180}
-          className="object-fit-cover w-100 h-100"
-        />
-        <div className="position-absolute bottom-0 start-0 p-3 bg-dark bg-opacity-50 w-100">
-          <div className="d-flex align-items-center">
-            {flag && (
-              <Image
-                src={flag}
-                alt="flag"
-                width={28}
-                height={20}
-                className="me-2"
-              />
-            )}
-            {flagGroup &&
-              flagGroup.map((f, i) => (
-                <Image
-                  key={i}
-                  src={f}
-                  alt="flag"
-                  width={24}
-                  height={20}
-                  className="me-1"
-                />
+        <div className="card border-0 shadow-sm h-100">
+          <div
+            className="position-relative"
+            style={{ height: "180px", overflow: "hidden" }}
+          >
+            <Image
+              src={image}
+              alt={title}
+              width={400}
+              height={180}
+              className="object-fit-cover w-100 h-100"
+            />
+            <div className="position-absolute bottom-0 start-0 p-3 bg-dark bg-opacity-50 w-100">
+              <div className="d-flex align-items-center">
+                {flag && (
+                  <Image
+                    src={flag}
+                    alt="flag"
+                    width={28}
+                    height={20}
+                    className="me-2"
+                  />
+                )}
+                {flagGroup &&
+                  flagGroup.map((f, i) => (
+                    <Image
+                      key={i}
+                      src={f}
+                      alt="flag"
+                      width={24}
+                      height={20}
+                      className="me-1"
+                    />
+                  ))}
+                <h5 className="text-white mb-0 fw-bold">{title}</h5>
+              </div>
+            </div>
+          </div>
+          <div className="card-body">
+            <ul className="list-unstyled mb-0">
+              {features.map((f, i) => (
+                <li key={i} className="d-flex align-items-start mb-2">
+                  <i className="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+                  <span>{f}</span>
+                </li>
               ))}
-            <h5 className="text-white mb-0 fw-bold">{title}</h5>
+            </ul>
           </div>
         </div>
-      </div>
-      <div className="card-body">
-        <ul className="list-unstyled mb-0">
-          {features.map((f, i) => (
-            <li key={i} className="d-flex align-items-start mb-2">
-              <i className="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-              <span>{f}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+      </a>
     </div>
-  </div>
-);
+  );
+};
 
 export default GlobalPresence;

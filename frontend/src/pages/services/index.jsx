@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect } from 'react';
+import Image from 'next/image';
 
 export default function Services() {
   useEffect(() => {
@@ -35,8 +36,7 @@ export default function Services() {
             <div className="col-lg-10 mx-auto text-center">
               <h1 className="display-3 fw-bold text-white mb-4 text-shadow">Our Services</h1>
               <p className="lead text-white mb-5 fs-4 fw-light">
-                We empower global businesses and families with structured, compliant solutions. With presence in Singapore, Indonesia, Vietnam, UAE, Hong Kong, BVI, and Cayman Islands, we offer local insights and global expertise.
-              </p>
+                We empower global businesses and families with compliant solutions, combining local insights and global expertise across Asia, UAE, BVI, and Cayman.              </p>
               <Link
                 href="#services_section"
                 className="btn btn-yellow btn-lg rounded-pill px-4 py-3 fw-semibold me-2 shadow-sm"
@@ -348,6 +348,40 @@ export default function Services() {
             ))}
           </div>
         </div>
+      </section>
+
+     
+
+
+
+      <section className="et_pb_with_border et_pb_section et_pb_section_5 et_pb_with_background et_section_regular">
+
+        {/* Text Row */}
+        <div className="et_pb_row et_pb_row_6">
+          <div className="et_pb_column et_pb_column_4_4 et_pb_column_15 et_pb_css_mix_blend_mode_passthrough et-last-child">
+            <div className="et_pb_module et_pb_text et_pb_text_15 et_pb_text_align_left et_pb_bg_layout_light et_had_animation">
+              <div className="et_pb_text_inner">
+                <h1>We are not just advisors, we are ENABLERS</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Image Row */}
+        <div className="et_pb_image_container">
+     <span className="et_pb_image_wrap">
+    <Image
+      src="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/WS-Concept-RG.pptx.svg"
+      alt="WS Concept RG"
+      title="WS Concept RG.pptx"
+      width={800}
+      height={400}
+    />
+  </span>
+</div>
+
+    
+
       </section>
 
       {/* CTA Section */}
@@ -700,6 +734,48 @@ export default function Services() {
             margin-bottom: 1rem;
           }
         }
+.et_pb_section {
+  padding: 3rem 2rem;
+  text-align: center;
+  background-color: #fff;
+}
+
+.et_pb_text_inner h1 {
+      font-size: 50px;
+    color: #474747 !important;
+    text-align: center;
+    text-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.4);
+}
+
+.et_pb_row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.et_pb_image_container {
+  overflow: hidden;
+  padding: 3rem 0; /* adds space above & below */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.et_pb_image_wrap {
+  transform: scale(1.3); /* zoom */
+  transform-origin: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.et_pb_image_wrap img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  display: block;
+}
+
+
       `}</style>
     </>
   );
