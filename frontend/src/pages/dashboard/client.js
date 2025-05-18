@@ -1,4 +1,5 @@
 // pages/dashboard/client.js
+import { useState } from 'react';
 import styles from '../../styles/dashboard.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -14,43 +15,64 @@ import {
   FaCloudUploadAlt,
   FaHourglassHalf,
   FaFlagCheckered,
+  FaPhone,
+  FaEnvelope,
 } from 'react-icons/fa';
 
+// Import mock data and utilities
+import { clientDashboardData } from '../../data/mockData/client/dashboardData';
+import {
+  calculateProgress,
+  getNextRequiredDocument,
+  getStatusColor,
+  formatCurrency,
+  getDocumentStatusIcon,
+  sortNotificationsByPriority,
+} from '../../utils/client/dashboardUtils';
+
 export default function ClientDashboard() {
+  const [activeTab, setActiveTab] = useState('home');
+  const { userProfile, incorporationStatus, documents, recentActivity, notifications, services } = clientDashboardData;
+
+  // Calculate progress
+  const progress = calculateProgress(incorporationStatus.steps);
+  const nextDocument = getNextRequiredDocument(documents);
+  const sortedNotifications = sortNotificationsByPriority(notifications);
+
   return (
     <div className={styles.dashboardWrapper}>
       {/* Sidebar */}
       <aside className={styles.sidebar}>
         <div className={styles.logo}>Angel Services</div>
         <ul className={styles.nav}>
-          <li className={styles.active}>
+          <li className={activeTab === 'home' ? styles.active : ''} onClick={() => setActiveTab('home')}>
             <FaFileAlt className={styles.navIcon} /> Home
           </li>
-          <li>
+          <li className={activeTab === 'company' ? styles.active : ''} onClick={() => setActiveTab('company')}>
             <FaBuilding className={styles.navIcon} /> My Company Details
           </li>
-          <li>
+          <li className={activeTab === 'incorporation' ? styles.active : ''} onClick={() => setActiveTab('incorporation')}>
             <FaFileAlt className={styles.navIcon} /> Incorporation Form
           </li>
-          <li>
+          <li className={activeTab === 'documents' ? styles.active : ''} onClick={() => setActiveTab('documents')}>
             <FaUpload className={styles.navIcon} /> Uploaded Documents
           </li>
-          <li>
+          <li className={activeTab === 'services' ? styles.active : ''} onClick={() => setActiveTab('services')}>
             <FaRegCreditCard className={styles.navIcon} /> Services Subscribed
           </li>
-          <li>
+          <li className={activeTab === 'payments' ? styles.active : ''} onClick={() => setActiveTab('payments')}>
             <FaRegCreditCard className={styles.navIcon} /> Payments
           </li>
-          <li>
+          <li className={activeTab === 'calculators' ? styles.active : ''} onClick={() => setActiveTab('calculators')}>
             <FaRegCreditCard className={styles.navIcon} /> Calculators
           </li>
-          <li>
+          <li className={activeTab === 'support' ? styles.active : ''} onClick={() => setActiveTab('support')}>
             <FaComments className={styles.navIcon} /> Support
           </li>
-          <li>
+          <li className={activeTab === 'activity' ? styles.active : ''} onClick={() => setActiveTab('activity')}>
             <FaUserTie className={styles.navIcon} /> Activity Trail
           </li>
-          <li>
+          <li className={activeTab === 'profile' ? styles.active : ''} onClick={() => setActiveTab('profile')}>
             <FaUserTie className={styles.navIcon} /> Profile Settings
           </li>
         </ul>
@@ -59,9 +81,14 @@ export default function ClientDashboard() {
       {/* Main Content */}
       <main className={styles.mainContent}>
         <header className={styles.header}>
-          <h1>User Dashboard</h1>
+          <h1>Welcome, {userProfile.name}</h1>
           <div className={styles.userBox}>
-            <FaBell className={styles.bellIcon} />
+            <div className={styles.notificationIcon}>
+              <FaBell className={styles.bellIcon} />
+              {sortedNotifications.filter(n => n.priority === 'high').length > 0 && (
+                <span className={styles.notificationBadge}></span>
+              )}
+            </div>
             <Image
               src="/images/client.jpg"
               width={45}
@@ -76,25 +103,37 @@ export default function ClientDashboard() {
         <section className={styles.summaryGrid}>
           <div className={styles.card}>
             <h4>Service Purchased</h4>
-            <p>Company Incorporation - Singapore</p>
+            <p>{services.current.name}</p>
+            <small>Started: {services.current.startDate}</small>
           </div>
           <div className={styles.card}>
             <h4>Status</h4>
-            <p className={styles.inProgress}>In Progress</p>
-            <p>Awaiting document upload</p>
+            <p className={styles[services.current.status]}>
+              {services.current.status.replace('_', ' ').toUpperCase()}
+            </p>
+            <p>{services.current.nextStep}</p>
           </div>
           <div className={styles.card}>
             <h4>Documents Pending</h4>
             <ul>
-              <li>ID Proof</li>
-              <li>Address Proof</li>
-              <li>M&amp;A Form</li>
+              {documents.required
+                .filter(doc => doc.status === 'pending')
+                .map(doc => (
+                  <li key={doc.id}>{doc.name}</li>
+                ))}
             </ul>
           </div>
           <div className={styles.card}>
             <h4>Assigned Agent</h4>
-            <p>Gaurav Agrawal</p>
-            <small>📞 Contact | 📧 Email</small>
+            <p>{userProfile.assignedAgent}</p>
+            <div className={styles.agentContact}>
+              <a href={`tel:${userProfile.agentContact.phone}`}>
+                <FaPhone /> {userProfile.agentContact.phone}
+              </a>
+              <a href={`mailto:${userProfile.agentContact.email}`}>
+                <FaEnvelope /> {userProfile.agentContact.email}
+              </a>
+            </div>
           </div>
         </section>
 
@@ -104,7 +143,7 @@ export default function ClientDashboard() {
             <FaFileAlt /> Complete Incorporation Form
           </button>
           <button className={styles.actionBtn}>
-            <FaUpload /> Upload Docs
+            <FaUpload /> Upload {nextDocument?.name || 'Documents'}
           </button>
           <button className={styles.actionBtn}>
             <FaRegCreditCard /> View Invoices
@@ -118,33 +157,33 @@ export default function ClientDashboard() {
         <section className={styles.notifications}>
           <h3>Recent Notifications</h3>
           <ul>
-            <li>
-              <FaCheckCircle className={styles.iconSuccess} /> Invoice #204 has been generated.{' '}
-              <Link href="#">View now</Link>
-            </li>
-            <li>
-              <FaCheckCircle className={styles.iconSuccess} /> ID Proof has been approved.
-            </li>
-            <li>
-              <FaCloudUploadAlt className={styles.iconPending} /> Next step: Upload M&amp;A Form
-            </li>
+            {sortedNotifications.map(notification => (
+              <li key={notification.id} className={styles[notification.priority]}>
+                <FaBell className={styles.notificationIcon} />
+                {notification.message}
+                <small>{new Date(notification.timestamp).toLocaleDateString()}</small>
+              </li>
+            ))}
           </ul>
         </section>
 
         {/* Step Indicator */}
         <section className={styles.steps}>
-          <div className={styles.step}>
-            <FaCheckCircle color="#4caf50" /> Form Submitted
-          </div>
-          <div className={styles.step}>
-            <FaCloudUploadAlt color="#2196f3" /> Docs Uploaded
-          </div>
-          <div className={styles.step}>
-            <FaHourglassHalf color="#ff9800" /> Under Review
-          </div>
-          <div className={styles.step}>
-            <FaFlagCheckered color="#9c27b0" /> Company Registered
-          </div>
+          {incorporationStatus.steps.map((step, index) => (
+            <div key={step.id} className={`${styles.step} ${styles[step.status]}`}>
+              {step.status === 'completed' ? (
+                <FaCheckCircle color="#4caf50" />
+              ) : step.status === 'in_progress' ? (
+                <FaCloudUploadAlt color="#2196f3" />
+              ) : step.status === 'pending' ? (
+                <FaHourglassHalf color="#ff9800" />
+              ) : (
+                <FaFlagCheckered color="#9c27b0" />
+              )}
+              {step.name}
+              {step.date && <small>{step.date}</small>}
+            </div>
+          ))}
         </section>
       </main>
     </div>

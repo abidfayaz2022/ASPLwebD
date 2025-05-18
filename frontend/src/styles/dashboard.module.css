@@ -241,7 +241,33 @@
 .actionBtn:hover {
   filter: brightness(0.9);
   transform: translateY(-2px);
+  border-radius: 5px;
 }
+
+.filterButton {
+  background-color: #1F2937; /* Dark background */
+  color: white;
+  font-weight: 500;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 9999px; /* Fully rounded */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.addButton {
+  background-color: #1F2937; /* Same dark background */
+  color: white;
+  font-weight: 500;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 9999px; /* Fully rounded */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 
 /* Notifications */
 .notifications {
@@ -309,3 +335,328 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  margin-top: 24px;
+  padding: 24px;
+}
+
+.companyTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 900px;
+  font-size: 1rem;
+}
+
+.companyTableHead th {
+  background: #f5f7fa;
+  color: #222;
+  font-weight: 600;
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 2px solid #e0e6ed;
+}
+
+.companyTableRow:nth-child(even) {
+  background: #f9fafb;
+}
+
+.companyTableRow:nth-child(odd) {
+  background: #fff;
+}
+
+.companyTableCell {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e6ed;
+  color: #333;
+  vertical-align: middle;
+}
+
+.statusLabel {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 16px;
+  background: #e8f0fe;
+  color: #1967d2;
+  font-size: 0.95em;
+  font-weight: 500;
+  border: 1px solid #b6d0fe;
+}
+
+.openLink {
+  display: inline-block;
+  padding: 4px 14px;
+  background: #1967d2;
+  color: #fff !important;
+  border-radius: 16px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s;
+  border: none;
+  cursor: pointer;
+}
+.openLink:hover {
+  background: #174ea6;
+  text-decoration: underline;
+}
+
+.dashboardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.dashboardHeaderActions {
+  display: flex;
+  gap: 12px;
+}
+
+.filterDrawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 340px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -2px 0 16px rgba(0,0,0,0.08);
+  z-index: 1001;
+  padding: 32px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  animation: slideInRight 0.2s;
+}
+
+@keyframes slideInRight {
+  from { right: -400px; opacity: 0; }
+  to { right: 0; opacity: 1; }
+}
+
+.closeDrawer {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #222;
+  cursor: pointer;
+  z-index: 1002;
+}
+
+
+.userActionsMenu {
+  position: relative;
+  display: inline-block;
+}
+
+.menuButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+ 
+}
+
+.menuDots {
+  font-size: 1.5rem;
+  color: #1f2937; /* Tailwind's gray-800 */
+  line-height: 1;
+}
+
+.menuDropdown {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  padding: 8px 0;
+  min-width: 180px;
+  animation: fadeIn 0.15s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 0.95rem;
+  color: #1f2937;
+  cursor: pointer;
+  transition: background 0.2s;
+  gap: 10px;
+}
+
+.menuItem:hover {
+  background-color: #f3f4f6; /* light gray on hover */
+}
+
+.menuIcon {
+  font-size: 1.1rem;
+  color: #374151; /* Tailwind's gray-700 */
+}
+
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalCard {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.closeDrawer {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.userFormModal {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.userFormModal label {
+  font-weight: 500;
+  font-size: 14px;
+  color: #374151;
+}
+
+.userFormModal input,
+.userFormModal select {
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.userFormModal input:focus,
+.userFormModal select:focus {
+  border-color: #6366f1;
+}
+
+.inviteButton {
+  background-color: #1F2937;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 9999px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.inviteButton:hover {
+  background-color: #374151;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.notificationWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.bellButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 0;
+  display: flex;
+  align-items: center;
+}
+
+.bellIcon {
+  font-size: 2.1rem;
+  color: #000;
+}
+
+.notificationDropdown {
+  position: absolute;
+  top: 38px;
+  right: 0;
+  min-width: 260px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.13);
+  z-index: 100;
+  padding: 16px 0;
+  animation: fadeIn 0.15s;
+}
+
+.notificationTitle {
+  font-weight: 600;
+  padding: 0 18px 8px 18px;
+  color: #222;
+}
+
+.noNotifications {
+  padding: 12px 18px;
+  color: #888;
+}
+
+.notificationItem {
+  padding: 10px 18px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #232b36;
+  font-size: 1rem;
+}
+
+.notificationItem:last-child {
+  border-bottom: none;
+}
+
+
+
