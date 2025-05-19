@@ -9,13 +9,15 @@ import {
   publishArticle,
   deleteArticle,
   getPublishedArticles,
-  getDraftArticles
+  getDraftArticles,
+  getPublishedArticleById
 } from '../controllers/articleController.js';
 
 const router = express.Router();
 
 // Public
 router.get('/published', getPublishedArticles);
+router.get('/:id',getPublishedArticleById)
 
 // Admin-only routes
 router.use(passport.authenticate('jwt', { session: false }), checkRole([Roles.ADMIN]));

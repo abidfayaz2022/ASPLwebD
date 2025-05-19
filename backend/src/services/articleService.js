@@ -55,9 +55,9 @@ export const publishArticle = async (articleId, authorId) => {
   });
 };
 
-export const deleteArticle = async (articleId, authorId) => {
+export const deleteArticle = async (articleId) => {
   const article = await prisma.article.findUnique({ where: { id: articleId } });
-  if (!article || article.authorId !== authorId) throw new Error('Unauthorized or not found');
+  if (!article) throw new Error('Article not found');
 
   if (article.imagePath) {
     const key = extractS3Key(article.imagePath);
@@ -71,6 +71,20 @@ export const fetchPublishedArticles = async () => {
   return prisma.article.findMany({
     where: { status: 'published' },
     orderBy: { publishedAt: 'desc' },
+    select: {
+      id: true,
+      title: true,
+      content: true,
+      imagePath: true,
+      publishedAt: true,
+      views: true,
+      author: { select: { username: true } }
+    }
+  });
+};
+export const fetchPublishedArticleById = async (articleId) => {
+  return prisma.article.findUnique({
+    where: { id: articleId, status: 'published' },
     select: {
       id: true,
       title: true,

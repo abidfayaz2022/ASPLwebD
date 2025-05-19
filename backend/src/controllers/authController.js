@@ -23,23 +23,23 @@ export const refreshToken = async (req, res) => {
   }
 };
 
-export const register = async (req, res) => {
-  try {
-    const user = await authService.registerUser(req.body);
-    res.status(201).json({
-      success: true,
-      message: 'User registered successfully',
-      user: {
-        id: user.id,
-        username: user.username,
-        email: user.email,
-        role: user.role,
-      },
-    });
-  } catch (error) {
-    res.status(500).json({ success: false, message: 'Error registering user', error: error.message });
-  }
-};
+// export const register = async (req, res) => {
+//   try {
+//     const user = await authService.registerUser(req.body);
+//     res.status(201).json({
+//       success: true,
+//       message: 'User registered successfully',
+//       user: {
+//         id: user.id,
+//         username: user.username,
+//         email: user.email,
+//         role: user.role,
+//       },
+//     });
+//   } catch (error) {
+//     res.status(500).json({ success: false, message: 'Error registering user', error: error.message });
+//   }
+// };
 
 export const login = async (req, res) => {
   try {

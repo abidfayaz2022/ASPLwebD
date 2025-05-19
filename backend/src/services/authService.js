@@ -27,26 +27,26 @@ export const refreshAccessToken = async (refreshToken) => {
   return { token: newAccessToken };
 };
 
-export const registerUser = async ({ username, email, password, mobile, country, role }) => {
-  const existingUser = await prisma.user.findFirst({
-    where: { OR: [{ email }, { username }] },
-  });
+// export const registerUser = async ({ username, email, password, mobile, country, role }) => {
+//   const existingUser = await prisma.user.findFirst({
+//     where: { OR: [{ email }, { username }] },
+//   });
 
-  if (existingUser) throw new Error('User already exists');
+//   if (existingUser) throw new Error('User already exists');
 
-  const hashedPassword = await hashPassword(password);
+//   const hashedPassword = await hashPassword(password);
 
-  return await prisma.user.create({
-    data: {
-      username,
-      email,
-      password: hashedPassword,
-      mobile: String(mobile),
-      country,
-      role: role || 'client',
-    },
-  });
-};
+//   return await prisma.user.create({
+//     data: {
+//       username,
+//       email,
+//       password: hashedPassword,
+//       mobile: String(mobile),
+//       country,
+//       role: role || 'client',
+//     },
+//   });
+// };
 
 export const loginUser = async ({ emailOrUsername, password }) => {
   const user = await prisma.user.findFirst({
