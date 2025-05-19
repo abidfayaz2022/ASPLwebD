@@ -414,6 +414,15 @@ const AboutUs = () => {
                 email: 'r@theangelservices.com',
                 description: "Rahul has 20 years of experience driving Digital Capabilities across Technology, Services, Consumer Goods, Beverages, Healthcare and Pharma industries. His strategic advisory and digital expertise guide the company's technology innovation and expansion.",
               },
+                            {
+                name: 'Willie Tan',
+                role: 'Advisor',
+                img: '',
+                linkedin: 'https://www.linkedin.com/in/willie-t-7140561/',
+                email: 'will.tgif@gmail.com',
+                description: `Willie Tan is a seasoned advisor with over 20 years' experience in FDI, public-private partnerships, and strategic market development across Asia.
+He has held senior roles for business growth, stakeholder engagement, and regional investment promotion.`,
+              },
               {
                 name: 'Navin Bafna',
                 role: 'Advisor',
@@ -421,15 +430,8 @@ const AboutUs = () => {
                 linkedin: 'https://www.linkedin.com/in/navin-bafna-9ba68915/',
                 email: '',
                 description: 'Navin has 15 years of experience managing Corporate Finance across Consulting, Food & Real-Estate industries. His financial expertise and strategic insights help shape Angel Services business direction and financial strategy.',
-              },
-              {
-                name: 'Gaurav Bansal',
-                role: 'Advisor',
-                img: 'https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/Gaurav Bansal.jpg',
-                linkedin: 'https://in.linkedin.com/in/gaurav-bansal-91a5228b',
-                email: 'gaurav.bansal@theangelservices.com',
-                description: `Gaurav Bansal, a Fellow Chartered Accountant with 20+ years in consulting, auditing, taxation, and financial management, advises multinationals, banks, and startups. He specializes in local setups, global expansion, and indirect taxation—GST, excise, and customs. Gaurav drives growth through regulatory compliance and efficient finance and accounting outsourcing.`,
               }
+
             ].map(member => (
               <div className="col-md-4" key={member.name}>
                 <TeamCard member={member} />

@@ -422,7 +422,7 @@ const Footer = () => {
                                     fontSize: '14px',
                                 }}
                             >
-                                &copy; 2025 Angel Services pte. ltd. , All rights reserved.
+                                &copy; 2025 Angel Services Pte. Ltd. All rights reserved.
                             </p>
                         </div>
                         <div className="col-md-6">

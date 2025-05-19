@@ -301,6 +301,7 @@ export default function Services() {
               <h2 className="fw-bold mb-3 mb-md-4" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>
                 Why Partner with Us?
               </h2>
+              <div className="underline-center mx-auto mb-4"></div>
             </div>
           </div>
           <div className="row g-3 g-md-4 justify-content-center">
@@ -360,9 +361,8 @@ export default function Services() {
         <div className="et_pb_row et_pb_row_6">
           <div className="et_pb_column et_pb_column_4_4 et_pb_column_15 et_pb_css_mix_blend_mode_passthrough et-last-child">
             <div className="et_pb_module et_pb_text et_pb_text_15 et_pb_text_align_left et_pb_bg_layout_light et_had_animation">
-              <div className="et_pb_text_inner">
-                <h1>We are not just advisors, we are ENABLERS</h1>
-              </div>
+              <h2 className="fw-bold mb-3 mb-md-4" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>We are not just advisors, we are ENABLERS</h2>
+  <div className="underline-center mx-auto mb-4"></div>
             </div>
           </div>
         </div>
