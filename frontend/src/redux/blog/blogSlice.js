@@ -5,12 +5,14 @@ import {
   createBlog,
   updateBlog,
   publishBlog,
-  deleteBlog
+  deleteBlog,
+  fetchArticleById
 } from './blogActions';
 
 const initialState = {
   published: [],
   drafts: [],
+  currentArticle: null,
   loading: false,
   error: null,
   successMessage: null,
@@ -30,8 +32,17 @@ const blogSlice = createSlice({
   extraReducers: (builder) => {
     builder
       // FETCH
+      .addCase(fetchPublishedBlogs.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
       .addCase(fetchPublishedBlogs.fulfilled, (state, action) => {
+        state.loading = false;
         state.published = action.payload;
+      })
+      .addCase(fetchPublishedBlogs.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
       })
       .addCase(fetchDraftBlogs.fulfilled, (state, action) => {
         state.drafts = action.payload;
@@ -67,29 +78,20 @@ const blogSlice = createSlice({
         state.published = state.published.filter((b) => b.id !== action.payload);
         state.successMessage = 'Blog deleted';
       })
-
-      // Loading / Error states (optional)
-      .addMatcher(
-        (action) => action.type.startsWith('blog/') && action.type.endsWith('/pending'),
-        (state) => {
-          state.loading = true;
-          state.error = null;
-          state.successMessage = null;
-        }
-      )
-      .addMatcher(
-        (action) => action.type.startsWith('blog/') && action.type.endsWith('/rejected'),
-        (state, action) => {
-          state.loading = false;
-          state.error = action.payload;
-        }
-      )
-      .addMatcher(
-        (action) => action.type.startsWith('blog/') && action.type.endsWith('/fulfilled'),
-        (state) => {
-          state.loading = false;
-        }
-      );
+      
+      // Handle fetchArticleById
+      .addCase(fetchArticleById.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchArticleById.fulfilled, (state, action) => {
+        state.loading = false;
+        state.currentArticle = action.payload;
+      })
+      .addCase(fetchArticleById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
 
   },
 });

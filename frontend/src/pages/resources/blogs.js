@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import MainLayout from '../../layouts/MainLayout';
 import SEO from '../../components/SEO';
 import styles from '../../styles/Blogs.module.css';
@@ -9,12 +10,17 @@ import { fetchPublishedBlogs } from '../../redux/blog/blogActions';
 
 export default function BlogsPage() {
   const dispatch = useDispatch();
+  const router = useRouter();
   const { published } = useSelector((state) => state.blog);
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     dispatch(fetchPublishedBlogs());
   }, [dispatch]);
+
+  const handleArticleClick = (articleId) => {
+    router.push(`/resources/blogs/${articleId}`);
+  };
 
   const filteredBlogs = published.filter((blog) =>
     blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -38,7 +44,12 @@ export default function BlogsPage() {
 
         <div className={styles.blogGrid}>
           {filteredBlogs.map((blog) => (
-            <div className={styles.blogCard} key={blog.id}>
+            <div 
+              className={styles.blogCard} 
+              key={blog.id}
+              onClick={() => handleArticleClick(blog.id)}
+              style={{ cursor: 'pointer' }}
+            >
               {blog.imagePath && (
                 <img
                   src={blog.imagePath}
