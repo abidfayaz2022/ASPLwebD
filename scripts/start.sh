@@ -7,6 +7,10 @@ cd /home/ubuntu/angel/frontend
 # Clean build
 rm -rf .next
 
+# Set frontend environment variables
+export ASPL_API_URL=http://localhost:3333
+export NODE_ENV=production
+
 # Install and build
 npm ci
 npm run build
@@ -24,6 +28,7 @@ npm ci
 # Set backend environment variables
 export NODE_ENV=production
 export BACKEND_PORT=3333
+export FRONTEND_URL=http://localhost:3000
 
 # Restart PM2 app for backend
 pm2 delete aspl-backend || true
