@@ -4,6 +4,8 @@ os: linux
 files:
   - source: frontend
     destination: /home/ubuntu/angel/frontend
+  - source: backend
+    destination: /home/ubuntu/angel/backend
 
 hooks:
   ApplicationStop:

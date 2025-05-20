@@ -1,20 +1,24 @@
 #!/bin/bash
+set -euo pipefail
 
-echo "Stopping any app running on port $PORT..."
+# Stop Frontend
+echo "Stopping frontend service..."
+pm2 delete aspl-frontend || true
 pkill -f "npx next start"
 
-PID=$(lsof -ti tcp:$PORT)
+# Stop Backend
+echo "Stopping backend service..."
+pm2 delete aspl-backend || true
+pkill -f "node index.js"
 
-if [ ! -z "$PID" ]; then
-  echo "Force killing process on port $PORT (PID: $PID)"
-  kill -9 $PID
-else
-  echo "No app running on port $PORT"
-fi
-
+# Clean frontend build artifacts
 echo "Cleaning previous Next.js build artifacts..."
 rm -rf /home/ubuntu/angel/frontend/.next
 rm -rf /home/ubuntu/angel/frontend/out
 rm -rf /home/ubuntu/angel/frontend/.cache
+
+# Clean backend artifacts
+echo "Cleaning backend artifacts..."
+rm -rf /home/ubuntu/angel/backend/node_modules
 
 echo "Stop script execution completed."
