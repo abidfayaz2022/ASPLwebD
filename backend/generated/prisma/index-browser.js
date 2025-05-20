@@ -321,12 +321,20 @@ exports.Prisma.DashboardStateScalarFieldEnum = {
   completedAt: 'completedAt'
 };
 
-exports.Prisma.RoleAssignmentScalarFieldEnum = {
+exports.Prisma.RoleDelegationScalarFieldEnum = {
   id: 'id',
-  agentId: 'agentId',
+  delegatorId: 'delegatorId',
+  delegateeId: 'delegateeId',
+  delegatedRole: 'delegatedRole',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.CompanyAssignmentScalarFieldEnum = {
+  id: 'id',
   companyId: 'companyId',
-  role: 'role',
-  assignedAt: 'assignedAt'
+  preparerId: 'preparerId',
+  assignedById: 'assignedById',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.ArticleScalarFieldEnum = {
@@ -486,7 +494,8 @@ exports.Prisma.ModelName = {
   CalendarAction: 'CalendarAction',
   ChatMessage: 'ChatMessage',
   DashboardState: 'DashboardState',
-  RoleAssignment: 'RoleAssignment',
+  RoleDelegation: 'RoleDelegation',
+  CompanyAssignment: 'CompanyAssignment',
   Article: 'Article',
   ContactUs: 'ContactUs',
   FAQ: 'FAQ',

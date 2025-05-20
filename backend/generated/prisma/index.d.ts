@@ -89,10 +89,15 @@ export type ChatMessage = $Result.DefaultSelection<Prisma.$ChatMessagePayload>
  */
 export type DashboardState = $Result.DefaultSelection<Prisma.$DashboardStatePayload>
 /**
- * Model RoleAssignment
+ * Model RoleDelegation
  * 
  */
-export type RoleAssignment = $Result.DefaultSelection<Prisma.$RoleAssignmentPayload>
+export type RoleDelegation = $Result.DefaultSelection<Prisma.$RoleDelegationPayload>
+/**
+ * Model CompanyAssignment
+ * 
+ */
+export type CompanyAssignment = $Result.DefaultSelection<Prisma.$CompanyAssignmentPayload>
 /**
  * Model Article
  * 
@@ -521,14 +526,24 @@ export class PrismaClient<
   get dashboardState(): Prisma.DashboardStateDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.roleAssignment`: Exposes CRUD operations for the **RoleAssignment** model.
+   * `prisma.roleDelegation`: Exposes CRUD operations for the **RoleDelegation** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more RoleAssignments
-    * const roleAssignments = await prisma.roleAssignment.findMany()
+    * // Fetch zero or more RoleDelegations
+    * const roleDelegations = await prisma.roleDelegation.findMany()
     * ```
     */
-  get roleAssignment(): Prisma.RoleAssignmentDelegate<ExtArgs, ClientOptions>;
+  get roleDelegation(): Prisma.RoleDelegationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.companyAssignment`: Exposes CRUD operations for the **CompanyAssignment** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CompanyAssignments
+    * const companyAssignments = await prisma.companyAssignment.findMany()
+    * ```
+    */
+  get companyAssignment(): Prisma.CompanyAssignmentDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.article`: Exposes CRUD operations for the **Article** model.
@@ -1044,7 +1059,8 @@ export namespace Prisma {
     CalendarAction: 'CalendarAction',
     ChatMessage: 'ChatMessage',
     DashboardState: 'DashboardState',
-    RoleAssignment: 'RoleAssignment',
+    RoleDelegation: 'RoleDelegation',
+    CompanyAssignment: 'CompanyAssignment',
     Article: 'Article',
     ContactUs: 'ContactUs',
     FAQ: 'FAQ',
@@ -1069,7 +1085,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "company" | "companyStatusMessage" | "director" | "shareholder" | "companyDocument" | "payment" | "refund" | "service" | "companyService" | "notification" | "insightRecommendation" | "calendarAction" | "chatMessage" | "dashboardState" | "roleAssignment" | "article" | "contactUs" | "fAQ" | "stagingCompany" | "auditLog" | "registeredCompanyName"
+      modelProps: "user" | "company" | "companyStatusMessage" | "director" | "shareholder" | "companyDocument" | "payment" | "refund" | "service" | "companyService" | "notification" | "insightRecommendation" | "calendarAction" | "chatMessage" | "dashboardState" | "roleDelegation" | "companyAssignment" | "article" | "contactUs" | "fAQ" | "stagingCompany" | "auditLog" | "registeredCompanyName"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2183,77 +2199,151 @@ export namespace Prisma {
           }
         }
       }
-      RoleAssignment: {
-        payload: Prisma.$RoleAssignmentPayload<ExtArgs>
-        fields: Prisma.RoleAssignmentFieldRefs
+      RoleDelegation: {
+        payload: Prisma.$RoleDelegationPayload<ExtArgs>
+        fields: Prisma.RoleDelegationFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.RoleAssignmentFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$RoleAssignmentPayload> | null
+            args: Prisma.RoleDelegationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoleDelegationPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.RoleAssignmentFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$RoleAssignmentPayload>
+            args: Prisma.RoleDelegationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoleDelegationPayload>
           }
           findFirst: {
-            args: Prisma.RoleAssignmentFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$RoleAssignmentPayload> | null
+            args: Prisma.RoleDelegationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoleDelegationPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.RoleAssignmentFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$RoleAssignmentPayload>
+            args: Prisma.RoleDelegationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoleDelegationPayload>
           }
           findMany: {
-            args: Prisma.RoleAssignmentFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$RoleAssignmentPayload>[]
+            args: Prisma.RoleDelegationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoleDelegationPayload>[]
           }
           create: {
-            args: Prisma.RoleAssignmentCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$RoleAssignmentPayload>
+            args: Prisma.RoleDelegationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoleDelegationPayload>
           }
           createMany: {
-            args: Prisma.RoleAssignmentCreateManyArgs<ExtArgs>
+            args: Prisma.RoleDelegationCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.RoleAssignmentCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$RoleAssignmentPayload>[]
+            args: Prisma.RoleDelegationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoleDelegationPayload>[]
           }
           delete: {
-            args: Prisma.RoleAssignmentDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$RoleAssignmentPayload>
+            args: Prisma.RoleDelegationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoleDelegationPayload>
           }
           update: {
-            args: Prisma.RoleAssignmentUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$RoleAssignmentPayload>
+            args: Prisma.RoleDelegationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoleDelegationPayload>
           }
           deleteMany: {
-            args: Prisma.RoleAssignmentDeleteManyArgs<ExtArgs>
+            args: Prisma.RoleDelegationDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.RoleAssignmentUpdateManyArgs<ExtArgs>
+            args: Prisma.RoleDelegationUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.RoleAssignmentUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$RoleAssignmentPayload>[]
+            args: Prisma.RoleDelegationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoleDelegationPayload>[]
           }
           upsert: {
-            args: Prisma.RoleAssignmentUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$RoleAssignmentPayload>
+            args: Prisma.RoleDelegationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoleDelegationPayload>
           }
           aggregate: {
-            args: Prisma.RoleAssignmentAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateRoleAssignment>
+            args: Prisma.RoleDelegationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRoleDelegation>
           }
           groupBy: {
-            args: Prisma.RoleAssignmentGroupByArgs<ExtArgs>
-            result: $Utils.Optional<RoleAssignmentGroupByOutputType>[]
+            args: Prisma.RoleDelegationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RoleDelegationGroupByOutputType>[]
           }
           count: {
-            args: Prisma.RoleAssignmentCountArgs<ExtArgs>
-            result: $Utils.Optional<RoleAssignmentCountAggregateOutputType> | number
+            args: Prisma.RoleDelegationCountArgs<ExtArgs>
+            result: $Utils.Optional<RoleDelegationCountAggregateOutputType> | number
+          }
+        }
+      }
+      CompanyAssignment: {
+        payload: Prisma.$CompanyAssignmentPayload<ExtArgs>
+        fields: Prisma.CompanyAssignmentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CompanyAssignmentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyAssignmentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CompanyAssignmentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyAssignmentPayload>
+          }
+          findFirst: {
+            args: Prisma.CompanyAssignmentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyAssignmentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CompanyAssignmentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyAssignmentPayload>
+          }
+          findMany: {
+            args: Prisma.CompanyAssignmentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyAssignmentPayload>[]
+          }
+          create: {
+            args: Prisma.CompanyAssignmentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyAssignmentPayload>
+          }
+          createMany: {
+            args: Prisma.CompanyAssignmentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CompanyAssignmentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyAssignmentPayload>[]
+          }
+          delete: {
+            args: Prisma.CompanyAssignmentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyAssignmentPayload>
+          }
+          update: {
+            args: Prisma.CompanyAssignmentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyAssignmentPayload>
+          }
+          deleteMany: {
+            args: Prisma.CompanyAssignmentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CompanyAssignmentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CompanyAssignmentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyAssignmentPayload>[]
+          }
+          upsert: {
+            args: Prisma.CompanyAssignmentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyAssignmentPayload>
+          }
+          aggregate: {
+            args: Prisma.CompanyAssignmentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCompanyAssignment>
+          }
+          groupBy: {
+            args: Prisma.CompanyAssignmentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CompanyAssignmentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CompanyAssignmentCountArgs<ExtArgs>
+            result: $Utils.Optional<CompanyAssignmentCountAggregateOutputType> | number
           }
         }
       }
@@ -2800,7 +2890,8 @@ export namespace Prisma {
     calendarAction?: CalendarActionOmit
     chatMessage?: ChatMessageOmit
     dashboardState?: DashboardStateOmit
-    roleAssignment?: RoleAssignmentOmit
+    roleDelegation?: RoleDelegationOmit
+    companyAssignment?: CompanyAssignmentOmit
     article?: ArticleOmit
     contactUs?: ContactUsOmit
     fAQ?: FAQOmit
@@ -2908,13 +2999,16 @@ export namespace Prisma {
     insights: number
     notifications: number
     payments: number
-    assignedRoles: number
     revertMessage: number
     uploadedDocs: number
     receivedDocs: number
     auditLogs: number
     CalendarAction: number
     articles: number
+    delegatedUsers: number
+    assignedBy: number
+    companiesAssigned: number
+    companiesDelegated: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2925,13 +3019,16 @@ export namespace Prisma {
     insights?: boolean | UserCountOutputTypeCountInsightsArgs
     notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
     payments?: boolean | UserCountOutputTypeCountPaymentsArgs
-    assignedRoles?: boolean | UserCountOutputTypeCountAssignedRolesArgs
     revertMessage?: boolean | UserCountOutputTypeCountRevertMessageArgs
     uploadedDocs?: boolean | UserCountOutputTypeCountUploadedDocsArgs
     receivedDocs?: boolean | UserCountOutputTypeCountReceivedDocsArgs
     auditLogs?: boolean | UserCountOutputTypeCountAuditLogsArgs
     CalendarAction?: boolean | UserCountOutputTypeCountCalendarActionArgs
     articles?: boolean | UserCountOutputTypeCountArticlesArgs
+    delegatedUsers?: boolean | UserCountOutputTypeCountDelegatedUsersArgs
+    assignedBy?: boolean | UserCountOutputTypeCountAssignedByArgs
+    companiesAssigned?: boolean | UserCountOutputTypeCountCompaniesAssignedArgs
+    companiesDelegated?: boolean | UserCountOutputTypeCountCompaniesDelegatedArgs
   }
 
   // Custom InputTypes
@@ -2997,13 +3094,6 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountAssignedRolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: RoleAssignmentWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
   export type UserCountOutputTypeCountRevertMessageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CompanyStatusMessageWhereInput
   }
@@ -3043,6 +3133,34 @@ export namespace Prisma {
     where?: ArticleWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountDelegatedUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RoleDelegationWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAssignedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RoleDelegationWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountCompaniesAssignedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompanyAssignmentWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountCompaniesDelegatedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompanyAssignmentWhereInput
+  }
+
 
   /**
    * Count Type CompanyCountOutputType
@@ -3054,10 +3172,10 @@ export namespace Prisma {
     companyServices: number
     directors: number
     payments: number
-    roleAssignments: number
     shareholders: number
     revertMessage: number
     auditLogs: number
+    companyAssignments: number
   }
 
   export type CompanyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3066,10 +3184,10 @@ export namespace Prisma {
     companyServices?: boolean | CompanyCountOutputTypeCountCompanyServicesArgs
     directors?: boolean | CompanyCountOutputTypeCountDirectorsArgs
     payments?: boolean | CompanyCountOutputTypeCountPaymentsArgs
-    roleAssignments?: boolean | CompanyCountOutputTypeCountRoleAssignmentsArgs
     shareholders?: boolean | CompanyCountOutputTypeCountShareholdersArgs
     revertMessage?: boolean | CompanyCountOutputTypeCountRevertMessageArgs
     auditLogs?: boolean | CompanyCountOutputTypeCountAuditLogsArgs
+    companyAssignments?: boolean | CompanyCountOutputTypeCountCompanyAssignmentsArgs
   }
 
   // Custom InputTypes
@@ -3121,13 +3239,6 @@ export namespace Prisma {
   /**
    * CompanyCountOutputType without action
    */
-  export type CompanyCountOutputTypeCountRoleAssignmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: RoleAssignmentWhereInput
-  }
-
-  /**
-   * CompanyCountOutputType without action
-   */
   export type CompanyCountOutputTypeCountShareholdersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ShareholderWhereInput
   }
@@ -3144,6 +3255,13 @@ export namespace Prisma {
    */
   export type CompanyCountOutputTypeCountAuditLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AuditLogWhereInput
+  }
+
+  /**
+   * CompanyCountOutputType without action
+   */
+  export type CompanyCountOutputTypeCountCompanyAssignmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompanyAssignmentWhereInput
   }
 
 
@@ -3585,13 +3703,16 @@ export namespace Prisma {
     insights?: boolean | User$insightsArgs<ExtArgs>
     notifications?: boolean | User$notificationsArgs<ExtArgs>
     payments?: boolean | User$paymentsArgs<ExtArgs>
-    assignedRoles?: boolean | User$assignedRolesArgs<ExtArgs>
     revertMessage?: boolean | User$revertMessageArgs<ExtArgs>
     uploadedDocs?: boolean | User$uploadedDocsArgs<ExtArgs>
     receivedDocs?: boolean | User$receivedDocsArgs<ExtArgs>
     auditLogs?: boolean | User$auditLogsArgs<ExtArgs>
     CalendarAction?: boolean | User$CalendarActionArgs<ExtArgs>
     articles?: boolean | User$articlesArgs<ExtArgs>
+    delegatedUsers?: boolean | User$delegatedUsersArgs<ExtArgs>
+    assignedBy?: boolean | User$assignedByArgs<ExtArgs>
+    companiesAssigned?: boolean | User$companiesAssignedArgs<ExtArgs>
+    companiesDelegated?: boolean | User$companiesDelegatedArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -3679,13 +3800,16 @@ export namespace Prisma {
     insights?: boolean | User$insightsArgs<ExtArgs>
     notifications?: boolean | User$notificationsArgs<ExtArgs>
     payments?: boolean | User$paymentsArgs<ExtArgs>
-    assignedRoles?: boolean | User$assignedRolesArgs<ExtArgs>
     revertMessage?: boolean | User$revertMessageArgs<ExtArgs>
     uploadedDocs?: boolean | User$uploadedDocsArgs<ExtArgs>
     receivedDocs?: boolean | User$receivedDocsArgs<ExtArgs>
     auditLogs?: boolean | User$auditLogsArgs<ExtArgs>
     CalendarAction?: boolean | User$CalendarActionArgs<ExtArgs>
     articles?: boolean | User$articlesArgs<ExtArgs>
+    delegatedUsers?: boolean | User$delegatedUsersArgs<ExtArgs>
+    assignedBy?: boolean | User$assignedByArgs<ExtArgs>
+    companiesAssigned?: boolean | User$companiesAssignedArgs<ExtArgs>
+    companiesDelegated?: boolean | User$companiesDelegatedArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -3701,13 +3825,16 @@ export namespace Prisma {
       insights: Prisma.$InsightRecommendationPayload<ExtArgs>[]
       notifications: Prisma.$NotificationPayload<ExtArgs>[]
       payments: Prisma.$PaymentPayload<ExtArgs>[]
-      assignedRoles: Prisma.$RoleAssignmentPayload<ExtArgs>[]
       revertMessage: Prisma.$CompanyStatusMessagePayload<ExtArgs>[]
       uploadedDocs: Prisma.$CompanyDocumentPayload<ExtArgs>[]
       receivedDocs: Prisma.$CompanyDocumentPayload<ExtArgs>[]
       auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
       CalendarAction: Prisma.$CalendarActionPayload<ExtArgs>[]
       articles: Prisma.$ArticlePayload<ExtArgs>[]
+      delegatedUsers: Prisma.$RoleDelegationPayload<ExtArgs>[]
+      assignedBy: Prisma.$RoleDelegationPayload<ExtArgs>[]
+      companiesAssigned: Prisma.$CompanyAssignmentPayload<ExtArgs>[]
+      companiesDelegated: Prisma.$CompanyAssignmentPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -4133,13 +4260,16 @@ export namespace Prisma {
     insights<T extends User$insightsArgs<ExtArgs> = {}>(args?: Subset<T, User$insightsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InsightRecommendationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     notifications<T extends User$notificationsArgs<ExtArgs> = {}>(args?: Subset<T, User$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     payments<T extends User$paymentsArgs<ExtArgs> = {}>(args?: Subset<T, User$paymentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    assignedRoles<T extends User$assignedRolesArgs<ExtArgs> = {}>(args?: Subset<T, User$assignedRolesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoleAssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     revertMessage<T extends User$revertMessageArgs<ExtArgs> = {}>(args?: Subset<T, User$revertMessageArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyStatusMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     uploadedDocs<T extends User$uploadedDocsArgs<ExtArgs> = {}>(args?: Subset<T, User$uploadedDocsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     receivedDocs<T extends User$receivedDocsArgs<ExtArgs> = {}>(args?: Subset<T, User$receivedDocsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     auditLogs<T extends User$auditLogsArgs<ExtArgs> = {}>(args?: Subset<T, User$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     CalendarAction<T extends User$CalendarActionArgs<ExtArgs> = {}>(args?: Subset<T, User$CalendarActionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CalendarActionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     articles<T extends User$articlesArgs<ExtArgs> = {}>(args?: Subset<T, User$articlesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    delegatedUsers<T extends User$delegatedUsersArgs<ExtArgs> = {}>(args?: Subset<T, User$delegatedUsersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoleDelegationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    assignedBy<T extends User$assignedByArgs<ExtArgs> = {}>(args?: Subset<T, User$assignedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoleDelegationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    companiesAssigned<T extends User$companiesAssignedArgs<ExtArgs> = {}>(args?: Subset<T, User$companiesAssignedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyAssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    companiesDelegated<T extends User$companiesDelegatedArgs<ExtArgs> = {}>(args?: Subset<T, User$companiesDelegatedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyAssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4747,30 +4877,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.assignedRoles
-   */
-  export type User$assignedRolesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the RoleAssignment
-     */
-    select?: RoleAssignmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the RoleAssignment
-     */
-    omit?: RoleAssignmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RoleAssignmentInclude<ExtArgs> | null
-    where?: RoleAssignmentWhereInput
-    orderBy?: RoleAssignmentOrderByWithRelationInput | RoleAssignmentOrderByWithRelationInput[]
-    cursor?: RoleAssignmentWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: RoleAssignmentScalarFieldEnum | RoleAssignmentScalarFieldEnum[]
-  }
-
-  /**
    * User.revertMessage
    */
   export type User$revertMessageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4912,6 +5018,102 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ArticleScalarFieldEnum | ArticleScalarFieldEnum[]
+  }
+
+  /**
+   * User.delegatedUsers
+   */
+  export type User$delegatedUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoleDelegation
+     */
+    select?: RoleDelegationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoleDelegation
+     */
+    omit?: RoleDelegationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoleDelegationInclude<ExtArgs> | null
+    where?: RoleDelegationWhereInput
+    orderBy?: RoleDelegationOrderByWithRelationInput | RoleDelegationOrderByWithRelationInput[]
+    cursor?: RoleDelegationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RoleDelegationScalarFieldEnum | RoleDelegationScalarFieldEnum[]
+  }
+
+  /**
+   * User.assignedBy
+   */
+  export type User$assignedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoleDelegation
+     */
+    select?: RoleDelegationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoleDelegation
+     */
+    omit?: RoleDelegationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoleDelegationInclude<ExtArgs> | null
+    where?: RoleDelegationWhereInput
+    orderBy?: RoleDelegationOrderByWithRelationInput | RoleDelegationOrderByWithRelationInput[]
+    cursor?: RoleDelegationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RoleDelegationScalarFieldEnum | RoleDelegationScalarFieldEnum[]
+  }
+
+  /**
+   * User.companiesAssigned
+   */
+  export type User$companiesAssignedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAssignment
+     */
+    select?: CompanyAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAssignment
+     */
+    omit?: CompanyAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssignmentInclude<ExtArgs> | null
+    where?: CompanyAssignmentWhereInput
+    orderBy?: CompanyAssignmentOrderByWithRelationInput | CompanyAssignmentOrderByWithRelationInput[]
+    cursor?: CompanyAssignmentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CompanyAssignmentScalarFieldEnum | CompanyAssignmentScalarFieldEnum[]
+  }
+
+  /**
+   * User.companiesDelegated
+   */
+  export type User$companiesDelegatedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAssignment
+     */
+    select?: CompanyAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAssignment
+     */
+    omit?: CompanyAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssignmentInclude<ExtArgs> | null
+    where?: CompanyAssignmentWhereInput
+    orderBy?: CompanyAssignmentOrderByWithRelationInput | CompanyAssignmentOrderByWithRelationInput[]
+    cursor?: CompanyAssignmentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CompanyAssignmentScalarFieldEnum | CompanyAssignmentScalarFieldEnum[]
   }
 
   /**
@@ -5286,10 +5488,10 @@ export namespace Prisma {
     dashboardState?: boolean | Company$dashboardStateArgs<ExtArgs>
     directors?: boolean | Company$directorsArgs<ExtArgs>
     payments?: boolean | Company$paymentsArgs<ExtArgs>
-    roleAssignments?: boolean | Company$roleAssignmentsArgs<ExtArgs>
     shareholders?: boolean | Company$shareholdersArgs<ExtArgs>
     revertMessage?: boolean | Company$revertMessageArgs<ExtArgs>
     auditLogs?: boolean | Company$auditLogsArgs<ExtArgs>
+    companyAssignments?: boolean | Company$companyAssignmentsArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["company"]>
 
@@ -5379,10 +5581,10 @@ export namespace Prisma {
     dashboardState?: boolean | Company$dashboardStateArgs<ExtArgs>
     directors?: boolean | Company$directorsArgs<ExtArgs>
     payments?: boolean | Company$paymentsArgs<ExtArgs>
-    roleAssignments?: boolean | Company$roleAssignmentsArgs<ExtArgs>
     shareholders?: boolean | Company$shareholdersArgs<ExtArgs>
     revertMessage?: boolean | Company$revertMessageArgs<ExtArgs>
     auditLogs?: boolean | Company$auditLogsArgs<ExtArgs>
+    companyAssignments?: boolean | Company$companyAssignmentsArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CompanyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5402,10 +5604,10 @@ export namespace Prisma {
       dashboardState: Prisma.$DashboardStatePayload<ExtArgs> | null
       directors: Prisma.$DirectorPayload<ExtArgs>[]
       payments: Prisma.$PaymentPayload<ExtArgs>[]
-      roleAssignments: Prisma.$RoleAssignmentPayload<ExtArgs>[]
       shareholders: Prisma.$ShareholderPayload<ExtArgs>[]
       revertMessage: Prisma.$CompanyStatusMessagePayload<ExtArgs>[]
       auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
+      companyAssignments: Prisma.$CompanyAssignmentPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       companyId: number
@@ -5831,10 +6033,10 @@ export namespace Prisma {
     dashboardState<T extends Company$dashboardStateArgs<ExtArgs> = {}>(args?: Subset<T, Company$dashboardStateArgs<ExtArgs>>): Prisma__DashboardStateClient<$Result.GetResult<Prisma.$DashboardStatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     directors<T extends Company$directorsArgs<ExtArgs> = {}>(args?: Subset<T, Company$directorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DirectorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     payments<T extends Company$paymentsArgs<ExtArgs> = {}>(args?: Subset<T, Company$paymentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    roleAssignments<T extends Company$roleAssignmentsArgs<ExtArgs> = {}>(args?: Subset<T, Company$roleAssignmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoleAssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     shareholders<T extends Company$shareholdersArgs<ExtArgs> = {}>(args?: Subset<T, Company$shareholdersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ShareholderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     revertMessage<T extends Company$revertMessageArgs<ExtArgs> = {}>(args?: Subset<T, Company$revertMessageArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyStatusMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     auditLogs<T extends Company$auditLogsArgs<ExtArgs> = {}>(args?: Subset<T, Company$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    companyAssignments<T extends Company$companyAssignmentsArgs<ExtArgs> = {}>(args?: Subset<T, Company$companyAssignmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyAssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6421,30 +6623,6 @@ export namespace Prisma {
   }
 
   /**
-   * Company.roleAssignments
-   */
-  export type Company$roleAssignmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the RoleAssignment
-     */
-    select?: RoleAssignmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the RoleAssignment
-     */
-    omit?: RoleAssignmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RoleAssignmentInclude<ExtArgs> | null
-    where?: RoleAssignmentWhereInput
-    orderBy?: RoleAssignmentOrderByWithRelationInput | RoleAssignmentOrderByWithRelationInput[]
-    cursor?: RoleAssignmentWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: RoleAssignmentScalarFieldEnum | RoleAssignmentScalarFieldEnum[]
-  }
-
-  /**
    * Company.shareholders
    */
   export type Company$shareholdersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6514,6 +6692,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AuditLogScalarFieldEnum | AuditLogScalarFieldEnum[]
+  }
+
+  /**
+   * Company.companyAssignments
+   */
+  export type Company$companyAssignmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAssignment
+     */
+    select?: CompanyAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAssignment
+     */
+    omit?: CompanyAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssignmentInclude<ExtArgs> | null
+    where?: CompanyAssignmentWhereInput
+    orderBy?: CompanyAssignmentOrderByWithRelationInput | CompanyAssignmentOrderByWithRelationInput[]
+    cursor?: CompanyAssignmentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CompanyAssignmentScalarFieldEnum | CompanyAssignmentScalarFieldEnum[]
   }
 
   /**
@@ -21648,399 +21850,399 @@ export namespace Prisma {
 
 
   /**
-   * Model RoleAssignment
+   * Model RoleDelegation
    */
 
-  export type AggregateRoleAssignment = {
-    _count: RoleAssignmentCountAggregateOutputType | null
-    _avg: RoleAssignmentAvgAggregateOutputType | null
-    _sum: RoleAssignmentSumAggregateOutputType | null
-    _min: RoleAssignmentMinAggregateOutputType | null
-    _max: RoleAssignmentMaxAggregateOutputType | null
+  export type AggregateRoleDelegation = {
+    _count: RoleDelegationCountAggregateOutputType | null
+    _avg: RoleDelegationAvgAggregateOutputType | null
+    _sum: RoleDelegationSumAggregateOutputType | null
+    _min: RoleDelegationMinAggregateOutputType | null
+    _max: RoleDelegationMaxAggregateOutputType | null
   }
 
-  export type RoleAssignmentAvgAggregateOutputType = {
+  export type RoleDelegationAvgAggregateOutputType = {
     id: number | null
-    agentId: number | null
-    companyId: number | null
+    delegatorId: number | null
+    delegateeId: number | null
   }
 
-  export type RoleAssignmentSumAggregateOutputType = {
+  export type RoleDelegationSumAggregateOutputType = {
     id: number | null
-    agentId: number | null
-    companyId: number | null
+    delegatorId: number | null
+    delegateeId: number | null
   }
 
-  export type RoleAssignmentMinAggregateOutputType = {
+  export type RoleDelegationMinAggregateOutputType = {
     id: number | null
-    agentId: number | null
-    companyId: number | null
-    role: $Enums.UserRole | null
-    assignedAt: Date | null
+    delegatorId: number | null
+    delegateeId: number | null
+    delegatedRole: $Enums.UserRole | null
+    createdAt: Date | null
   }
 
-  export type RoleAssignmentMaxAggregateOutputType = {
+  export type RoleDelegationMaxAggregateOutputType = {
     id: number | null
-    agentId: number | null
-    companyId: number | null
-    role: $Enums.UserRole | null
-    assignedAt: Date | null
+    delegatorId: number | null
+    delegateeId: number | null
+    delegatedRole: $Enums.UserRole | null
+    createdAt: Date | null
   }
 
-  export type RoleAssignmentCountAggregateOutputType = {
+  export type RoleDelegationCountAggregateOutputType = {
     id: number
-    agentId: number
-    companyId: number
-    role: number
-    assignedAt: number
+    delegatorId: number
+    delegateeId: number
+    delegatedRole: number
+    createdAt: number
     _all: number
   }
 
 
-  export type RoleAssignmentAvgAggregateInputType = {
+  export type RoleDelegationAvgAggregateInputType = {
     id?: true
-    agentId?: true
-    companyId?: true
+    delegatorId?: true
+    delegateeId?: true
   }
 
-  export type RoleAssignmentSumAggregateInputType = {
+  export type RoleDelegationSumAggregateInputType = {
     id?: true
-    agentId?: true
-    companyId?: true
+    delegatorId?: true
+    delegateeId?: true
   }
 
-  export type RoleAssignmentMinAggregateInputType = {
+  export type RoleDelegationMinAggregateInputType = {
     id?: true
-    agentId?: true
-    companyId?: true
-    role?: true
-    assignedAt?: true
+    delegatorId?: true
+    delegateeId?: true
+    delegatedRole?: true
+    createdAt?: true
   }
 
-  export type RoleAssignmentMaxAggregateInputType = {
+  export type RoleDelegationMaxAggregateInputType = {
     id?: true
-    agentId?: true
-    companyId?: true
-    role?: true
-    assignedAt?: true
+    delegatorId?: true
+    delegateeId?: true
+    delegatedRole?: true
+    createdAt?: true
   }
 
-  export type RoleAssignmentCountAggregateInputType = {
+  export type RoleDelegationCountAggregateInputType = {
     id?: true
-    agentId?: true
-    companyId?: true
-    role?: true
-    assignedAt?: true
+    delegatorId?: true
+    delegateeId?: true
+    delegatedRole?: true
+    createdAt?: true
     _all?: true
   }
 
-  export type RoleAssignmentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RoleDelegationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which RoleAssignment to aggregate.
+     * Filter which RoleDelegation to aggregate.
      */
-    where?: RoleAssignmentWhereInput
+    where?: RoleDelegationWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of RoleAssignments to fetch.
+     * Determine the order of RoleDelegations to fetch.
      */
-    orderBy?: RoleAssignmentOrderByWithRelationInput | RoleAssignmentOrderByWithRelationInput[]
+    orderBy?: RoleDelegationOrderByWithRelationInput | RoleDelegationOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: RoleAssignmentWhereUniqueInput
+    cursor?: RoleDelegationWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` RoleAssignments from the position of the cursor.
+     * Take `±n` RoleDelegations from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` RoleAssignments.
+     * Skip the first `n` RoleDelegations.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned RoleAssignments
+     * Count returned RoleDelegations
     **/
-    _count?: true | RoleAssignmentCountAggregateInputType
+    _count?: true | RoleDelegationCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: RoleAssignmentAvgAggregateInputType
+    _avg?: RoleDelegationAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: RoleAssignmentSumAggregateInputType
+    _sum?: RoleDelegationSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: RoleAssignmentMinAggregateInputType
+    _min?: RoleDelegationMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: RoleAssignmentMaxAggregateInputType
+    _max?: RoleDelegationMaxAggregateInputType
   }
 
-  export type GetRoleAssignmentAggregateType<T extends RoleAssignmentAggregateArgs> = {
-        [P in keyof T & keyof AggregateRoleAssignment]: P extends '_count' | 'count'
+  export type GetRoleDelegationAggregateType<T extends RoleDelegationAggregateArgs> = {
+        [P in keyof T & keyof AggregateRoleDelegation]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateRoleAssignment[P]>
-      : GetScalarType<T[P], AggregateRoleAssignment[P]>
+        : GetScalarType<T[P], AggregateRoleDelegation[P]>
+      : GetScalarType<T[P], AggregateRoleDelegation[P]>
   }
 
 
 
 
-  export type RoleAssignmentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: RoleAssignmentWhereInput
-    orderBy?: RoleAssignmentOrderByWithAggregationInput | RoleAssignmentOrderByWithAggregationInput[]
-    by: RoleAssignmentScalarFieldEnum[] | RoleAssignmentScalarFieldEnum
-    having?: RoleAssignmentScalarWhereWithAggregatesInput
+  export type RoleDelegationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RoleDelegationWhereInput
+    orderBy?: RoleDelegationOrderByWithAggregationInput | RoleDelegationOrderByWithAggregationInput[]
+    by: RoleDelegationScalarFieldEnum[] | RoleDelegationScalarFieldEnum
+    having?: RoleDelegationScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: RoleAssignmentCountAggregateInputType | true
-    _avg?: RoleAssignmentAvgAggregateInputType
-    _sum?: RoleAssignmentSumAggregateInputType
-    _min?: RoleAssignmentMinAggregateInputType
-    _max?: RoleAssignmentMaxAggregateInputType
+    _count?: RoleDelegationCountAggregateInputType | true
+    _avg?: RoleDelegationAvgAggregateInputType
+    _sum?: RoleDelegationSumAggregateInputType
+    _min?: RoleDelegationMinAggregateInputType
+    _max?: RoleDelegationMaxAggregateInputType
   }
 
-  export type RoleAssignmentGroupByOutputType = {
+  export type RoleDelegationGroupByOutputType = {
     id: number
-    agentId: number
-    companyId: number
-    role: $Enums.UserRole
-    assignedAt: Date
-    _count: RoleAssignmentCountAggregateOutputType | null
-    _avg: RoleAssignmentAvgAggregateOutputType | null
-    _sum: RoleAssignmentSumAggregateOutputType | null
-    _min: RoleAssignmentMinAggregateOutputType | null
-    _max: RoleAssignmentMaxAggregateOutputType | null
+    delegatorId: number
+    delegateeId: number
+    delegatedRole: $Enums.UserRole
+    createdAt: Date
+    _count: RoleDelegationCountAggregateOutputType | null
+    _avg: RoleDelegationAvgAggregateOutputType | null
+    _sum: RoleDelegationSumAggregateOutputType | null
+    _min: RoleDelegationMinAggregateOutputType | null
+    _max: RoleDelegationMaxAggregateOutputType | null
   }
 
-  type GetRoleAssignmentGroupByPayload<T extends RoleAssignmentGroupByArgs> = Prisma.PrismaPromise<
+  type GetRoleDelegationGroupByPayload<T extends RoleDelegationGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<RoleAssignmentGroupByOutputType, T['by']> &
+      PickEnumerable<RoleDelegationGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof RoleAssignmentGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof RoleDelegationGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], RoleAssignmentGroupByOutputType[P]>
-            : GetScalarType<T[P], RoleAssignmentGroupByOutputType[P]>
+              : GetScalarType<T[P], RoleDelegationGroupByOutputType[P]>
+            : GetScalarType<T[P], RoleDelegationGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type RoleAssignmentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type RoleDelegationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    agentId?: boolean
-    companyId?: boolean
-    role?: boolean
-    assignedAt?: boolean
-    agent?: boolean | UserDefaultArgs<ExtArgs>
-    company?: boolean | CompanyDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["roleAssignment"]>
+    delegatorId?: boolean
+    delegateeId?: boolean
+    delegatedRole?: boolean
+    createdAt?: boolean
+    delegator?: boolean | UserDefaultArgs<ExtArgs>
+    delegatee?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["roleDelegation"]>
 
-  export type RoleAssignmentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type RoleDelegationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    agentId?: boolean
-    companyId?: boolean
-    role?: boolean
-    assignedAt?: boolean
-    agent?: boolean | UserDefaultArgs<ExtArgs>
-    company?: boolean | CompanyDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["roleAssignment"]>
+    delegatorId?: boolean
+    delegateeId?: boolean
+    delegatedRole?: boolean
+    createdAt?: boolean
+    delegator?: boolean | UserDefaultArgs<ExtArgs>
+    delegatee?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["roleDelegation"]>
 
-  export type RoleAssignmentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type RoleDelegationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    agentId?: boolean
-    companyId?: boolean
-    role?: boolean
-    assignedAt?: boolean
-    agent?: boolean | UserDefaultArgs<ExtArgs>
-    company?: boolean | CompanyDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["roleAssignment"]>
+    delegatorId?: boolean
+    delegateeId?: boolean
+    delegatedRole?: boolean
+    createdAt?: boolean
+    delegator?: boolean | UserDefaultArgs<ExtArgs>
+    delegatee?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["roleDelegation"]>
 
-  export type RoleAssignmentSelectScalar = {
+  export type RoleDelegationSelectScalar = {
     id?: boolean
-    agentId?: boolean
-    companyId?: boolean
-    role?: boolean
-    assignedAt?: boolean
+    delegatorId?: boolean
+    delegateeId?: boolean
+    delegatedRole?: boolean
+    createdAt?: boolean
   }
 
-  export type RoleAssignmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "agentId" | "companyId" | "role" | "assignedAt", ExtArgs["result"]["roleAssignment"]>
-  export type RoleAssignmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    agent?: boolean | UserDefaultArgs<ExtArgs>
-    company?: boolean | CompanyDefaultArgs<ExtArgs>
+  export type RoleDelegationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "delegatorId" | "delegateeId" | "delegatedRole" | "createdAt", ExtArgs["result"]["roleDelegation"]>
+  export type RoleDelegationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    delegator?: boolean | UserDefaultArgs<ExtArgs>
+    delegatee?: boolean | UserDefaultArgs<ExtArgs>
   }
-  export type RoleAssignmentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    agent?: boolean | UserDefaultArgs<ExtArgs>
-    company?: boolean | CompanyDefaultArgs<ExtArgs>
+  export type RoleDelegationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    delegator?: boolean | UserDefaultArgs<ExtArgs>
+    delegatee?: boolean | UserDefaultArgs<ExtArgs>
   }
-  export type RoleAssignmentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    agent?: boolean | UserDefaultArgs<ExtArgs>
-    company?: boolean | CompanyDefaultArgs<ExtArgs>
+  export type RoleDelegationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    delegator?: boolean | UserDefaultArgs<ExtArgs>
+    delegatee?: boolean | UserDefaultArgs<ExtArgs>
   }
 
-  export type $RoleAssignmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "RoleAssignment"
+  export type $RoleDelegationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "RoleDelegation"
     objects: {
-      agent: Prisma.$UserPayload<ExtArgs>
-      company: Prisma.$CompanyPayload<ExtArgs>
+      delegator: Prisma.$UserPayload<ExtArgs>
+      delegatee: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      agentId: number
-      companyId: number
-      role: $Enums.UserRole
-      assignedAt: Date
-    }, ExtArgs["result"]["roleAssignment"]>
+      delegatorId: number
+      delegateeId: number
+      delegatedRole: $Enums.UserRole
+      createdAt: Date
+    }, ExtArgs["result"]["roleDelegation"]>
     composites: {}
   }
 
-  type RoleAssignmentGetPayload<S extends boolean | null | undefined | RoleAssignmentDefaultArgs> = $Result.GetResult<Prisma.$RoleAssignmentPayload, S>
+  type RoleDelegationGetPayload<S extends boolean | null | undefined | RoleDelegationDefaultArgs> = $Result.GetResult<Prisma.$RoleDelegationPayload, S>
 
-  type RoleAssignmentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<RoleAssignmentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: RoleAssignmentCountAggregateInputType | true
+  type RoleDelegationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RoleDelegationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RoleDelegationCountAggregateInputType | true
     }
 
-  export interface RoleAssignmentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['RoleAssignment'], meta: { name: 'RoleAssignment' } }
+  export interface RoleDelegationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['RoleDelegation'], meta: { name: 'RoleDelegation' } }
     /**
-     * Find zero or one RoleAssignment that matches the filter.
-     * @param {RoleAssignmentFindUniqueArgs} args - Arguments to find a RoleAssignment
+     * Find zero or one RoleDelegation that matches the filter.
+     * @param {RoleDelegationFindUniqueArgs} args - Arguments to find a RoleDelegation
      * @example
-     * // Get one RoleAssignment
-     * const roleAssignment = await prisma.roleAssignment.findUnique({
+     * // Get one RoleDelegation
+     * const roleDelegation = await prisma.roleDelegation.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends RoleAssignmentFindUniqueArgs>(args: SelectSubset<T, RoleAssignmentFindUniqueArgs<ExtArgs>>): Prisma__RoleAssignmentClient<$Result.GetResult<Prisma.$RoleAssignmentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends RoleDelegationFindUniqueArgs>(args: SelectSubset<T, RoleDelegationFindUniqueArgs<ExtArgs>>): Prisma__RoleDelegationClient<$Result.GetResult<Prisma.$RoleDelegationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one RoleAssignment that matches the filter or throw an error with `error.code='P2025'`
+     * Find one RoleDelegation that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {RoleAssignmentFindUniqueOrThrowArgs} args - Arguments to find a RoleAssignment
+     * @param {RoleDelegationFindUniqueOrThrowArgs} args - Arguments to find a RoleDelegation
      * @example
-     * // Get one RoleAssignment
-     * const roleAssignment = await prisma.roleAssignment.findUniqueOrThrow({
+     * // Get one RoleDelegation
+     * const roleDelegation = await prisma.roleDelegation.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends RoleAssignmentFindUniqueOrThrowArgs>(args: SelectSubset<T, RoleAssignmentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RoleAssignmentClient<$Result.GetResult<Prisma.$RoleAssignmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends RoleDelegationFindUniqueOrThrowArgs>(args: SelectSubset<T, RoleDelegationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RoleDelegationClient<$Result.GetResult<Prisma.$RoleDelegationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first RoleAssignment that matches the filter.
+     * Find the first RoleDelegation that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {RoleAssignmentFindFirstArgs} args - Arguments to find a RoleAssignment
+     * @param {RoleDelegationFindFirstArgs} args - Arguments to find a RoleDelegation
      * @example
-     * // Get one RoleAssignment
-     * const roleAssignment = await prisma.roleAssignment.findFirst({
+     * // Get one RoleDelegation
+     * const roleDelegation = await prisma.roleDelegation.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends RoleAssignmentFindFirstArgs>(args?: SelectSubset<T, RoleAssignmentFindFirstArgs<ExtArgs>>): Prisma__RoleAssignmentClient<$Result.GetResult<Prisma.$RoleAssignmentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends RoleDelegationFindFirstArgs>(args?: SelectSubset<T, RoleDelegationFindFirstArgs<ExtArgs>>): Prisma__RoleDelegationClient<$Result.GetResult<Prisma.$RoleDelegationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first RoleAssignment that matches the filter or
+     * Find the first RoleDelegation that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {RoleAssignmentFindFirstOrThrowArgs} args - Arguments to find a RoleAssignment
+     * @param {RoleDelegationFindFirstOrThrowArgs} args - Arguments to find a RoleDelegation
      * @example
-     * // Get one RoleAssignment
-     * const roleAssignment = await prisma.roleAssignment.findFirstOrThrow({
+     * // Get one RoleDelegation
+     * const roleDelegation = await prisma.roleDelegation.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends RoleAssignmentFindFirstOrThrowArgs>(args?: SelectSubset<T, RoleAssignmentFindFirstOrThrowArgs<ExtArgs>>): Prisma__RoleAssignmentClient<$Result.GetResult<Prisma.$RoleAssignmentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends RoleDelegationFindFirstOrThrowArgs>(args?: SelectSubset<T, RoleDelegationFindFirstOrThrowArgs<ExtArgs>>): Prisma__RoleDelegationClient<$Result.GetResult<Prisma.$RoleDelegationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more RoleAssignments that matches the filter.
+     * Find zero or more RoleDelegations that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {RoleAssignmentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {RoleDelegationFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all RoleAssignments
-     * const roleAssignments = await prisma.roleAssignment.findMany()
+     * // Get all RoleDelegations
+     * const roleDelegations = await prisma.roleDelegation.findMany()
      * 
-     * // Get first 10 RoleAssignments
-     * const roleAssignments = await prisma.roleAssignment.findMany({ take: 10 })
+     * // Get first 10 RoleDelegations
+     * const roleDelegations = await prisma.roleDelegation.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const roleAssignmentWithIdOnly = await prisma.roleAssignment.findMany({ select: { id: true } })
+     * const roleDelegationWithIdOnly = await prisma.roleDelegation.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends RoleAssignmentFindManyArgs>(args?: SelectSubset<T, RoleAssignmentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoleAssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends RoleDelegationFindManyArgs>(args?: SelectSubset<T, RoleDelegationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoleDelegationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a RoleAssignment.
-     * @param {RoleAssignmentCreateArgs} args - Arguments to create a RoleAssignment.
+     * Create a RoleDelegation.
+     * @param {RoleDelegationCreateArgs} args - Arguments to create a RoleDelegation.
      * @example
-     * // Create one RoleAssignment
-     * const RoleAssignment = await prisma.roleAssignment.create({
+     * // Create one RoleDelegation
+     * const RoleDelegation = await prisma.roleDelegation.create({
      *   data: {
-     *     // ... data to create a RoleAssignment
+     *     // ... data to create a RoleDelegation
      *   }
      * })
      * 
      */
-    create<T extends RoleAssignmentCreateArgs>(args: SelectSubset<T, RoleAssignmentCreateArgs<ExtArgs>>): Prisma__RoleAssignmentClient<$Result.GetResult<Prisma.$RoleAssignmentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends RoleDelegationCreateArgs>(args: SelectSubset<T, RoleDelegationCreateArgs<ExtArgs>>): Prisma__RoleDelegationClient<$Result.GetResult<Prisma.$RoleDelegationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many RoleAssignments.
-     * @param {RoleAssignmentCreateManyArgs} args - Arguments to create many RoleAssignments.
+     * Create many RoleDelegations.
+     * @param {RoleDelegationCreateManyArgs} args - Arguments to create many RoleDelegations.
      * @example
-     * // Create many RoleAssignments
-     * const roleAssignment = await prisma.roleAssignment.createMany({
+     * // Create many RoleDelegations
+     * const roleDelegation = await prisma.roleDelegation.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends RoleAssignmentCreateManyArgs>(args?: SelectSubset<T, RoleAssignmentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends RoleDelegationCreateManyArgs>(args?: SelectSubset<T, RoleDelegationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many RoleAssignments and returns the data saved in the database.
-     * @param {RoleAssignmentCreateManyAndReturnArgs} args - Arguments to create many RoleAssignments.
+     * Create many RoleDelegations and returns the data saved in the database.
+     * @param {RoleDelegationCreateManyAndReturnArgs} args - Arguments to create many RoleDelegations.
      * @example
-     * // Create many RoleAssignments
-     * const roleAssignment = await prisma.roleAssignment.createManyAndReturn({
+     * // Create many RoleDelegations
+     * const roleDelegation = await prisma.roleDelegation.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many RoleAssignments and only return the `id`
-     * const roleAssignmentWithIdOnly = await prisma.roleAssignment.createManyAndReturn({
+     * // Create many RoleDelegations and only return the `id`
+     * const roleDelegationWithIdOnly = await prisma.roleDelegation.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -22050,28 +22252,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends RoleAssignmentCreateManyAndReturnArgs>(args?: SelectSubset<T, RoleAssignmentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoleAssignmentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends RoleDelegationCreateManyAndReturnArgs>(args?: SelectSubset<T, RoleDelegationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoleDelegationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a RoleAssignment.
-     * @param {RoleAssignmentDeleteArgs} args - Arguments to delete one RoleAssignment.
+     * Delete a RoleDelegation.
+     * @param {RoleDelegationDeleteArgs} args - Arguments to delete one RoleDelegation.
      * @example
-     * // Delete one RoleAssignment
-     * const RoleAssignment = await prisma.roleAssignment.delete({
+     * // Delete one RoleDelegation
+     * const RoleDelegation = await prisma.roleDelegation.delete({
      *   where: {
-     *     // ... filter to delete one RoleAssignment
+     *     // ... filter to delete one RoleDelegation
      *   }
      * })
      * 
      */
-    delete<T extends RoleAssignmentDeleteArgs>(args: SelectSubset<T, RoleAssignmentDeleteArgs<ExtArgs>>): Prisma__RoleAssignmentClient<$Result.GetResult<Prisma.$RoleAssignmentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends RoleDelegationDeleteArgs>(args: SelectSubset<T, RoleDelegationDeleteArgs<ExtArgs>>): Prisma__RoleDelegationClient<$Result.GetResult<Prisma.$RoleDelegationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one RoleAssignment.
-     * @param {RoleAssignmentUpdateArgs} args - Arguments to update one RoleAssignment.
+     * Update one RoleDelegation.
+     * @param {RoleDelegationUpdateArgs} args - Arguments to update one RoleDelegation.
      * @example
-     * // Update one RoleAssignment
-     * const roleAssignment = await prisma.roleAssignment.update({
+     * // Update one RoleDelegation
+     * const roleDelegation = await prisma.roleDelegation.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -22081,30 +22283,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends RoleAssignmentUpdateArgs>(args: SelectSubset<T, RoleAssignmentUpdateArgs<ExtArgs>>): Prisma__RoleAssignmentClient<$Result.GetResult<Prisma.$RoleAssignmentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends RoleDelegationUpdateArgs>(args: SelectSubset<T, RoleDelegationUpdateArgs<ExtArgs>>): Prisma__RoleDelegationClient<$Result.GetResult<Prisma.$RoleDelegationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more RoleAssignments.
-     * @param {RoleAssignmentDeleteManyArgs} args - Arguments to filter RoleAssignments to delete.
+     * Delete zero or more RoleDelegations.
+     * @param {RoleDelegationDeleteManyArgs} args - Arguments to filter RoleDelegations to delete.
      * @example
-     * // Delete a few RoleAssignments
-     * const { count } = await prisma.roleAssignment.deleteMany({
+     * // Delete a few RoleDelegations
+     * const { count } = await prisma.roleDelegation.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends RoleAssignmentDeleteManyArgs>(args?: SelectSubset<T, RoleAssignmentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends RoleDelegationDeleteManyArgs>(args?: SelectSubset<T, RoleDelegationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more RoleAssignments.
+     * Update zero or more RoleDelegations.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {RoleAssignmentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {RoleDelegationUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many RoleAssignments
-     * const roleAssignment = await prisma.roleAssignment.updateMany({
+     * // Update many RoleDelegations
+     * const roleDelegation = await prisma.roleDelegation.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -22114,14 +22316,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends RoleAssignmentUpdateManyArgs>(args: SelectSubset<T, RoleAssignmentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends RoleDelegationUpdateManyArgs>(args: SelectSubset<T, RoleDelegationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more RoleAssignments and returns the data updated in the database.
-     * @param {RoleAssignmentUpdateManyAndReturnArgs} args - Arguments to update many RoleAssignments.
+     * Update zero or more RoleDelegations and returns the data updated in the database.
+     * @param {RoleDelegationUpdateManyAndReturnArgs} args - Arguments to update many RoleDelegations.
      * @example
-     * // Update many RoleAssignments
-     * const roleAssignment = await prisma.roleAssignment.updateManyAndReturn({
+     * // Update many RoleDelegations
+     * const roleDelegation = await prisma.roleDelegation.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -22130,8 +22332,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more RoleAssignments and only return the `id`
-     * const roleAssignmentWithIdOnly = await prisma.roleAssignment.updateManyAndReturn({
+     * // Update zero or more RoleDelegations and only return the `id`
+     * const roleDelegationWithIdOnly = await prisma.roleDelegation.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -22144,56 +22346,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends RoleAssignmentUpdateManyAndReturnArgs>(args: SelectSubset<T, RoleAssignmentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoleAssignmentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends RoleDelegationUpdateManyAndReturnArgs>(args: SelectSubset<T, RoleDelegationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoleDelegationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one RoleAssignment.
-     * @param {RoleAssignmentUpsertArgs} args - Arguments to update or create a RoleAssignment.
+     * Create or update one RoleDelegation.
+     * @param {RoleDelegationUpsertArgs} args - Arguments to update or create a RoleDelegation.
      * @example
-     * // Update or create a RoleAssignment
-     * const roleAssignment = await prisma.roleAssignment.upsert({
+     * // Update or create a RoleDelegation
+     * const roleDelegation = await prisma.roleDelegation.upsert({
      *   create: {
-     *     // ... data to create a RoleAssignment
+     *     // ... data to create a RoleDelegation
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the RoleAssignment we want to update
+     *     // ... the filter for the RoleDelegation we want to update
      *   }
      * })
      */
-    upsert<T extends RoleAssignmentUpsertArgs>(args: SelectSubset<T, RoleAssignmentUpsertArgs<ExtArgs>>): Prisma__RoleAssignmentClient<$Result.GetResult<Prisma.$RoleAssignmentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends RoleDelegationUpsertArgs>(args: SelectSubset<T, RoleDelegationUpsertArgs<ExtArgs>>): Prisma__RoleDelegationClient<$Result.GetResult<Prisma.$RoleDelegationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of RoleAssignments.
+     * Count the number of RoleDelegations.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {RoleAssignmentCountArgs} args - Arguments to filter RoleAssignments to count.
+     * @param {RoleDelegationCountArgs} args - Arguments to filter RoleDelegations to count.
      * @example
-     * // Count the number of RoleAssignments
-     * const count = await prisma.roleAssignment.count({
+     * // Count the number of RoleDelegations
+     * const count = await prisma.roleDelegation.count({
      *   where: {
-     *     // ... the filter for the RoleAssignments we want to count
+     *     // ... the filter for the RoleDelegations we want to count
      *   }
      * })
     **/
-    count<T extends RoleAssignmentCountArgs>(
-      args?: Subset<T, RoleAssignmentCountArgs>,
+    count<T extends RoleDelegationCountArgs>(
+      args?: Subset<T, RoleDelegationCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], RoleAssignmentCountAggregateOutputType>
+          : GetScalarType<T['select'], RoleDelegationCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a RoleAssignment.
+     * Allows you to perform aggregations operations on a RoleDelegation.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {RoleAssignmentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {RoleDelegationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -22213,13 +22415,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends RoleAssignmentAggregateArgs>(args: Subset<T, RoleAssignmentAggregateArgs>): Prisma.PrismaPromise<GetRoleAssignmentAggregateType<T>>
+    aggregate<T extends RoleDelegationAggregateArgs>(args: Subset<T, RoleDelegationAggregateArgs>): Prisma.PrismaPromise<GetRoleDelegationAggregateType<T>>
 
     /**
-     * Group by RoleAssignment.
+     * Group by RoleDelegation.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {RoleAssignmentGroupByArgs} args - Group by arguments.
+     * @param {RoleDelegationGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -22234,14 +22436,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends RoleAssignmentGroupByArgs,
+      T extends RoleDelegationGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: RoleAssignmentGroupByArgs['orderBy'] }
-        : { orderBy?: RoleAssignmentGroupByArgs['orderBy'] },
+        ? { orderBy: RoleDelegationGroupByArgs['orderBy'] }
+        : { orderBy?: RoleDelegationGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -22290,23 +22492,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, RoleAssignmentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRoleAssignmentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, RoleDelegationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRoleDelegationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the RoleAssignment model
+   * Fields of the RoleDelegation model
    */
-  readonly fields: RoleAssignmentFieldRefs;
+  readonly fields: RoleDelegationFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for RoleAssignment.
+   * The delegate class that acts as a "Promise-like" for RoleDelegation.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__RoleAssignmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__RoleDelegationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    agent<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    delegator<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    delegatee<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -22333,425 +22535,1545 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the RoleAssignment model
+   * Fields of the RoleDelegation model
    */
-  interface RoleAssignmentFieldRefs {
-    readonly id: FieldRef<"RoleAssignment", 'Int'>
-    readonly agentId: FieldRef<"RoleAssignment", 'Int'>
-    readonly companyId: FieldRef<"RoleAssignment", 'Int'>
-    readonly role: FieldRef<"RoleAssignment", 'UserRole'>
-    readonly assignedAt: FieldRef<"RoleAssignment", 'DateTime'>
+  interface RoleDelegationFieldRefs {
+    readonly id: FieldRef<"RoleDelegation", 'Int'>
+    readonly delegatorId: FieldRef<"RoleDelegation", 'Int'>
+    readonly delegateeId: FieldRef<"RoleDelegation", 'Int'>
+    readonly delegatedRole: FieldRef<"RoleDelegation", 'UserRole'>
+    readonly createdAt: FieldRef<"RoleDelegation", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * RoleAssignment findUnique
+   * RoleDelegation findUnique
    */
-  export type RoleAssignmentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RoleDelegationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the RoleAssignment
+     * Select specific fields to fetch from the RoleDelegation
      */
-    select?: RoleAssignmentSelect<ExtArgs> | null
+    select?: RoleDelegationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the RoleAssignment
+     * Omit specific fields from the RoleDelegation
      */
-    omit?: RoleAssignmentOmit<ExtArgs> | null
+    omit?: RoleDelegationOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: RoleAssignmentInclude<ExtArgs> | null
+    include?: RoleDelegationInclude<ExtArgs> | null
     /**
-     * Filter, which RoleAssignment to fetch.
+     * Filter, which RoleDelegation to fetch.
      */
-    where: RoleAssignmentWhereUniqueInput
+    where: RoleDelegationWhereUniqueInput
   }
 
   /**
-   * RoleAssignment findUniqueOrThrow
+   * RoleDelegation findUniqueOrThrow
    */
-  export type RoleAssignmentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RoleDelegationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the RoleAssignment
+     * Select specific fields to fetch from the RoleDelegation
      */
-    select?: RoleAssignmentSelect<ExtArgs> | null
+    select?: RoleDelegationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the RoleAssignment
+     * Omit specific fields from the RoleDelegation
      */
-    omit?: RoleAssignmentOmit<ExtArgs> | null
+    omit?: RoleDelegationOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: RoleAssignmentInclude<ExtArgs> | null
+    include?: RoleDelegationInclude<ExtArgs> | null
     /**
-     * Filter, which RoleAssignment to fetch.
+     * Filter, which RoleDelegation to fetch.
      */
-    where: RoleAssignmentWhereUniqueInput
+    where: RoleDelegationWhereUniqueInput
   }
 
   /**
-   * RoleAssignment findFirst
+   * RoleDelegation findFirst
    */
-  export type RoleAssignmentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RoleDelegationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the RoleAssignment
+     * Select specific fields to fetch from the RoleDelegation
      */
-    select?: RoleAssignmentSelect<ExtArgs> | null
+    select?: RoleDelegationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the RoleAssignment
+     * Omit specific fields from the RoleDelegation
      */
-    omit?: RoleAssignmentOmit<ExtArgs> | null
+    omit?: RoleDelegationOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: RoleAssignmentInclude<ExtArgs> | null
+    include?: RoleDelegationInclude<ExtArgs> | null
     /**
-     * Filter, which RoleAssignment to fetch.
+     * Filter, which RoleDelegation to fetch.
      */
-    where?: RoleAssignmentWhereInput
+    where?: RoleDelegationWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of RoleAssignments to fetch.
+     * Determine the order of RoleDelegations to fetch.
      */
-    orderBy?: RoleAssignmentOrderByWithRelationInput | RoleAssignmentOrderByWithRelationInput[]
+    orderBy?: RoleDelegationOrderByWithRelationInput | RoleDelegationOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for RoleAssignments.
+     * Sets the position for searching for RoleDelegations.
      */
-    cursor?: RoleAssignmentWhereUniqueInput
+    cursor?: RoleDelegationWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` RoleAssignments from the position of the cursor.
+     * Take `±n` RoleDelegations from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` RoleAssignments.
+     * Skip the first `n` RoleDelegations.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of RoleAssignments.
+     * Filter by unique combinations of RoleDelegations.
      */
-    distinct?: RoleAssignmentScalarFieldEnum | RoleAssignmentScalarFieldEnum[]
+    distinct?: RoleDelegationScalarFieldEnum | RoleDelegationScalarFieldEnum[]
   }
 
   /**
-   * RoleAssignment findFirstOrThrow
+   * RoleDelegation findFirstOrThrow
    */
-  export type RoleAssignmentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RoleDelegationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the RoleAssignment
+     * Select specific fields to fetch from the RoleDelegation
      */
-    select?: RoleAssignmentSelect<ExtArgs> | null
+    select?: RoleDelegationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the RoleAssignment
+     * Omit specific fields from the RoleDelegation
      */
-    omit?: RoleAssignmentOmit<ExtArgs> | null
+    omit?: RoleDelegationOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: RoleAssignmentInclude<ExtArgs> | null
+    include?: RoleDelegationInclude<ExtArgs> | null
     /**
-     * Filter, which RoleAssignment to fetch.
+     * Filter, which RoleDelegation to fetch.
      */
-    where?: RoleAssignmentWhereInput
+    where?: RoleDelegationWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of RoleAssignments to fetch.
+     * Determine the order of RoleDelegations to fetch.
      */
-    orderBy?: RoleAssignmentOrderByWithRelationInput | RoleAssignmentOrderByWithRelationInput[]
+    orderBy?: RoleDelegationOrderByWithRelationInput | RoleDelegationOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for RoleAssignments.
+     * Sets the position for searching for RoleDelegations.
      */
-    cursor?: RoleAssignmentWhereUniqueInput
+    cursor?: RoleDelegationWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` RoleAssignments from the position of the cursor.
+     * Take `±n` RoleDelegations from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` RoleAssignments.
+     * Skip the first `n` RoleDelegations.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of RoleAssignments.
+     * Filter by unique combinations of RoleDelegations.
      */
-    distinct?: RoleAssignmentScalarFieldEnum | RoleAssignmentScalarFieldEnum[]
+    distinct?: RoleDelegationScalarFieldEnum | RoleDelegationScalarFieldEnum[]
   }
 
   /**
-   * RoleAssignment findMany
+   * RoleDelegation findMany
    */
-  export type RoleAssignmentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RoleDelegationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the RoleAssignment
+     * Select specific fields to fetch from the RoleDelegation
      */
-    select?: RoleAssignmentSelect<ExtArgs> | null
+    select?: RoleDelegationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the RoleAssignment
+     * Omit specific fields from the RoleDelegation
      */
-    omit?: RoleAssignmentOmit<ExtArgs> | null
+    omit?: RoleDelegationOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: RoleAssignmentInclude<ExtArgs> | null
+    include?: RoleDelegationInclude<ExtArgs> | null
     /**
-     * Filter, which RoleAssignments to fetch.
+     * Filter, which RoleDelegations to fetch.
      */
-    where?: RoleAssignmentWhereInput
+    where?: RoleDelegationWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of RoleAssignments to fetch.
+     * Determine the order of RoleDelegations to fetch.
      */
-    orderBy?: RoleAssignmentOrderByWithRelationInput | RoleAssignmentOrderByWithRelationInput[]
+    orderBy?: RoleDelegationOrderByWithRelationInput | RoleDelegationOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing RoleAssignments.
+     * Sets the position for listing RoleDelegations.
      */
-    cursor?: RoleAssignmentWhereUniqueInput
+    cursor?: RoleDelegationWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` RoleAssignments from the position of the cursor.
+     * Take `±n` RoleDelegations from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` RoleAssignments.
+     * Skip the first `n` RoleDelegations.
      */
     skip?: number
-    distinct?: RoleAssignmentScalarFieldEnum | RoleAssignmentScalarFieldEnum[]
+    distinct?: RoleDelegationScalarFieldEnum | RoleDelegationScalarFieldEnum[]
   }
 
   /**
-   * RoleAssignment create
+   * RoleDelegation create
    */
-  export type RoleAssignmentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RoleDelegationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the RoleAssignment
+     * Select specific fields to fetch from the RoleDelegation
      */
-    select?: RoleAssignmentSelect<ExtArgs> | null
+    select?: RoleDelegationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the RoleAssignment
+     * Omit specific fields from the RoleDelegation
      */
-    omit?: RoleAssignmentOmit<ExtArgs> | null
+    omit?: RoleDelegationOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: RoleAssignmentInclude<ExtArgs> | null
+    include?: RoleDelegationInclude<ExtArgs> | null
     /**
-     * The data needed to create a RoleAssignment.
+     * The data needed to create a RoleDelegation.
      */
-    data: XOR<RoleAssignmentCreateInput, RoleAssignmentUncheckedCreateInput>
+    data: XOR<RoleDelegationCreateInput, RoleDelegationUncheckedCreateInput>
   }
 
   /**
-   * RoleAssignment createMany
+   * RoleDelegation createMany
    */
-  export type RoleAssignmentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RoleDelegationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many RoleAssignments.
+     * The data used to create many RoleDelegations.
      */
-    data: RoleAssignmentCreateManyInput | RoleAssignmentCreateManyInput[]
+    data: RoleDelegationCreateManyInput | RoleDelegationCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * RoleAssignment createManyAndReturn
+   * RoleDelegation createManyAndReturn
    */
-  export type RoleAssignmentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RoleDelegationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the RoleAssignment
+     * Select specific fields to fetch from the RoleDelegation
      */
-    select?: RoleAssignmentSelectCreateManyAndReturn<ExtArgs> | null
+    select?: RoleDelegationSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the RoleAssignment
+     * Omit specific fields from the RoleDelegation
      */
-    omit?: RoleAssignmentOmit<ExtArgs> | null
+    omit?: RoleDelegationOmit<ExtArgs> | null
     /**
-     * The data used to create many RoleAssignments.
+     * The data used to create many RoleDelegations.
      */
-    data: RoleAssignmentCreateManyInput | RoleAssignmentCreateManyInput[]
+    data: RoleDelegationCreateManyInput | RoleDelegationCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: RoleAssignmentIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: RoleDelegationIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * RoleAssignment update
+   * RoleDelegation update
    */
-  export type RoleAssignmentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RoleDelegationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the RoleAssignment
+     * Select specific fields to fetch from the RoleDelegation
      */
-    select?: RoleAssignmentSelect<ExtArgs> | null
+    select?: RoleDelegationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the RoleAssignment
+     * Omit specific fields from the RoleDelegation
      */
-    omit?: RoleAssignmentOmit<ExtArgs> | null
+    omit?: RoleDelegationOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: RoleAssignmentInclude<ExtArgs> | null
+    include?: RoleDelegationInclude<ExtArgs> | null
     /**
-     * The data needed to update a RoleAssignment.
+     * The data needed to update a RoleDelegation.
      */
-    data: XOR<RoleAssignmentUpdateInput, RoleAssignmentUncheckedUpdateInput>
+    data: XOR<RoleDelegationUpdateInput, RoleDelegationUncheckedUpdateInput>
     /**
-     * Choose, which RoleAssignment to update.
+     * Choose, which RoleDelegation to update.
      */
-    where: RoleAssignmentWhereUniqueInput
+    where: RoleDelegationWhereUniqueInput
   }
 
   /**
-   * RoleAssignment updateMany
+   * RoleDelegation updateMany
    */
-  export type RoleAssignmentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RoleDelegationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update RoleAssignments.
+     * The data used to update RoleDelegations.
      */
-    data: XOR<RoleAssignmentUpdateManyMutationInput, RoleAssignmentUncheckedUpdateManyInput>
+    data: XOR<RoleDelegationUpdateManyMutationInput, RoleDelegationUncheckedUpdateManyInput>
     /**
-     * Filter which RoleAssignments to update
+     * Filter which RoleDelegations to update
      */
-    where?: RoleAssignmentWhereInput
+    where?: RoleDelegationWhereInput
     /**
-     * Limit how many RoleAssignments to update.
+     * Limit how many RoleDelegations to update.
      */
     limit?: number
   }
 
   /**
-   * RoleAssignment updateManyAndReturn
+   * RoleDelegation updateManyAndReturn
    */
-  export type RoleAssignmentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RoleDelegationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the RoleAssignment
+     * Select specific fields to fetch from the RoleDelegation
      */
-    select?: RoleAssignmentSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: RoleDelegationSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the RoleAssignment
+     * Omit specific fields from the RoleDelegation
      */
-    omit?: RoleAssignmentOmit<ExtArgs> | null
+    omit?: RoleDelegationOmit<ExtArgs> | null
     /**
-     * The data used to update RoleAssignments.
+     * The data used to update RoleDelegations.
      */
-    data: XOR<RoleAssignmentUpdateManyMutationInput, RoleAssignmentUncheckedUpdateManyInput>
+    data: XOR<RoleDelegationUpdateManyMutationInput, RoleDelegationUncheckedUpdateManyInput>
     /**
-     * Filter which RoleAssignments to update
+     * Filter which RoleDelegations to update
      */
-    where?: RoleAssignmentWhereInput
+    where?: RoleDelegationWhereInput
     /**
-     * Limit how many RoleAssignments to update.
+     * Limit how many RoleDelegations to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: RoleAssignmentIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: RoleDelegationIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * RoleAssignment upsert
+   * RoleDelegation upsert
    */
-  export type RoleAssignmentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RoleDelegationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the RoleAssignment
+     * Select specific fields to fetch from the RoleDelegation
      */
-    select?: RoleAssignmentSelect<ExtArgs> | null
+    select?: RoleDelegationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the RoleAssignment
+     * Omit specific fields from the RoleDelegation
      */
-    omit?: RoleAssignmentOmit<ExtArgs> | null
+    omit?: RoleDelegationOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: RoleAssignmentInclude<ExtArgs> | null
+    include?: RoleDelegationInclude<ExtArgs> | null
     /**
-     * The filter to search for the RoleAssignment to update in case it exists.
+     * The filter to search for the RoleDelegation to update in case it exists.
      */
-    where: RoleAssignmentWhereUniqueInput
+    where: RoleDelegationWhereUniqueInput
     /**
-     * In case the RoleAssignment found by the `where` argument doesn't exist, create a new RoleAssignment with this data.
+     * In case the RoleDelegation found by the `where` argument doesn't exist, create a new RoleDelegation with this data.
      */
-    create: XOR<RoleAssignmentCreateInput, RoleAssignmentUncheckedCreateInput>
+    create: XOR<RoleDelegationCreateInput, RoleDelegationUncheckedCreateInput>
     /**
-     * In case the RoleAssignment was found with the provided `where` argument, update it with this data.
+     * In case the RoleDelegation was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<RoleAssignmentUpdateInput, RoleAssignmentUncheckedUpdateInput>
+    update: XOR<RoleDelegationUpdateInput, RoleDelegationUncheckedUpdateInput>
   }
 
   /**
-   * RoleAssignment delete
+   * RoleDelegation delete
    */
-  export type RoleAssignmentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RoleDelegationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the RoleAssignment
+     * Select specific fields to fetch from the RoleDelegation
      */
-    select?: RoleAssignmentSelect<ExtArgs> | null
+    select?: RoleDelegationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the RoleAssignment
+     * Omit specific fields from the RoleDelegation
      */
-    omit?: RoleAssignmentOmit<ExtArgs> | null
+    omit?: RoleDelegationOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: RoleAssignmentInclude<ExtArgs> | null
+    include?: RoleDelegationInclude<ExtArgs> | null
     /**
-     * Filter which RoleAssignment to delete.
+     * Filter which RoleDelegation to delete.
      */
-    where: RoleAssignmentWhereUniqueInput
+    where: RoleDelegationWhereUniqueInput
   }
 
   /**
-   * RoleAssignment deleteMany
+   * RoleDelegation deleteMany
    */
-  export type RoleAssignmentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RoleDelegationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which RoleAssignments to delete
+     * Filter which RoleDelegations to delete
      */
-    where?: RoleAssignmentWhereInput
+    where?: RoleDelegationWhereInput
     /**
-     * Limit how many RoleAssignments to delete.
+     * Limit how many RoleDelegations to delete.
      */
     limit?: number
   }
 
   /**
-   * RoleAssignment without action
+   * RoleDelegation without action
    */
-  export type RoleAssignmentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RoleDelegationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the RoleAssignment
+     * Select specific fields to fetch from the RoleDelegation
      */
-    select?: RoleAssignmentSelect<ExtArgs> | null
+    select?: RoleDelegationSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the RoleAssignment
+     * Omit specific fields from the RoleDelegation
      */
-    omit?: RoleAssignmentOmit<ExtArgs> | null
+    omit?: RoleDelegationOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: RoleAssignmentInclude<ExtArgs> | null
+    include?: RoleDelegationInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CompanyAssignment
+   */
+
+  export type AggregateCompanyAssignment = {
+    _count: CompanyAssignmentCountAggregateOutputType | null
+    _avg: CompanyAssignmentAvgAggregateOutputType | null
+    _sum: CompanyAssignmentSumAggregateOutputType | null
+    _min: CompanyAssignmentMinAggregateOutputType | null
+    _max: CompanyAssignmentMaxAggregateOutputType | null
+  }
+
+  export type CompanyAssignmentAvgAggregateOutputType = {
+    id: number | null
+    companyId: number | null
+    preparerId: number | null
+    assignedById: number | null
+  }
+
+  export type CompanyAssignmentSumAggregateOutputType = {
+    id: number | null
+    companyId: number | null
+    preparerId: number | null
+    assignedById: number | null
+  }
+
+  export type CompanyAssignmentMinAggregateOutputType = {
+    id: number | null
+    companyId: number | null
+    preparerId: number | null
+    assignedById: number | null
+    createdAt: Date | null
+  }
+
+  export type CompanyAssignmentMaxAggregateOutputType = {
+    id: number | null
+    companyId: number | null
+    preparerId: number | null
+    assignedById: number | null
+    createdAt: Date | null
+  }
+
+  export type CompanyAssignmentCountAggregateOutputType = {
+    id: number
+    companyId: number
+    preparerId: number
+    assignedById: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type CompanyAssignmentAvgAggregateInputType = {
+    id?: true
+    companyId?: true
+    preparerId?: true
+    assignedById?: true
+  }
+
+  export type CompanyAssignmentSumAggregateInputType = {
+    id?: true
+    companyId?: true
+    preparerId?: true
+    assignedById?: true
+  }
+
+  export type CompanyAssignmentMinAggregateInputType = {
+    id?: true
+    companyId?: true
+    preparerId?: true
+    assignedById?: true
+    createdAt?: true
+  }
+
+  export type CompanyAssignmentMaxAggregateInputType = {
+    id?: true
+    companyId?: true
+    preparerId?: true
+    assignedById?: true
+    createdAt?: true
+  }
+
+  export type CompanyAssignmentCountAggregateInputType = {
+    id?: true
+    companyId?: true
+    preparerId?: true
+    assignedById?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type CompanyAssignmentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CompanyAssignment to aggregate.
+     */
+    where?: CompanyAssignmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompanyAssignments to fetch.
+     */
+    orderBy?: CompanyAssignmentOrderByWithRelationInput | CompanyAssignmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CompanyAssignmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompanyAssignments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompanyAssignments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CompanyAssignments
+    **/
+    _count?: true | CompanyAssignmentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CompanyAssignmentAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CompanyAssignmentSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CompanyAssignmentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CompanyAssignmentMaxAggregateInputType
+  }
+
+  export type GetCompanyAssignmentAggregateType<T extends CompanyAssignmentAggregateArgs> = {
+        [P in keyof T & keyof AggregateCompanyAssignment]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCompanyAssignment[P]>
+      : GetScalarType<T[P], AggregateCompanyAssignment[P]>
+  }
+
+
+
+
+  export type CompanyAssignmentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompanyAssignmentWhereInput
+    orderBy?: CompanyAssignmentOrderByWithAggregationInput | CompanyAssignmentOrderByWithAggregationInput[]
+    by: CompanyAssignmentScalarFieldEnum[] | CompanyAssignmentScalarFieldEnum
+    having?: CompanyAssignmentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CompanyAssignmentCountAggregateInputType | true
+    _avg?: CompanyAssignmentAvgAggregateInputType
+    _sum?: CompanyAssignmentSumAggregateInputType
+    _min?: CompanyAssignmentMinAggregateInputType
+    _max?: CompanyAssignmentMaxAggregateInputType
+  }
+
+  export type CompanyAssignmentGroupByOutputType = {
+    id: number
+    companyId: number
+    preparerId: number
+    assignedById: number
+    createdAt: Date
+    _count: CompanyAssignmentCountAggregateOutputType | null
+    _avg: CompanyAssignmentAvgAggregateOutputType | null
+    _sum: CompanyAssignmentSumAggregateOutputType | null
+    _min: CompanyAssignmentMinAggregateOutputType | null
+    _max: CompanyAssignmentMaxAggregateOutputType | null
+  }
+
+  type GetCompanyAssignmentGroupByPayload<T extends CompanyAssignmentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CompanyAssignmentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CompanyAssignmentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CompanyAssignmentGroupByOutputType[P]>
+            : GetScalarType<T[P], CompanyAssignmentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CompanyAssignmentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    companyId?: boolean
+    preparerId?: boolean
+    assignedById?: boolean
+    createdAt?: boolean
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+    preparer?: boolean | UserDefaultArgs<ExtArgs>
+    assignedBy?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["companyAssignment"]>
+
+  export type CompanyAssignmentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    companyId?: boolean
+    preparerId?: boolean
+    assignedById?: boolean
+    createdAt?: boolean
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+    preparer?: boolean | UserDefaultArgs<ExtArgs>
+    assignedBy?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["companyAssignment"]>
+
+  export type CompanyAssignmentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    companyId?: boolean
+    preparerId?: boolean
+    assignedById?: boolean
+    createdAt?: boolean
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+    preparer?: boolean | UserDefaultArgs<ExtArgs>
+    assignedBy?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["companyAssignment"]>
+
+  export type CompanyAssignmentSelectScalar = {
+    id?: boolean
+    companyId?: boolean
+    preparerId?: boolean
+    assignedById?: boolean
+    createdAt?: boolean
+  }
+
+  export type CompanyAssignmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "companyId" | "preparerId" | "assignedById" | "createdAt", ExtArgs["result"]["companyAssignment"]>
+  export type CompanyAssignmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+    preparer?: boolean | UserDefaultArgs<ExtArgs>
+    assignedBy?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type CompanyAssignmentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+    preparer?: boolean | UserDefaultArgs<ExtArgs>
+    assignedBy?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type CompanyAssignmentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
+    preparer?: boolean | UserDefaultArgs<ExtArgs>
+    assignedBy?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $CompanyAssignmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CompanyAssignment"
+    objects: {
+      company: Prisma.$CompanyPayload<ExtArgs>
+      preparer: Prisma.$UserPayload<ExtArgs>
+      assignedBy: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      companyId: number
+      preparerId: number
+      assignedById: number
+      createdAt: Date
+    }, ExtArgs["result"]["companyAssignment"]>
+    composites: {}
+  }
+
+  type CompanyAssignmentGetPayload<S extends boolean | null | undefined | CompanyAssignmentDefaultArgs> = $Result.GetResult<Prisma.$CompanyAssignmentPayload, S>
+
+  type CompanyAssignmentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CompanyAssignmentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CompanyAssignmentCountAggregateInputType | true
+    }
+
+  export interface CompanyAssignmentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CompanyAssignment'], meta: { name: 'CompanyAssignment' } }
+    /**
+     * Find zero or one CompanyAssignment that matches the filter.
+     * @param {CompanyAssignmentFindUniqueArgs} args - Arguments to find a CompanyAssignment
+     * @example
+     * // Get one CompanyAssignment
+     * const companyAssignment = await prisma.companyAssignment.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CompanyAssignmentFindUniqueArgs>(args: SelectSubset<T, CompanyAssignmentFindUniqueArgs<ExtArgs>>): Prisma__CompanyAssignmentClient<$Result.GetResult<Prisma.$CompanyAssignmentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CompanyAssignment that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CompanyAssignmentFindUniqueOrThrowArgs} args - Arguments to find a CompanyAssignment
+     * @example
+     * // Get one CompanyAssignment
+     * const companyAssignment = await prisma.companyAssignment.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CompanyAssignmentFindUniqueOrThrowArgs>(args: SelectSubset<T, CompanyAssignmentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CompanyAssignmentClient<$Result.GetResult<Prisma.$CompanyAssignmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CompanyAssignment that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyAssignmentFindFirstArgs} args - Arguments to find a CompanyAssignment
+     * @example
+     * // Get one CompanyAssignment
+     * const companyAssignment = await prisma.companyAssignment.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CompanyAssignmentFindFirstArgs>(args?: SelectSubset<T, CompanyAssignmentFindFirstArgs<ExtArgs>>): Prisma__CompanyAssignmentClient<$Result.GetResult<Prisma.$CompanyAssignmentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CompanyAssignment that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyAssignmentFindFirstOrThrowArgs} args - Arguments to find a CompanyAssignment
+     * @example
+     * // Get one CompanyAssignment
+     * const companyAssignment = await prisma.companyAssignment.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CompanyAssignmentFindFirstOrThrowArgs>(args?: SelectSubset<T, CompanyAssignmentFindFirstOrThrowArgs<ExtArgs>>): Prisma__CompanyAssignmentClient<$Result.GetResult<Prisma.$CompanyAssignmentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CompanyAssignments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyAssignmentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CompanyAssignments
+     * const companyAssignments = await prisma.companyAssignment.findMany()
+     * 
+     * // Get first 10 CompanyAssignments
+     * const companyAssignments = await prisma.companyAssignment.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const companyAssignmentWithIdOnly = await prisma.companyAssignment.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CompanyAssignmentFindManyArgs>(args?: SelectSubset<T, CompanyAssignmentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyAssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CompanyAssignment.
+     * @param {CompanyAssignmentCreateArgs} args - Arguments to create a CompanyAssignment.
+     * @example
+     * // Create one CompanyAssignment
+     * const CompanyAssignment = await prisma.companyAssignment.create({
+     *   data: {
+     *     // ... data to create a CompanyAssignment
+     *   }
+     * })
+     * 
+     */
+    create<T extends CompanyAssignmentCreateArgs>(args: SelectSubset<T, CompanyAssignmentCreateArgs<ExtArgs>>): Prisma__CompanyAssignmentClient<$Result.GetResult<Prisma.$CompanyAssignmentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CompanyAssignments.
+     * @param {CompanyAssignmentCreateManyArgs} args - Arguments to create many CompanyAssignments.
+     * @example
+     * // Create many CompanyAssignments
+     * const companyAssignment = await prisma.companyAssignment.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CompanyAssignmentCreateManyArgs>(args?: SelectSubset<T, CompanyAssignmentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CompanyAssignments and returns the data saved in the database.
+     * @param {CompanyAssignmentCreateManyAndReturnArgs} args - Arguments to create many CompanyAssignments.
+     * @example
+     * // Create many CompanyAssignments
+     * const companyAssignment = await prisma.companyAssignment.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CompanyAssignments and only return the `id`
+     * const companyAssignmentWithIdOnly = await prisma.companyAssignment.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CompanyAssignmentCreateManyAndReturnArgs>(args?: SelectSubset<T, CompanyAssignmentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyAssignmentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CompanyAssignment.
+     * @param {CompanyAssignmentDeleteArgs} args - Arguments to delete one CompanyAssignment.
+     * @example
+     * // Delete one CompanyAssignment
+     * const CompanyAssignment = await prisma.companyAssignment.delete({
+     *   where: {
+     *     // ... filter to delete one CompanyAssignment
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CompanyAssignmentDeleteArgs>(args: SelectSubset<T, CompanyAssignmentDeleteArgs<ExtArgs>>): Prisma__CompanyAssignmentClient<$Result.GetResult<Prisma.$CompanyAssignmentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CompanyAssignment.
+     * @param {CompanyAssignmentUpdateArgs} args - Arguments to update one CompanyAssignment.
+     * @example
+     * // Update one CompanyAssignment
+     * const companyAssignment = await prisma.companyAssignment.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CompanyAssignmentUpdateArgs>(args: SelectSubset<T, CompanyAssignmentUpdateArgs<ExtArgs>>): Prisma__CompanyAssignmentClient<$Result.GetResult<Prisma.$CompanyAssignmentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CompanyAssignments.
+     * @param {CompanyAssignmentDeleteManyArgs} args - Arguments to filter CompanyAssignments to delete.
+     * @example
+     * // Delete a few CompanyAssignments
+     * const { count } = await prisma.companyAssignment.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CompanyAssignmentDeleteManyArgs>(args?: SelectSubset<T, CompanyAssignmentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CompanyAssignments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyAssignmentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CompanyAssignments
+     * const companyAssignment = await prisma.companyAssignment.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CompanyAssignmentUpdateManyArgs>(args: SelectSubset<T, CompanyAssignmentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CompanyAssignments and returns the data updated in the database.
+     * @param {CompanyAssignmentUpdateManyAndReturnArgs} args - Arguments to update many CompanyAssignments.
+     * @example
+     * // Update many CompanyAssignments
+     * const companyAssignment = await prisma.companyAssignment.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CompanyAssignments and only return the `id`
+     * const companyAssignmentWithIdOnly = await prisma.companyAssignment.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CompanyAssignmentUpdateManyAndReturnArgs>(args: SelectSubset<T, CompanyAssignmentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyAssignmentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CompanyAssignment.
+     * @param {CompanyAssignmentUpsertArgs} args - Arguments to update or create a CompanyAssignment.
+     * @example
+     * // Update or create a CompanyAssignment
+     * const companyAssignment = await prisma.companyAssignment.upsert({
+     *   create: {
+     *     // ... data to create a CompanyAssignment
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CompanyAssignment we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CompanyAssignmentUpsertArgs>(args: SelectSubset<T, CompanyAssignmentUpsertArgs<ExtArgs>>): Prisma__CompanyAssignmentClient<$Result.GetResult<Prisma.$CompanyAssignmentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CompanyAssignments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyAssignmentCountArgs} args - Arguments to filter CompanyAssignments to count.
+     * @example
+     * // Count the number of CompanyAssignments
+     * const count = await prisma.companyAssignment.count({
+     *   where: {
+     *     // ... the filter for the CompanyAssignments we want to count
+     *   }
+     * })
+    **/
+    count<T extends CompanyAssignmentCountArgs>(
+      args?: Subset<T, CompanyAssignmentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CompanyAssignmentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CompanyAssignment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyAssignmentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CompanyAssignmentAggregateArgs>(args: Subset<T, CompanyAssignmentAggregateArgs>): Prisma.PrismaPromise<GetCompanyAssignmentAggregateType<T>>
+
+    /**
+     * Group by CompanyAssignment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyAssignmentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CompanyAssignmentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CompanyAssignmentGroupByArgs['orderBy'] }
+        : { orderBy?: CompanyAssignmentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CompanyAssignmentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCompanyAssignmentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CompanyAssignment model
+   */
+  readonly fields: CompanyAssignmentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CompanyAssignment.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CompanyAssignmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    preparer<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    assignedBy<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CompanyAssignment model
+   */
+  interface CompanyAssignmentFieldRefs {
+    readonly id: FieldRef<"CompanyAssignment", 'Int'>
+    readonly companyId: FieldRef<"CompanyAssignment", 'Int'>
+    readonly preparerId: FieldRef<"CompanyAssignment", 'Int'>
+    readonly assignedById: FieldRef<"CompanyAssignment", 'Int'>
+    readonly createdAt: FieldRef<"CompanyAssignment", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CompanyAssignment findUnique
+   */
+  export type CompanyAssignmentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAssignment
+     */
+    select?: CompanyAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAssignment
+     */
+    omit?: CompanyAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssignmentInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanyAssignment to fetch.
+     */
+    where: CompanyAssignmentWhereUniqueInput
+  }
+
+  /**
+   * CompanyAssignment findUniqueOrThrow
+   */
+  export type CompanyAssignmentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAssignment
+     */
+    select?: CompanyAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAssignment
+     */
+    omit?: CompanyAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssignmentInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanyAssignment to fetch.
+     */
+    where: CompanyAssignmentWhereUniqueInput
+  }
+
+  /**
+   * CompanyAssignment findFirst
+   */
+  export type CompanyAssignmentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAssignment
+     */
+    select?: CompanyAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAssignment
+     */
+    omit?: CompanyAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssignmentInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanyAssignment to fetch.
+     */
+    where?: CompanyAssignmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompanyAssignments to fetch.
+     */
+    orderBy?: CompanyAssignmentOrderByWithRelationInput | CompanyAssignmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CompanyAssignments.
+     */
+    cursor?: CompanyAssignmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompanyAssignments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompanyAssignments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CompanyAssignments.
+     */
+    distinct?: CompanyAssignmentScalarFieldEnum | CompanyAssignmentScalarFieldEnum[]
+  }
+
+  /**
+   * CompanyAssignment findFirstOrThrow
+   */
+  export type CompanyAssignmentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAssignment
+     */
+    select?: CompanyAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAssignment
+     */
+    omit?: CompanyAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssignmentInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanyAssignment to fetch.
+     */
+    where?: CompanyAssignmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompanyAssignments to fetch.
+     */
+    orderBy?: CompanyAssignmentOrderByWithRelationInput | CompanyAssignmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CompanyAssignments.
+     */
+    cursor?: CompanyAssignmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompanyAssignments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompanyAssignments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CompanyAssignments.
+     */
+    distinct?: CompanyAssignmentScalarFieldEnum | CompanyAssignmentScalarFieldEnum[]
+  }
+
+  /**
+   * CompanyAssignment findMany
+   */
+  export type CompanyAssignmentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAssignment
+     */
+    select?: CompanyAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAssignment
+     */
+    omit?: CompanyAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssignmentInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanyAssignments to fetch.
+     */
+    where?: CompanyAssignmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompanyAssignments to fetch.
+     */
+    orderBy?: CompanyAssignmentOrderByWithRelationInput | CompanyAssignmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CompanyAssignments.
+     */
+    cursor?: CompanyAssignmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompanyAssignments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompanyAssignments.
+     */
+    skip?: number
+    distinct?: CompanyAssignmentScalarFieldEnum | CompanyAssignmentScalarFieldEnum[]
+  }
+
+  /**
+   * CompanyAssignment create
+   */
+  export type CompanyAssignmentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAssignment
+     */
+    select?: CompanyAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAssignment
+     */
+    omit?: CompanyAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssignmentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CompanyAssignment.
+     */
+    data: XOR<CompanyAssignmentCreateInput, CompanyAssignmentUncheckedCreateInput>
+  }
+
+  /**
+   * CompanyAssignment createMany
+   */
+  export type CompanyAssignmentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CompanyAssignments.
+     */
+    data: CompanyAssignmentCreateManyInput | CompanyAssignmentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CompanyAssignment createManyAndReturn
+   */
+  export type CompanyAssignmentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAssignment
+     */
+    select?: CompanyAssignmentSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAssignment
+     */
+    omit?: CompanyAssignmentOmit<ExtArgs> | null
+    /**
+     * The data used to create many CompanyAssignments.
+     */
+    data: CompanyAssignmentCreateManyInput | CompanyAssignmentCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssignmentIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CompanyAssignment update
+   */
+  export type CompanyAssignmentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAssignment
+     */
+    select?: CompanyAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAssignment
+     */
+    omit?: CompanyAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssignmentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CompanyAssignment.
+     */
+    data: XOR<CompanyAssignmentUpdateInput, CompanyAssignmentUncheckedUpdateInput>
+    /**
+     * Choose, which CompanyAssignment to update.
+     */
+    where: CompanyAssignmentWhereUniqueInput
+  }
+
+  /**
+   * CompanyAssignment updateMany
+   */
+  export type CompanyAssignmentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CompanyAssignments.
+     */
+    data: XOR<CompanyAssignmentUpdateManyMutationInput, CompanyAssignmentUncheckedUpdateManyInput>
+    /**
+     * Filter which CompanyAssignments to update
+     */
+    where?: CompanyAssignmentWhereInput
+    /**
+     * Limit how many CompanyAssignments to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CompanyAssignment updateManyAndReturn
+   */
+  export type CompanyAssignmentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAssignment
+     */
+    select?: CompanyAssignmentSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAssignment
+     */
+    omit?: CompanyAssignmentOmit<ExtArgs> | null
+    /**
+     * The data used to update CompanyAssignments.
+     */
+    data: XOR<CompanyAssignmentUpdateManyMutationInput, CompanyAssignmentUncheckedUpdateManyInput>
+    /**
+     * Filter which CompanyAssignments to update
+     */
+    where?: CompanyAssignmentWhereInput
+    /**
+     * Limit how many CompanyAssignments to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssignmentIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CompanyAssignment upsert
+   */
+  export type CompanyAssignmentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAssignment
+     */
+    select?: CompanyAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAssignment
+     */
+    omit?: CompanyAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssignmentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CompanyAssignment to update in case it exists.
+     */
+    where: CompanyAssignmentWhereUniqueInput
+    /**
+     * In case the CompanyAssignment found by the `where` argument doesn't exist, create a new CompanyAssignment with this data.
+     */
+    create: XOR<CompanyAssignmentCreateInput, CompanyAssignmentUncheckedCreateInput>
+    /**
+     * In case the CompanyAssignment was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CompanyAssignmentUpdateInput, CompanyAssignmentUncheckedUpdateInput>
+  }
+
+  /**
+   * CompanyAssignment delete
+   */
+  export type CompanyAssignmentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAssignment
+     */
+    select?: CompanyAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAssignment
+     */
+    omit?: CompanyAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssignmentInclude<ExtArgs> | null
+    /**
+     * Filter which CompanyAssignment to delete.
+     */
+    where: CompanyAssignmentWhereUniqueInput
+  }
+
+  /**
+   * CompanyAssignment deleteMany
+   */
+  export type CompanyAssignmentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CompanyAssignments to delete
+     */
+    where?: CompanyAssignmentWhereInput
+    /**
+     * Limit how many CompanyAssignments to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CompanyAssignment without action
+   */
+  export type CompanyAssignmentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAssignment
+     */
+    select?: CompanyAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAssignment
+     */
+    omit?: CompanyAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssignmentInclude<ExtArgs> | null
   }
 
 
@@ -29680,15 +31002,26 @@ export namespace Prisma {
   export type DashboardStateScalarFieldEnum = (typeof DashboardStateScalarFieldEnum)[keyof typeof DashboardStateScalarFieldEnum]
 
 
-  export const RoleAssignmentScalarFieldEnum: {
+  export const RoleDelegationScalarFieldEnum: {
     id: 'id',
-    agentId: 'agentId',
-    companyId: 'companyId',
-    role: 'role',
-    assignedAt: 'assignedAt'
+    delegatorId: 'delegatorId',
+    delegateeId: 'delegateeId',
+    delegatedRole: 'delegatedRole',
+    createdAt: 'createdAt'
   };
 
-  export type RoleAssignmentScalarFieldEnum = (typeof RoleAssignmentScalarFieldEnum)[keyof typeof RoleAssignmentScalarFieldEnum]
+  export type RoleDelegationScalarFieldEnum = (typeof RoleDelegationScalarFieldEnum)[keyof typeof RoleDelegationScalarFieldEnum]
+
+
+  export const CompanyAssignmentScalarFieldEnum: {
+    id: 'id',
+    companyId: 'companyId',
+    preparerId: 'preparerId',
+    assignedById: 'assignedById',
+    createdAt: 'createdAt'
+  };
+
+  export type CompanyAssignmentScalarFieldEnum = (typeof CompanyAssignmentScalarFieldEnum)[keyof typeof CompanyAssignmentScalarFieldEnum]
 
 
   export const ArticleScalarFieldEnum: {
@@ -30030,13 +31363,16 @@ export namespace Prisma {
     insights?: InsightRecommendationListRelationFilter
     notifications?: NotificationListRelationFilter
     payments?: PaymentListRelationFilter
-    assignedRoles?: RoleAssignmentListRelationFilter
     revertMessage?: CompanyStatusMessageListRelationFilter
     uploadedDocs?: CompanyDocumentListRelationFilter
     receivedDocs?: CompanyDocumentListRelationFilter
     auditLogs?: AuditLogListRelationFilter
     CalendarAction?: CalendarActionListRelationFilter
     articles?: ArticleListRelationFilter
+    delegatedUsers?: RoleDelegationListRelationFilter
+    assignedBy?: RoleDelegationListRelationFilter
+    companiesAssigned?: CompanyAssignmentListRelationFilter
+    companiesDelegated?: CompanyAssignmentListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -30069,13 +31405,16 @@ export namespace Prisma {
     insights?: InsightRecommendationOrderByRelationAggregateInput
     notifications?: NotificationOrderByRelationAggregateInput
     payments?: PaymentOrderByRelationAggregateInput
-    assignedRoles?: RoleAssignmentOrderByRelationAggregateInput
     revertMessage?: CompanyStatusMessageOrderByRelationAggregateInput
     uploadedDocs?: CompanyDocumentOrderByRelationAggregateInput
     receivedDocs?: CompanyDocumentOrderByRelationAggregateInput
     auditLogs?: AuditLogOrderByRelationAggregateInput
     CalendarAction?: CalendarActionOrderByRelationAggregateInput
     articles?: ArticleOrderByRelationAggregateInput
+    delegatedUsers?: RoleDelegationOrderByRelationAggregateInput
+    assignedBy?: RoleDelegationOrderByRelationAggregateInput
+    companiesAssigned?: CompanyAssignmentOrderByRelationAggregateInput
+    companiesDelegated?: CompanyAssignmentOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -30111,13 +31450,16 @@ export namespace Prisma {
     insights?: InsightRecommendationListRelationFilter
     notifications?: NotificationListRelationFilter
     payments?: PaymentListRelationFilter
-    assignedRoles?: RoleAssignmentListRelationFilter
     revertMessage?: CompanyStatusMessageListRelationFilter
     uploadedDocs?: CompanyDocumentListRelationFilter
     receivedDocs?: CompanyDocumentListRelationFilter
     auditLogs?: AuditLogListRelationFilter
     CalendarAction?: CalendarActionListRelationFilter
     articles?: ArticleListRelationFilter
+    delegatedUsers?: RoleDelegationListRelationFilter
+    assignedBy?: RoleDelegationListRelationFilter
+    companiesAssigned?: CompanyAssignmentListRelationFilter
+    companiesDelegated?: CompanyAssignmentListRelationFilter
   }, "id" | "username" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -30211,10 +31553,10 @@ export namespace Prisma {
     dashboardState?: XOR<DashboardStateNullableScalarRelationFilter, DashboardStateWhereInput> | null
     directors?: DirectorListRelationFilter
     payments?: PaymentListRelationFilter
-    roleAssignments?: RoleAssignmentListRelationFilter
     shareholders?: ShareholderListRelationFilter
     revertMessage?: CompanyStatusMessageListRelationFilter
     auditLogs?: AuditLogListRelationFilter
+    companyAssignments?: CompanyAssignmentListRelationFilter
   }
 
   export type CompanyOrderByWithRelationInput = {
@@ -30247,10 +31589,10 @@ export namespace Prisma {
     dashboardState?: DashboardStateOrderByWithRelationInput
     directors?: DirectorOrderByRelationAggregateInput
     payments?: PaymentOrderByRelationAggregateInput
-    roleAssignments?: RoleAssignmentOrderByRelationAggregateInput
     shareholders?: ShareholderOrderByRelationAggregateInput
     revertMessage?: CompanyStatusMessageOrderByRelationAggregateInput
     auditLogs?: AuditLogOrderByRelationAggregateInput
+    companyAssignments?: CompanyAssignmentOrderByRelationAggregateInput
   }
 
   export type CompanyWhereUniqueInput = Prisma.AtLeast<{
@@ -30286,10 +31628,10 @@ export namespace Prisma {
     dashboardState?: XOR<DashboardStateNullableScalarRelationFilter, DashboardStateWhereInput> | null
     directors?: DirectorListRelationFilter
     payments?: PaymentListRelationFilter
-    roleAssignments?: RoleAssignmentListRelationFilter
     shareholders?: ShareholderListRelationFilter
     revertMessage?: CompanyStatusMessageListRelationFilter
     auditLogs?: AuditLogListRelationFilter
+    companyAssignments?: CompanyAssignmentListRelationFilter
   }, "companyId">
 
   export type CompanyOrderByWithAggregationInput = {
@@ -31356,64 +32698,127 @@ export namespace Prisma {
     completedAt?: DateTimeNullableWithAggregatesFilter<"DashboardState"> | Date | string | null
   }
 
-  export type RoleAssignmentWhereInput = {
-    AND?: RoleAssignmentWhereInput | RoleAssignmentWhereInput[]
-    OR?: RoleAssignmentWhereInput[]
-    NOT?: RoleAssignmentWhereInput | RoleAssignmentWhereInput[]
-    id?: IntFilter<"RoleAssignment"> | number
-    agentId?: IntFilter<"RoleAssignment"> | number
-    companyId?: IntFilter<"RoleAssignment"> | number
-    role?: EnumUserRoleFilter<"RoleAssignment"> | $Enums.UserRole
-    assignedAt?: DateTimeFilter<"RoleAssignment"> | Date | string
-    agent?: XOR<UserScalarRelationFilter, UserWhereInput>
-    company?: XOR<CompanyScalarRelationFilter, CompanyWhereInput>
+  export type RoleDelegationWhereInput = {
+    AND?: RoleDelegationWhereInput | RoleDelegationWhereInput[]
+    OR?: RoleDelegationWhereInput[]
+    NOT?: RoleDelegationWhereInput | RoleDelegationWhereInput[]
+    id?: IntFilter<"RoleDelegation"> | number
+    delegatorId?: IntFilter<"RoleDelegation"> | number
+    delegateeId?: IntFilter<"RoleDelegation"> | number
+    delegatedRole?: EnumUserRoleFilter<"RoleDelegation"> | $Enums.UserRole
+    createdAt?: DateTimeFilter<"RoleDelegation"> | Date | string
+    delegator?: XOR<UserScalarRelationFilter, UserWhereInput>
+    delegatee?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
-  export type RoleAssignmentOrderByWithRelationInput = {
+  export type RoleDelegationOrderByWithRelationInput = {
     id?: SortOrder
-    agentId?: SortOrder
-    companyId?: SortOrder
-    role?: SortOrder
-    assignedAt?: SortOrder
-    agent?: UserOrderByWithRelationInput
-    company?: CompanyOrderByWithRelationInput
+    delegatorId?: SortOrder
+    delegateeId?: SortOrder
+    delegatedRole?: SortOrder
+    createdAt?: SortOrder
+    delegator?: UserOrderByWithRelationInput
+    delegatee?: UserOrderByWithRelationInput
   }
 
-  export type RoleAssignmentWhereUniqueInput = Prisma.AtLeast<{
+  export type RoleDelegationWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: RoleAssignmentWhereInput | RoleAssignmentWhereInput[]
-    OR?: RoleAssignmentWhereInput[]
-    NOT?: RoleAssignmentWhereInput | RoleAssignmentWhereInput[]
-    agentId?: IntFilter<"RoleAssignment"> | number
-    companyId?: IntFilter<"RoleAssignment"> | number
-    role?: EnumUserRoleFilter<"RoleAssignment"> | $Enums.UserRole
-    assignedAt?: DateTimeFilter<"RoleAssignment"> | Date | string
-    agent?: XOR<UserScalarRelationFilter, UserWhereInput>
-    company?: XOR<CompanyScalarRelationFilter, CompanyWhereInput>
+    AND?: RoleDelegationWhereInput | RoleDelegationWhereInput[]
+    OR?: RoleDelegationWhereInput[]
+    NOT?: RoleDelegationWhereInput | RoleDelegationWhereInput[]
+    delegatorId?: IntFilter<"RoleDelegation"> | number
+    delegateeId?: IntFilter<"RoleDelegation"> | number
+    delegatedRole?: EnumUserRoleFilter<"RoleDelegation"> | $Enums.UserRole
+    createdAt?: DateTimeFilter<"RoleDelegation"> | Date | string
+    delegator?: XOR<UserScalarRelationFilter, UserWhereInput>
+    delegatee?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
-  export type RoleAssignmentOrderByWithAggregationInput = {
+  export type RoleDelegationOrderByWithAggregationInput = {
     id?: SortOrder
-    agentId?: SortOrder
-    companyId?: SortOrder
-    role?: SortOrder
-    assignedAt?: SortOrder
-    _count?: RoleAssignmentCountOrderByAggregateInput
-    _avg?: RoleAssignmentAvgOrderByAggregateInput
-    _max?: RoleAssignmentMaxOrderByAggregateInput
-    _min?: RoleAssignmentMinOrderByAggregateInput
-    _sum?: RoleAssignmentSumOrderByAggregateInput
+    delegatorId?: SortOrder
+    delegateeId?: SortOrder
+    delegatedRole?: SortOrder
+    createdAt?: SortOrder
+    _count?: RoleDelegationCountOrderByAggregateInput
+    _avg?: RoleDelegationAvgOrderByAggregateInput
+    _max?: RoleDelegationMaxOrderByAggregateInput
+    _min?: RoleDelegationMinOrderByAggregateInput
+    _sum?: RoleDelegationSumOrderByAggregateInput
   }
 
-  export type RoleAssignmentScalarWhereWithAggregatesInput = {
-    AND?: RoleAssignmentScalarWhereWithAggregatesInput | RoleAssignmentScalarWhereWithAggregatesInput[]
-    OR?: RoleAssignmentScalarWhereWithAggregatesInput[]
-    NOT?: RoleAssignmentScalarWhereWithAggregatesInput | RoleAssignmentScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"RoleAssignment"> | number
-    agentId?: IntWithAggregatesFilter<"RoleAssignment"> | number
-    companyId?: IntWithAggregatesFilter<"RoleAssignment"> | number
-    role?: EnumUserRoleWithAggregatesFilter<"RoleAssignment"> | $Enums.UserRole
-    assignedAt?: DateTimeWithAggregatesFilter<"RoleAssignment"> | Date | string
+  export type RoleDelegationScalarWhereWithAggregatesInput = {
+    AND?: RoleDelegationScalarWhereWithAggregatesInput | RoleDelegationScalarWhereWithAggregatesInput[]
+    OR?: RoleDelegationScalarWhereWithAggregatesInput[]
+    NOT?: RoleDelegationScalarWhereWithAggregatesInput | RoleDelegationScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"RoleDelegation"> | number
+    delegatorId?: IntWithAggregatesFilter<"RoleDelegation"> | number
+    delegateeId?: IntWithAggregatesFilter<"RoleDelegation"> | number
+    delegatedRole?: EnumUserRoleWithAggregatesFilter<"RoleDelegation"> | $Enums.UserRole
+    createdAt?: DateTimeWithAggregatesFilter<"RoleDelegation"> | Date | string
+  }
+
+  export type CompanyAssignmentWhereInput = {
+    AND?: CompanyAssignmentWhereInput | CompanyAssignmentWhereInput[]
+    OR?: CompanyAssignmentWhereInput[]
+    NOT?: CompanyAssignmentWhereInput | CompanyAssignmentWhereInput[]
+    id?: IntFilter<"CompanyAssignment"> | number
+    companyId?: IntFilter<"CompanyAssignment"> | number
+    preparerId?: IntFilter<"CompanyAssignment"> | number
+    assignedById?: IntFilter<"CompanyAssignment"> | number
+    createdAt?: DateTimeFilter<"CompanyAssignment"> | Date | string
+    company?: XOR<CompanyScalarRelationFilter, CompanyWhereInput>
+    preparer?: XOR<UserScalarRelationFilter, UserWhereInput>
+    assignedBy?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type CompanyAssignmentOrderByWithRelationInput = {
+    id?: SortOrder
+    companyId?: SortOrder
+    preparerId?: SortOrder
+    assignedById?: SortOrder
+    createdAt?: SortOrder
+    company?: CompanyOrderByWithRelationInput
+    preparer?: UserOrderByWithRelationInput
+    assignedBy?: UserOrderByWithRelationInput
+  }
+
+  export type CompanyAssignmentWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: CompanyAssignmentWhereInput | CompanyAssignmentWhereInput[]
+    OR?: CompanyAssignmentWhereInput[]
+    NOT?: CompanyAssignmentWhereInput | CompanyAssignmentWhereInput[]
+    companyId?: IntFilter<"CompanyAssignment"> | number
+    preparerId?: IntFilter<"CompanyAssignment"> | number
+    assignedById?: IntFilter<"CompanyAssignment"> | number
+    createdAt?: DateTimeFilter<"CompanyAssignment"> | Date | string
+    company?: XOR<CompanyScalarRelationFilter, CompanyWhereInput>
+    preparer?: XOR<UserScalarRelationFilter, UserWhereInput>
+    assignedBy?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type CompanyAssignmentOrderByWithAggregationInput = {
+    id?: SortOrder
+    companyId?: SortOrder
+    preparerId?: SortOrder
+    assignedById?: SortOrder
+    createdAt?: SortOrder
+    _count?: CompanyAssignmentCountOrderByAggregateInput
+    _avg?: CompanyAssignmentAvgOrderByAggregateInput
+    _max?: CompanyAssignmentMaxOrderByAggregateInput
+    _min?: CompanyAssignmentMinOrderByAggregateInput
+    _sum?: CompanyAssignmentSumOrderByAggregateInput
+  }
+
+  export type CompanyAssignmentScalarWhereWithAggregatesInput = {
+    AND?: CompanyAssignmentScalarWhereWithAggregatesInput | CompanyAssignmentScalarWhereWithAggregatesInput[]
+    OR?: CompanyAssignmentScalarWhereWithAggregatesInput[]
+    NOT?: CompanyAssignmentScalarWhereWithAggregatesInput | CompanyAssignmentScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"CompanyAssignment"> | number
+    companyId?: IntWithAggregatesFilter<"CompanyAssignment"> | number
+    preparerId?: IntWithAggregatesFilter<"CompanyAssignment"> | number
+    assignedById?: IntWithAggregatesFilter<"CompanyAssignment"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"CompanyAssignment"> | Date | string
   }
 
   export type ArticleWhereInput = {
@@ -31876,13 +33281,16 @@ export namespace Prisma {
     insights?: InsightRecommendationCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
     articles?: ArticleCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -31915,13 +33323,16 @@ export namespace Prisma {
     insights?: InsightRecommendationUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentUncheckedCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
     articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationUncheckedCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationUncheckedCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentUncheckedCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserUpdateInput = {
@@ -31953,13 +33364,16 @@ export namespace Prisma {
     insights?: InsightRecommendationUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUpdateManyWithoutAssignedByNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -31992,13 +33406,16 @@ export namespace Prisma {
     insights?: InsightRecommendationUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUncheckedUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUncheckedUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUncheckedUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUncheckedUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUncheckedUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -32103,10 +33520,10 @@ export namespace Prisma {
     dashboardState?: DashboardStateCreateNestedOneWithoutCompanyInput
     directors?: DirectorCreateNestedManyWithoutCompanyInput
     payments?: PaymentCreateNestedManyWithoutCompanyInput
-    roleAssignments?: RoleAssignmentCreateNestedManyWithoutCompanyInput
     shareholders?: ShareholderCreateNestedManyWithoutCompanyInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    companyAssignments?: CompanyAssignmentCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateInput = {
@@ -32138,10 +33555,10 @@ export namespace Prisma {
     dashboardState?: DashboardStateUncheckedCreateNestedOneWithoutCompanyInput
     directors?: DirectorUncheckedCreateNestedManyWithoutCompanyInput
     payments?: PaymentUncheckedCreateNestedManyWithoutCompanyInput
-    roleAssignments?: RoleAssignmentUncheckedCreateNestedManyWithoutCompanyInput
     shareholders?: ShareholderUncheckedCreateNestedManyWithoutCompanyInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    companyAssignments?: CompanyAssignmentUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUpdateInput = {
@@ -32172,10 +33589,10 @@ export namespace Prisma {
     dashboardState?: DashboardStateUpdateOneWithoutCompanyNestedInput
     directors?: DirectorUpdateManyWithoutCompanyNestedInput
     payments?: PaymentUpdateManyWithoutCompanyNestedInput
-    roleAssignments?: RoleAssignmentUpdateManyWithoutCompanyNestedInput
     shareholders?: ShareholderUpdateManyWithoutCompanyNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    companyAssignments?: CompanyAssignmentUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateInput = {
@@ -32207,10 +33624,10 @@ export namespace Prisma {
     dashboardState?: DashboardStateUncheckedUpdateOneWithoutCompanyNestedInput
     directors?: DirectorUncheckedUpdateManyWithoutCompanyNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutCompanyNestedInput
-    roleAssignments?: RoleAssignmentUncheckedUpdateManyWithoutCompanyNestedInput
     shareholders?: ShareholderUncheckedUpdateManyWithoutCompanyNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    companyAssignments?: CompanyAssignmentUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyCreateManyInput = {
@@ -33291,55 +34708,105 @@ export namespace Prisma {
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type RoleAssignmentCreateInput = {
-    role: $Enums.UserRole
-    assignedAt?: Date | string
-    agent: UserCreateNestedOneWithoutAssignedRolesInput
-    company: CompanyCreateNestedOneWithoutRoleAssignmentsInput
+  export type RoleDelegationCreateInput = {
+    delegatedRole: $Enums.UserRole
+    createdAt?: Date | string
+    delegator: UserCreateNestedOneWithoutDelegatedUsersInput
+    delegatee: UserCreateNestedOneWithoutAssignedByInput
   }
 
-  export type RoleAssignmentUncheckedCreateInput = {
+  export type RoleDelegationUncheckedCreateInput = {
     id?: number
-    agentId: number
-    companyId: number
-    role: $Enums.UserRole
-    assignedAt?: Date | string
+    delegatorId: number
+    delegateeId: number
+    delegatedRole: $Enums.UserRole
+    createdAt?: Date | string
   }
 
-  export type RoleAssignmentUpdateInput = {
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    agent?: UserUpdateOneRequiredWithoutAssignedRolesNestedInput
-    company?: CompanyUpdateOneRequiredWithoutRoleAssignmentsNestedInput
+  export type RoleDelegationUpdateInput = {
+    delegatedRole?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    delegator?: UserUpdateOneRequiredWithoutDelegatedUsersNestedInput
+    delegatee?: UserUpdateOneRequiredWithoutAssignedByNestedInput
   }
 
-  export type RoleAssignmentUncheckedUpdateInput = {
+  export type RoleDelegationUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    agentId?: IntFieldUpdateOperationsInput | number
-    companyId?: IntFieldUpdateOperationsInput | number
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    delegatorId?: IntFieldUpdateOperationsInput | number
+    delegateeId?: IntFieldUpdateOperationsInput | number
+    delegatedRole?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type RoleAssignmentCreateManyInput = {
+  export type RoleDelegationCreateManyInput = {
     id?: number
-    agentId: number
-    companyId: number
-    role: $Enums.UserRole
-    assignedAt?: Date | string
+    delegatorId: number
+    delegateeId: number
+    delegatedRole: $Enums.UserRole
+    createdAt?: Date | string
   }
 
-  export type RoleAssignmentUpdateManyMutationInput = {
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type RoleDelegationUpdateManyMutationInput = {
+    delegatedRole?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type RoleAssignmentUncheckedUpdateManyInput = {
+  export type RoleDelegationUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    agentId?: IntFieldUpdateOperationsInput | number
+    delegatorId?: IntFieldUpdateOperationsInput | number
+    delegateeId?: IntFieldUpdateOperationsInput | number
+    delegatedRole?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyAssignmentCreateInput = {
+    createdAt?: Date | string
+    company: CompanyCreateNestedOneWithoutCompanyAssignmentsInput
+    preparer: UserCreateNestedOneWithoutCompaniesAssignedInput
+    assignedBy: UserCreateNestedOneWithoutCompaniesDelegatedInput
+  }
+
+  export type CompanyAssignmentUncheckedCreateInput = {
+    id?: number
+    companyId: number
+    preparerId: number
+    assignedById: number
+    createdAt?: Date | string
+  }
+
+  export type CompanyAssignmentUpdateInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutCompanyAssignmentsNestedInput
+    preparer?: UserUpdateOneRequiredWithoutCompaniesAssignedNestedInput
+    assignedBy?: UserUpdateOneRequiredWithoutCompaniesDelegatedNestedInput
+  }
+
+  export type CompanyAssignmentUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
     companyId?: IntFieldUpdateOperationsInput | number
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    preparerId?: IntFieldUpdateOperationsInput | number
+    assignedById?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyAssignmentCreateManyInput = {
+    id?: number
+    companyId: number
+    preparerId: number
+    assignedById: number
+    createdAt?: Date | string
+  }
+
+  export type CompanyAssignmentUpdateManyMutationInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyAssignmentUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    companyId?: IntFieldUpdateOperationsInput | number
+    preparerId?: IntFieldUpdateOperationsInput | number
+    assignedById?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ArticleCreateInput = {
@@ -33908,12 +35375,6 @@ export namespace Prisma {
     none?: PaymentWhereInput
   }
 
-  export type RoleAssignmentListRelationFilter = {
-    every?: RoleAssignmentWhereInput
-    some?: RoleAssignmentWhereInput
-    none?: RoleAssignmentWhereInput
-  }
-
   export type CompanyStatusMessageListRelationFilter = {
     every?: CompanyStatusMessageWhereInput
     some?: CompanyStatusMessageWhereInput
@@ -33936,6 +35397,18 @@ export namespace Prisma {
     every?: ArticleWhereInput
     some?: ArticleWhereInput
     none?: ArticleWhereInput
+  }
+
+  export type RoleDelegationListRelationFilter = {
+    every?: RoleDelegationWhereInput
+    some?: RoleDelegationWhereInput
+    none?: RoleDelegationWhereInput
+  }
+
+  export type CompanyAssignmentListRelationFilter = {
+    every?: CompanyAssignmentWhereInput
+    some?: CompanyAssignmentWhereInput
+    none?: CompanyAssignmentWhereInput
   }
 
   export type SortOrderInput = {
@@ -33967,10 +35440,6 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type RoleAssignmentOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type CompanyStatusMessageOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -33984,6 +35453,14 @@ export namespace Prisma {
   }
 
   export type ArticleOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type RoleDelegationOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CompanyAssignmentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -35106,40 +36583,78 @@ export namespace Prisma {
     companyId?: SortOrder
   }
 
-  export type RoleAssignmentCountOrderByAggregateInput = {
+  export type RoleDelegationCountOrderByAggregateInput = {
     id?: SortOrder
-    agentId?: SortOrder
-    companyId?: SortOrder
-    role?: SortOrder
-    assignedAt?: SortOrder
+    delegatorId?: SortOrder
+    delegateeId?: SortOrder
+    delegatedRole?: SortOrder
+    createdAt?: SortOrder
   }
 
-  export type RoleAssignmentAvgOrderByAggregateInput = {
+  export type RoleDelegationAvgOrderByAggregateInput = {
     id?: SortOrder
-    agentId?: SortOrder
-    companyId?: SortOrder
+    delegatorId?: SortOrder
+    delegateeId?: SortOrder
   }
 
-  export type RoleAssignmentMaxOrderByAggregateInput = {
+  export type RoleDelegationMaxOrderByAggregateInput = {
     id?: SortOrder
-    agentId?: SortOrder
-    companyId?: SortOrder
-    role?: SortOrder
-    assignedAt?: SortOrder
+    delegatorId?: SortOrder
+    delegateeId?: SortOrder
+    delegatedRole?: SortOrder
+    createdAt?: SortOrder
   }
 
-  export type RoleAssignmentMinOrderByAggregateInput = {
+  export type RoleDelegationMinOrderByAggregateInput = {
     id?: SortOrder
-    agentId?: SortOrder
-    companyId?: SortOrder
-    role?: SortOrder
-    assignedAt?: SortOrder
+    delegatorId?: SortOrder
+    delegateeId?: SortOrder
+    delegatedRole?: SortOrder
+    createdAt?: SortOrder
   }
 
-  export type RoleAssignmentSumOrderByAggregateInput = {
+  export type RoleDelegationSumOrderByAggregateInput = {
     id?: SortOrder
-    agentId?: SortOrder
+    delegatorId?: SortOrder
+    delegateeId?: SortOrder
+  }
+
+  export type CompanyAssignmentCountOrderByAggregateInput = {
+    id?: SortOrder
     companyId?: SortOrder
+    preparerId?: SortOrder
+    assignedById?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CompanyAssignmentAvgOrderByAggregateInput = {
+    id?: SortOrder
+    companyId?: SortOrder
+    preparerId?: SortOrder
+    assignedById?: SortOrder
+  }
+
+  export type CompanyAssignmentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    companyId?: SortOrder
+    preparerId?: SortOrder
+    assignedById?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CompanyAssignmentMinOrderByAggregateInput = {
+    id?: SortOrder
+    companyId?: SortOrder
+    preparerId?: SortOrder
+    assignedById?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CompanyAssignmentSumOrderByAggregateInput = {
+    id?: SortOrder
+    companyId?: SortOrder
+    preparerId?: SortOrder
+    assignedById?: SortOrder
   }
 
   export type EnumArticleStatusFilter<$PrismaModel = never> = {
@@ -35465,13 +36980,6 @@ export namespace Prisma {
     connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
   }
 
-  export type RoleAssignmentCreateNestedManyWithoutAgentInput = {
-    create?: XOR<RoleAssignmentCreateWithoutAgentInput, RoleAssignmentUncheckedCreateWithoutAgentInput> | RoleAssignmentCreateWithoutAgentInput[] | RoleAssignmentUncheckedCreateWithoutAgentInput[]
-    connectOrCreate?: RoleAssignmentCreateOrConnectWithoutAgentInput | RoleAssignmentCreateOrConnectWithoutAgentInput[]
-    createMany?: RoleAssignmentCreateManyAgentInputEnvelope
-    connect?: RoleAssignmentWhereUniqueInput | RoleAssignmentWhereUniqueInput[]
-  }
-
   export type CompanyStatusMessageCreateNestedManyWithoutSenderInput = {
     create?: XOR<CompanyStatusMessageCreateWithoutSenderInput, CompanyStatusMessageUncheckedCreateWithoutSenderInput> | CompanyStatusMessageCreateWithoutSenderInput[] | CompanyStatusMessageUncheckedCreateWithoutSenderInput[]
     connectOrCreate?: CompanyStatusMessageCreateOrConnectWithoutSenderInput | CompanyStatusMessageCreateOrConnectWithoutSenderInput[]
@@ -35512,6 +37020,34 @@ export namespace Prisma {
     connectOrCreate?: ArticleCreateOrConnectWithoutAuthorInput | ArticleCreateOrConnectWithoutAuthorInput[]
     createMany?: ArticleCreateManyAuthorInputEnvelope
     connect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+  }
+
+  export type RoleDelegationCreateNestedManyWithoutDelegatorInput = {
+    create?: XOR<RoleDelegationCreateWithoutDelegatorInput, RoleDelegationUncheckedCreateWithoutDelegatorInput> | RoleDelegationCreateWithoutDelegatorInput[] | RoleDelegationUncheckedCreateWithoutDelegatorInput[]
+    connectOrCreate?: RoleDelegationCreateOrConnectWithoutDelegatorInput | RoleDelegationCreateOrConnectWithoutDelegatorInput[]
+    createMany?: RoleDelegationCreateManyDelegatorInputEnvelope
+    connect?: RoleDelegationWhereUniqueInput | RoleDelegationWhereUniqueInput[]
+  }
+
+  export type RoleDelegationCreateNestedManyWithoutDelegateeInput = {
+    create?: XOR<RoleDelegationCreateWithoutDelegateeInput, RoleDelegationUncheckedCreateWithoutDelegateeInput> | RoleDelegationCreateWithoutDelegateeInput[] | RoleDelegationUncheckedCreateWithoutDelegateeInput[]
+    connectOrCreate?: RoleDelegationCreateOrConnectWithoutDelegateeInput | RoleDelegationCreateOrConnectWithoutDelegateeInput[]
+    createMany?: RoleDelegationCreateManyDelegateeInputEnvelope
+    connect?: RoleDelegationWhereUniqueInput | RoleDelegationWhereUniqueInput[]
+  }
+
+  export type CompanyAssignmentCreateNestedManyWithoutPreparerInput = {
+    create?: XOR<CompanyAssignmentCreateWithoutPreparerInput, CompanyAssignmentUncheckedCreateWithoutPreparerInput> | CompanyAssignmentCreateWithoutPreparerInput[] | CompanyAssignmentUncheckedCreateWithoutPreparerInput[]
+    connectOrCreate?: CompanyAssignmentCreateOrConnectWithoutPreparerInput | CompanyAssignmentCreateOrConnectWithoutPreparerInput[]
+    createMany?: CompanyAssignmentCreateManyPreparerInputEnvelope
+    connect?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+  }
+
+  export type CompanyAssignmentCreateNestedManyWithoutAssignedByInput = {
+    create?: XOR<CompanyAssignmentCreateWithoutAssignedByInput, CompanyAssignmentUncheckedCreateWithoutAssignedByInput> | CompanyAssignmentCreateWithoutAssignedByInput[] | CompanyAssignmentUncheckedCreateWithoutAssignedByInput[]
+    connectOrCreate?: CompanyAssignmentCreateOrConnectWithoutAssignedByInput | CompanyAssignmentCreateOrConnectWithoutAssignedByInput[]
+    createMany?: CompanyAssignmentCreateManyAssignedByInputEnvelope
+    connect?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
   }
 
   export type CalendarActionUncheckedCreateNestedManyWithoutUserInput = {
@@ -35563,13 +37099,6 @@ export namespace Prisma {
     connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
   }
 
-  export type RoleAssignmentUncheckedCreateNestedManyWithoutAgentInput = {
-    create?: XOR<RoleAssignmentCreateWithoutAgentInput, RoleAssignmentUncheckedCreateWithoutAgentInput> | RoleAssignmentCreateWithoutAgentInput[] | RoleAssignmentUncheckedCreateWithoutAgentInput[]
-    connectOrCreate?: RoleAssignmentCreateOrConnectWithoutAgentInput | RoleAssignmentCreateOrConnectWithoutAgentInput[]
-    createMany?: RoleAssignmentCreateManyAgentInputEnvelope
-    connect?: RoleAssignmentWhereUniqueInput | RoleAssignmentWhereUniqueInput[]
-  }
-
   export type CompanyStatusMessageUncheckedCreateNestedManyWithoutSenderInput = {
     create?: XOR<CompanyStatusMessageCreateWithoutSenderInput, CompanyStatusMessageUncheckedCreateWithoutSenderInput> | CompanyStatusMessageCreateWithoutSenderInput[] | CompanyStatusMessageUncheckedCreateWithoutSenderInput[]
     connectOrCreate?: CompanyStatusMessageCreateOrConnectWithoutSenderInput | CompanyStatusMessageCreateOrConnectWithoutSenderInput[]
@@ -35610,6 +37139,34 @@ export namespace Prisma {
     connectOrCreate?: ArticleCreateOrConnectWithoutAuthorInput | ArticleCreateOrConnectWithoutAuthorInput[]
     createMany?: ArticleCreateManyAuthorInputEnvelope
     connect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+  }
+
+  export type RoleDelegationUncheckedCreateNestedManyWithoutDelegatorInput = {
+    create?: XOR<RoleDelegationCreateWithoutDelegatorInput, RoleDelegationUncheckedCreateWithoutDelegatorInput> | RoleDelegationCreateWithoutDelegatorInput[] | RoleDelegationUncheckedCreateWithoutDelegatorInput[]
+    connectOrCreate?: RoleDelegationCreateOrConnectWithoutDelegatorInput | RoleDelegationCreateOrConnectWithoutDelegatorInput[]
+    createMany?: RoleDelegationCreateManyDelegatorInputEnvelope
+    connect?: RoleDelegationWhereUniqueInput | RoleDelegationWhereUniqueInput[]
+  }
+
+  export type RoleDelegationUncheckedCreateNestedManyWithoutDelegateeInput = {
+    create?: XOR<RoleDelegationCreateWithoutDelegateeInput, RoleDelegationUncheckedCreateWithoutDelegateeInput> | RoleDelegationCreateWithoutDelegateeInput[] | RoleDelegationUncheckedCreateWithoutDelegateeInput[]
+    connectOrCreate?: RoleDelegationCreateOrConnectWithoutDelegateeInput | RoleDelegationCreateOrConnectWithoutDelegateeInput[]
+    createMany?: RoleDelegationCreateManyDelegateeInputEnvelope
+    connect?: RoleDelegationWhereUniqueInput | RoleDelegationWhereUniqueInput[]
+  }
+
+  export type CompanyAssignmentUncheckedCreateNestedManyWithoutPreparerInput = {
+    create?: XOR<CompanyAssignmentCreateWithoutPreparerInput, CompanyAssignmentUncheckedCreateWithoutPreparerInput> | CompanyAssignmentCreateWithoutPreparerInput[] | CompanyAssignmentUncheckedCreateWithoutPreparerInput[]
+    connectOrCreate?: CompanyAssignmentCreateOrConnectWithoutPreparerInput | CompanyAssignmentCreateOrConnectWithoutPreparerInput[]
+    createMany?: CompanyAssignmentCreateManyPreparerInputEnvelope
+    connect?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+  }
+
+  export type CompanyAssignmentUncheckedCreateNestedManyWithoutAssignedByInput = {
+    create?: XOR<CompanyAssignmentCreateWithoutAssignedByInput, CompanyAssignmentUncheckedCreateWithoutAssignedByInput> | CompanyAssignmentCreateWithoutAssignedByInput[] | CompanyAssignmentUncheckedCreateWithoutAssignedByInput[]
+    connectOrCreate?: CompanyAssignmentCreateOrConnectWithoutAssignedByInput | CompanyAssignmentCreateOrConnectWithoutAssignedByInput[]
+    createMany?: CompanyAssignmentCreateManyAssignedByInputEnvelope
+    connect?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -35734,20 +37291,6 @@ export namespace Prisma {
     deleteMany?: PaymentScalarWhereInput | PaymentScalarWhereInput[]
   }
 
-  export type RoleAssignmentUpdateManyWithoutAgentNestedInput = {
-    create?: XOR<RoleAssignmentCreateWithoutAgentInput, RoleAssignmentUncheckedCreateWithoutAgentInput> | RoleAssignmentCreateWithoutAgentInput[] | RoleAssignmentUncheckedCreateWithoutAgentInput[]
-    connectOrCreate?: RoleAssignmentCreateOrConnectWithoutAgentInput | RoleAssignmentCreateOrConnectWithoutAgentInput[]
-    upsert?: RoleAssignmentUpsertWithWhereUniqueWithoutAgentInput | RoleAssignmentUpsertWithWhereUniqueWithoutAgentInput[]
-    createMany?: RoleAssignmentCreateManyAgentInputEnvelope
-    set?: RoleAssignmentWhereUniqueInput | RoleAssignmentWhereUniqueInput[]
-    disconnect?: RoleAssignmentWhereUniqueInput | RoleAssignmentWhereUniqueInput[]
-    delete?: RoleAssignmentWhereUniqueInput | RoleAssignmentWhereUniqueInput[]
-    connect?: RoleAssignmentWhereUniqueInput | RoleAssignmentWhereUniqueInput[]
-    update?: RoleAssignmentUpdateWithWhereUniqueWithoutAgentInput | RoleAssignmentUpdateWithWhereUniqueWithoutAgentInput[]
-    updateMany?: RoleAssignmentUpdateManyWithWhereWithoutAgentInput | RoleAssignmentUpdateManyWithWhereWithoutAgentInput[]
-    deleteMany?: RoleAssignmentScalarWhereInput | RoleAssignmentScalarWhereInput[]
-  }
-
   export type CompanyStatusMessageUpdateManyWithoutSenderNestedInput = {
     create?: XOR<CompanyStatusMessageCreateWithoutSenderInput, CompanyStatusMessageUncheckedCreateWithoutSenderInput> | CompanyStatusMessageCreateWithoutSenderInput[] | CompanyStatusMessageUncheckedCreateWithoutSenderInput[]
     connectOrCreate?: CompanyStatusMessageCreateOrConnectWithoutSenderInput | CompanyStatusMessageCreateOrConnectWithoutSenderInput[]
@@ -35830,6 +37373,62 @@ export namespace Prisma {
     update?: ArticleUpdateWithWhereUniqueWithoutAuthorInput | ArticleUpdateWithWhereUniqueWithoutAuthorInput[]
     updateMany?: ArticleUpdateManyWithWhereWithoutAuthorInput | ArticleUpdateManyWithWhereWithoutAuthorInput[]
     deleteMany?: ArticleScalarWhereInput | ArticleScalarWhereInput[]
+  }
+
+  export type RoleDelegationUpdateManyWithoutDelegatorNestedInput = {
+    create?: XOR<RoleDelegationCreateWithoutDelegatorInput, RoleDelegationUncheckedCreateWithoutDelegatorInput> | RoleDelegationCreateWithoutDelegatorInput[] | RoleDelegationUncheckedCreateWithoutDelegatorInput[]
+    connectOrCreate?: RoleDelegationCreateOrConnectWithoutDelegatorInput | RoleDelegationCreateOrConnectWithoutDelegatorInput[]
+    upsert?: RoleDelegationUpsertWithWhereUniqueWithoutDelegatorInput | RoleDelegationUpsertWithWhereUniqueWithoutDelegatorInput[]
+    createMany?: RoleDelegationCreateManyDelegatorInputEnvelope
+    set?: RoleDelegationWhereUniqueInput | RoleDelegationWhereUniqueInput[]
+    disconnect?: RoleDelegationWhereUniqueInput | RoleDelegationWhereUniqueInput[]
+    delete?: RoleDelegationWhereUniqueInput | RoleDelegationWhereUniqueInput[]
+    connect?: RoleDelegationWhereUniqueInput | RoleDelegationWhereUniqueInput[]
+    update?: RoleDelegationUpdateWithWhereUniqueWithoutDelegatorInput | RoleDelegationUpdateWithWhereUniqueWithoutDelegatorInput[]
+    updateMany?: RoleDelegationUpdateManyWithWhereWithoutDelegatorInput | RoleDelegationUpdateManyWithWhereWithoutDelegatorInput[]
+    deleteMany?: RoleDelegationScalarWhereInput | RoleDelegationScalarWhereInput[]
+  }
+
+  export type RoleDelegationUpdateManyWithoutDelegateeNestedInput = {
+    create?: XOR<RoleDelegationCreateWithoutDelegateeInput, RoleDelegationUncheckedCreateWithoutDelegateeInput> | RoleDelegationCreateWithoutDelegateeInput[] | RoleDelegationUncheckedCreateWithoutDelegateeInput[]
+    connectOrCreate?: RoleDelegationCreateOrConnectWithoutDelegateeInput | RoleDelegationCreateOrConnectWithoutDelegateeInput[]
+    upsert?: RoleDelegationUpsertWithWhereUniqueWithoutDelegateeInput | RoleDelegationUpsertWithWhereUniqueWithoutDelegateeInput[]
+    createMany?: RoleDelegationCreateManyDelegateeInputEnvelope
+    set?: RoleDelegationWhereUniqueInput | RoleDelegationWhereUniqueInput[]
+    disconnect?: RoleDelegationWhereUniqueInput | RoleDelegationWhereUniqueInput[]
+    delete?: RoleDelegationWhereUniqueInput | RoleDelegationWhereUniqueInput[]
+    connect?: RoleDelegationWhereUniqueInput | RoleDelegationWhereUniqueInput[]
+    update?: RoleDelegationUpdateWithWhereUniqueWithoutDelegateeInput | RoleDelegationUpdateWithWhereUniqueWithoutDelegateeInput[]
+    updateMany?: RoleDelegationUpdateManyWithWhereWithoutDelegateeInput | RoleDelegationUpdateManyWithWhereWithoutDelegateeInput[]
+    deleteMany?: RoleDelegationScalarWhereInput | RoleDelegationScalarWhereInput[]
+  }
+
+  export type CompanyAssignmentUpdateManyWithoutPreparerNestedInput = {
+    create?: XOR<CompanyAssignmentCreateWithoutPreparerInput, CompanyAssignmentUncheckedCreateWithoutPreparerInput> | CompanyAssignmentCreateWithoutPreparerInput[] | CompanyAssignmentUncheckedCreateWithoutPreparerInput[]
+    connectOrCreate?: CompanyAssignmentCreateOrConnectWithoutPreparerInput | CompanyAssignmentCreateOrConnectWithoutPreparerInput[]
+    upsert?: CompanyAssignmentUpsertWithWhereUniqueWithoutPreparerInput | CompanyAssignmentUpsertWithWhereUniqueWithoutPreparerInput[]
+    createMany?: CompanyAssignmentCreateManyPreparerInputEnvelope
+    set?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    disconnect?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    delete?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    connect?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    update?: CompanyAssignmentUpdateWithWhereUniqueWithoutPreparerInput | CompanyAssignmentUpdateWithWhereUniqueWithoutPreparerInput[]
+    updateMany?: CompanyAssignmentUpdateManyWithWhereWithoutPreparerInput | CompanyAssignmentUpdateManyWithWhereWithoutPreparerInput[]
+    deleteMany?: CompanyAssignmentScalarWhereInput | CompanyAssignmentScalarWhereInput[]
+  }
+
+  export type CompanyAssignmentUpdateManyWithoutAssignedByNestedInput = {
+    create?: XOR<CompanyAssignmentCreateWithoutAssignedByInput, CompanyAssignmentUncheckedCreateWithoutAssignedByInput> | CompanyAssignmentCreateWithoutAssignedByInput[] | CompanyAssignmentUncheckedCreateWithoutAssignedByInput[]
+    connectOrCreate?: CompanyAssignmentCreateOrConnectWithoutAssignedByInput | CompanyAssignmentCreateOrConnectWithoutAssignedByInput[]
+    upsert?: CompanyAssignmentUpsertWithWhereUniqueWithoutAssignedByInput | CompanyAssignmentUpsertWithWhereUniqueWithoutAssignedByInput[]
+    createMany?: CompanyAssignmentCreateManyAssignedByInputEnvelope
+    set?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    disconnect?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    delete?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    connect?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    update?: CompanyAssignmentUpdateWithWhereUniqueWithoutAssignedByInput | CompanyAssignmentUpdateWithWhereUniqueWithoutAssignedByInput[]
+    updateMany?: CompanyAssignmentUpdateManyWithWhereWithoutAssignedByInput | CompanyAssignmentUpdateManyWithWhereWithoutAssignedByInput[]
+    deleteMany?: CompanyAssignmentScalarWhereInput | CompanyAssignmentScalarWhereInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -35938,20 +37537,6 @@ export namespace Prisma {
     deleteMany?: PaymentScalarWhereInput | PaymentScalarWhereInput[]
   }
 
-  export type RoleAssignmentUncheckedUpdateManyWithoutAgentNestedInput = {
-    create?: XOR<RoleAssignmentCreateWithoutAgentInput, RoleAssignmentUncheckedCreateWithoutAgentInput> | RoleAssignmentCreateWithoutAgentInput[] | RoleAssignmentUncheckedCreateWithoutAgentInput[]
-    connectOrCreate?: RoleAssignmentCreateOrConnectWithoutAgentInput | RoleAssignmentCreateOrConnectWithoutAgentInput[]
-    upsert?: RoleAssignmentUpsertWithWhereUniqueWithoutAgentInput | RoleAssignmentUpsertWithWhereUniqueWithoutAgentInput[]
-    createMany?: RoleAssignmentCreateManyAgentInputEnvelope
-    set?: RoleAssignmentWhereUniqueInput | RoleAssignmentWhereUniqueInput[]
-    disconnect?: RoleAssignmentWhereUniqueInput | RoleAssignmentWhereUniqueInput[]
-    delete?: RoleAssignmentWhereUniqueInput | RoleAssignmentWhereUniqueInput[]
-    connect?: RoleAssignmentWhereUniqueInput | RoleAssignmentWhereUniqueInput[]
-    update?: RoleAssignmentUpdateWithWhereUniqueWithoutAgentInput | RoleAssignmentUpdateWithWhereUniqueWithoutAgentInput[]
-    updateMany?: RoleAssignmentUpdateManyWithWhereWithoutAgentInput | RoleAssignmentUpdateManyWithWhereWithoutAgentInput[]
-    deleteMany?: RoleAssignmentScalarWhereInput | RoleAssignmentScalarWhereInput[]
-  }
-
   export type CompanyStatusMessageUncheckedUpdateManyWithoutSenderNestedInput = {
     create?: XOR<CompanyStatusMessageCreateWithoutSenderInput, CompanyStatusMessageUncheckedCreateWithoutSenderInput> | CompanyStatusMessageCreateWithoutSenderInput[] | CompanyStatusMessageUncheckedCreateWithoutSenderInput[]
     connectOrCreate?: CompanyStatusMessageCreateOrConnectWithoutSenderInput | CompanyStatusMessageCreateOrConnectWithoutSenderInput[]
@@ -36036,6 +37621,62 @@ export namespace Prisma {
     deleteMany?: ArticleScalarWhereInput | ArticleScalarWhereInput[]
   }
 
+  export type RoleDelegationUncheckedUpdateManyWithoutDelegatorNestedInput = {
+    create?: XOR<RoleDelegationCreateWithoutDelegatorInput, RoleDelegationUncheckedCreateWithoutDelegatorInput> | RoleDelegationCreateWithoutDelegatorInput[] | RoleDelegationUncheckedCreateWithoutDelegatorInput[]
+    connectOrCreate?: RoleDelegationCreateOrConnectWithoutDelegatorInput | RoleDelegationCreateOrConnectWithoutDelegatorInput[]
+    upsert?: RoleDelegationUpsertWithWhereUniqueWithoutDelegatorInput | RoleDelegationUpsertWithWhereUniqueWithoutDelegatorInput[]
+    createMany?: RoleDelegationCreateManyDelegatorInputEnvelope
+    set?: RoleDelegationWhereUniqueInput | RoleDelegationWhereUniqueInput[]
+    disconnect?: RoleDelegationWhereUniqueInput | RoleDelegationWhereUniqueInput[]
+    delete?: RoleDelegationWhereUniqueInput | RoleDelegationWhereUniqueInput[]
+    connect?: RoleDelegationWhereUniqueInput | RoleDelegationWhereUniqueInput[]
+    update?: RoleDelegationUpdateWithWhereUniqueWithoutDelegatorInput | RoleDelegationUpdateWithWhereUniqueWithoutDelegatorInput[]
+    updateMany?: RoleDelegationUpdateManyWithWhereWithoutDelegatorInput | RoleDelegationUpdateManyWithWhereWithoutDelegatorInput[]
+    deleteMany?: RoleDelegationScalarWhereInput | RoleDelegationScalarWhereInput[]
+  }
+
+  export type RoleDelegationUncheckedUpdateManyWithoutDelegateeNestedInput = {
+    create?: XOR<RoleDelegationCreateWithoutDelegateeInput, RoleDelegationUncheckedCreateWithoutDelegateeInput> | RoleDelegationCreateWithoutDelegateeInput[] | RoleDelegationUncheckedCreateWithoutDelegateeInput[]
+    connectOrCreate?: RoleDelegationCreateOrConnectWithoutDelegateeInput | RoleDelegationCreateOrConnectWithoutDelegateeInput[]
+    upsert?: RoleDelegationUpsertWithWhereUniqueWithoutDelegateeInput | RoleDelegationUpsertWithWhereUniqueWithoutDelegateeInput[]
+    createMany?: RoleDelegationCreateManyDelegateeInputEnvelope
+    set?: RoleDelegationWhereUniqueInput | RoleDelegationWhereUniqueInput[]
+    disconnect?: RoleDelegationWhereUniqueInput | RoleDelegationWhereUniqueInput[]
+    delete?: RoleDelegationWhereUniqueInput | RoleDelegationWhereUniqueInput[]
+    connect?: RoleDelegationWhereUniqueInput | RoleDelegationWhereUniqueInput[]
+    update?: RoleDelegationUpdateWithWhereUniqueWithoutDelegateeInput | RoleDelegationUpdateWithWhereUniqueWithoutDelegateeInput[]
+    updateMany?: RoleDelegationUpdateManyWithWhereWithoutDelegateeInput | RoleDelegationUpdateManyWithWhereWithoutDelegateeInput[]
+    deleteMany?: RoleDelegationScalarWhereInput | RoleDelegationScalarWhereInput[]
+  }
+
+  export type CompanyAssignmentUncheckedUpdateManyWithoutPreparerNestedInput = {
+    create?: XOR<CompanyAssignmentCreateWithoutPreparerInput, CompanyAssignmentUncheckedCreateWithoutPreparerInput> | CompanyAssignmentCreateWithoutPreparerInput[] | CompanyAssignmentUncheckedCreateWithoutPreparerInput[]
+    connectOrCreate?: CompanyAssignmentCreateOrConnectWithoutPreparerInput | CompanyAssignmentCreateOrConnectWithoutPreparerInput[]
+    upsert?: CompanyAssignmentUpsertWithWhereUniqueWithoutPreparerInput | CompanyAssignmentUpsertWithWhereUniqueWithoutPreparerInput[]
+    createMany?: CompanyAssignmentCreateManyPreparerInputEnvelope
+    set?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    disconnect?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    delete?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    connect?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    update?: CompanyAssignmentUpdateWithWhereUniqueWithoutPreparerInput | CompanyAssignmentUpdateWithWhereUniqueWithoutPreparerInput[]
+    updateMany?: CompanyAssignmentUpdateManyWithWhereWithoutPreparerInput | CompanyAssignmentUpdateManyWithWhereWithoutPreparerInput[]
+    deleteMany?: CompanyAssignmentScalarWhereInput | CompanyAssignmentScalarWhereInput[]
+  }
+
+  export type CompanyAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput = {
+    create?: XOR<CompanyAssignmentCreateWithoutAssignedByInput, CompanyAssignmentUncheckedCreateWithoutAssignedByInput> | CompanyAssignmentCreateWithoutAssignedByInput[] | CompanyAssignmentUncheckedCreateWithoutAssignedByInput[]
+    connectOrCreate?: CompanyAssignmentCreateOrConnectWithoutAssignedByInput | CompanyAssignmentCreateOrConnectWithoutAssignedByInput[]
+    upsert?: CompanyAssignmentUpsertWithWhereUniqueWithoutAssignedByInput | CompanyAssignmentUpsertWithWhereUniqueWithoutAssignedByInput[]
+    createMany?: CompanyAssignmentCreateManyAssignedByInputEnvelope
+    set?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    disconnect?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    delete?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    connect?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    update?: CompanyAssignmentUpdateWithWhereUniqueWithoutAssignedByInput | CompanyAssignmentUpdateWithWhereUniqueWithoutAssignedByInput[]
+    updateMany?: CompanyAssignmentUpdateManyWithWhereWithoutAssignedByInput | CompanyAssignmentUpdateManyWithWhereWithoutAssignedByInput[]
+    deleteMany?: CompanyAssignmentScalarWhereInput | CompanyAssignmentScalarWhereInput[]
+  }
+
   export type CalendarActionCreateNestedManyWithoutCompanyInput = {
     create?: XOR<CalendarActionCreateWithoutCompanyInput, CalendarActionUncheckedCreateWithoutCompanyInput> | CalendarActionCreateWithoutCompanyInput[] | CalendarActionUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: CalendarActionCreateOrConnectWithoutCompanyInput | CalendarActionCreateOrConnectWithoutCompanyInput[]
@@ -36083,13 +37724,6 @@ export namespace Prisma {
     connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
   }
 
-  export type RoleAssignmentCreateNestedManyWithoutCompanyInput = {
-    create?: XOR<RoleAssignmentCreateWithoutCompanyInput, RoleAssignmentUncheckedCreateWithoutCompanyInput> | RoleAssignmentCreateWithoutCompanyInput[] | RoleAssignmentUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: RoleAssignmentCreateOrConnectWithoutCompanyInput | RoleAssignmentCreateOrConnectWithoutCompanyInput[]
-    createMany?: RoleAssignmentCreateManyCompanyInputEnvelope
-    connect?: RoleAssignmentWhereUniqueInput | RoleAssignmentWhereUniqueInput[]
-  }
-
   export type ShareholderCreateNestedManyWithoutCompanyInput = {
     create?: XOR<ShareholderCreateWithoutCompanyInput, ShareholderUncheckedCreateWithoutCompanyInput> | ShareholderCreateWithoutCompanyInput[] | ShareholderUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: ShareholderCreateOrConnectWithoutCompanyInput | ShareholderCreateOrConnectWithoutCompanyInput[]
@@ -36109,6 +37743,13 @@ export namespace Prisma {
     connectOrCreate?: AuditLogCreateOrConnectWithoutCompanyInput | AuditLogCreateOrConnectWithoutCompanyInput[]
     createMany?: AuditLogCreateManyCompanyInputEnvelope
     connect?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
+  }
+
+  export type CompanyAssignmentCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<CompanyAssignmentCreateWithoutCompanyInput, CompanyAssignmentUncheckedCreateWithoutCompanyInput> | CompanyAssignmentCreateWithoutCompanyInput[] | CompanyAssignmentUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: CompanyAssignmentCreateOrConnectWithoutCompanyInput | CompanyAssignmentCreateOrConnectWithoutCompanyInput[]
+    createMany?: CompanyAssignmentCreateManyCompanyInputEnvelope
+    connect?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
   }
 
   export type CalendarActionUncheckedCreateNestedManyWithoutCompanyInput = {
@@ -36152,13 +37793,6 @@ export namespace Prisma {
     connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
   }
 
-  export type RoleAssignmentUncheckedCreateNestedManyWithoutCompanyInput = {
-    create?: XOR<RoleAssignmentCreateWithoutCompanyInput, RoleAssignmentUncheckedCreateWithoutCompanyInput> | RoleAssignmentCreateWithoutCompanyInput[] | RoleAssignmentUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: RoleAssignmentCreateOrConnectWithoutCompanyInput | RoleAssignmentCreateOrConnectWithoutCompanyInput[]
-    createMany?: RoleAssignmentCreateManyCompanyInputEnvelope
-    connect?: RoleAssignmentWhereUniqueInput | RoleAssignmentWhereUniqueInput[]
-  }
-
   export type ShareholderUncheckedCreateNestedManyWithoutCompanyInput = {
     create?: XOR<ShareholderCreateWithoutCompanyInput, ShareholderUncheckedCreateWithoutCompanyInput> | ShareholderCreateWithoutCompanyInput[] | ShareholderUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: ShareholderCreateOrConnectWithoutCompanyInput | ShareholderCreateOrConnectWithoutCompanyInput[]
@@ -36178,6 +37812,13 @@ export namespace Prisma {
     connectOrCreate?: AuditLogCreateOrConnectWithoutCompanyInput | AuditLogCreateOrConnectWithoutCompanyInput[]
     createMany?: AuditLogCreateManyCompanyInputEnvelope
     connect?: AuditLogWhereUniqueInput | AuditLogWhereUniqueInput[]
+  }
+
+  export type CompanyAssignmentUncheckedCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<CompanyAssignmentCreateWithoutCompanyInput, CompanyAssignmentUncheckedCreateWithoutCompanyInput> | CompanyAssignmentCreateWithoutCompanyInput[] | CompanyAssignmentUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: CompanyAssignmentCreateOrConnectWithoutCompanyInput | CompanyAssignmentCreateOrConnectWithoutCompanyInput[]
+    createMany?: CompanyAssignmentCreateManyCompanyInputEnvelope
+    connect?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
   }
 
   export type DecimalFieldUpdateOperationsInput = {
@@ -36280,20 +37921,6 @@ export namespace Prisma {
     deleteMany?: PaymentScalarWhereInput | PaymentScalarWhereInput[]
   }
 
-  export type RoleAssignmentUpdateManyWithoutCompanyNestedInput = {
-    create?: XOR<RoleAssignmentCreateWithoutCompanyInput, RoleAssignmentUncheckedCreateWithoutCompanyInput> | RoleAssignmentCreateWithoutCompanyInput[] | RoleAssignmentUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: RoleAssignmentCreateOrConnectWithoutCompanyInput | RoleAssignmentCreateOrConnectWithoutCompanyInput[]
-    upsert?: RoleAssignmentUpsertWithWhereUniqueWithoutCompanyInput | RoleAssignmentUpsertWithWhereUniqueWithoutCompanyInput[]
-    createMany?: RoleAssignmentCreateManyCompanyInputEnvelope
-    set?: RoleAssignmentWhereUniqueInput | RoleAssignmentWhereUniqueInput[]
-    disconnect?: RoleAssignmentWhereUniqueInput | RoleAssignmentWhereUniqueInput[]
-    delete?: RoleAssignmentWhereUniqueInput | RoleAssignmentWhereUniqueInput[]
-    connect?: RoleAssignmentWhereUniqueInput | RoleAssignmentWhereUniqueInput[]
-    update?: RoleAssignmentUpdateWithWhereUniqueWithoutCompanyInput | RoleAssignmentUpdateWithWhereUniqueWithoutCompanyInput[]
-    updateMany?: RoleAssignmentUpdateManyWithWhereWithoutCompanyInput | RoleAssignmentUpdateManyWithWhereWithoutCompanyInput[]
-    deleteMany?: RoleAssignmentScalarWhereInput | RoleAssignmentScalarWhereInput[]
-  }
-
   export type ShareholderUpdateManyWithoutCompanyNestedInput = {
     create?: XOR<ShareholderCreateWithoutCompanyInput, ShareholderUncheckedCreateWithoutCompanyInput> | ShareholderCreateWithoutCompanyInput[] | ShareholderUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: ShareholderCreateOrConnectWithoutCompanyInput | ShareholderCreateOrConnectWithoutCompanyInput[]
@@ -36334,6 +37961,20 @@ export namespace Prisma {
     update?: AuditLogUpdateWithWhereUniqueWithoutCompanyInput | AuditLogUpdateWithWhereUniqueWithoutCompanyInput[]
     updateMany?: AuditLogUpdateManyWithWhereWithoutCompanyInput | AuditLogUpdateManyWithWhereWithoutCompanyInput[]
     deleteMany?: AuditLogScalarWhereInput | AuditLogScalarWhereInput[]
+  }
+
+  export type CompanyAssignmentUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<CompanyAssignmentCreateWithoutCompanyInput, CompanyAssignmentUncheckedCreateWithoutCompanyInput> | CompanyAssignmentCreateWithoutCompanyInput[] | CompanyAssignmentUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: CompanyAssignmentCreateOrConnectWithoutCompanyInput | CompanyAssignmentCreateOrConnectWithoutCompanyInput[]
+    upsert?: CompanyAssignmentUpsertWithWhereUniqueWithoutCompanyInput | CompanyAssignmentUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: CompanyAssignmentCreateManyCompanyInputEnvelope
+    set?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    disconnect?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    delete?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    connect?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    update?: CompanyAssignmentUpdateWithWhereUniqueWithoutCompanyInput | CompanyAssignmentUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: CompanyAssignmentUpdateManyWithWhereWithoutCompanyInput | CompanyAssignmentUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: CompanyAssignmentScalarWhereInput | CompanyAssignmentScalarWhereInput[]
   }
 
   export type CalendarActionUncheckedUpdateManyWithoutCompanyNestedInput = {
@@ -36416,20 +38057,6 @@ export namespace Prisma {
     deleteMany?: PaymentScalarWhereInput | PaymentScalarWhereInput[]
   }
 
-  export type RoleAssignmentUncheckedUpdateManyWithoutCompanyNestedInput = {
-    create?: XOR<RoleAssignmentCreateWithoutCompanyInput, RoleAssignmentUncheckedCreateWithoutCompanyInput> | RoleAssignmentCreateWithoutCompanyInput[] | RoleAssignmentUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: RoleAssignmentCreateOrConnectWithoutCompanyInput | RoleAssignmentCreateOrConnectWithoutCompanyInput[]
-    upsert?: RoleAssignmentUpsertWithWhereUniqueWithoutCompanyInput | RoleAssignmentUpsertWithWhereUniqueWithoutCompanyInput[]
-    createMany?: RoleAssignmentCreateManyCompanyInputEnvelope
-    set?: RoleAssignmentWhereUniqueInput | RoleAssignmentWhereUniqueInput[]
-    disconnect?: RoleAssignmentWhereUniqueInput | RoleAssignmentWhereUniqueInput[]
-    delete?: RoleAssignmentWhereUniqueInput | RoleAssignmentWhereUniqueInput[]
-    connect?: RoleAssignmentWhereUniqueInput | RoleAssignmentWhereUniqueInput[]
-    update?: RoleAssignmentUpdateWithWhereUniqueWithoutCompanyInput | RoleAssignmentUpdateWithWhereUniqueWithoutCompanyInput[]
-    updateMany?: RoleAssignmentUpdateManyWithWhereWithoutCompanyInput | RoleAssignmentUpdateManyWithWhereWithoutCompanyInput[]
-    deleteMany?: RoleAssignmentScalarWhereInput | RoleAssignmentScalarWhereInput[]
-  }
-
   export type ShareholderUncheckedUpdateManyWithoutCompanyNestedInput = {
     create?: XOR<ShareholderCreateWithoutCompanyInput, ShareholderUncheckedCreateWithoutCompanyInput> | ShareholderCreateWithoutCompanyInput[] | ShareholderUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: ShareholderCreateOrConnectWithoutCompanyInput | ShareholderCreateOrConnectWithoutCompanyInput[]
@@ -36470,6 +38097,20 @@ export namespace Prisma {
     update?: AuditLogUpdateWithWhereUniqueWithoutCompanyInput | AuditLogUpdateWithWhereUniqueWithoutCompanyInput[]
     updateMany?: AuditLogUpdateManyWithWhereWithoutCompanyInput | AuditLogUpdateManyWithWhereWithoutCompanyInput[]
     deleteMany?: AuditLogScalarWhereInput | AuditLogScalarWhereInput[]
+  }
+
+  export type CompanyAssignmentUncheckedUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<CompanyAssignmentCreateWithoutCompanyInput, CompanyAssignmentUncheckedCreateWithoutCompanyInput> | CompanyAssignmentCreateWithoutCompanyInput[] | CompanyAssignmentUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: CompanyAssignmentCreateOrConnectWithoutCompanyInput | CompanyAssignmentCreateOrConnectWithoutCompanyInput[]
+    upsert?: CompanyAssignmentUpsertWithWhereUniqueWithoutCompanyInput | CompanyAssignmentUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: CompanyAssignmentCreateManyCompanyInputEnvelope
+    set?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    disconnect?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    delete?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    connect?: CompanyAssignmentWhereUniqueInput | CompanyAssignmentWhereUniqueInput[]
+    update?: CompanyAssignmentUpdateWithWhereUniqueWithoutCompanyInput | CompanyAssignmentUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: CompanyAssignmentUpdateManyWithWhereWithoutCompanyInput | CompanyAssignmentUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: CompanyAssignmentScalarWhereInput | CompanyAssignmentScalarWhereInput[]
   }
 
   export type CompanyCreateNestedOneWithoutRevertMessageInput = {
@@ -36897,32 +38538,74 @@ export namespace Prisma {
     update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutDashboardStateInput, CompanyUpdateWithoutDashboardStateInput>, CompanyUncheckedUpdateWithoutDashboardStateInput>
   }
 
-  export type UserCreateNestedOneWithoutAssignedRolesInput = {
-    create?: XOR<UserCreateWithoutAssignedRolesInput, UserUncheckedCreateWithoutAssignedRolesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutAssignedRolesInput
+  export type UserCreateNestedOneWithoutDelegatedUsersInput = {
+    create?: XOR<UserCreateWithoutDelegatedUsersInput, UserUncheckedCreateWithoutDelegatedUsersInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDelegatedUsersInput
     connect?: UserWhereUniqueInput
   }
 
-  export type CompanyCreateNestedOneWithoutRoleAssignmentsInput = {
-    create?: XOR<CompanyCreateWithoutRoleAssignmentsInput, CompanyUncheckedCreateWithoutRoleAssignmentsInput>
-    connectOrCreate?: CompanyCreateOrConnectWithoutRoleAssignmentsInput
-    connect?: CompanyWhereUniqueInput
-  }
-
-  export type UserUpdateOneRequiredWithoutAssignedRolesNestedInput = {
-    create?: XOR<UserCreateWithoutAssignedRolesInput, UserUncheckedCreateWithoutAssignedRolesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutAssignedRolesInput
-    upsert?: UserUpsertWithoutAssignedRolesInput
+  export type UserCreateNestedOneWithoutAssignedByInput = {
+    create?: XOR<UserCreateWithoutAssignedByInput, UserUncheckedCreateWithoutAssignedByInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAssignedByInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAssignedRolesInput, UserUpdateWithoutAssignedRolesInput>, UserUncheckedUpdateWithoutAssignedRolesInput>
   }
 
-  export type CompanyUpdateOneRequiredWithoutRoleAssignmentsNestedInput = {
-    create?: XOR<CompanyCreateWithoutRoleAssignmentsInput, CompanyUncheckedCreateWithoutRoleAssignmentsInput>
-    connectOrCreate?: CompanyCreateOrConnectWithoutRoleAssignmentsInput
-    upsert?: CompanyUpsertWithoutRoleAssignmentsInput
+  export type UserUpdateOneRequiredWithoutDelegatedUsersNestedInput = {
+    create?: XOR<UserCreateWithoutDelegatedUsersInput, UserUncheckedCreateWithoutDelegatedUsersInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDelegatedUsersInput
+    upsert?: UserUpsertWithoutDelegatedUsersInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDelegatedUsersInput, UserUpdateWithoutDelegatedUsersInput>, UserUncheckedUpdateWithoutDelegatedUsersInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutAssignedByNestedInput = {
+    create?: XOR<UserCreateWithoutAssignedByInput, UserUncheckedCreateWithoutAssignedByInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAssignedByInput
+    upsert?: UserUpsertWithoutAssignedByInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAssignedByInput, UserUpdateWithoutAssignedByInput>, UserUncheckedUpdateWithoutAssignedByInput>
+  }
+
+  export type CompanyCreateNestedOneWithoutCompanyAssignmentsInput = {
+    create?: XOR<CompanyCreateWithoutCompanyAssignmentsInput, CompanyUncheckedCreateWithoutCompanyAssignmentsInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutCompanyAssignmentsInput
     connect?: CompanyWhereUniqueInput
-    update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutRoleAssignmentsInput, CompanyUpdateWithoutRoleAssignmentsInput>, CompanyUncheckedUpdateWithoutRoleAssignmentsInput>
+  }
+
+  export type UserCreateNestedOneWithoutCompaniesAssignedInput = {
+    create?: XOR<UserCreateWithoutCompaniesAssignedInput, UserUncheckedCreateWithoutCompaniesAssignedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCompaniesAssignedInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutCompaniesDelegatedInput = {
+    create?: XOR<UserCreateWithoutCompaniesDelegatedInput, UserUncheckedCreateWithoutCompaniesDelegatedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCompaniesDelegatedInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type CompanyUpdateOneRequiredWithoutCompanyAssignmentsNestedInput = {
+    create?: XOR<CompanyCreateWithoutCompanyAssignmentsInput, CompanyUncheckedCreateWithoutCompanyAssignmentsInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutCompanyAssignmentsInput
+    upsert?: CompanyUpsertWithoutCompanyAssignmentsInput
+    connect?: CompanyWhereUniqueInput
+    update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutCompanyAssignmentsInput, CompanyUpdateWithoutCompanyAssignmentsInput>, CompanyUncheckedUpdateWithoutCompanyAssignmentsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutCompaniesAssignedNestedInput = {
+    create?: XOR<UserCreateWithoutCompaniesAssignedInput, UserUncheckedCreateWithoutCompaniesAssignedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCompaniesAssignedInput
+    upsert?: UserUpsertWithoutCompaniesAssignedInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCompaniesAssignedInput, UserUpdateWithoutCompaniesAssignedInput>, UserUncheckedUpdateWithoutCompaniesAssignedInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutCompaniesDelegatedNestedInput = {
+    create?: XOR<UserCreateWithoutCompaniesDelegatedInput, UserUncheckedCreateWithoutCompaniesDelegatedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCompaniesDelegatedInput
+    upsert?: UserUpsertWithoutCompaniesDelegatedInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCompaniesDelegatedInput, UserUpdateWithoutCompaniesDelegatedInput>, UserUncheckedUpdateWithoutCompaniesDelegatedInput>
   }
 
   export type UserCreateNestedOneWithoutArticlesInput = {
@@ -37483,10 +39166,10 @@ export namespace Prisma {
     dashboardState?: DashboardStateCreateNestedOneWithoutCompanyInput
     directors?: DirectorCreateNestedManyWithoutCompanyInput
     payments?: PaymentCreateNestedManyWithoutCompanyInput
-    roleAssignments?: RoleAssignmentCreateNestedManyWithoutCompanyInput
     shareholders?: ShareholderCreateNestedManyWithoutCompanyInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    companyAssignments?: CompanyAssignmentCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutUserInput = {
@@ -37517,10 +39200,10 @@ export namespace Prisma {
     dashboardState?: DashboardStateUncheckedCreateNestedOneWithoutCompanyInput
     directors?: DirectorUncheckedCreateNestedManyWithoutCompanyInput
     payments?: PaymentUncheckedCreateNestedManyWithoutCompanyInput
-    roleAssignments?: RoleAssignmentUncheckedCreateNestedManyWithoutCompanyInput
     shareholders?: ShareholderUncheckedCreateNestedManyWithoutCompanyInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    companyAssignments?: CompanyAssignmentUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutUserInput = {
@@ -37615,29 +39298,6 @@ export namespace Prisma {
 
   export type PaymentCreateManyUserInputEnvelope = {
     data: PaymentCreateManyUserInput | PaymentCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type RoleAssignmentCreateWithoutAgentInput = {
-    role: $Enums.UserRole
-    assignedAt?: Date | string
-    company: CompanyCreateNestedOneWithoutRoleAssignmentsInput
-  }
-
-  export type RoleAssignmentUncheckedCreateWithoutAgentInput = {
-    id?: number
-    companyId: number
-    role: $Enums.UserRole
-    assignedAt?: Date | string
-  }
-
-  export type RoleAssignmentCreateOrConnectWithoutAgentInput = {
-    where: RoleAssignmentWhereUniqueInput
-    create: XOR<RoleAssignmentCreateWithoutAgentInput, RoleAssignmentUncheckedCreateWithoutAgentInput>
-  }
-
-  export type RoleAssignmentCreateManyAgentInputEnvelope = {
-    data: RoleAssignmentCreateManyAgentInput | RoleAssignmentCreateManyAgentInput[]
     skipDuplicates?: boolean
   }
 
@@ -37832,6 +39492,98 @@ export namespace Prisma {
 
   export type ArticleCreateManyAuthorInputEnvelope = {
     data: ArticleCreateManyAuthorInput | ArticleCreateManyAuthorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type RoleDelegationCreateWithoutDelegatorInput = {
+    delegatedRole: $Enums.UserRole
+    createdAt?: Date | string
+    delegatee: UserCreateNestedOneWithoutAssignedByInput
+  }
+
+  export type RoleDelegationUncheckedCreateWithoutDelegatorInput = {
+    id?: number
+    delegateeId: number
+    delegatedRole: $Enums.UserRole
+    createdAt?: Date | string
+  }
+
+  export type RoleDelegationCreateOrConnectWithoutDelegatorInput = {
+    where: RoleDelegationWhereUniqueInput
+    create: XOR<RoleDelegationCreateWithoutDelegatorInput, RoleDelegationUncheckedCreateWithoutDelegatorInput>
+  }
+
+  export type RoleDelegationCreateManyDelegatorInputEnvelope = {
+    data: RoleDelegationCreateManyDelegatorInput | RoleDelegationCreateManyDelegatorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type RoleDelegationCreateWithoutDelegateeInput = {
+    delegatedRole: $Enums.UserRole
+    createdAt?: Date | string
+    delegator: UserCreateNestedOneWithoutDelegatedUsersInput
+  }
+
+  export type RoleDelegationUncheckedCreateWithoutDelegateeInput = {
+    id?: number
+    delegatorId: number
+    delegatedRole: $Enums.UserRole
+    createdAt?: Date | string
+  }
+
+  export type RoleDelegationCreateOrConnectWithoutDelegateeInput = {
+    where: RoleDelegationWhereUniqueInput
+    create: XOR<RoleDelegationCreateWithoutDelegateeInput, RoleDelegationUncheckedCreateWithoutDelegateeInput>
+  }
+
+  export type RoleDelegationCreateManyDelegateeInputEnvelope = {
+    data: RoleDelegationCreateManyDelegateeInput | RoleDelegationCreateManyDelegateeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CompanyAssignmentCreateWithoutPreparerInput = {
+    createdAt?: Date | string
+    company: CompanyCreateNestedOneWithoutCompanyAssignmentsInput
+    assignedBy: UserCreateNestedOneWithoutCompaniesDelegatedInput
+  }
+
+  export type CompanyAssignmentUncheckedCreateWithoutPreparerInput = {
+    id?: number
+    companyId: number
+    assignedById: number
+    createdAt?: Date | string
+  }
+
+  export type CompanyAssignmentCreateOrConnectWithoutPreparerInput = {
+    where: CompanyAssignmentWhereUniqueInput
+    create: XOR<CompanyAssignmentCreateWithoutPreparerInput, CompanyAssignmentUncheckedCreateWithoutPreparerInput>
+  }
+
+  export type CompanyAssignmentCreateManyPreparerInputEnvelope = {
+    data: CompanyAssignmentCreateManyPreparerInput | CompanyAssignmentCreateManyPreparerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CompanyAssignmentCreateWithoutAssignedByInput = {
+    createdAt?: Date | string
+    company: CompanyCreateNestedOneWithoutCompanyAssignmentsInput
+    preparer: UserCreateNestedOneWithoutCompaniesAssignedInput
+  }
+
+  export type CompanyAssignmentUncheckedCreateWithoutAssignedByInput = {
+    id?: number
+    companyId: number
+    preparerId: number
+    createdAt?: Date | string
+  }
+
+  export type CompanyAssignmentCreateOrConnectWithoutAssignedByInput = {
+    where: CompanyAssignmentWhereUniqueInput
+    create: XOR<CompanyAssignmentCreateWithoutAssignedByInput, CompanyAssignmentUncheckedCreateWithoutAssignedByInput>
+  }
+
+  export type CompanyAssignmentCreateManyAssignedByInputEnvelope = {
+    data: CompanyAssignmentCreateManyAssignedByInput | CompanyAssignmentCreateManyAssignedByInput[]
     skipDuplicates?: boolean
   }
 
@@ -38041,33 +39793,6 @@ export namespace Prisma {
     services?: StringFilter<"Payment"> | string
   }
 
-  export type RoleAssignmentUpsertWithWhereUniqueWithoutAgentInput = {
-    where: RoleAssignmentWhereUniqueInput
-    update: XOR<RoleAssignmentUpdateWithoutAgentInput, RoleAssignmentUncheckedUpdateWithoutAgentInput>
-    create: XOR<RoleAssignmentCreateWithoutAgentInput, RoleAssignmentUncheckedCreateWithoutAgentInput>
-  }
-
-  export type RoleAssignmentUpdateWithWhereUniqueWithoutAgentInput = {
-    where: RoleAssignmentWhereUniqueInput
-    data: XOR<RoleAssignmentUpdateWithoutAgentInput, RoleAssignmentUncheckedUpdateWithoutAgentInput>
-  }
-
-  export type RoleAssignmentUpdateManyWithWhereWithoutAgentInput = {
-    where: RoleAssignmentScalarWhereInput
-    data: XOR<RoleAssignmentUpdateManyMutationInput, RoleAssignmentUncheckedUpdateManyWithoutAgentInput>
-  }
-
-  export type RoleAssignmentScalarWhereInput = {
-    AND?: RoleAssignmentScalarWhereInput | RoleAssignmentScalarWhereInput[]
-    OR?: RoleAssignmentScalarWhereInput[]
-    NOT?: RoleAssignmentScalarWhereInput | RoleAssignmentScalarWhereInput[]
-    id?: IntFilter<"RoleAssignment"> | number
-    agentId?: IntFilter<"RoleAssignment"> | number
-    companyId?: IntFilter<"RoleAssignment"> | number
-    role?: EnumUserRoleFilter<"RoleAssignment"> | $Enums.UserRole
-    assignedAt?: DateTimeFilter<"RoleAssignment"> | Date | string
-  }
-
   export type CompanyStatusMessageUpsertWithWhereUniqueWithoutSenderInput = {
     where: CompanyStatusMessageWhereUniqueInput
     update: XOR<CompanyStatusMessageUpdateWithoutSenderInput, CompanyStatusMessageUncheckedUpdateWithoutSenderInput>
@@ -38225,6 +39950,92 @@ export namespace Prisma {
     hashtag?: StringNullableFilter<"Article"> | string | null
   }
 
+  export type RoleDelegationUpsertWithWhereUniqueWithoutDelegatorInput = {
+    where: RoleDelegationWhereUniqueInput
+    update: XOR<RoleDelegationUpdateWithoutDelegatorInput, RoleDelegationUncheckedUpdateWithoutDelegatorInput>
+    create: XOR<RoleDelegationCreateWithoutDelegatorInput, RoleDelegationUncheckedCreateWithoutDelegatorInput>
+  }
+
+  export type RoleDelegationUpdateWithWhereUniqueWithoutDelegatorInput = {
+    where: RoleDelegationWhereUniqueInput
+    data: XOR<RoleDelegationUpdateWithoutDelegatorInput, RoleDelegationUncheckedUpdateWithoutDelegatorInput>
+  }
+
+  export type RoleDelegationUpdateManyWithWhereWithoutDelegatorInput = {
+    where: RoleDelegationScalarWhereInput
+    data: XOR<RoleDelegationUpdateManyMutationInput, RoleDelegationUncheckedUpdateManyWithoutDelegatorInput>
+  }
+
+  export type RoleDelegationScalarWhereInput = {
+    AND?: RoleDelegationScalarWhereInput | RoleDelegationScalarWhereInput[]
+    OR?: RoleDelegationScalarWhereInput[]
+    NOT?: RoleDelegationScalarWhereInput | RoleDelegationScalarWhereInput[]
+    id?: IntFilter<"RoleDelegation"> | number
+    delegatorId?: IntFilter<"RoleDelegation"> | number
+    delegateeId?: IntFilter<"RoleDelegation"> | number
+    delegatedRole?: EnumUserRoleFilter<"RoleDelegation"> | $Enums.UserRole
+    createdAt?: DateTimeFilter<"RoleDelegation"> | Date | string
+  }
+
+  export type RoleDelegationUpsertWithWhereUniqueWithoutDelegateeInput = {
+    where: RoleDelegationWhereUniqueInput
+    update: XOR<RoleDelegationUpdateWithoutDelegateeInput, RoleDelegationUncheckedUpdateWithoutDelegateeInput>
+    create: XOR<RoleDelegationCreateWithoutDelegateeInput, RoleDelegationUncheckedCreateWithoutDelegateeInput>
+  }
+
+  export type RoleDelegationUpdateWithWhereUniqueWithoutDelegateeInput = {
+    where: RoleDelegationWhereUniqueInput
+    data: XOR<RoleDelegationUpdateWithoutDelegateeInput, RoleDelegationUncheckedUpdateWithoutDelegateeInput>
+  }
+
+  export type RoleDelegationUpdateManyWithWhereWithoutDelegateeInput = {
+    where: RoleDelegationScalarWhereInput
+    data: XOR<RoleDelegationUpdateManyMutationInput, RoleDelegationUncheckedUpdateManyWithoutDelegateeInput>
+  }
+
+  export type CompanyAssignmentUpsertWithWhereUniqueWithoutPreparerInput = {
+    where: CompanyAssignmentWhereUniqueInput
+    update: XOR<CompanyAssignmentUpdateWithoutPreparerInput, CompanyAssignmentUncheckedUpdateWithoutPreparerInput>
+    create: XOR<CompanyAssignmentCreateWithoutPreparerInput, CompanyAssignmentUncheckedCreateWithoutPreparerInput>
+  }
+
+  export type CompanyAssignmentUpdateWithWhereUniqueWithoutPreparerInput = {
+    where: CompanyAssignmentWhereUniqueInput
+    data: XOR<CompanyAssignmentUpdateWithoutPreparerInput, CompanyAssignmentUncheckedUpdateWithoutPreparerInput>
+  }
+
+  export type CompanyAssignmentUpdateManyWithWhereWithoutPreparerInput = {
+    where: CompanyAssignmentScalarWhereInput
+    data: XOR<CompanyAssignmentUpdateManyMutationInput, CompanyAssignmentUncheckedUpdateManyWithoutPreparerInput>
+  }
+
+  export type CompanyAssignmentScalarWhereInput = {
+    AND?: CompanyAssignmentScalarWhereInput | CompanyAssignmentScalarWhereInput[]
+    OR?: CompanyAssignmentScalarWhereInput[]
+    NOT?: CompanyAssignmentScalarWhereInput | CompanyAssignmentScalarWhereInput[]
+    id?: IntFilter<"CompanyAssignment"> | number
+    companyId?: IntFilter<"CompanyAssignment"> | number
+    preparerId?: IntFilter<"CompanyAssignment"> | number
+    assignedById?: IntFilter<"CompanyAssignment"> | number
+    createdAt?: DateTimeFilter<"CompanyAssignment"> | Date | string
+  }
+
+  export type CompanyAssignmentUpsertWithWhereUniqueWithoutAssignedByInput = {
+    where: CompanyAssignmentWhereUniqueInput
+    update: XOR<CompanyAssignmentUpdateWithoutAssignedByInput, CompanyAssignmentUncheckedUpdateWithoutAssignedByInput>
+    create: XOR<CompanyAssignmentCreateWithoutAssignedByInput, CompanyAssignmentUncheckedCreateWithoutAssignedByInput>
+  }
+
+  export type CompanyAssignmentUpdateWithWhereUniqueWithoutAssignedByInput = {
+    where: CompanyAssignmentWhereUniqueInput
+    data: XOR<CompanyAssignmentUpdateWithoutAssignedByInput, CompanyAssignmentUncheckedUpdateWithoutAssignedByInput>
+  }
+
+  export type CompanyAssignmentUpdateManyWithWhereWithoutAssignedByInput = {
+    where: CompanyAssignmentScalarWhereInput
+    data: XOR<CompanyAssignmentUpdateManyMutationInput, CompanyAssignmentUncheckedUpdateManyWithoutAssignedByInput>
+  }
+
   export type CalendarActionCreateWithoutCompanyInput = {
     title: string
     dueDate: Date | string
@@ -38284,13 +40095,16 @@ export namespace Prisma {
     insights?: InsightRecommendationCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
     articles?: ArticleCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserUncheckedCreateWithoutCompaniesInput = {
@@ -38322,13 +40136,16 @@ export namespace Prisma {
     insights?: InsightRecommendationUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentUncheckedCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
     articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationUncheckedCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationUncheckedCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentUncheckedCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserCreateOrConnectWithoutCompaniesInput = {
@@ -38496,29 +40313,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type RoleAssignmentCreateWithoutCompanyInput = {
-    role: $Enums.UserRole
-    assignedAt?: Date | string
-    agent: UserCreateNestedOneWithoutAssignedRolesInput
-  }
-
-  export type RoleAssignmentUncheckedCreateWithoutCompanyInput = {
-    id?: number
-    agentId: number
-    role: $Enums.UserRole
-    assignedAt?: Date | string
-  }
-
-  export type RoleAssignmentCreateOrConnectWithoutCompanyInput = {
-    where: RoleAssignmentWhereUniqueInput
-    create: XOR<RoleAssignmentCreateWithoutCompanyInput, RoleAssignmentUncheckedCreateWithoutCompanyInput>
-  }
-
-  export type RoleAssignmentCreateManyCompanyInputEnvelope = {
-    data: RoleAssignmentCreateManyCompanyInput | RoleAssignmentCreateManyCompanyInput[]
-    skipDuplicates?: boolean
-  }
-
   export type ShareholderCreateWithoutCompanyInput = {
     shareholderName: string
     email: string
@@ -38624,6 +40418,29 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type CompanyAssignmentCreateWithoutCompanyInput = {
+    createdAt?: Date | string
+    preparer: UserCreateNestedOneWithoutCompaniesAssignedInput
+    assignedBy: UserCreateNestedOneWithoutCompaniesDelegatedInput
+  }
+
+  export type CompanyAssignmentUncheckedCreateWithoutCompanyInput = {
+    id?: number
+    preparerId: number
+    assignedById: number
+    createdAt?: Date | string
+  }
+
+  export type CompanyAssignmentCreateOrConnectWithoutCompanyInput = {
+    where: CompanyAssignmentWhereUniqueInput
+    create: XOR<CompanyAssignmentCreateWithoutCompanyInput, CompanyAssignmentUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type CompanyAssignmentCreateManyCompanyInputEnvelope = {
+    data: CompanyAssignmentCreateManyCompanyInput | CompanyAssignmentCreateManyCompanyInput[]
+    skipDuplicates?: boolean
+  }
+
   export type CalendarActionUpsertWithWhereUniqueWithoutCompanyInput = {
     where: CalendarActionWhereUniqueInput
     update: XOR<CalendarActionUpdateWithoutCompanyInput, CalendarActionUncheckedUpdateWithoutCompanyInput>
@@ -38679,13 +40496,16 @@ export namespace Prisma {
     insights?: InsightRecommendationUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUpdateManyWithoutAssignedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCompaniesInput = {
@@ -38717,13 +40537,16 @@ export namespace Prisma {
     insights?: InsightRecommendationUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUncheckedUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUncheckedUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUncheckedUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUncheckedUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUncheckedUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
   }
 
   export type CompanyDocumentUpsertWithWhereUniqueWithoutCompanyInput = {
@@ -38846,22 +40669,6 @@ export namespace Prisma {
     data: XOR<PaymentUpdateManyMutationInput, PaymentUncheckedUpdateManyWithoutCompanyInput>
   }
 
-  export type RoleAssignmentUpsertWithWhereUniqueWithoutCompanyInput = {
-    where: RoleAssignmentWhereUniqueInput
-    update: XOR<RoleAssignmentUpdateWithoutCompanyInput, RoleAssignmentUncheckedUpdateWithoutCompanyInput>
-    create: XOR<RoleAssignmentCreateWithoutCompanyInput, RoleAssignmentUncheckedCreateWithoutCompanyInput>
-  }
-
-  export type RoleAssignmentUpdateWithWhereUniqueWithoutCompanyInput = {
-    where: RoleAssignmentWhereUniqueInput
-    data: XOR<RoleAssignmentUpdateWithoutCompanyInput, RoleAssignmentUncheckedUpdateWithoutCompanyInput>
-  }
-
-  export type RoleAssignmentUpdateManyWithWhereWithoutCompanyInput = {
-    where: RoleAssignmentScalarWhereInput
-    data: XOR<RoleAssignmentUpdateManyMutationInput, RoleAssignmentUncheckedUpdateManyWithoutCompanyInput>
-  }
-
   export type ShareholderUpsertWithWhereUniqueWithoutCompanyInput = {
     where: ShareholderWhereUniqueInput
     update: XOR<ShareholderUpdateWithoutCompanyInput, ShareholderUncheckedUpdateWithoutCompanyInput>
@@ -38934,6 +40741,22 @@ export namespace Prisma {
     data: XOR<AuditLogUpdateManyMutationInput, AuditLogUncheckedUpdateManyWithoutCompanyInput>
   }
 
+  export type CompanyAssignmentUpsertWithWhereUniqueWithoutCompanyInput = {
+    where: CompanyAssignmentWhereUniqueInput
+    update: XOR<CompanyAssignmentUpdateWithoutCompanyInput, CompanyAssignmentUncheckedUpdateWithoutCompanyInput>
+    create: XOR<CompanyAssignmentCreateWithoutCompanyInput, CompanyAssignmentUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type CompanyAssignmentUpdateWithWhereUniqueWithoutCompanyInput = {
+    where: CompanyAssignmentWhereUniqueInput
+    data: XOR<CompanyAssignmentUpdateWithoutCompanyInput, CompanyAssignmentUncheckedUpdateWithoutCompanyInput>
+  }
+
+  export type CompanyAssignmentUpdateManyWithWhereWithoutCompanyInput = {
+    where: CompanyAssignmentScalarWhereInput
+    data: XOR<CompanyAssignmentUpdateManyMutationInput, CompanyAssignmentUncheckedUpdateManyWithoutCompanyInput>
+  }
+
   export type CompanyCreateWithoutRevertMessageInput = {
     companyName: string
     registrationDate: Date | string
@@ -38962,9 +40785,9 @@ export namespace Prisma {
     dashboardState?: DashboardStateCreateNestedOneWithoutCompanyInput
     directors?: DirectorCreateNestedManyWithoutCompanyInput
     payments?: PaymentCreateNestedManyWithoutCompanyInput
-    roleAssignments?: RoleAssignmentCreateNestedManyWithoutCompanyInput
     shareholders?: ShareholderCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    companyAssignments?: CompanyAssignmentCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutRevertMessageInput = {
@@ -38996,9 +40819,9 @@ export namespace Prisma {
     dashboardState?: DashboardStateUncheckedCreateNestedOneWithoutCompanyInput
     directors?: DirectorUncheckedCreateNestedManyWithoutCompanyInput
     payments?: PaymentUncheckedCreateNestedManyWithoutCompanyInput
-    roleAssignments?: RoleAssignmentUncheckedCreateNestedManyWithoutCompanyInput
     shareholders?: ShareholderUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    companyAssignments?: CompanyAssignmentUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutRevertMessageInput = {
@@ -39035,12 +40858,15 @@ export namespace Prisma {
     insights?: InsightRecommendationCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentCreateNestedManyWithoutAgentInput
     uploadedDocs?: CompanyDocumentCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
     articles?: ArticleCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserUncheckedCreateWithoutRevertMessageInput = {
@@ -39073,12 +40899,15 @@ export namespace Prisma {
     insights?: InsightRecommendationUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentUncheckedCreateNestedManyWithoutAgentInput
     uploadedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
     articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationUncheckedCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationUncheckedCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentUncheckedCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserCreateOrConnectWithoutRevertMessageInput = {
@@ -39125,9 +40954,9 @@ export namespace Prisma {
     dashboardState?: DashboardStateUpdateOneWithoutCompanyNestedInput
     directors?: DirectorUpdateManyWithoutCompanyNestedInput
     payments?: PaymentUpdateManyWithoutCompanyNestedInput
-    roleAssignments?: RoleAssignmentUpdateManyWithoutCompanyNestedInput
     shareholders?: ShareholderUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    companyAssignments?: CompanyAssignmentUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutRevertMessageInput = {
@@ -39159,9 +40988,9 @@ export namespace Prisma {
     dashboardState?: DashboardStateUncheckedUpdateOneWithoutCompanyNestedInput
     directors?: DirectorUncheckedUpdateManyWithoutCompanyNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutCompanyNestedInput
-    roleAssignments?: RoleAssignmentUncheckedUpdateManyWithoutCompanyNestedInput
     shareholders?: ShareholderUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    companyAssignments?: CompanyAssignmentUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type UserUpsertWithoutRevertMessageInput = {
@@ -39204,12 +41033,15 @@ export namespace Prisma {
     insights?: InsightRecommendationUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUpdateManyWithoutAgentNestedInput
     uploadedDocs?: CompanyDocumentUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUpdateManyWithoutAssignedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRevertMessageInput = {
@@ -39242,12 +41074,15 @@ export namespace Prisma {
     insights?: InsightRecommendationUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUncheckedUpdateManyWithoutAgentNestedInput
     uploadedDocs?: CompanyDocumentUncheckedUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUncheckedUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUncheckedUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUncheckedUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
   }
 
   export type CompanyCreateWithoutDirectorsInput = {
@@ -39277,10 +41112,10 @@ export namespace Prisma {
     companyServices?: CompanyServiceCreateNestedManyWithoutCompanyInput
     dashboardState?: DashboardStateCreateNestedOneWithoutCompanyInput
     payments?: PaymentCreateNestedManyWithoutCompanyInput
-    roleAssignments?: RoleAssignmentCreateNestedManyWithoutCompanyInput
     shareholders?: ShareholderCreateNestedManyWithoutCompanyInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    companyAssignments?: CompanyAssignmentCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutDirectorsInput = {
@@ -39311,10 +41146,10 @@ export namespace Prisma {
     companyServices?: CompanyServiceUncheckedCreateNestedManyWithoutCompanyInput
     dashboardState?: DashboardStateUncheckedCreateNestedOneWithoutCompanyInput
     payments?: PaymentUncheckedCreateNestedManyWithoutCompanyInput
-    roleAssignments?: RoleAssignmentUncheckedCreateNestedManyWithoutCompanyInput
     shareholders?: ShareholderUncheckedCreateNestedManyWithoutCompanyInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    companyAssignments?: CompanyAssignmentUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutDirectorsInput = {
@@ -39360,10 +41195,10 @@ export namespace Prisma {
     companyServices?: CompanyServiceUpdateManyWithoutCompanyNestedInput
     dashboardState?: DashboardStateUpdateOneWithoutCompanyNestedInput
     payments?: PaymentUpdateManyWithoutCompanyNestedInput
-    roleAssignments?: RoleAssignmentUpdateManyWithoutCompanyNestedInput
     shareholders?: ShareholderUpdateManyWithoutCompanyNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    companyAssignments?: CompanyAssignmentUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutDirectorsInput = {
@@ -39394,10 +41229,10 @@ export namespace Prisma {
     companyServices?: CompanyServiceUncheckedUpdateManyWithoutCompanyNestedInput
     dashboardState?: DashboardStateUncheckedUpdateOneWithoutCompanyNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutCompanyNestedInput
-    roleAssignments?: RoleAssignmentUncheckedUpdateManyWithoutCompanyNestedInput
     shareholders?: ShareholderUncheckedUpdateManyWithoutCompanyNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    companyAssignments?: CompanyAssignmentUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyCreateWithoutShareholdersInput = {
@@ -39428,9 +41263,9 @@ export namespace Prisma {
     dashboardState?: DashboardStateCreateNestedOneWithoutCompanyInput
     directors?: DirectorCreateNestedManyWithoutCompanyInput
     payments?: PaymentCreateNestedManyWithoutCompanyInput
-    roleAssignments?: RoleAssignmentCreateNestedManyWithoutCompanyInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    companyAssignments?: CompanyAssignmentCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutShareholdersInput = {
@@ -39462,9 +41297,9 @@ export namespace Prisma {
     dashboardState?: DashboardStateUncheckedCreateNestedOneWithoutCompanyInput
     directors?: DirectorUncheckedCreateNestedManyWithoutCompanyInput
     payments?: PaymentUncheckedCreateNestedManyWithoutCompanyInput
-    roleAssignments?: RoleAssignmentUncheckedCreateNestedManyWithoutCompanyInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    companyAssignments?: CompanyAssignmentUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutShareholdersInput = {
@@ -39511,9 +41346,9 @@ export namespace Prisma {
     dashboardState?: DashboardStateUpdateOneWithoutCompanyNestedInput
     directors?: DirectorUpdateManyWithoutCompanyNestedInput
     payments?: PaymentUpdateManyWithoutCompanyNestedInput
-    roleAssignments?: RoleAssignmentUpdateManyWithoutCompanyNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    companyAssignments?: CompanyAssignmentUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutShareholdersInput = {
@@ -39545,9 +41380,9 @@ export namespace Prisma {
     dashboardState?: DashboardStateUncheckedUpdateOneWithoutCompanyNestedInput
     directors?: DirectorUncheckedUpdateManyWithoutCompanyNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutCompanyNestedInput
-    roleAssignments?: RoleAssignmentUncheckedUpdateManyWithoutCompanyNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    companyAssignments?: CompanyAssignmentUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyCreateWithoutDocumentsInput = {
@@ -39577,10 +41412,10 @@ export namespace Prisma {
     dashboardState?: DashboardStateCreateNestedOneWithoutCompanyInput
     directors?: DirectorCreateNestedManyWithoutCompanyInput
     payments?: PaymentCreateNestedManyWithoutCompanyInput
-    roleAssignments?: RoleAssignmentCreateNestedManyWithoutCompanyInput
     shareholders?: ShareholderCreateNestedManyWithoutCompanyInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    companyAssignments?: CompanyAssignmentCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutDocumentsInput = {
@@ -39611,10 +41446,10 @@ export namespace Prisma {
     dashboardState?: DashboardStateUncheckedCreateNestedOneWithoutCompanyInput
     directors?: DirectorUncheckedCreateNestedManyWithoutCompanyInput
     payments?: PaymentUncheckedCreateNestedManyWithoutCompanyInput
-    roleAssignments?: RoleAssignmentUncheckedCreateNestedManyWithoutCompanyInput
     shareholders?: ShareholderUncheckedCreateNestedManyWithoutCompanyInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    companyAssignments?: CompanyAssignmentUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutDocumentsInput = {
@@ -39651,12 +41486,15 @@ export namespace Prisma {
     insights?: InsightRecommendationCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutSenderInput
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
     articles?: ArticleCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserUncheckedCreateWithoutUploadedDocsInput = {
@@ -39689,12 +41527,15 @@ export namespace Prisma {
     insights?: InsightRecommendationUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentUncheckedCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutSenderInput
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
     articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationUncheckedCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationUncheckedCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentUncheckedCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserCreateOrConnectWithoutUploadedDocsInput = {
@@ -39731,12 +41572,15 @@ export namespace Prisma {
     insights?: InsightRecommendationCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentCreateNestedManyWithoutUploaderInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
     articles?: ArticleCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserUncheckedCreateWithoutReceivedDocsInput = {
@@ -39769,12 +41613,15 @@ export namespace Prisma {
     insights?: InsightRecommendationUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentUncheckedCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutUploaderInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
     articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationUncheckedCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationUncheckedCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentUncheckedCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserCreateOrConnectWithoutReceivedDocsInput = {
@@ -39820,10 +41667,10 @@ export namespace Prisma {
     dashboardState?: DashboardStateUpdateOneWithoutCompanyNestedInput
     directors?: DirectorUpdateManyWithoutCompanyNestedInput
     payments?: PaymentUpdateManyWithoutCompanyNestedInput
-    roleAssignments?: RoleAssignmentUpdateManyWithoutCompanyNestedInput
     shareholders?: ShareholderUpdateManyWithoutCompanyNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    companyAssignments?: CompanyAssignmentUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutDocumentsInput = {
@@ -39854,10 +41701,10 @@ export namespace Prisma {
     dashboardState?: DashboardStateUncheckedUpdateOneWithoutCompanyNestedInput
     directors?: DirectorUncheckedUpdateManyWithoutCompanyNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutCompanyNestedInput
-    roleAssignments?: RoleAssignmentUncheckedUpdateManyWithoutCompanyNestedInput
     shareholders?: ShareholderUncheckedUpdateManyWithoutCompanyNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    companyAssignments?: CompanyAssignmentUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type UserUpsertWithoutUploadedDocsInput = {
@@ -39900,12 +41747,15 @@ export namespace Prisma {
     insights?: InsightRecommendationUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutSenderNestedInput
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUpdateManyWithoutAssignedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutUploadedDocsInput = {
@@ -39938,12 +41788,15 @@ export namespace Prisma {
     insights?: InsightRecommendationUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUncheckedUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutSenderNestedInput
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUncheckedUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUncheckedUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUncheckedUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
   }
 
   export type UserUpsertWithoutReceivedDocsInput = {
@@ -39986,12 +41839,15 @@ export namespace Prisma {
     insights?: InsightRecommendationUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUpdateManyWithoutUploaderNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUpdateManyWithoutAssignedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutReceivedDocsInput = {
@@ -40024,12 +41880,15 @@ export namespace Prisma {
     insights?: InsightRecommendationUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUncheckedUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUncheckedUpdateManyWithoutUploaderNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUncheckedUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUncheckedUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUncheckedUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
   }
 
   export type RefundCreateWithoutPaymentInput = {
@@ -40084,10 +41943,10 @@ export namespace Prisma {
     companyServices?: CompanyServiceCreateNestedManyWithoutCompanyInput
     dashboardState?: DashboardStateCreateNestedOneWithoutCompanyInput
     directors?: DirectorCreateNestedManyWithoutCompanyInput
-    roleAssignments?: RoleAssignmentCreateNestedManyWithoutCompanyInput
     shareholders?: ShareholderCreateNestedManyWithoutCompanyInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    companyAssignments?: CompanyAssignmentCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutPaymentsInput = {
@@ -40118,10 +41977,10 @@ export namespace Prisma {
     companyServices?: CompanyServiceUncheckedCreateNestedManyWithoutCompanyInput
     dashboardState?: DashboardStateUncheckedCreateNestedOneWithoutCompanyInput
     directors?: DirectorUncheckedCreateNestedManyWithoutCompanyInput
-    roleAssignments?: RoleAssignmentUncheckedCreateNestedManyWithoutCompanyInput
     shareholders?: ShareholderUncheckedCreateNestedManyWithoutCompanyInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    companyAssignments?: CompanyAssignmentUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutPaymentsInput = {
@@ -40157,13 +42016,16 @@ export namespace Prisma {
     companies?: CompanyCreateNestedManyWithoutUserInput
     insights?: InsightRecommendationCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
     articles?: ArticleCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserUncheckedCreateWithoutPaymentsInput = {
@@ -40195,13 +42057,16 @@ export namespace Prisma {
     companies?: CompanyUncheckedCreateNestedManyWithoutUserInput
     insights?: InsightRecommendationUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentUncheckedCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
     articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationUncheckedCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationUncheckedCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentUncheckedCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserCreateOrConnectWithoutPaymentsInput = {
@@ -40320,10 +42185,10 @@ export namespace Prisma {
     companyServices?: CompanyServiceUpdateManyWithoutCompanyNestedInput
     dashboardState?: DashboardStateUpdateOneWithoutCompanyNestedInput
     directors?: DirectorUpdateManyWithoutCompanyNestedInput
-    roleAssignments?: RoleAssignmentUpdateManyWithoutCompanyNestedInput
     shareholders?: ShareholderUpdateManyWithoutCompanyNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    companyAssignments?: CompanyAssignmentUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutPaymentsInput = {
@@ -40354,10 +42219,10 @@ export namespace Prisma {
     companyServices?: CompanyServiceUncheckedUpdateManyWithoutCompanyNestedInput
     dashboardState?: DashboardStateUncheckedUpdateOneWithoutCompanyNestedInput
     directors?: DirectorUncheckedUpdateManyWithoutCompanyNestedInput
-    roleAssignments?: RoleAssignmentUncheckedUpdateManyWithoutCompanyNestedInput
     shareholders?: ShareholderUncheckedUpdateManyWithoutCompanyNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    companyAssignments?: CompanyAssignmentUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type UserUpsertWithoutPaymentsInput = {
@@ -40399,13 +42264,16 @@ export namespace Prisma {
     companies?: CompanyUpdateManyWithoutUserNestedInput
     insights?: InsightRecommendationUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUpdateManyWithoutAssignedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPaymentsInput = {
@@ -40437,13 +42305,16 @@ export namespace Prisma {
     companies?: CompanyUncheckedUpdateManyWithoutUserNestedInput
     insights?: InsightRecommendationUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUncheckedUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUncheckedUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUncheckedUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUncheckedUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUncheckedUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
   }
 
   export type StagingCompanyUpsertWithoutPaymentsInput = {
@@ -40631,10 +42502,10 @@ export namespace Prisma {
     dashboardState?: DashboardStateCreateNestedOneWithoutCompanyInput
     directors?: DirectorCreateNestedManyWithoutCompanyInput
     payments?: PaymentCreateNestedManyWithoutCompanyInput
-    roleAssignments?: RoleAssignmentCreateNestedManyWithoutCompanyInput
     shareholders?: ShareholderCreateNestedManyWithoutCompanyInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    companyAssignments?: CompanyAssignmentCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutCompanyServicesInput = {
@@ -40665,10 +42536,10 @@ export namespace Prisma {
     dashboardState?: DashboardStateUncheckedCreateNestedOneWithoutCompanyInput
     directors?: DirectorUncheckedCreateNestedManyWithoutCompanyInput
     payments?: PaymentUncheckedCreateNestedManyWithoutCompanyInput
-    roleAssignments?: RoleAssignmentUncheckedCreateNestedManyWithoutCompanyInput
     shareholders?: ShareholderUncheckedCreateNestedManyWithoutCompanyInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    companyAssignments?: CompanyAssignmentUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutCompanyServicesInput = {
@@ -40736,10 +42607,10 @@ export namespace Prisma {
     dashboardState?: DashboardStateUpdateOneWithoutCompanyNestedInput
     directors?: DirectorUpdateManyWithoutCompanyNestedInput
     payments?: PaymentUpdateManyWithoutCompanyNestedInput
-    roleAssignments?: RoleAssignmentUpdateManyWithoutCompanyNestedInput
     shareholders?: ShareholderUpdateManyWithoutCompanyNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    companyAssignments?: CompanyAssignmentUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutCompanyServicesInput = {
@@ -40770,10 +42641,10 @@ export namespace Prisma {
     dashboardState?: DashboardStateUncheckedUpdateOneWithoutCompanyNestedInput
     directors?: DirectorUncheckedUpdateManyWithoutCompanyNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutCompanyNestedInput
-    roleAssignments?: RoleAssignmentUncheckedUpdateManyWithoutCompanyNestedInput
     shareholders?: ShareholderUncheckedUpdateManyWithoutCompanyNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    companyAssignments?: CompanyAssignmentUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type ServiceUpsertWithoutCompanyServicesInput = {
@@ -40832,13 +42703,16 @@ export namespace Prisma {
     companies?: CompanyCreateNestedManyWithoutUserInput
     insights?: InsightRecommendationCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
     articles?: ArticleCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -40870,13 +42744,16 @@ export namespace Prisma {
     companies?: CompanyUncheckedCreateNestedManyWithoutUserInput
     insights?: InsightRecommendationUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentUncheckedCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
     articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationUncheckedCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationUncheckedCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentUncheckedCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -40923,13 +42800,16 @@ export namespace Prisma {
     companies?: CompanyUpdateManyWithoutUserNestedInput
     insights?: InsightRecommendationUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUpdateManyWithoutAssignedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -40961,13 +42841,16 @@ export namespace Prisma {
     companies?: CompanyUncheckedUpdateManyWithoutUserNestedInput
     insights?: InsightRecommendationUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUncheckedUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUncheckedUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUncheckedUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUncheckedUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUncheckedUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
   }
 
   export type UserCreateWithoutInsightsInput = {
@@ -40998,13 +42881,16 @@ export namespace Prisma {
     companies?: CompanyCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
     articles?: ArticleCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserUncheckedCreateWithoutInsightsInput = {
@@ -41036,13 +42922,16 @@ export namespace Prisma {
     companies?: CompanyUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentUncheckedCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
     articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationUncheckedCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationUncheckedCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentUncheckedCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserCreateOrConnectWithoutInsightsInput = {
@@ -41089,13 +42978,16 @@ export namespace Prisma {
     companies?: CompanyUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUpdateManyWithoutAssignedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutInsightsInput = {
@@ -41127,13 +43019,16 @@ export namespace Prisma {
     companies?: CompanyUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUncheckedUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUncheckedUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUncheckedUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUncheckedUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUncheckedUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
   }
 
   export type UserCreateWithoutAssignedTasksInput = {
@@ -41164,13 +43059,16 @@ export namespace Prisma {
     insights?: InsightRecommendationCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
     articles?: ArticleCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserUncheckedCreateWithoutAssignedTasksInput = {
@@ -41202,13 +43100,16 @@ export namespace Prisma {
     insights?: InsightRecommendationUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentUncheckedCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
     articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationUncheckedCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationUncheckedCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentUncheckedCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserCreateOrConnectWithoutAssignedTasksInput = {
@@ -41243,10 +43144,10 @@ export namespace Prisma {
     dashboardState?: DashboardStateCreateNestedOneWithoutCompanyInput
     directors?: DirectorCreateNestedManyWithoutCompanyInput
     payments?: PaymentCreateNestedManyWithoutCompanyInput
-    roleAssignments?: RoleAssignmentCreateNestedManyWithoutCompanyInput
     shareholders?: ShareholderCreateNestedManyWithoutCompanyInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    companyAssignments?: CompanyAssignmentCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutTasksInput = {
@@ -41277,10 +43178,10 @@ export namespace Prisma {
     dashboardState?: DashboardStateUncheckedCreateNestedOneWithoutCompanyInput
     directors?: DirectorUncheckedCreateNestedManyWithoutCompanyInput
     payments?: PaymentUncheckedCreateNestedManyWithoutCompanyInput
-    roleAssignments?: RoleAssignmentUncheckedCreateNestedManyWithoutCompanyInput
     shareholders?: ShareholderUncheckedCreateNestedManyWithoutCompanyInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    companyAssignments?: CompanyAssignmentUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutTasksInput = {
@@ -41317,12 +43218,15 @@ export namespace Prisma {
     insights?: InsightRecommendationCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     articles?: ArticleCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserUncheckedCreateWithoutCalendarActionInput = {
@@ -41355,12 +43259,15 @@ export namespace Prisma {
     insights?: InsightRecommendationUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentUncheckedCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationUncheckedCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationUncheckedCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentUncheckedCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserCreateOrConnectWithoutCalendarActionInput = {
@@ -41407,13 +43314,16 @@ export namespace Prisma {
     insights?: InsightRecommendationUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUpdateManyWithoutAssignedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAssignedTasksInput = {
@@ -41445,13 +43355,16 @@ export namespace Prisma {
     insights?: InsightRecommendationUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUncheckedUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUncheckedUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUncheckedUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUncheckedUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUncheckedUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
   }
 
   export type CompanyUpsertWithoutTasksInput = {
@@ -41492,10 +43405,10 @@ export namespace Prisma {
     dashboardState?: DashboardStateUpdateOneWithoutCompanyNestedInput
     directors?: DirectorUpdateManyWithoutCompanyNestedInput
     payments?: PaymentUpdateManyWithoutCompanyNestedInput
-    roleAssignments?: RoleAssignmentUpdateManyWithoutCompanyNestedInput
     shareholders?: ShareholderUpdateManyWithoutCompanyNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    companyAssignments?: CompanyAssignmentUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutTasksInput = {
@@ -41526,10 +43439,10 @@ export namespace Prisma {
     dashboardState?: DashboardStateUncheckedUpdateOneWithoutCompanyNestedInput
     directors?: DirectorUncheckedUpdateManyWithoutCompanyNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutCompanyNestedInput
-    roleAssignments?: RoleAssignmentUncheckedUpdateManyWithoutCompanyNestedInput
     shareholders?: ShareholderUncheckedUpdateManyWithoutCompanyNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    companyAssignments?: CompanyAssignmentUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type UserUpsertWithoutCalendarActionInput = {
@@ -41572,12 +43485,15 @@ export namespace Prisma {
     insights?: InsightRecommendationUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     articles?: ArticleUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUpdateManyWithoutAssignedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCalendarActionInput = {
@@ -41610,12 +43526,15 @@ export namespace Prisma {
     insights?: InsightRecommendationUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUncheckedUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUncheckedUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUncheckedUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUncheckedUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUncheckedUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
   }
 
   export type UserCreateWithoutMessagesReceivedInput = {
@@ -41646,13 +43565,16 @@ export namespace Prisma {
     insights?: InsightRecommendationCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
     articles?: ArticleCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserUncheckedCreateWithoutMessagesReceivedInput = {
@@ -41684,13 +43606,16 @@ export namespace Prisma {
     insights?: InsightRecommendationUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentUncheckedCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
     articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationUncheckedCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationUncheckedCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentUncheckedCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserCreateOrConnectWithoutMessagesReceivedInput = {
@@ -41726,13 +43651,16 @@ export namespace Prisma {
     insights?: InsightRecommendationCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
     articles?: ArticleCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserUncheckedCreateWithoutMessagesSentInput = {
@@ -41764,13 +43692,16 @@ export namespace Prisma {
     insights?: InsightRecommendationUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentUncheckedCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
     articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationUncheckedCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationUncheckedCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentUncheckedCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserCreateOrConnectWithoutMessagesSentInput = {
@@ -41817,13 +43748,16 @@ export namespace Prisma {
     insights?: InsightRecommendationUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUpdateManyWithoutAssignedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMessagesReceivedInput = {
@@ -41855,13 +43789,16 @@ export namespace Prisma {
     insights?: InsightRecommendationUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUncheckedUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUncheckedUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUncheckedUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUncheckedUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUncheckedUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
   }
 
   export type UserUpsertWithoutMessagesSentInput = {
@@ -41903,13 +43840,16 @@ export namespace Prisma {
     insights?: InsightRecommendationUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUpdateManyWithoutAssignedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMessagesSentInput = {
@@ -41941,13 +43881,16 @@ export namespace Prisma {
     insights?: InsightRecommendationUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUncheckedUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUncheckedUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUncheckedUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUncheckedUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUncheckedUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
   }
 
   export type CompanyCreateWithoutDashboardStateInput = {
@@ -41977,10 +43920,10 @@ export namespace Prisma {
     companyServices?: CompanyServiceCreateNestedManyWithoutCompanyInput
     directors?: DirectorCreateNestedManyWithoutCompanyInput
     payments?: PaymentCreateNestedManyWithoutCompanyInput
-    roleAssignments?: RoleAssignmentCreateNestedManyWithoutCompanyInput
     shareholders?: ShareholderCreateNestedManyWithoutCompanyInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    companyAssignments?: CompanyAssignmentCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutDashboardStateInput = {
@@ -42011,10 +43954,10 @@ export namespace Prisma {
     companyServices?: CompanyServiceUncheckedCreateNestedManyWithoutCompanyInput
     directors?: DirectorUncheckedCreateNestedManyWithoutCompanyInput
     payments?: PaymentUncheckedCreateNestedManyWithoutCompanyInput
-    roleAssignments?: RoleAssignmentUncheckedCreateNestedManyWithoutCompanyInput
     shareholders?: ShareholderUncheckedCreateNestedManyWithoutCompanyInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutCompanyInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    companyAssignments?: CompanyAssignmentUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutDashboardStateInput = {
@@ -42060,10 +44003,10 @@ export namespace Prisma {
     companyServices?: CompanyServiceUpdateManyWithoutCompanyNestedInput
     directors?: DirectorUpdateManyWithoutCompanyNestedInput
     payments?: PaymentUpdateManyWithoutCompanyNestedInput
-    roleAssignments?: RoleAssignmentUpdateManyWithoutCompanyNestedInput
     shareholders?: ShareholderUpdateManyWithoutCompanyNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    companyAssignments?: CompanyAssignmentUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutDashboardStateInput = {
@@ -42094,13 +44037,13 @@ export namespace Prisma {
     companyServices?: CompanyServiceUncheckedUpdateManyWithoutCompanyNestedInput
     directors?: DirectorUncheckedUpdateManyWithoutCompanyNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutCompanyNestedInput
-    roleAssignments?: RoleAssignmentUncheckedUpdateManyWithoutCompanyNestedInput
     shareholders?: ShareholderUncheckedUpdateManyWithoutCompanyNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    companyAssignments?: CompanyAssignmentUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
-  export type UserCreateWithoutAssignedRolesInput = {
+  export type UserCreateWithoutDelegatedUsersInput = {
     username: string
     email: string
     name?: string
@@ -42135,9 +44078,12 @@ export namespace Prisma {
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
     articles?: ArticleCreateNestedManyWithoutAuthorInput
+    assignedBy?: RoleDelegationCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentCreateNestedManyWithoutAssignedByInput
   }
 
-  export type UserUncheckedCreateWithoutAssignedRolesInput = {
+  export type UserUncheckedCreateWithoutDelegatedUsersInput = {
     id?: number
     username: string
     email: string
@@ -42173,97 +44119,114 @@ export namespace Prisma {
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
     articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
+    assignedBy?: RoleDelegationUncheckedCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentUncheckedCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
   }
 
-  export type UserCreateOrConnectWithoutAssignedRolesInput = {
+  export type UserCreateOrConnectWithoutDelegatedUsersInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutAssignedRolesInput, UserUncheckedCreateWithoutAssignedRolesInput>
+    create: XOR<UserCreateWithoutDelegatedUsersInput, UserUncheckedCreateWithoutDelegatedUsersInput>
   }
 
-  export type CompanyCreateWithoutRoleAssignmentsInput = {
-    companyName: string
-    registrationDate: Date | string
-    addressLine1: string
-    addressLine2: string
+  export type UserCreateWithoutAssignedByInput = {
+    username: string
+    email: string
+    name?: string
+    password: string
+    mobile: string
     country: string
-    postalCode: string
-    proposedShares: number
-    currency: string
-    proposedShareCapital: Decimal | DecimalJsLike | number | string
-    businessActivity1: string
-    businessActivity1Desc: string
-    businessActivity2: string
-    businessActivity2Desc: string
-    createdAt?: Date | string
-    status?: $Enums.CompanyStatus
-    statusRemarks?: string | null
+    role: $Enums.UserRole
+    profilePic?: string | null
+    profileThumbnail?: string | null
+    lastLogin?: Date | string | null
+    resetPasswordToken?: string | null
+    resetPasswordExpires?: Date | string | null
+    otp?: string | null
+    otpExpires?: Date | string | null
+    refreshToken?: string | null
+    isVerified?: boolean
+    isDeactivated?: boolean
     isDeleted?: boolean
-    canEditC?: boolean
-    canEditD?: boolean
-    canEditS?: boolean
-    tasks?: CalendarActionCreateNestedManyWithoutCompanyInput
-    user: UserCreateNestedOneWithoutCompaniesInput
-    documents?: CompanyDocumentCreateNestedManyWithoutCompanyInput
-    companyServices?: CompanyServiceCreateNestedManyWithoutCompanyInput
-    dashboardState?: DashboardStateCreateNestedOneWithoutCompanyInput
-    directors?: DirectorCreateNestedManyWithoutCompanyInput
-    payments?: PaymentCreateNestedManyWithoutCompanyInput
-    shareholders?: ShareholderCreateNestedManyWithoutCompanyInput
-    revertMessage?: CompanyStatusMessageCreateNestedManyWithoutCompanyInput
-    auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+    isSuspended?: boolean
+    suspendMessage?: string
+    createdAt?: Date | string
+    assignedTasks?: CalendarActionCreateNestedManyWithoutUserInput
+    messagesReceived?: ChatMessageCreateNestedManyWithoutReceiverInput
+    messagesSent?: ChatMessageCreateNestedManyWithoutSenderInput
+    companies?: CompanyCreateNestedManyWithoutUserInput
+    insights?: InsightRecommendationCreateNestedManyWithoutUserInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    payments?: PaymentCreateNestedManyWithoutUserInput
+    revertMessage?: CompanyStatusMessageCreateNestedManyWithoutSenderInput
+    uploadedDocs?: CompanyDocumentCreateNestedManyWithoutUploaderInput
+    receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
+    auditLogs?: AuditLogCreateNestedManyWithoutActorInput
+    CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
+    articles?: ArticleCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationCreateNestedManyWithoutDelegatorInput
+    companiesAssigned?: CompanyAssignmentCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentCreateNestedManyWithoutAssignedByInput
   }
 
-  export type CompanyUncheckedCreateWithoutRoleAssignmentsInput = {
-    companyId?: number
-    companyName: string
-    registrationDate: Date | string
-    addressLine1: string
-    addressLine2: string
+  export type UserUncheckedCreateWithoutAssignedByInput = {
+    id?: number
+    username: string
+    email: string
+    name?: string
+    password: string
+    mobile: string
     country: string
-    postalCode: string
-    proposedShares: number
-    currency: string
-    proposedShareCapital: Decimal | DecimalJsLike | number | string
-    businessActivity1: string
-    businessActivity1Desc: string
-    businessActivity2: string
-    businessActivity2Desc: string
-    createdAt?: Date | string
-    status?: $Enums.CompanyStatus
-    statusRemarks?: string | null
+    role: $Enums.UserRole
+    profilePic?: string | null
+    profileThumbnail?: string | null
+    lastLogin?: Date | string | null
+    resetPasswordToken?: string | null
+    resetPasswordExpires?: Date | string | null
+    otp?: string | null
+    otpExpires?: Date | string | null
+    refreshToken?: string | null
+    isVerified?: boolean
+    isDeactivated?: boolean
     isDeleted?: boolean
-    userId: number
-    canEditC?: boolean
-    canEditD?: boolean
-    canEditS?: boolean
-    tasks?: CalendarActionUncheckedCreateNestedManyWithoutCompanyInput
-    documents?: CompanyDocumentUncheckedCreateNestedManyWithoutCompanyInput
-    companyServices?: CompanyServiceUncheckedCreateNestedManyWithoutCompanyInput
-    dashboardState?: DashboardStateUncheckedCreateNestedOneWithoutCompanyInput
-    directors?: DirectorUncheckedCreateNestedManyWithoutCompanyInput
-    payments?: PaymentUncheckedCreateNestedManyWithoutCompanyInput
-    shareholders?: ShareholderUncheckedCreateNestedManyWithoutCompanyInput
-    revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutCompanyInput
-    auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+    isSuspended?: boolean
+    suspendMessage?: string
+    createdAt?: Date | string
+    assignedTasks?: CalendarActionUncheckedCreateNestedManyWithoutUserInput
+    messagesReceived?: ChatMessageUncheckedCreateNestedManyWithoutReceiverInput
+    messagesSent?: ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+    companies?: CompanyUncheckedCreateNestedManyWithoutUserInput
+    insights?: InsightRecommendationUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
+    revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutSenderInput
+    uploadedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutUploaderInput
+    receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
+    auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
+    CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
+    articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationUncheckedCreateNestedManyWithoutDelegatorInput
+    companiesAssigned?: CompanyAssignmentUncheckedCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
   }
 
-  export type CompanyCreateOrConnectWithoutRoleAssignmentsInput = {
-    where: CompanyWhereUniqueInput
-    create: XOR<CompanyCreateWithoutRoleAssignmentsInput, CompanyUncheckedCreateWithoutRoleAssignmentsInput>
+  export type UserCreateOrConnectWithoutAssignedByInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutAssignedByInput, UserUncheckedCreateWithoutAssignedByInput>
   }
 
-  export type UserUpsertWithoutAssignedRolesInput = {
-    update: XOR<UserUpdateWithoutAssignedRolesInput, UserUncheckedUpdateWithoutAssignedRolesInput>
-    create: XOR<UserCreateWithoutAssignedRolesInput, UserUncheckedCreateWithoutAssignedRolesInput>
+  export type UserUpsertWithoutDelegatedUsersInput = {
+    update: XOR<UserUpdateWithoutDelegatedUsersInput, UserUncheckedUpdateWithoutDelegatedUsersInput>
+    create: XOR<UserCreateWithoutDelegatedUsersInput, UserUncheckedCreateWithoutDelegatedUsersInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutAssignedRolesInput = {
+  export type UserUpdateToOneWithWhereWithoutDelegatedUsersInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutAssignedRolesInput, UserUncheckedUpdateWithoutAssignedRolesInput>
+    data: XOR<UserUpdateWithoutDelegatedUsersInput, UserUncheckedUpdateWithoutDelegatedUsersInput>
   }
 
-  export type UserUpdateWithoutAssignedRolesInput = {
+  export type UserUpdateWithoutDelegatedUsersInput = {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -42298,9 +44261,12 @@ export namespace Prisma {
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUpdateManyWithoutAuthorNestedInput
+    assignedBy?: RoleDelegationUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUpdateManyWithoutAssignedByNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutAssignedRolesInput = {
+  export type UserUncheckedUpdateWithoutDelegatedUsersInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -42336,20 +44302,359 @@ export namespace Prisma {
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
+    assignedBy?: RoleDelegationUncheckedUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUncheckedUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
   }
 
-  export type CompanyUpsertWithoutRoleAssignmentsInput = {
-    update: XOR<CompanyUpdateWithoutRoleAssignmentsInput, CompanyUncheckedUpdateWithoutRoleAssignmentsInput>
-    create: XOR<CompanyCreateWithoutRoleAssignmentsInput, CompanyUncheckedCreateWithoutRoleAssignmentsInput>
+  export type UserUpsertWithoutAssignedByInput = {
+    update: XOR<UserUpdateWithoutAssignedByInput, UserUncheckedUpdateWithoutAssignedByInput>
+    create: XOR<UserCreateWithoutAssignedByInput, UserUncheckedCreateWithoutAssignedByInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutAssignedByInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutAssignedByInput, UserUncheckedUpdateWithoutAssignedByInput>
+  }
+
+  export type UserUpdateWithoutAssignedByInput = {
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    profilePic?: NullableStringFieldUpdateOperationsInput | string | null
+    profileThumbnail?: NullableStringFieldUpdateOperationsInput | string | null
+    lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    otp?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    isDeactivated?: BoolFieldUpdateOperationsInput | boolean
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isSuspended?: BoolFieldUpdateOperationsInput | boolean
+    suspendMessage?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assignedTasks?: CalendarActionUpdateManyWithoutUserNestedInput
+    messagesReceived?: ChatMessageUpdateManyWithoutReceiverNestedInput
+    messagesSent?: ChatMessageUpdateManyWithoutSenderNestedInput
+    companies?: CompanyUpdateManyWithoutUserNestedInput
+    insights?: InsightRecommendationUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    payments?: PaymentUpdateManyWithoutUserNestedInput
+    revertMessage?: CompanyStatusMessageUpdateManyWithoutSenderNestedInput
+    uploadedDocs?: CompanyDocumentUpdateManyWithoutUploaderNestedInput
+    receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
+    auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
+    CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUpdateManyWithoutDelegatorNestedInput
+    companiesAssigned?: CompanyAssignmentUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUpdateManyWithoutAssignedByNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutAssignedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    profilePic?: NullableStringFieldUpdateOperationsInput | string | null
+    profileThumbnail?: NullableStringFieldUpdateOperationsInput | string | null
+    lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    otp?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    isDeactivated?: BoolFieldUpdateOperationsInput | boolean
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isSuspended?: BoolFieldUpdateOperationsInput | boolean
+    suspendMessage?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assignedTasks?: CalendarActionUncheckedUpdateManyWithoutUserNestedInput
+    messagesReceived?: ChatMessageUncheckedUpdateManyWithoutReceiverNestedInput
+    messagesSent?: ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+    companies?: CompanyUncheckedUpdateManyWithoutUserNestedInput
+    insights?: InsightRecommendationUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
+    revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutSenderNestedInput
+    uploadedDocs?: CompanyDocumentUncheckedUpdateManyWithoutUploaderNestedInput
+    receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
+    auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
+    CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUncheckedUpdateManyWithoutDelegatorNestedInput
+    companiesAssigned?: CompanyAssignmentUncheckedUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
+  }
+
+  export type CompanyCreateWithoutCompanyAssignmentsInput = {
+    companyName: string
+    registrationDate: Date | string
+    addressLine1: string
+    addressLine2: string
+    country: string
+    postalCode: string
+    proposedShares: number
+    currency: string
+    proposedShareCapital: Decimal | DecimalJsLike | number | string
+    businessActivity1: string
+    businessActivity1Desc: string
+    businessActivity2: string
+    businessActivity2Desc: string
+    createdAt?: Date | string
+    status?: $Enums.CompanyStatus
+    statusRemarks?: string | null
+    isDeleted?: boolean
+    canEditC?: boolean
+    canEditD?: boolean
+    canEditS?: boolean
+    tasks?: CalendarActionCreateNestedManyWithoutCompanyInput
+    user: UserCreateNestedOneWithoutCompaniesInput
+    documents?: CompanyDocumentCreateNestedManyWithoutCompanyInput
+    companyServices?: CompanyServiceCreateNestedManyWithoutCompanyInput
+    dashboardState?: DashboardStateCreateNestedOneWithoutCompanyInput
+    directors?: DirectorCreateNestedManyWithoutCompanyInput
+    payments?: PaymentCreateNestedManyWithoutCompanyInput
+    shareholders?: ShareholderCreateNestedManyWithoutCompanyInput
+    revertMessage?: CompanyStatusMessageCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyUncheckedCreateWithoutCompanyAssignmentsInput = {
+    companyId?: number
+    companyName: string
+    registrationDate: Date | string
+    addressLine1: string
+    addressLine2: string
+    country: string
+    postalCode: string
+    proposedShares: number
+    currency: string
+    proposedShareCapital: Decimal | DecimalJsLike | number | string
+    businessActivity1: string
+    businessActivity1Desc: string
+    businessActivity2: string
+    businessActivity2Desc: string
+    createdAt?: Date | string
+    status?: $Enums.CompanyStatus
+    statusRemarks?: string | null
+    isDeleted?: boolean
+    userId: number
+    canEditC?: boolean
+    canEditD?: boolean
+    canEditS?: boolean
+    tasks?: CalendarActionUncheckedCreateNestedManyWithoutCompanyInput
+    documents?: CompanyDocumentUncheckedCreateNestedManyWithoutCompanyInput
+    companyServices?: CompanyServiceUncheckedCreateNestedManyWithoutCompanyInput
+    dashboardState?: DashboardStateUncheckedCreateNestedOneWithoutCompanyInput
+    directors?: DirectorUncheckedCreateNestedManyWithoutCompanyInput
+    payments?: PaymentUncheckedCreateNestedManyWithoutCompanyInput
+    shareholders?: ShareholderUncheckedCreateNestedManyWithoutCompanyInput
+    revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutCompanyInput
+    auditLogs?: AuditLogUncheckedCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyCreateOrConnectWithoutCompanyAssignmentsInput = {
+    where: CompanyWhereUniqueInput
+    create: XOR<CompanyCreateWithoutCompanyAssignmentsInput, CompanyUncheckedCreateWithoutCompanyAssignmentsInput>
+  }
+
+  export type UserCreateWithoutCompaniesAssignedInput = {
+    username: string
+    email: string
+    name?: string
+    password: string
+    mobile: string
+    country: string
+    role: $Enums.UserRole
+    profilePic?: string | null
+    profileThumbnail?: string | null
+    lastLogin?: Date | string | null
+    resetPasswordToken?: string | null
+    resetPasswordExpires?: Date | string | null
+    otp?: string | null
+    otpExpires?: Date | string | null
+    refreshToken?: string | null
+    isVerified?: boolean
+    isDeactivated?: boolean
+    isDeleted?: boolean
+    isSuspended?: boolean
+    suspendMessage?: string
+    createdAt?: Date | string
+    assignedTasks?: CalendarActionCreateNestedManyWithoutUserInput
+    messagesReceived?: ChatMessageCreateNestedManyWithoutReceiverInput
+    messagesSent?: ChatMessageCreateNestedManyWithoutSenderInput
+    companies?: CompanyCreateNestedManyWithoutUserInput
+    insights?: InsightRecommendationCreateNestedManyWithoutUserInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    payments?: PaymentCreateNestedManyWithoutUserInput
+    revertMessage?: CompanyStatusMessageCreateNestedManyWithoutSenderInput
+    uploadedDocs?: CompanyDocumentCreateNestedManyWithoutUploaderInput
+    receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
+    auditLogs?: AuditLogCreateNestedManyWithoutActorInput
+    CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
+    articles?: ArticleCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationCreateNestedManyWithoutDelegateeInput
+    companiesDelegated?: CompanyAssignmentCreateNestedManyWithoutAssignedByInput
+  }
+
+  export type UserUncheckedCreateWithoutCompaniesAssignedInput = {
+    id?: number
+    username: string
+    email: string
+    name?: string
+    password: string
+    mobile: string
+    country: string
+    role: $Enums.UserRole
+    profilePic?: string | null
+    profileThumbnail?: string | null
+    lastLogin?: Date | string | null
+    resetPasswordToken?: string | null
+    resetPasswordExpires?: Date | string | null
+    otp?: string | null
+    otpExpires?: Date | string | null
+    refreshToken?: string | null
+    isVerified?: boolean
+    isDeactivated?: boolean
+    isDeleted?: boolean
+    isSuspended?: boolean
+    suspendMessage?: string
+    createdAt?: Date | string
+    assignedTasks?: CalendarActionUncheckedCreateNestedManyWithoutUserInput
+    messagesReceived?: ChatMessageUncheckedCreateNestedManyWithoutReceiverInput
+    messagesSent?: ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+    companies?: CompanyUncheckedCreateNestedManyWithoutUserInput
+    insights?: InsightRecommendationUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
+    revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutSenderInput
+    uploadedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutUploaderInput
+    receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
+    auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
+    CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
+    articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationUncheckedCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationUncheckedCreateNestedManyWithoutDelegateeInput
+    companiesDelegated?: CompanyAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
+  }
+
+  export type UserCreateOrConnectWithoutCompaniesAssignedInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCompaniesAssignedInput, UserUncheckedCreateWithoutCompaniesAssignedInput>
+  }
+
+  export type UserCreateWithoutCompaniesDelegatedInput = {
+    username: string
+    email: string
+    name?: string
+    password: string
+    mobile: string
+    country: string
+    role: $Enums.UserRole
+    profilePic?: string | null
+    profileThumbnail?: string | null
+    lastLogin?: Date | string | null
+    resetPasswordToken?: string | null
+    resetPasswordExpires?: Date | string | null
+    otp?: string | null
+    otpExpires?: Date | string | null
+    refreshToken?: string | null
+    isVerified?: boolean
+    isDeactivated?: boolean
+    isDeleted?: boolean
+    isSuspended?: boolean
+    suspendMessage?: string
+    createdAt?: Date | string
+    assignedTasks?: CalendarActionCreateNestedManyWithoutUserInput
+    messagesReceived?: ChatMessageCreateNestedManyWithoutReceiverInput
+    messagesSent?: ChatMessageCreateNestedManyWithoutSenderInput
+    companies?: CompanyCreateNestedManyWithoutUserInput
+    insights?: InsightRecommendationCreateNestedManyWithoutUserInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    payments?: PaymentCreateNestedManyWithoutUserInput
+    revertMessage?: CompanyStatusMessageCreateNestedManyWithoutSenderInput
+    uploadedDocs?: CompanyDocumentCreateNestedManyWithoutUploaderInput
+    receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
+    auditLogs?: AuditLogCreateNestedManyWithoutActorInput
+    CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
+    articles?: ArticleCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentCreateNestedManyWithoutPreparerInput
+  }
+
+  export type UserUncheckedCreateWithoutCompaniesDelegatedInput = {
+    id?: number
+    username: string
+    email: string
+    name?: string
+    password: string
+    mobile: string
+    country: string
+    role: $Enums.UserRole
+    profilePic?: string | null
+    profileThumbnail?: string | null
+    lastLogin?: Date | string | null
+    resetPasswordToken?: string | null
+    resetPasswordExpires?: Date | string | null
+    otp?: string | null
+    otpExpires?: Date | string | null
+    refreshToken?: string | null
+    isVerified?: boolean
+    isDeactivated?: boolean
+    isDeleted?: boolean
+    isSuspended?: boolean
+    suspendMessage?: string
+    createdAt?: Date | string
+    assignedTasks?: CalendarActionUncheckedCreateNestedManyWithoutUserInput
+    messagesReceived?: ChatMessageUncheckedCreateNestedManyWithoutReceiverInput
+    messagesSent?: ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+    companies?: CompanyUncheckedCreateNestedManyWithoutUserInput
+    insights?: InsightRecommendationUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
+    revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutSenderInput
+    uploadedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutUploaderInput
+    receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
+    auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
+    CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
+    articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationUncheckedCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationUncheckedCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentUncheckedCreateNestedManyWithoutPreparerInput
+  }
+
+  export type UserCreateOrConnectWithoutCompaniesDelegatedInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCompaniesDelegatedInput, UserUncheckedCreateWithoutCompaniesDelegatedInput>
+  }
+
+  export type CompanyUpsertWithoutCompanyAssignmentsInput = {
+    update: XOR<CompanyUpdateWithoutCompanyAssignmentsInput, CompanyUncheckedUpdateWithoutCompanyAssignmentsInput>
+    create: XOR<CompanyCreateWithoutCompanyAssignmentsInput, CompanyUncheckedCreateWithoutCompanyAssignmentsInput>
     where?: CompanyWhereInput
   }
 
-  export type CompanyUpdateToOneWithWhereWithoutRoleAssignmentsInput = {
+  export type CompanyUpdateToOneWithWhereWithoutCompanyAssignmentsInput = {
     where?: CompanyWhereInput
-    data: XOR<CompanyUpdateWithoutRoleAssignmentsInput, CompanyUncheckedUpdateWithoutRoleAssignmentsInput>
+    data: XOR<CompanyUpdateWithoutCompanyAssignmentsInput, CompanyUncheckedUpdateWithoutCompanyAssignmentsInput>
   }
 
-  export type CompanyUpdateWithoutRoleAssignmentsInput = {
+  export type CompanyUpdateWithoutCompanyAssignmentsInput = {
     companyName?: StringFieldUpdateOperationsInput | string
     registrationDate?: DateTimeFieldUpdateOperationsInput | Date | string
     addressLine1?: StringFieldUpdateOperationsInput | string
@@ -42382,7 +44687,7 @@ export namespace Prisma {
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
   }
 
-  export type CompanyUncheckedUpdateWithoutRoleAssignmentsInput = {
+  export type CompanyUncheckedUpdateWithoutCompanyAssignmentsInput = {
     companyId?: IntFieldUpdateOperationsInput | number
     companyName?: StringFieldUpdateOperationsInput | string
     registrationDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -42416,6 +44721,190 @@ export namespace Prisma {
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
+  export type UserUpsertWithoutCompaniesAssignedInput = {
+    update: XOR<UserUpdateWithoutCompaniesAssignedInput, UserUncheckedUpdateWithoutCompaniesAssignedInput>
+    create: XOR<UserCreateWithoutCompaniesAssignedInput, UserUncheckedCreateWithoutCompaniesAssignedInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCompaniesAssignedInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCompaniesAssignedInput, UserUncheckedUpdateWithoutCompaniesAssignedInput>
+  }
+
+  export type UserUpdateWithoutCompaniesAssignedInput = {
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    profilePic?: NullableStringFieldUpdateOperationsInput | string | null
+    profileThumbnail?: NullableStringFieldUpdateOperationsInput | string | null
+    lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    otp?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    isDeactivated?: BoolFieldUpdateOperationsInput | boolean
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isSuspended?: BoolFieldUpdateOperationsInput | boolean
+    suspendMessage?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assignedTasks?: CalendarActionUpdateManyWithoutUserNestedInput
+    messagesReceived?: ChatMessageUpdateManyWithoutReceiverNestedInput
+    messagesSent?: ChatMessageUpdateManyWithoutSenderNestedInput
+    companies?: CompanyUpdateManyWithoutUserNestedInput
+    insights?: InsightRecommendationUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    payments?: PaymentUpdateManyWithoutUserNestedInput
+    revertMessage?: CompanyStatusMessageUpdateManyWithoutSenderNestedInput
+    uploadedDocs?: CompanyDocumentUpdateManyWithoutUploaderNestedInput
+    receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
+    auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
+    CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUpdateManyWithoutDelegateeNestedInput
+    companiesDelegated?: CompanyAssignmentUpdateManyWithoutAssignedByNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCompaniesAssignedInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    profilePic?: NullableStringFieldUpdateOperationsInput | string | null
+    profileThumbnail?: NullableStringFieldUpdateOperationsInput | string | null
+    lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    otp?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    isDeactivated?: BoolFieldUpdateOperationsInput | boolean
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isSuspended?: BoolFieldUpdateOperationsInput | boolean
+    suspendMessage?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assignedTasks?: CalendarActionUncheckedUpdateManyWithoutUserNestedInput
+    messagesReceived?: ChatMessageUncheckedUpdateManyWithoutReceiverNestedInput
+    messagesSent?: ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+    companies?: CompanyUncheckedUpdateManyWithoutUserNestedInput
+    insights?: InsightRecommendationUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
+    revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutSenderNestedInput
+    uploadedDocs?: CompanyDocumentUncheckedUpdateManyWithoutUploaderNestedInput
+    receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
+    auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
+    CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUncheckedUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUncheckedUpdateManyWithoutDelegateeNestedInput
+    companiesDelegated?: CompanyAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
+  }
+
+  export type UserUpsertWithoutCompaniesDelegatedInput = {
+    update: XOR<UserUpdateWithoutCompaniesDelegatedInput, UserUncheckedUpdateWithoutCompaniesDelegatedInput>
+    create: XOR<UserCreateWithoutCompaniesDelegatedInput, UserUncheckedCreateWithoutCompaniesDelegatedInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCompaniesDelegatedInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCompaniesDelegatedInput, UserUncheckedUpdateWithoutCompaniesDelegatedInput>
+  }
+
+  export type UserUpdateWithoutCompaniesDelegatedInput = {
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    profilePic?: NullableStringFieldUpdateOperationsInput | string | null
+    profileThumbnail?: NullableStringFieldUpdateOperationsInput | string | null
+    lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    otp?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    isDeactivated?: BoolFieldUpdateOperationsInput | boolean
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isSuspended?: BoolFieldUpdateOperationsInput | boolean
+    suspendMessage?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assignedTasks?: CalendarActionUpdateManyWithoutUserNestedInput
+    messagesReceived?: ChatMessageUpdateManyWithoutReceiverNestedInput
+    messagesSent?: ChatMessageUpdateManyWithoutSenderNestedInput
+    companies?: CompanyUpdateManyWithoutUserNestedInput
+    insights?: InsightRecommendationUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    payments?: PaymentUpdateManyWithoutUserNestedInput
+    revertMessage?: CompanyStatusMessageUpdateManyWithoutSenderNestedInput
+    uploadedDocs?: CompanyDocumentUpdateManyWithoutUploaderNestedInput
+    receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
+    auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
+    CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUpdateManyWithoutPreparerNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCompaniesDelegatedInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    profilePic?: NullableStringFieldUpdateOperationsInput | string | null
+    profileThumbnail?: NullableStringFieldUpdateOperationsInput | string | null
+    lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    resetPasswordToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPasswordExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    otp?: NullableStringFieldUpdateOperationsInput | string | null
+    otpExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    isDeactivated?: BoolFieldUpdateOperationsInput | boolean
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    isSuspended?: BoolFieldUpdateOperationsInput | boolean
+    suspendMessage?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assignedTasks?: CalendarActionUncheckedUpdateManyWithoutUserNestedInput
+    messagesReceived?: ChatMessageUncheckedUpdateManyWithoutReceiverNestedInput
+    messagesSent?: ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+    companies?: CompanyUncheckedUpdateManyWithoutUserNestedInput
+    insights?: InsightRecommendationUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
+    revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutSenderNestedInput
+    uploadedDocs?: CompanyDocumentUncheckedUpdateManyWithoutUploaderNestedInput
+    receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
+    auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
+    CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
+    articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUncheckedUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUncheckedUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUncheckedUpdateManyWithoutPreparerNestedInput
+  }
+
   export type UserCreateWithoutArticlesInput = {
     username: string
     email: string
@@ -42445,12 +44934,15 @@ export namespace Prisma {
     insights?: InsightRecommendationCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
+    delegatedUsers?: RoleDelegationCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserUncheckedCreateWithoutArticlesInput = {
@@ -42483,12 +44975,15 @@ export namespace Prisma {
     insights?: InsightRecommendationUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentUncheckedCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutActorInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
+    delegatedUsers?: RoleDelegationUncheckedCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationUncheckedCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentUncheckedCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserCreateOrConnectWithoutArticlesInput = {
@@ -42536,12 +45031,15 @@ export namespace Prisma {
     insights?: InsightRecommendationUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
+    delegatedUsers?: RoleDelegationUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUpdateManyWithoutAssignedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutArticlesInput = {
@@ -42574,12 +45072,15 @@ export namespace Prisma {
     insights?: InsightRecommendationUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUncheckedUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUncheckedUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutActorNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
+    delegatedUsers?: RoleDelegationUncheckedUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUncheckedUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUncheckedUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
   }
 
   export type PaymentCreateWithoutStagingCompanyInput = {
@@ -42664,12 +45165,15 @@ export namespace Prisma {
     insights?: InsightRecommendationCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentCreateNestedManyWithoutForUserInput
     CalendarAction?: CalendarActionCreateNestedManyWithoutCreatorInput
     articles?: ArticleCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserUncheckedCreateWithoutAuditLogsInput = {
@@ -42702,12 +45206,15 @@ export namespace Prisma {
     insights?: InsightRecommendationUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
-    assignedRoles?: RoleAssignmentUncheckedCreateNestedManyWithoutAgentInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutSenderInput
     uploadedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutUploaderInput
     receivedDocs?: CompanyDocumentUncheckedCreateNestedManyWithoutForUserInput
     CalendarAction?: CalendarActionUncheckedCreateNestedManyWithoutCreatorInput
     articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
+    delegatedUsers?: RoleDelegationUncheckedCreateNestedManyWithoutDelegatorInput
+    assignedBy?: RoleDelegationUncheckedCreateNestedManyWithoutDelegateeInput
+    companiesAssigned?: CompanyAssignmentUncheckedCreateNestedManyWithoutPreparerInput
+    companiesDelegated?: CompanyAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
   }
 
   export type UserCreateOrConnectWithoutAuditLogsInput = {
@@ -42743,9 +45250,9 @@ export namespace Prisma {
     dashboardState?: DashboardStateCreateNestedOneWithoutCompanyInput
     directors?: DirectorCreateNestedManyWithoutCompanyInput
     payments?: PaymentCreateNestedManyWithoutCompanyInput
-    roleAssignments?: RoleAssignmentCreateNestedManyWithoutCompanyInput
     shareholders?: ShareholderCreateNestedManyWithoutCompanyInput
     revertMessage?: CompanyStatusMessageCreateNestedManyWithoutCompanyInput
+    companyAssignments?: CompanyAssignmentCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutAuditLogsInput = {
@@ -42777,9 +45284,9 @@ export namespace Prisma {
     dashboardState?: DashboardStateUncheckedCreateNestedOneWithoutCompanyInput
     directors?: DirectorUncheckedCreateNestedManyWithoutCompanyInput
     payments?: PaymentUncheckedCreateNestedManyWithoutCompanyInput
-    roleAssignments?: RoleAssignmentUncheckedCreateNestedManyWithoutCompanyInput
     shareholders?: ShareholderUncheckedCreateNestedManyWithoutCompanyInput
     revertMessage?: CompanyStatusMessageUncheckedCreateNestedManyWithoutCompanyInput
+    companyAssignments?: CompanyAssignmentUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutAuditLogsInput = {
@@ -42827,12 +45334,15 @@ export namespace Prisma {
     insights?: InsightRecommendationUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUpdateManyWithoutForUserNestedInput
     CalendarAction?: CalendarActionUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUpdateManyWithoutAssignedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAuditLogsInput = {
@@ -42865,12 +45375,15 @@ export namespace Prisma {
     insights?: InsightRecommendationUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
-    assignedRoles?: RoleAssignmentUncheckedUpdateManyWithoutAgentNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutSenderNestedInput
     uploadedDocs?: CompanyDocumentUncheckedUpdateManyWithoutUploaderNestedInput
     receivedDocs?: CompanyDocumentUncheckedUpdateManyWithoutForUserNestedInput
     CalendarAction?: CalendarActionUncheckedUpdateManyWithoutCreatorNestedInput
     articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
+    delegatedUsers?: RoleDelegationUncheckedUpdateManyWithoutDelegatorNestedInput
+    assignedBy?: RoleDelegationUncheckedUpdateManyWithoutDelegateeNestedInput
+    companiesAssigned?: CompanyAssignmentUncheckedUpdateManyWithoutPreparerNestedInput
+    companiesDelegated?: CompanyAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
   }
 
   export type CompanyUpsertWithoutAuditLogsInput = {
@@ -42912,9 +45425,9 @@ export namespace Prisma {
     dashboardState?: DashboardStateUpdateOneWithoutCompanyNestedInput
     directors?: DirectorUpdateManyWithoutCompanyNestedInput
     payments?: PaymentUpdateManyWithoutCompanyNestedInput
-    roleAssignments?: RoleAssignmentUpdateManyWithoutCompanyNestedInput
     shareholders?: ShareholderUpdateManyWithoutCompanyNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutCompanyNestedInput
+    companyAssignments?: CompanyAssignmentUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutAuditLogsInput = {
@@ -42946,9 +45459,9 @@ export namespace Prisma {
     dashboardState?: DashboardStateUncheckedUpdateOneWithoutCompanyNestedInput
     directors?: DirectorUncheckedUpdateManyWithoutCompanyNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutCompanyNestedInput
-    roleAssignments?: RoleAssignmentUncheckedUpdateManyWithoutCompanyNestedInput
     shareholders?: ShareholderUncheckedUpdateManyWithoutCompanyNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutCompanyNestedInput
+    companyAssignments?: CompanyAssignmentUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type CalendarActionCreateManyUserInput = {
@@ -43028,13 +45541,6 @@ export namespace Prisma {
     services: string
   }
 
-  export type RoleAssignmentCreateManyAgentInput = {
-    id?: number
-    companyId: number
-    role: $Enums.UserRole
-    assignedAt?: Date | string
-  }
-
   export type CompanyStatusMessageCreateManySenderInput = {
     id?: number
     companyId: number
@@ -43103,6 +45609,34 @@ export namespace Prisma {
     imagePath?: string | null
     views?: number
     hashtag?: string | null
+  }
+
+  export type RoleDelegationCreateManyDelegatorInput = {
+    id?: number
+    delegateeId: number
+    delegatedRole: $Enums.UserRole
+    createdAt?: Date | string
+  }
+
+  export type RoleDelegationCreateManyDelegateeInput = {
+    id?: number
+    delegatorId: number
+    delegatedRole: $Enums.UserRole
+    createdAt?: Date | string
+  }
+
+  export type CompanyAssignmentCreateManyPreparerInput = {
+    id?: number
+    companyId: number
+    assignedById: number
+    createdAt?: Date | string
+  }
+
+  export type CompanyAssignmentCreateManyAssignedByInput = {
+    id?: number
+    companyId: number
+    preparerId: number
+    createdAt?: Date | string
   }
 
   export type CalendarActionUpdateWithoutUserInput = {
@@ -43204,10 +45738,10 @@ export namespace Prisma {
     dashboardState?: DashboardStateUpdateOneWithoutCompanyNestedInput
     directors?: DirectorUpdateManyWithoutCompanyNestedInput
     payments?: PaymentUpdateManyWithoutCompanyNestedInput
-    roleAssignments?: RoleAssignmentUpdateManyWithoutCompanyNestedInput
     shareholders?: ShareholderUpdateManyWithoutCompanyNestedInput
     revertMessage?: CompanyStatusMessageUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUpdateManyWithoutCompanyNestedInput
+    companyAssignments?: CompanyAssignmentUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutUserInput = {
@@ -43238,10 +45772,10 @@ export namespace Prisma {
     dashboardState?: DashboardStateUncheckedUpdateOneWithoutCompanyNestedInput
     directors?: DirectorUncheckedUpdateManyWithoutCompanyNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutCompanyNestedInput
-    roleAssignments?: RoleAssignmentUncheckedUpdateManyWithoutCompanyNestedInput
     shareholders?: ShareholderUncheckedUpdateManyWithoutCompanyNestedInput
     revertMessage?: CompanyStatusMessageUncheckedUpdateManyWithoutCompanyNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutCompanyNestedInput
+    companyAssignments?: CompanyAssignmentUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateManyWithoutUserInput = {
@@ -43349,26 +45883,6 @@ export namespace Prisma {
     paymentStatus?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
     paymentReference?: StringFieldUpdateOperationsInput | string
     services?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type RoleAssignmentUpdateWithoutAgentInput = {
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    company?: CompanyUpdateOneRequiredWithoutRoleAssignmentsNestedInput
-  }
-
-  export type RoleAssignmentUncheckedUpdateWithoutAgentInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    companyId?: IntFieldUpdateOperationsInput | number
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type RoleAssignmentUncheckedUpdateManyWithoutAgentInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    companyId?: IntFieldUpdateOperationsInput | number
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CompanyStatusMessageUpdateWithoutSenderInput = {
@@ -43575,6 +46089,86 @@ export namespace Prisma {
     hashtag?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type RoleDelegationUpdateWithoutDelegatorInput = {
+    delegatedRole?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    delegatee?: UserUpdateOneRequiredWithoutAssignedByNestedInput
+  }
+
+  export type RoleDelegationUncheckedUpdateWithoutDelegatorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    delegateeId?: IntFieldUpdateOperationsInput | number
+    delegatedRole?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RoleDelegationUncheckedUpdateManyWithoutDelegatorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    delegateeId?: IntFieldUpdateOperationsInput | number
+    delegatedRole?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RoleDelegationUpdateWithoutDelegateeInput = {
+    delegatedRole?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    delegator?: UserUpdateOneRequiredWithoutDelegatedUsersNestedInput
+  }
+
+  export type RoleDelegationUncheckedUpdateWithoutDelegateeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    delegatorId?: IntFieldUpdateOperationsInput | number
+    delegatedRole?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RoleDelegationUncheckedUpdateManyWithoutDelegateeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    delegatorId?: IntFieldUpdateOperationsInput | number
+    delegatedRole?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyAssignmentUpdateWithoutPreparerInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutCompanyAssignmentsNestedInput
+    assignedBy?: UserUpdateOneRequiredWithoutCompaniesDelegatedNestedInput
+  }
+
+  export type CompanyAssignmentUncheckedUpdateWithoutPreparerInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    companyId?: IntFieldUpdateOperationsInput | number
+    assignedById?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyAssignmentUncheckedUpdateManyWithoutPreparerInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    companyId?: IntFieldUpdateOperationsInput | number
+    assignedById?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyAssignmentUpdateWithoutAssignedByInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutCompanyAssignmentsNestedInput
+    preparer?: UserUpdateOneRequiredWithoutCompaniesAssignedNestedInput
+  }
+
+  export type CompanyAssignmentUncheckedUpdateWithoutAssignedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    companyId?: IntFieldUpdateOperationsInput | number
+    preparerId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyAssignmentUncheckedUpdateManyWithoutAssignedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    companyId?: IntFieldUpdateOperationsInput | number
+    preparerId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type CalendarActionCreateManyCompanyInput = {
     id?: number
     title: string
@@ -43639,13 +46233,6 @@ export namespace Prisma {
     services: string
   }
 
-  export type RoleAssignmentCreateManyCompanyInput = {
-    id?: number
-    agentId: number
-    role: $Enums.UserRole
-    assignedAt?: Date | string
-  }
-
   export type ShareholderCreateManyCompanyInput = {
     id?: number
     shareholderName: string
@@ -43683,6 +46270,13 @@ export namespace Prisma {
     action: string
     target: string
     timestamp?: Date | string
+  }
+
+  export type CompanyAssignmentCreateManyCompanyInput = {
+    id?: number
+    preparerId: number
+    assignedById: number
+    createdAt?: Date | string
   }
 
   export type CalendarActionUpdateWithoutCompanyInput = {
@@ -43874,26 +46468,6 @@ export namespace Prisma {
     services?: StringFieldUpdateOperationsInput | string
   }
 
-  export type RoleAssignmentUpdateWithoutCompanyInput = {
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    agent?: UserUpdateOneRequiredWithoutAssignedRolesNestedInput
-  }
-
-  export type RoleAssignmentUncheckedUpdateWithoutCompanyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    agentId?: IntFieldUpdateOperationsInput | number
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type RoleAssignmentUncheckedUpdateManyWithoutCompanyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    agentId?: IntFieldUpdateOperationsInput | number
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type ShareholderUpdateWithoutCompanyInput = {
     shareholderName?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -44006,6 +46580,26 @@ export namespace Prisma {
     action?: StringFieldUpdateOperationsInput | string
     target?: StringFieldUpdateOperationsInput | string
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyAssignmentUpdateWithoutCompanyInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    preparer?: UserUpdateOneRequiredWithoutCompaniesAssignedNestedInput
+    assignedBy?: UserUpdateOneRequiredWithoutCompaniesDelegatedNestedInput
+  }
+
+  export type CompanyAssignmentUncheckedUpdateWithoutCompanyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    preparerId?: IntFieldUpdateOperationsInput | number
+    assignedById?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyAssignmentUncheckedUpdateManyWithoutCompanyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    preparerId?: IntFieldUpdateOperationsInput | number
+    assignedById?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type RefundCreateManyPaymentInput = {
