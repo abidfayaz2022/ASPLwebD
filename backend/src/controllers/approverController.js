@@ -3,26 +3,32 @@ import * as approverService from '../services/approverService.js';
 export const getApproverDashboard = async (req, res) => {
   try {
     const dashboard = await approverService.getApproverDashboardData(req.user.id);
-    res.json({ success: true, dashboard });
+    res.status(200).json({ success: true, dashboard });
   } catch (err) {
+    console.error(err);
     res.status(500).json({ success: false, message: 'Failed to fetch dashboard', error: err.message });
   }
 };
 
-export const getUserAndPreparerDashboards = async (req, res) => {
+export const getAllPreparerSummaries = async (req, res) => {
   try {
-    const data = await approverService.getAllDashboards();
-    res.json({ success: true, dashboards: data });
+    const summaries = await approverService.getAllPreparerSummaries();
+    res.status(200).json({ success: true, summaries });
   } catch (err) {
-    res.status(500).json({ success: false, message: 'Failed to fetch dashboards', error: err.message });
+    console.error('Failed to fetch preparer summaries:', err);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch preparer summaries',
+      error: err.message
+    });
   }
 };
 
-export const assignAgentToUser = async (req, res) => {
+export const assignPreparerToCompany = async (req, res) => {
   try {
-    const { userId, agentId, role } = req.body;
-    const result = await approverService.assignAgent(userId, agentId, role);
-    res.json({ success: true, message: 'Agent assigned successfully', result });
+    const { userId, preparerId } = req.body;
+    const result = await approverService.assignPreparerToCompany(userId, preparerId, req.user.id);
+    res.json({ success: true, message: 'Preparer assigned to company successfully', result });
   } catch (err) {
     res.status(400).json({ success: false, message: err.message });
   }

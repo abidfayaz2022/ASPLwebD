@@ -1,7 +1,7 @@
 import express from 'express';
 import passport from 'passport';
 import {
-    register,
+    // register,
     login,
     getProfile,
     requestPasswordReset,
@@ -15,7 +15,7 @@ import {
 const router = express.Router();
 
 
-router.post('/register', register);
+// router.post('/register', register);
 router.post('/login', login);
 router.post('/request-reset', requestPasswordReset);         // generate reset token
 router.post('/reset-password', resetPassword);               // use token to reset password

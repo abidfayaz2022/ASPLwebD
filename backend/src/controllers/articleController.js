@@ -36,7 +36,7 @@ export const publishArticle = async (req, res) => {
 export const deleteArticle = async (req, res) => {
   try {
     const articleId = parseInt(req.params.id);
-    await articleService.deleteArticle(articleId, req.user.id);
+    await articleService.deleteArticle(articleId);
     res.json({ success: true, message: 'Article deleted' });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
@@ -48,6 +48,16 @@ export const getPublishedArticles = async (_req, res) => {
   try {
     const articles = await articleService.fetchPublishedArticles();
     res.json({ success: true, articles });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+// Public: View published articles
+export const getPublishedArticleById = async (req, res) => {
+  try {
+    const articleId = parseInt(req.params.id);
+    const article = await articleService.fetchPublishedArticleById(articleId);
+    res.json({ success: true, article });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
   }
