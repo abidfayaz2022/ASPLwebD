@@ -21,7 +21,7 @@ export default function CountryHero({
           fill
           className="diagonal-image"
           priority
-          sizes="(max-width: 768px) 100vw, 60vw"
+          sizes="(max-width: 768px) 100vw, 100vw"
         />
       </div>
 
@@ -58,13 +58,15 @@ export default function CountryHero({
 
         .diagonal-image-wrapper {
           position: absolute;
-          top: 0;
+          top:0;
           right: 0;
           bottom: 0;
-          width: 60%;
+          width: 100%;
+          aspect-ratio: 16/9;
           z-index: 1;
-          clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
-          transform: translateX(5%);
+          clip-path: polygon(25% 0, 100% 0, 100% 100%, 15% 100%);
+          transform: translateX(27%);
+          overflow:hidden;
         }
 
         .diagonal-image {
