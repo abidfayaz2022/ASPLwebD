@@ -8,7 +8,7 @@
     "start:prod": "cross-env NODE_ENV=production node index.js",
     "dev": "nodemon index.js",
     "build": "cross-env NODE_ENV=production node index.js",
-    "postinstall": "npx prisma generate",
+    "postinstall": "if [ \"$NODE_ENV\" != \"production\" ]; then npx prisma generate; fi",
     "prisma:migrate": "npx prisma migrate dev",
     "prisma:generate": "npx prisma generate",
     "prisma:studio": "npx prisma studio",

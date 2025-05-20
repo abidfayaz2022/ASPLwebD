@@ -229,12 +229,26 @@ export const assignPreparerToCompany = async (userId, preparerId, assignedById) 
     throw new Error('Preparer already assigned to this company');
   }
 
-  return prisma.companyAssignment.create({
-    data: {
-      companyId: company.companyId,
-      preparerId: parseInt(preparerId),
-      assignedById: assignedById
-    }
+  return prisma.$transaction(async (tx) => {
+    const assignment = await tx.companyAssignment.create({
+      data: {
+        companyId: company.companyId,
+        preparerId: parseInt(preparerId),
+        assignedById
+      }
+    });
+
+    await tx.auditLog.create({
+      data: {
+        actorId: assignedById,
+        role: 'Admin',
+        action: `Assigned preparer ${preparerId} to company ${company.companyName}`,
+        target: `Company ID ${company.companyId}`,
+        companyId: company.companyId
+      }
+    });
+
+    return assignment;
   });
 };
 
@@ -253,7 +267,6 @@ export const approveDocuments = async (companyId, approverId, remarks) => {
   const assignedPreparerId = company.companyAssignments[0]?.preparerId;
   if (!assignedPreparerId) throw new Error('No preparer assigned to this company');
 
-  //  Check if this approver is the one who assigned the preparer
   const isAuthorized = await prisma.roleDelegation.findFirst({
     where: {
       delegatedRole: Roles.PREPARER,
@@ -266,7 +279,7 @@ export const approveDocuments = async (companyId, approverId, remarks) => {
     throw new Error('You are not authorized to approve this company');
   }
 
-  //  Proceed to approve inside a transaction
+  // ✅ Use transaction for update + messaging + audit
   return prisma.$transaction(async (tx) => {
     const updatedCompany = await tx.company.update({
       where: { companyId: parseInt(companyId) },
@@ -296,9 +309,20 @@ export const approveDocuments = async (companyId, approverId, remarks) => {
       }
     });
 
+    await tx.auditLog.create({
+      data: {
+        actorId: approverId,
+        role: Roles.APPROVER,
+        action: 'Approved company incorporation',
+        target: `Company ID ${companyId}`,
+        companyId: updatedCompany.companyId
+      }
+    });
+
     return updatedCompany;
   });
 };
+
 
 export const notifyAllUsers = async (title, message) => {
   const users = await prisma.user.findMany({ where: { role: Roles.CLIENT } });
