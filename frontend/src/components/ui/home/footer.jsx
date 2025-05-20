@@ -311,7 +311,7 @@ const Footer = () => {
                                         color: '#333',
                                     }}
                                 >
-                                    Contact Us
+                                    Offices
                                     <span
                                         className="title-line"
                                         style={{
@@ -375,26 +375,6 @@ const Footer = () => {
                                         <div className="content">
                                             <h6 className="mb-1" style={{ fontWeight: 600, color: '#333', fontSize: '15px' }}>Administrative Office</h6>
                                             <p className="mb-0" style={{ color: '#444', fontSize: '14px' }}>10, Shree Nath Ji Complex, Madia Katra Crossing, Agra, U.P., India 282004.</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="contact-item d-flex mb-3">
-                                        <div className="icon me-3" style={{ color: 'var(--primary-color)', fontSize: '20px' }}>
-                                            <i className="bi bi-envelope-fill"></i>
-                                        </div>
-                                        <div className="content">
-                                            <h6 className="mb-1" style={{ fontWeight: 600, color: '#333', fontSize: '15px' }}>Email Us</h6>
-                                            <a href="mailto:contact@asplconsultancy.com" style={{ color: '#444', textDecoration: 'none', fontSize: '14px' }}>contact@theangelservices.com</a>
-                                        </div>
-                                    </div>
-
-                                    <div className="contact-item d-flex">
-                                        <div className="icon me-3" style={{ color: 'var(--primary-color)', fontSize: '20px' }}>
-                                            <i className="bi bi-telephone-fill"></i>
-                                        </div>
-                                        <div className="content">
-                                            <h6 className="mb-1" style={{ fontWeight: 600, color: '#333', fontSize: '15px' }}>Call Us</h6>
-                                            <a href="tel:+91-9259049836" style={{ color: '#444', textDecoration: 'none', fontSize: '14px' }}>+65-82002370</a>
                                         </div>
                                     </div>
 

@@ -1,0 +1,81 @@
+.articlePage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.backButton {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  margin-bottom: 2rem;
+  transition: color 0.2s;
+}
+
+.backButton:hover {
+  color: #333;
+}
+
+.article {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.articleImage {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.articleTitle {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.articleMeta {
+  display: flex;
+  gap: 1.5rem;
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+.articleContent {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+}
+
+.articleContent h2 {
+  font-size: 1.8rem;
+  margin: 2rem 0 1rem;
+  color: #333;
+}
+
+.articleContent p {
+  margin-bottom: 1.5rem;
+}
+
+.articleContent img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  font-size: 1.2rem;
+  color: #666;
+} 

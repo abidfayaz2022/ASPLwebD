@@ -62,3 +62,15 @@ export const deleteBlog = createAsyncThunk('blog/delete', async (id, { rejectWit
     return rejectWithValue(err?.response?.data?.message || 'Failed to delete blog');
   }
 });
+
+export const fetchArticleById = createAsyncThunk(
+  'blog/fetchArticleById',
+  async (id, { rejectWithValue }) => {
+    try {
+      const res = await callApi(blogApi.getById(id));
+      return res.article;
+    } catch (err) {
+      return rejectWithValue(err?.response?.data?.message || 'Failed to fetch article');
+    }
+  }
+);

@@ -11,6 +11,20 @@ import 'react-toastify/dist/ReactToastify.css';
 import { loginUser, fetchProfile } from '../redux/auth/authActions';
 import { clearError } from '../redux/auth/authSlice';
 
+// Add this helper function at the top level
+const getDashboardPath = (role) => {
+  switch (role?.toLowerCase()) {
+    case 'admin':
+      return '/dashboard/admin';
+    case 'approver':
+      return '/dashboard/approver';
+    case 'preparer':
+      return '/dashboard/preparer';
+    default:
+      return '/dashboard/client';
+  }
+};
+
 const LoginPage = () => {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -23,27 +37,25 @@ const LoginPage = () => {
 
   // Check session on load
   useEffect(() => {
-  const checkIfLoggedIn = async () => {
-    try {
-      const res = await dispatch(fetchProfile()).unwrap();
-      if (res) {
-        const role = res.role?.toLowerCase();
-        router.replace(role === 'admin' ? '/dashboard/admin' : '/dashboard/client');
+    const checkIfLoggedIn = async () => {
+      try {
+        const res = await dispatch(fetchProfile()).unwrap();
+        if (res) {
+          router.replace(getDashboardPath(res.role));
+        }
+      } catch {
+        // Handle error silently
+      } finally {
+        setCheckingAuth(false);
       }
-    } catch {
-      
-    } finally {
-      setCheckingAuth(false);
-    }
-  };
-  checkIfLoggedIn();
-}, [dispatch, router]);
+    };
+    checkIfLoggedIn();
+  }, [dispatch, router]);
 
   // Redirect if already logged in
   useEffect(() => {
     if (isAuthenticated && user) {
-      const role = user.role?.toLowerCase();
-      router.replace(role === 'admin' ? '/dashboard/admin' : '/dashboard/client');
+      router.replace(getDashboardPath(user.role));
     }
   }, [isAuthenticated, user, router]);
 
@@ -67,9 +79,8 @@ const LoginPage = () => {
       toast.success('Login successful');
       const res = await dispatch(fetchProfile()).unwrap();
 
-      const role = res.role?.toLowerCase();
       setTimeout(() => {
-        router.replace(role === 'admin' ? '/dashboard/admin' : '/dashboard/client');
+        router.replace(getDashboardPath(res.role));
       }, 800);
     } catch (err) {
       toast.error(typeof err === 'string' ? err : 'Login failed');

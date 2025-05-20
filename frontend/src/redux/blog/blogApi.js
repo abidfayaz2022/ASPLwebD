@@ -8,6 +8,10 @@ const blogApi = {
     url: '/api/article/drafts',
     method: 'GET',
   },
+  getById: (id) => ({
+    url: `/api/article/${id}`,
+    method: 'GET',
+  }),
   create: {
     url: '/api/article',
     method: 'POST',

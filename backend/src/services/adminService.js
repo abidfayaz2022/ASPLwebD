@@ -1,372 +1,400 @@
-import prisma from "../lib/prismaClient.js";
-import { generateInvoicePdf } from "./invoiceService.js";
-import { Roles } from "../constants/roles.js";
-import { CompanyStatus } from "../constants/companyStatus.js";
+import prisma from '../lib/prismaClient.js';
+// import CompanyStatus from '../constants/companyStatus.js'; // adjust import path if needed
+// import { Roles  } from '../constants/roles.js';
 
-/**
- * Get all users with optional filtering by role
- */
-export const getAllUsers = async (query) => {
-  const { page = 1, limit = 10, role } = query;
-  const skip = (page - 1) * parseInt(limit);
-  const whereCondition = role ? { role } : {};
+import sendEmail from '../utils/email.js';
+import { generateUniqueUsername } from '../utils/usernameGenerator.js';
+import { generateRandomPassword } from '../utils/passwordGenerator.js';
+import { hashPassword } from '../utils/passwordUtils.js';
 
-  const [users, totalUsers] = await Promise.all([
-    prisma.user.findMany({
-      where: whereCondition,
-      select: {
-        id: true,
-        username: true,
-        email: true,
-        mobile: true,
-        country: true,
-        role: true,
-        createdAt: true,
-      },
-      skip,
-      take: parseInt(limit),
-      orderBy: { createdAt: "desc" },
-    }),
-    prisma.user.count({ where: whereCondition }),
+
+export const getAdminDashboard = async () => {
+  const [users, companies, docs, logs] = await Promise.all([
+    prisma.user.count(),
+    prisma.company.count(),
+    prisma.companyDocument.count(),
+    prisma.auditLog.count()
   ]);
 
   return {
-    users,
-    pagination: {
-      total: totalUsers,
-      pages: Math.ceil(totalUsers / parseInt(limit)),
-      page: parseInt(page),
-      limit: parseInt(limit),
-    },
+    totalUsers: users,
+    totalCompanies: companies,
+    totalDocuments: docs,
+    totalAuditLogs: logs
   };
 };
 
-/**
- * Get dashboard data for administrators
- */
-export const getAdminDashboardData = async () => {
-  const [userStats, companyStats, recentCompanies, incorporationsThisMonth, taskStats] = await Promise.all([
-    prisma.$queryRaw`SELECT COUNT(*) as total, jsonb_agg(jsonb_build_object('role', role, 'count', count)) as by_role FROM (SELECT role, COUNT(*) as count FROM "User" GROUP BY role) as role_counts`,
-    prisma.$queryRaw`SELECT COUNT(*) as total, jsonb_agg(jsonb_build_object('status', status, 'count', count)) as by_status FROM (SELECT status, COUNT(*) as count FROM "Company" GROUP BY status) as status_counts`,
-    prisma.company.findMany({
-      take: 5,
-      orderBy: { createdAt: 'desc' },
-      select: {
-        companyId: true,
-        companyName: true,
-        status: true,
-        createdAt: true,
-        user: { select: { username: true, email: true } }
-      }
+
+export const getSystemHealthMetrics = async () => {
+  const [userCounts, companyCounts, documentCount, taskCount] = await Promise.all([
+    prisma.user.groupBy({
+      by: ['role'],
+      _count: { role: true }
     }),
-    prisma.company.count({
-      where: { createdAt: { gte: new Date(new Date().setDate(1)) } }
+
+    prisma.company.groupBy({
+      by: ['status'],
+      _count: { status: true }
     }),
-    prisma.$queryRaw`SELECT SUM(CASE WHEN status = 'Submitted' THEN 1 ELSE 0 END) as pending, SUM(CASE WHEN status = 'Completed' THEN 1 ELSE 0 END) as completed FROM "CalendarAction"`
+
+    prisma.companyDocument.count(),
+
+    prisma.calendarAction.count()
   ]);
 
-  const userCount = parseInt(userStats[0]?.total || 0);
-  const usersByRole = userStats[0]?.by_role || [];
+  const userStats = {};
+  userCounts.forEach((u) => {
+    userStats[u.role] = u._count.role;
+  });
 
-  const companyCount = parseInt(companyStats[0]?.total || 0);
-  const companiesByStatus = companyStats[0]?.by_status || [];
-
-  const pendingTasks = parseInt(taskStats[0]?.pending || 0);
-  const completedTasks = parseInt(taskStats[0]?.completed || 0);
+  const companyStats = {};
+  companyCounts.forEach((c) => {
+    companyStats[c.status] = c._count.status;
+  });
 
   return {
-    users: { total: userCount, byRole: usersByRole },
-    companies: { total: companyCount, byStatus: companiesByStatus, recentRegistrations: recentCompanies, incorporationsThisMonth },
-    tasks: { pending: pendingTasks, completed: completedTasks, total: pendingTasks + completedTasks }
+    totalUsers: Object.values(userStats).reduce((sum, val) => sum + val, 0),
+    userStats,
+    totalCompanies: Object.values(companyStats).reduce((sum, val) => sum + val, 0),
+    companyStats,
+    totalDocuments: documentCount,
+    totalCalendarTasks: taskCount
   };
 };
 
-/**
- * Update a user's role
- */
-export const updateUserRoleById = async (userId, role) => {
-  const validRoles = Object.values(Roles);
-  if (!validRoles.includes(role)) throw new Error('Invalid role specified');
+export const getAllUsers = async () => {
+  return prisma.user.findMany({
+    orderBy: { createdAt: 'desc' },
+    select: {
+      id: true,
+      username: true,
+      email: true,
+      name: true,
+      role: true,
+      isVerified: true,
+      isSuspended: true,
+      isDeleted: true,
+      createdAt: true
+    }
+  });
+};
 
-  const user = await prisma.user.findUnique({ where: { id: parseInt(userId) } });
+export const getUserDashboard = async (userId) => {
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+    include: {
+      companies: true,
+      uploadedDocs: true,
+      notifications: true
+    }
+  });
+
   if (!user) throw new Error('User not found');
 
+  return user;
+};
+
+
+export const updateUserRole = async (userId, newRole) => {
   return prisma.user.update({
-    where: { id: parseInt(userId) },
-    data: { role },
-    select: { id: true, username: true, email: true, role: true }
+    where: { id: userId },
+    data: { role: newRole }
   });
 };
 
-/**
- * Get incorporations/companies for review
- */
-export const getIncorporationsForReviewData = async (query) => {
-  const page = Math.max(1, parseInt(query.page || 1));
-  const limit = Math.min(50, Math.max(1, parseInt(query.limit || 10)));
-  const skip = (page - 1) * limit;
-  const { status } = query;
+export const blockUser = async (userId) => {
+  return prisma.user.update({
+    where: { id: userId },
+    data: { isDeactivated: true }
+  });
+};
 
-  const whereCondition = status && status !== 'all' ? { status } : {};
+export const deleteUser = async (userId) => {
+  return prisma.user.update({
+    where: { id: userId },
+    data: { isDeleted: true }
+  });
+};
 
-  const [companies, totalIncorporations] = await Promise.all([
-    prisma.company.findMany({
-      where: whereCondition,
-      include: {
-        user: { select: { id: true, username: true, email: true } },
-        directors: { select: { directorName: true, email: true } },
-        shareholders: { select: { shareholderName: true, email: true, numberOfShares: true } }
+
+export const createUser = async ({ email, mobile, country, role, name }) => {
+  const username = await generateUniqueUsername(email);
+  const plainPassword = generateRandomPassword();
+
+  const existingUser = await prisma.user.findFirst({
+    where: { OR: [{ email }, { username }] }
+  });
+
+  if (existingUser) throw new Error('User with this email or username already exists');
+
+  const hashed = await hashPassword(plainPassword);
+
+  const user = await prisma.user.create({
+    data: {
+      username,
+      email,
+      password: hashed,
+      mobile: String(mobile),
+      country,
+      role: role,
+      name
+    }
+  });
+
+  // Send welcome email with credentials
+  await sendEmail({
+    to: email,
+    subject: 'Your account has been created',
+    html: `
+      <h2>Welcome to the Platform!</h2>
+      <p>Here are your login credentials:</p>
+      <ul>
+        <li><strong>Username:</strong> ${username}</li>
+        <li><strong>Password:</strong> ${plainPassword}</li>
+      </ul>
+      <p>Please log in and change your password after first login.</p>
+    `
+  });
+
+  return user;
+};
+
+
+export const updateUser = async (userId, updates) => {
+  const notifyFields = ['username', 'password'];
+  const shouldNotify = notifyFields.some((f) => f in updates);
+
+  const user = await prisma.user.findUnique({ where: { id: userId } });
+  if (!user) throw new Error('User not found');
+
+  const updateData = { ...updates };
+
+  if (updates.password) {
+    updateData.password = await hashPassword(updates.password);
+  }
+
+  if (updates.mobile) {
+    updateData.mobile = String(updates.mobile);
+  }
+
+  const updatedUser = await prisma.user.update({
+    where: { id: userId },
+    data: updateData
+  });
+
+  if (shouldNotify) {
+    await sendEmail({
+      to: updatedUser.email,
+      subject: 'Your account has been updated',
+      html: `
+        <p>Your account information has been updated.</p>
+        <ul>
+          ${updates.username ? `<li><strong>New Username:</strong> ${updates.username}</li>` : ''}
+          ${updates.password ? `<li><strong>Password:</strong> (Your password has been reset)</li>` : ''}
+        </ul>
+        <p>If you did not request this, please contact support immediately.</p>
+      `
+    });
+  }
+
+  return updatedUser;
+};
+
+
+
+export const exportAuditLogs = async ({ companyId, userId }) => {
+  const where = {};
+
+  if (companyId) {
+    where.companyId = parseInt(companyId);
+  }
+
+  if (userId) {
+    where.actorId = parseInt(userId);
+  }
+
+  const logs = await prisma.auditLog.findMany({
+    where,
+    orderBy: { timestamp: 'desc' },
+    select: {
+      id: true,
+      action: true,
+      target: true,
+      role: true,
+      timestamp: true,
+      companyId: true,
+      actor: {
+        select: { id: true, name: true, email: true }
+      }
+    }
+  });
+
+  return logs;
+};
+
+
+export const getAllUploadedDocuments = async ({ companyId, uploadedBy, purpose, isVerified }) => {
+  const where = {};
+
+  if (companyId) where.companyId = companyId;
+  if (uploadedBy) where.uploadedBy = uploadedBy;
+  if (purpose) where.purpose = purpose;
+  if (isVerified !== undefined) where.isVerified = isVerified;
+
+  return prisma.companyDocument.findMany({
+    where,
+    orderBy: { uploadedAt: 'desc' },
+    include: {
+      company: {
+        select: { companyId: true, companyName: true }
       },
-      skip,
-      take: limit,
-      orderBy: { createdAt: 'desc' },
-    }),
-    prisma.company.count({ where: whereCondition })
-  ]);
+      uploader: {
+        select: { id: true, name: true, email: true }
+      },
+      forUser: {
+        select: { id: true, username: true, email: true }
+      }
+    }
+  });
+};
+
+
+
+export const suspendUser = async (userId, suspendMessage) => {
+  return prisma.user.update({
+    where: { id: userId },
+    data: {
+      isSuspended: true,
+      suspendMessage
+    }
+  });
+};
+
+export const unsuspendUser = async (userId) => {
+  return prisma.user.update({
+    where: { id: userId },
+    data: {
+      isSuspended: false,
+      suspendMessage: 'Account is not suspended'
+    }
+  });
+};
+
+export const previewCompany = async (companyId) => {
+  const company = await prisma.company.findUnique({
+    where: { companyId },
+    include: {
+      user: {
+        select: { id: true, username: true, email: true, name: true }
+      },
+      companyAssignments: {
+        include: {
+          preparer: { select: { id: true, name: true, email: true } }
+        }
+      },
+      directors: true,
+      shareholders: true,
+      documents: {
+        orderBy: { uploadedAt: 'desc' }
+      },
+      revertMessage: {
+        orderBy: { createdAt: 'desc' }
+      },
+      auditLogs: {
+        orderBy: { timestamp: 'desc' },
+        take: 10,
+        include: {
+          actor: { select: { id: true, name: true, email: true } }
+        }
+      }
+    }
+  });
+
+  if (!company) throw new Error('Company not found');
 
   return {
-    incorporations: companies,
-    pagination: { total: totalIncorporations, pages: Math.ceil(totalIncorporations / limit), page, limit }
+    companyId: company.companyId,
+    companyName: company.companyName,
+    status: company.status,
+    statusRemarks: company.statusRemarks,
+    createdAt: company.createdAt,
+    client: company.user,
+    assignedPreparers: company.companyAssignments.map(a => a.preparer),
+    directors: company.directors,
+    shareholders: company.shareholders,
+    documents: company.documents,
+    statusHistory: company.revertMessage,
+    recentAuditLogs: company.auditLogs
   };
 };
 
-/**
- * Update a company's incorporation status
- */
-export const updateCompanyIncorporationStatus = async (companyId, newStatus, revertMessage, senderId, senderRole) => {
-  companyId = parseInt(companyId);
 
-  const validStatuses = Object.values(CompanyStatus);
-  if (!validStatuses.includes(newStatus)) {
-    throw new Error('Invalid status specified.');
-  }
 
-  if (!revertMessage || revertMessage.trim().length < 5) {
-    throw new Error('Message is required for status change.');
-  }
+export const reassignPreparer = async (companyId, newPreparerId, adminId) => {
+  return prisma.$transaction(async (tx) => {
+    const existingAssignment = await tx.companyAssignment.findFirst({
+      where: { companyId }
+    });
 
-  const company = await prisma.company.findUnique({
-    where: { companyId }
+    if (existingAssignment) {
+      await tx.companyAssignment.delete({
+        where: { id: existingAssignment.id }
+      });
+    }
+
+    const newAssignment = await tx.companyAssignment.create({
+      data: {
+        companyId,
+        preparerId: newPreparerId,
+        assignedById: adminId
+      }
+    });
+
+    await tx.auditLog.create({
+      data: {
+        actorId: adminId,
+        role: 'Admin',
+        action: 'Reassigned Preparer',
+        target: `Company ID ${companyId} → Preparer ID ${newPreparerId}`,
+        companyId
+      }
+    });
+
+    return newAssignment;
   });
-  if (!company) {
-    throw new Error('Company not found.');
-  }
+};
 
-  return await prisma.$transaction(async (prisma) => {
-    const updatedCompany = await prisma.company.update({
+export const resetCompanyStatus = async (companyId, newStatus, reason, adminId) => {
+  return prisma.$transaction(async (tx) => {
+    const company = await tx.company.update({
       where: { companyId },
       data: {
         status: newStatus,
-        statusRemarks: revertMessage
+        statusRemarks: reason
       }
     });
 
-    await prisma.companyRevertMessage.create({
+    await tx.companyStatusMessage.create({
       data: {
         companyId,
-        senderId,
-        senderRole,
-        message: revertMessage
+        senderId: adminId,
+        senderRole: 'Admin',
+        message: reason,
+        fromStatus: company.status,
+        toStatus: newStatus
       }
     });
 
-    await prisma.notification.create({
+    await tx.auditLog.create({
       data: {
-        userId: company.userId,
-        title: 'Company Status Updated',
-        message: `Status changed to "${newStatus}". Remarks: ${revertMessage}`,
-        isRead: false
+        actorId: adminId,
+        role: 'Admin',
+        action: `Manually changed status to ${newStatus}`,
+        target: `Company ID ${companyId}`,
+        companyId
       }
     });
 
-    return updatedCompany;
+    return company;
   });
 };
-
-
-/**
- * Generate an invoice for a company
- */
-export const generateCompanyInvoice = async (incorporationId) => {
-  incorporationId = parseInt(incorporationId);
-
-  const company = await prisma.company.findUnique({
-    where: { companyId: incorporationId },
-    include: {
-      user: true,
-      companyServices: { include: { service: true } }
-    }
-  });
-  if (!company) throw new Error('Incorporation not found');
-
-  let totalAmount = 0;
-  const services = company.companyServices.map(cs => {
-    totalAmount += parseFloat(cs.service.cost);
-    return cs.service.serviceName;
-  });
-
-  const payment = await prisma.payment.create({
-    data: {
-      companyId: incorporationId,
-      userId: company.userId,
-      paymentDate: new Date(),
-      amount: totalAmount,
-      currency: company.currency || 'SGD',
-      paymentMethod: 'Invoice',
-      paymentStatus: 'Pending',
-      paymentReference: `INV-${Date.now()}`,
-      services: services.join(', ')
-    }
-  });
-
-  const invoicePath = await generateInvoicePdf(company, payment);
-
-  await prisma.companyDocument.create({
-    data: {
-      companyId: incorporationId,
-      documentLabel: 'Invoice',
-      documentType: 'PDF',
-      documentPath: invoicePath,
-      uploadedAt: new Date()
-    }
-  });
-
-  await prisma.notification.create({
-    data: {
-      userId: company.userId,
-      title: 'New Invoice Generated',
-      message: `An invoice has been generated for your company "${company.companyName}".`,
-      isRead: false
-    }
-  });
-
-  return {
-    companyId: incorporationId,
-    paymentId: payment.id,
-    amount: payment.amount,
-    currency: payment.currency,
-    reference: payment.paymentReference,
-    documentPath: invoicePath
-  };
-};
-
-export const getPreparerDashboardData = async (userId) => {
-  const [
-    companyStatusCounts,
-    recentTasks
-  ] = await Promise.all([
-    prisma.company.aggregate({
-      _count: {
-        _all: true
-      },
-      where: {
-        status: { in: [CompanyStatus.Submitted, CompanyStatus.RevertedToPreparer] }
-      }
-    }),
-    
-    prisma.calendarAction.findMany({
-      where: { userId },
-      take: 5,
-      orderBy: { dueDate: 'desc' },
-      include: {
-        company: {
-          select: {
-            companyId: true,
-            companyName: true,
-            status: true
-          }
-        }
-      }
-    })
-  ]);
-
-  const pendingTasks = await prisma.calendarAction.count({
-    where: {
-      userId,
-      status: 'Pending' // Assuming CalendarAction.status still uses string
-    }
-  });
-
-  return {
-    tasks: {
-      pending: pendingTasks,
-      recent: recentTasks
-    },
-    companies: {
-      pendingReview: companyStatusCounts._count._all,
-      total: companyStatusCounts._count._all
-    }
-  };
-};
-
-
-export const getApproverDashboardData = async () => {
-  const [
-    pendingApproval,
-    recentlyApproved,
-    approvalCounts,
-    monthlyApprovals
-  ] = await Promise.all([
-    prisma.company.count({
-      where: { status: CompanyStatus.PreparerApproved }
-    }),
-    
-    prisma.company.findMany({
-      where: { status: CompanyStatus.ApproverApproved },
-      take: 5,
-      orderBy: { registrationDate: 'desc' },
-      select: {
-        companyId: true,
-        companyName: true,
-        registrationDate: true,
-        user: {
-          select: {
-            username: true,
-            email: true
-          }
-        }
-      }
-    }),
-    
-    prisma.company.aggregate({
-      _count: {
-        _all: true
-      },
-      where: {
-        status: { in: [CompanyStatus.ApproverApproved, CompanyStatus.RevertedToPreparer] }
-      }
-    }),
-
-    prisma.$queryRaw`
-      SELECT 
-          DATE_TRUNC('month', "registrationDate") as month,
-          COUNT(*) as count
-      FROM "Company"
-      WHERE status = 'ApproverApproved' 
-        AND "registrationDate" > NOW() - INTERVAL '6 months'
-      GROUP BY month
-      ORDER BY month
-    `
-  ]);
-
-  const approved = approvalCounts._count._all;
-  const rejected = 0; // We don't track 'Rejected' separately now, optional
-
-  return {
-    pendingApproval,
-    recentlyApproved,
-    statistics: {
-      approved,
-      rejected,
-      rejectionRatio: approved > 0 ? rejected / approved : 0,
-      total: approved
-    },
-    monthlyApprovals
-  };
-};
-
-
-
-
-
-

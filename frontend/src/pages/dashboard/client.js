@@ -1,5 +1,5 @@
 // pages/dashboard/client.js
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '../../styles/dashboard.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -33,11 +33,21 @@ import {
 export default function ClientDashboard() {
   const [activeTab, setActiveTab] = useState('home');
   const { userProfile, incorporationStatus, documents, recentActivity, notifications, services } = clientDashboardData;
+  const [clientFormattedDates, setClientFormattedDates] = useState([]);
+
+
 
   // Calculate progress
   const progress = calculateProgress(incorporationStatus.steps);
   const nextDocument = getNextRequiredDocument(documents);
   const sortedNotifications = sortNotificationsByPriority(notifications);
+
+  useEffect(() => {
+    const formatted = sortedNotifications.map(n =>
+      new Intl.DateTimeFormat('en-GB').format(new Date(n.timestamp))
+    );
+    setClientFormattedDates(formatted);
+  }, [sortedNotifications]);
 
   return (
     <div className={styles.dashboardWrapper}>
@@ -157,11 +167,11 @@ export default function ClientDashboard() {
         <section className={styles.notifications}>
           <h3>Recent Notifications</h3>
           <ul>
-            {sortedNotifications.map(notification => (
+            {sortedNotifications.map((notification, index) => (
               <li key={notification.id} className={styles[notification.priority]}>
                 <FaBell className={styles.notificationIcon} />
                 {notification.message}
-                <small>{new Date(notification.timestamp).toLocaleDateString()}</small>
+                <small>{clientFormattedDates[index]}</small>
               </li>
             ))}
           </ul>
