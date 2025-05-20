@@ -24,6 +24,7 @@ import { fetchProfile, logoutUser } from '../../redux/auth/authActions';
 import { fetchAllUsers, createNewUser } from '../../redux/admin/adminActions';
 import { clearAdminError, clearAdminSuccess } from '../../redux/admin/adminSlice';
 import { adminDashboardData } from '../../data/mockData/admin/dashboardData';
+import CSVUpload from '../../components/dashboard/shared/CSVUpload';
 
 import CompanyTable from '../../components/dashboard/shared/CompanyTable';
 import CompanyFilters from '../../components/dashboard/shared/CompanyFilters';
@@ -336,7 +337,7 @@ export default function AdminDashboard() {
           )}
 
           {activeSection === 'upload' && (
-            <section><h2>Upload Companies CSV</h2><p>Upload feature placeholder.</p></section>
+            <section><CSVUpload/></section>
           )}
 
           {activeSection === 'agents' && (
