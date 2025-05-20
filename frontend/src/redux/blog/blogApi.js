@@ -9,7 +9,7 @@ const blogApi = {
     method: 'GET',
   },
   getById: (id) => ({
-    url: `/api/article/${id}`,
+    url: `/api/article/published/${id}`,
     method: 'GET',
   }),
   create: {

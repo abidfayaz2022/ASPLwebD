@@ -63,6 +63,17 @@ export const getPublishedArticleById = async (req, res) => {
   }
 };
 
+export const getAllDraftArticles = async (req, res) => {
+  try {
+    const drafts = await articleService.fetchAllDrafts();
+    res.json(drafts);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to fetch draft articles' });
+  }
+};
+
+
 // Admin: Resume draft
 export const getDraftArticles = async (req, res) => {
   try {

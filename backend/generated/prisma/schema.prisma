@@ -393,6 +393,8 @@ model Article {
   imagePath   String?       @db.VarChar(225)
   views       Int           @default(0)
   hashtag     String?       @db.VarChar(255)
+
+  @@index([authorId, status])
 }
 
 model ContactUs {

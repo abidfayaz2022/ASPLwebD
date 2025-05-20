@@ -83,15 +83,30 @@ export const fetchPublishedArticles = async () => {
   });
 };
 export const fetchPublishedArticleById = async (articleId) => {
-  return prisma.article.findUnique({
-    where: { id: articleId, status: 'published' },
+ return prisma.article.findFirst({
+  where: { id: articleId, status: 'published' },
+  select: {
+    id: true,
+    title: true,
+    content: true,
+    imagePath: true,
+    publishedAt: true,
+    views: true,
+    author: { select: { username: true } }
+  }
+});
+};
+
+export const fetchAllDrafts = async () => {
+  return prisma.article.findMany({
+    where: { status: 'draft' },
+    orderBy: { createdAt: 'desc' },
     select: {
       id: true,
       title: true,
       content: true,
       imagePath: true,
-      publishedAt: true,
-      views: true,
+      createdAt: true,
       author: { select: { username: true } }
     }
   });

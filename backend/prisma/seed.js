@@ -4,113 +4,115 @@ import { hashPassword } from '../src/utils/passwordUtils.js';
 
 const prisma = new PrismaClient();
 
+
 async function main() {
-  // Seed Users
-   const defaultPassword = await hashPassword('password123');
-  const adminUser = await prisma.user.upsert({
+  const defaultPassword = await hashPassword('password123');
+  
+
+  const admin = await prisma.user.upsert({
     where: { email: 'admin@example.com' },
     update: {},
     create: {
-      username: 'admin',
+      username: 'adminuser',
       email: 'admin@example.com',
-      name: 'Admin User',
-      password: defaultPassword,
-      mobile: '+1234567890',
+      name: 'System Admin',
+      password:defaultPassword,
+      mobile: '9999999999',
       country: 'India',
       role: 'Admin',
       isVerified: true
     },
   });
 
-  const clientUser = await prisma.user.upsert({
+  // ----- Create Services -----
+  const services = await prisma.service.createMany({
+    data: [
+      {
+        serviceName: 'Company Incorporation',
+        serviceDescription: 'Register your company legally with expert support.',
+        cost: 5000,
+        status: 'Active',
+      },
+      {
+        serviceName: 'GST Registration',
+        serviceDescription: 'Get your GST Number for taxation purposes.',
+        cost: 1500,
+        status: 'Active',
+      },
+      {
+        serviceName: 'Annual Compliance',
+        serviceDescription: 'Ensure your company complies with regulations.',
+        cost: 3000,
+        status: 'Active',
+      },
+    ],
+    skipDuplicates: true,
+  });
+
+  // ----- Create Registered Company Names -----
+  await prisma.registeredCompanyName.createMany({
+    data: [
+      { companyName: 'TechNest Solutions Pvt Ltd' },
+      { companyName: 'BlueWave Innovations LLP' },
+      { companyName: 'GreenOrbit Systems' },
+    ],
+    skipDuplicates: true,
+  });
+
+
+  const client = await prisma.user.upsert({
     where: { email: 'client@example.com' },
     update: {},
     create: {
-      username: 'clientUser',
+      username: 'client01',
       email: 'client@example.com',
       name: 'Client User',
       password: defaultPassword,
-      mobile: '+0987654321',
+      mobile: '8888888888',
       country: 'India',
       role: 'client',
-      isVerified: true
+      isVerified: true,
     },
   });
 
-  // Seed a Service
-  const service1 = await prisma.service.create({
-    data: {
-      serviceName: 'Company Registration',
-      serviceDescription: 'Complete registration services',
-      cost: 5000.00,
-      status: 'Available',
-    },
-  });
-
-  // Seed Company
   const company = await prisma.company.create({
     data: {
-      companyName: 'TechNova Pvt Ltd',
-      registrationDate: new Date('2023-01-01'),
-      addressLine1: '123 Tech Street',
-      addressLine2: 'Business Park',
+      companyName: 'BrightTech Private Limited',
+      registrationDate: new Date('2024-01-01'),
+      addressLine1: '123 Corporate Park',
+      addressLine2: 'Business Bay',
       country: 'India',
-      postalCode: '123456',
-      proposedShares: 1000,
+      postalCode: '110001',
+      proposedShares: 10000,
       currency: 'INR',
-      proposedShareCapital: 1000000.00,
-      businessActivity1: 'IT Services',
-      businessActivity1Desc: 'Software development',
+      proposedShareCapital: 1000000,
+      businessActivity1: 'Software Development',
+      businessActivity1Desc: 'Creating SaaS and enterprise applications',
       businessActivity2: 'Consulting',
-      businessActivity2Desc: 'Business and IT consulting',
-      userId: clientUser.id
+      businessActivity2Desc: 'IT and Digital Transformation Consulting',
+      userId: client.id,
     },
   });
 
-  // Assign Service to Company
-  await prisma.companyService.create({
-    data: {
-      companyId: company.companyId,
-      serviceId: service1.id,
-      updateDate: new Date(),
-    },
-  });
+  // ----- Assign a Service to the Company -----
+  const service = await prisma.service.findFirst({ where: { serviceName: 'Company Incorporation' } });
 
-  // Create a Director
-  await prisma.director.create({
-    data: {
-      companyId: company.companyId,
-      directorName: 'John Doe',
-      email: 'john.doe@example.com',
-      addressLine1: '456 Director St',
-      addressLine2: 'Suite 1',
-      country: 'India',
-      postalCode: '654321',
-      contactNumber: '+911234567890',
-      nationality: 'Indian',
-      idType: 'Passport',
-      idExpiryDate: new Date('2030-12-31'),
-      idNumber: 'A1234567',
-      isShareholder: true,
-      identityProof: 'uploads/id.jpg',
-      addressProof: 'uploads/address.jpg',
-      dateOfBirth: new Date('1980-01-01'),
-    }
-  });
+  if (service) {
+    await prisma.companyService.create({
+      data: {
+        companyId: company.companyId,
+        serviceId: service.id,
+        updateDate: new Date(),
+      },
+    });
+  }
 
-  // Create Registered Company Name
-  await prisma.registeredCompanyName.create({
-    data: {
-      companyName: 'TechNova Pvt Ltd'
-    }
-  });
-
-  console.log('✅ Seed complete');
+  console.log('✅ Seeding complete!');
 }
 
 main()
-  .catch(e => {
-    console.error(e);
+  .catch((e) => {
+    console.error('❌ Error seeding:', e);
     process.exit(1);
   })
   .finally(async () => {
