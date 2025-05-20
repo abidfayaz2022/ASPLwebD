@@ -3,11 +3,13 @@ import * as preparerService from '../services/preparerService.js';
 export const getPreparerDashboard = async (req, res) => {
   try {
     const dashboard = await preparerService.getPreparerDashboardData(req.user.id);
-    res.json({ success: true, dashboard });
+    res.status(200).json({ success: true, dashboard });
   } catch (err) {
+    console.error('Error fetching dashboard:', err);
     res.status(500).json({ success: false, message: 'Failed to fetch dashboard', error: err.message });
   }
 };
+
 
 export const getAssignedUsers = async (req, res) => {
   try {
@@ -48,7 +50,6 @@ export const updateRecommendationsForAssignedUser = async (req, res) => {
       result
     });
   } catch (err) {
-    console.error('Error in updateRecommendations:', err);
     res.status(400).json({ success: false, message: err.message });
   }
 };

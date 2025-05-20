@@ -108,7 +108,7 @@ model User {
   insights         InsightRecommendation[]
   notifications    Notification[]
   payments         Payment[]
-  assignedRoles    RoleAssignment[]        @relation("Agent")
+
 
   revertMessage CompanyStatusMessage[]
   uploadedDocs  CompanyDocument[]      @relation("UploadedBy")
@@ -118,6 +118,14 @@ model User {
   CalendarAction CalendarAction[] @relation("CreatedCalendarActions")
 
   articles      Article[] 
+
+
+  delegatedUsers   RoleDelegation[] @relation("Delegator")
+  assignedBy       RoleDelegation[] @relation("Delegatee")
+
+  companiesAssigned CompanyAssignment[] @relation("AssignedPreparer")
+  companiesDelegated CompanyAssignment[] @relation("AssignedBy")
+
 }
 
 model Company {
@@ -150,12 +158,15 @@ model Company {
   dashboardState        DashboardState?
   directors             Director[]
   payments              Payment[]
-  roleAssignments       RoleAssignment[]       @relation("AssignedCompany")
+
   shareholders          Shareholder[]
   revertMessage         CompanyStatusMessage[]
   auditLogs             AuditLog[]
 
+   companyAssignments CompanyAssignment[] @relation("CompanyRelation")
+
   @@index([userId])
+
 }
 
 model CompanyStatusMessage {
@@ -344,15 +355,36 @@ model DashboardState {
   company     Company   @relation(fields: [companyId], references: [companyId])
 }
 
-model RoleAssignment {
-  id         Int      @id @default(autoincrement())
-  agentId    Int
-  companyId  Int
-  role       UserRole
-  assignedAt DateTime @default(now())
-  agent      User     @relation("Agent", fields: [agentId], references: [id])
-  company    Company  @relation("AssignedCompany", fields: [companyId], references: [companyId])
+model RoleDelegation {
+  id            Int       @id @default(autoincrement())
+  delegatorId   Int                         // Admin or Approver
+  delegateeId   Int                         // Approver or Preparer
+  delegatedRole UserRole                   // Only: approver or preparer
+  createdAt     DateTime  @default(now())
+
+  delegator     User      @relation("Delegator", fields: [delegatorId], references: [id])
+  delegatee     User      @relation("Delegatee", fields: [delegateeId], references: [id])
+
+  @@index([delegatorId])
+  @@index([delegateeId])
 }
+model CompanyAssignment {
+  id            Int       @id @default(autoincrement())
+  companyId     Int
+  preparerId    Int                       // Only preparers
+  assignedById  Int                       // Can be admin or approver
+  createdAt     DateTime  @default(now())
+
+  company       Company   @relation("CompanyRelation", fields: [companyId], references: [companyId])
+  preparer      User      @relation("AssignedPreparer", fields: [preparerId], references: [id])
+  assignedBy    User      @relation("AssignedBy", fields: [assignedById], references: [id])
+
+  @@index([companyId])
+  @@index([preparerId])
+  @@index([assignedById])
+}
+
+
 
 model Article {
   id          Int            @id @default(autoincrement())

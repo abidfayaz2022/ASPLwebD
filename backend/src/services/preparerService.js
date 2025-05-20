@@ -3,30 +3,132 @@ import { CompanyStatus } from '../constants/companyStatus.js';
 import { Roles } from '../constants/roles.js';
 import { uploadFilesToS3 } from '../utils/s3Uploader.js';
 
-export const getPreparerDashboardData = async (userId) => {
-  const assignedCompanies = await prisma.roleAssignment.findMany({
-    where: { agentId: userId, role: Roles.PREPARER },
+
+
+export const getPreparerDashboardData = async (preparerId) => {
+  // 1. Assigned companies
+  const companyAssignments = await prisma.companyAssignment.findMany({
+    where: { preparerId },
     include: {
       company: {
         select: {
           companyId: true,
           companyName: true,
           status: true,
-          createdAt: true
+          createdAt: true,
+          user: {
+            select: { id: true, username: true, email: true }
+          }
         }
       }
     }
   });
 
+  const assignedCompanies = companyAssignments.map(a => a.company);
+
+  // 2. Approver info
+  const approverDelegation = await prisma.roleDelegation.findFirst({
+    where: {
+      delegateeId: preparerId,
+      delegatedRole: 'preparer'
+    },
+    include: {
+      delegator: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          username: true
+        }
+      }
+    }
+  });
+
+  const approverInfo = approverDelegation?.delegator || null;
+
+  // 3. Status counts
+  const statusCounts = await prisma.company.groupBy({
+    by: ['status'],
+    where: {
+      companyId: {
+        in: assignedCompanies.map(c => c.companyId)
+      }
+    },
+    _count: { status: true }
+  });
+
+  const companyStatusSummary = {};
+  statusCounts.forEach(s => {
+    companyStatusSummary[s.status] = s._count.status;
+  });
+
+  // 4. Audit logs by preparer
+  const auditLogs = await prisma.auditLog.findMany({
+    where: { actorId: preparerId },
+    orderBy: { timestamp: 'desc' },
+    take: 10,
+    select: {
+      action: true,
+      target: true,
+      companyId: true,
+      timestamp: true
+    }
+  });
+
+  // 5. Client users (from companies)
+  const clientUsers = assignedCompanies.map(c => ({
+    id: c.user.id,
+    username: c.user.username,
+    email: c.user.email
+  }));
+
+  // 6. Calendar stats
+  const calendarStats = await prisma.calendarAction.groupBy({
+    by: ['status'],
+    where: {
+      createdBy: preparerId
+    },
+    _count: true
+  });
+
+  const calendarSummary = {};
+  calendarStats.forEach(stat => {
+    calendarSummary[stat.status] = stat._count;
+  });
+
+  // 6.1 Overdue tasks (incomplete + dueDate < now)
+  const overdueTasks = await prisma.calendarAction.count({
+    where: {
+      createdBy: preparerId,
+      dueDate: { lt: new Date() },
+      status: { not: 'Completed' }
+    }
+  });
+
+  // 7. Notifications
+  const unreadNotifications = await prisma.notification.count({
+    where: {
+      userId: preparerId,
+      isRead: false
+    }
+  });
+
   return {
+    approver: approverInfo,
     assignedCount: assignedCompanies.length,
-    companies: assignedCompanies.map(c => c.company)
+    companies: assignedCompanies,
+    statusSummary: companyStatusSummary,
+    recentAuditLogs: auditLogs,
+    clientUsers,
+    calendarSummary,
+    overdueTaskCount: overdueTasks,
+    unreadNotificationCount: unreadNotifications
   };
 };
 
 export const getAssignedUsers = async (preparerId) => {
-  const assignments = await prisma.roleAssignment.findMany({
-    where: { agentId: preparerId, role: Roles.PREPARER },
+  const assignments = await prisma.companyAssignment.findMany({
+    where: { preparerId },
     include: {
       company: {
         include: {
@@ -62,14 +164,6 @@ export const receiveKyc = async (userId, formType, filePath, preparerId) => {
   });
 };
 
-
-/**
- * Creates an insight recommendation and optionally uploads sample docs to S3.
- * @param {Number} userId - Target user ID
- * @param {String} content - Insight text content
- * @param {Array} files - Uploaded files from multer
- * @param {String} folder - S3 folder path (defaults to per-user path)
- */
 export const updateRecommendations = async (userId, content, files = [], folder = null) => {
   const safeUserId = parseInt(userId);
   const uploadFolder = folder || `users/${safeUserId}/insights`;
@@ -96,7 +190,6 @@ export const notifyUser = async (userId, title, message) => {
   });
 };
 
-
 export const updateCalendar = async (userId, { title, dueDate, notes }, preparerId) => {
   const company = await prisma.company.findFirst({
     where: { userId: parseInt(userId) }
@@ -122,7 +215,6 @@ export const updateCalendar = async (userId, { title, dueDate, notes }, preparer
     }
   });
 };
-
 
 export const sendFormToApprover = async (companyId, remarks, preparerId) => {
   return prisma.$transaction(async (tx) => {
@@ -155,14 +247,13 @@ export const sendFormToApprover = async (companyId, remarks, preparerId) => {
   });
 };
 
-
 export const verifyClientDocument = async (docId, preparerId) => {
   const doc = await prisma.companyDocument.findUnique({
     where: { id: docId },
     include: {
       company: {
         include: {
-          roleAssignments: true // to validate preparer
+          companyAssignments: true
         }
       }
     }
@@ -170,8 +261,8 @@ export const verifyClientDocument = async (docId, preparerId) => {
 
   if (!doc) throw new Error('Document not found');
 
-  const isAssignedPreparer = doc.company.roleAssignments.some(
-    (assignment) => assignment.agentId === preparerId && assignment.role === Roles.PREPARER
+  const isAssignedPreparer = doc.company.companyAssignments.some(
+    (assignment) => assignment.preparerId === preparerId
   );
 
   if (!isAssignedPreparer) {
