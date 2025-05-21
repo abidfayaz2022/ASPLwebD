@@ -63,7 +63,7 @@ if (!isProd) {
 // Health Check
 app.get('/', (_, res) => res.send({ message: 'API is running securely with Helmet' }));
 
-//  Global Error Handler
+
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, _next) => {
   console.error('[Error]', err.stack);
