@@ -1,6 +1,6 @@
 const config = {
  
-    API_BASE_URL: process.env.ASPL_API_URL || 'http://localhost:3333',
+    API_BASE_URL: process.env.ASPL_API_URL,
     
     API_TIMEOUT: 30000,
     
