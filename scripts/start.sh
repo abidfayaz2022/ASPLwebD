@@ -9,7 +9,7 @@ rm -rf .next
 
 # Set frontend environment variables
 export ASPL_API_URL=http://13.251.247.41:3333
-export NODE_ENV=production
+export NODE_ENV=development
 
 # Install and build
 npm ci
@@ -26,7 +26,7 @@ cd /home/ubuntu/angel/backend
 npm ci
 
 # Set backend environment variables
-export NODE_ENV=production
+export NODE_ENV=development
 export BACKEND_PORT=3333
 export FRONTEND_URL=http://13.251.247.41:3000
 
