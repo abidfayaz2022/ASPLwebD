@@ -13,7 +13,7 @@ import { swaggerSpec } from './src/utils/swagger.js';
 const app = express();
 const PORT = process.env.BACKEND_PORT || 3333;
 const isProd = process.env.NODE_ENV === 'production';
-const whitelist = [process.env.FRONTEND_URL];
+const whitelist = [process.env.CLIENT_BASE_URL];
 
 //  Log environment
 console.log(`${isProd ? '🚀 Production' : '🔧 Development'} mode on port ${PORT}`);
