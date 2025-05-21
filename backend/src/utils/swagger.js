@@ -14,6 +14,10 @@ export const swaggerOptions = {
         url: 'http://localhost:3333', // Update if needed
         description: 'Local Dev Server',
       },
+      {
+        url: 'http://13.251.247.41:3333', // Update if needed
+        description: 'Production Server',
+      }
     ],
     components: {
       securitySchemes: {

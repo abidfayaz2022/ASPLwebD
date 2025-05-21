@@ -13,19 +13,30 @@ import { swaggerSpec } from './src/utils/swagger.js';
 const app = express();
 const PORT = process.env.BACKEND_PORT || 3333;
 const isProd = process.env.NODE_ENV === 'production';
+const whitelist = [process.env.FRONTEND_URL];
 
-// ✅ Log environment
-console.log(`${isProd ? '🚀 Production' : '🔧 Development'} mode`);
+//  Log environment
+console.log(`${isProd ? '🚀 Production' : '🔧 Development'} mode on port ${PORT}`);
 
-// ✅ Trust proxy for secure cookies behind reverse proxies (NGINX, etc.)
+// Trust proxy for secure cookies behind reverse proxies (NGINX, etc.)
 app.set('trust proxy', 1);
 
-// ✅ Initialize Passport Strategy (Correct usage!)
+// Initialize Passport Strategy (Correct usage!)
 initializePassport(passport);  // <--- NOT `passportConfig;`
 
-// ✅ Security Middleware
+// Security Middleware
 app.use(helmet({ contentSecurityPolicy: false })); // safer for Swagger/iFrames
-app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
+
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || whitelist.includes(origin)) return callback(null, true);
+    callback(new Error('Not allowed by CORS'));
+  },
+  credentials: true,
+}));
+
+
 app.use(cookieParser());
 app.use(express.json());
 app.use(compression());
@@ -49,10 +60,10 @@ if (!isProd) {
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 }
 
-// ✅ Health Check
+// Health Check
 app.get('/', (_, res) => res.send({ message: 'API is running securely with Helmet' }));
 
-// ✅ Global Error Handler
+//  Global Error Handler
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, _next) => {
   console.error('[Error]', err.stack);
@@ -63,7 +74,7 @@ app.use((err, req, res, _next) => {
   });
 });
 
-// ✅ Start Server
+// Start Server
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`✅ Server listening on http://0.0.0.0:${PORT}`);
+  console.log(`✅ Server running at http://0.0.0.0:${PORT}`);
 });

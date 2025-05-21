@@ -26,9 +26,9 @@ cd /home/ubuntu/angel/backend
 npm ci
 
 # Set backend environment variables
-export NODE_ENV=development
+export NODE_ENV=production
 export BACKEND_PORT=3333
-export FRONTEND_URL=http://13.251.247.41:3000
+export CLIENT_BASE_URL=http://13.251.247.41:3000
 
 # Restart PM2 app for backend
 pm2 delete aspl-backend || true
