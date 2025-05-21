@@ -34,7 +34,7 @@ const Navbar = () => {
 
         <Link href="/" className={`navbar-brand d-flex align-items-center ${styles.logoWrapper}`}>
           <Image
-            src="/images/angelserviceslogo (2).png"
+            src="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/angelserviceslogo (2).png"
             alt="Angel Services Logo"
             width={190}
             height={56}

@@ -62,7 +62,7 @@ const LoginPage = () => {
   // Show error toast
   useEffect(() => {
     if (error) {
-      
+
       dispatch(clearError());
     }
   }, [error, dispatch]);
@@ -98,7 +98,7 @@ const LoginPage = () => {
                 <div className="text-center mb-4">
                   <Link href="/">
                     <Image
-                      src="/images/angelserviceslogo (2).png"
+                      src="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/angelserviceslogo (2).png"
                       alt="Angel Services Logo"
                       width={190}
                       height={56}
