@@ -9,7 +9,7 @@ rm -rf .next
 
 # Set frontend environment variables
 export ASPL_API_URL=http://13.251.247.41:3333
-export NODE_ENV=development
+export NODE_ENV=production
 
 # Install and build
 npm ci
