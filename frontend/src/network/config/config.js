@@ -1,6 +1,6 @@
 const config = {
  
-    API_BASE_URL: process.env.ASPL_API_URL,
+    API_BASE_URL: process.env.NEXT_PUBLIC_ASPL_API_URL,
     
     API_TIMEOUT: 30000,
     
