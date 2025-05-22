@@ -20,7 +20,7 @@ pm2 delete aspl-frontend || true
 pm2 start "npx next start --hostname 0.0.0.0 --port 3000" --name aspl-frontend
 
 # Start Backend
-cd /home/ubuntu/angel/backend
+cd /home/ubuntu/ASPLwebD/backend
 mv .env.production .env
 # Install dependencies
 npm ci

@@ -13,7 +13,10 @@ import { swaggerSpec } from './src/utils/swagger.js';
 const app = express();
 const PORT = process.env.BACKEND_PORT || 3333;
 const isProd = process.env.NODE_ENV === 'production';
-const whitelist = [process.env.CLIENT_BASE_URL,'http://13.251.247.41:3000'];
+const whitelist = [
+  'http://localhost:3000',
+  'https://asp-lweb-d.vercel.app'
+];
 
 //  Log environment
 console.log(`${isProd ? '🚀 Production' : '🔧 Development'} mode on port ${PORT}`);
@@ -25,15 +28,23 @@ app.set('trust proxy', 1);
 initializePassport(passport);  // <--- NOT `passportConfig;`
 
 // Security Middleware
-app.use(helmet({ contentSecurityPolicy: false })); // safer for Swagger/iFrames
-
+app.use(helmet({
+  crossOriginEmbedderPolicy: false, // ✅ Disable this for CORS
+  contentSecurityPolicy: false      // ✅ Optional: disables CSP if you're loading scripts or data from other domains
+}));
 
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || whitelist.includes(origin)) return callback(null, true);
-    callback(new Error('Not allowed by CORS'));
+    // allow requests with no origin like Postman or curl
+    if (!origin) return callback(null, true);
+
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
   },
-  credentials: true,
+  credentials: true
 }));
 
 
