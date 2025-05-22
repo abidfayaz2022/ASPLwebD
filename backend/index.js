@@ -26,7 +26,7 @@ initializePassport(passport);  // <--- NOT `passportConfig;`
 
 // Security Middleware
 app.use(helmet({ contentSecurityPolicy: false })); // safer for Swagger/iFrames
-app.use(cors());
+app.use(cors({ origin: "*", credentials: true }));
 
 // app.use(cors({
 //   origin: (origin, callback) => {
