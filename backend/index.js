@@ -25,7 +25,11 @@ app.set('trust proxy', 1);
 initializePassport(passport);  // <--- NOT `passportConfig;`
 
 // Security Middleware
-app.use(helmet({ contentSecurityPolicy: false })); // safer for Swagger/iFrames
+app.use(helmet({
+  crossOriginEmbedderPolicy: false, // ✅ Disable this for CORS
+  contentSecurityPolicy: false      // ✅ Optional: disables CSP if you're loading scripts or data from other domains
+}));
+
 app.use(cors({
   origin: '*',  // replace with your frontend URL
   credentials: true                 // if you send cookies or auth tokens
