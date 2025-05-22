@@ -3,9 +3,9 @@ os: linux
 
 files:
   - source: frontend
-    destination: /home/ubuntu/angel/frontend
+    destination: /home/ubuntu/ASPLwebD/frontend
   - source: backend
-    destination: /home/ubuntu/angel/backend
+    destination: /home/ubuntu/ASPLwebD/backend
 
 hooks:
   ApplicationStop:
