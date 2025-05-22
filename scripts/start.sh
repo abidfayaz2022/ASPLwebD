@@ -6,7 +6,7 @@ cd /home/ubuntu/angel/frontend
 
 # Clean build
 rm -rf .next
-
+mv .env.production .env
 # ✅ Set frontend env variables for public API use
 export NEXT_PUBLIC_ASPL_API_URL=http://13.251.247.41:3333
 export NODE_ENV=production
@@ -21,7 +21,7 @@ pm2 start "npx next start --hostname 0.0.0.0 --port 3000" --name aspl-frontend
 
 # Start Backend
 cd /home/ubuntu/angel/backend
-
+mv .env.production .env
 # Install dependencies
 npm ci
 
