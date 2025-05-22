@@ -486,7 +486,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/abid-fayaz/Desktop/ASPL/ASPLwebD/backend/generated/prisma",
+      "value": "C:\\Users\\This PC\\Desktop\\Angel Main\\ASPLwebD\\backend\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -495,12 +495,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "debian-openssl-3.0.x",
+        "value": "windows",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/abid-fayaz/Desktop/ASPL/ASPLwebD/backend/prisma/schema.prisma",
+    "sourceFilePath": "C:\\Users\\This PC\\Desktop\\Angel Main\\ASPLwebD\\backend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
