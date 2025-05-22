@@ -2,9 +2,9 @@
 set -euo pipefail
 
 # Install frontend dependencies
-cd /home/ubuntu/angel/frontend
+cd /home/ubuntu/ASPLwebD/frontend
 npm install
 
 # Install backend dependencies
-cd /home/ubuntu/angel/backend
+cd /home/ubuntu/ASPLwebD/backend
 npm install
