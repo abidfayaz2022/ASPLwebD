@@ -13,7 +13,7 @@ import { swaggerSpec } from './src/utils/swagger.js';
 const app = express();
 const PORT = process.env.BACKEND_PORT || 3333;
 const isProd = process.env.NODE_ENV === 'production';
-const whitelist = [process.env.CLIENT_BASE_URL,'http://13.251.247.41:3000'];
+// const whitelist = [process.env.CLIENT_BASE_URL,'http://13.251.247.41:3000'];
 
 //  Log environment
 console.log(`${isProd ? '🚀 Production' : '🔧 Development'} mode on port ${PORT}`);
@@ -26,15 +26,15 @@ initializePassport(passport);  // <--- NOT `passportConfig;`
 
 // Security Middleware
 app.use(helmet({ contentSecurityPolicy: false })); // safer for Swagger/iFrames
+app.use(cors());
 
-
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || whitelist.includes(origin)) return callback(null, true);
-    callback(new Error('Not allowed by CORS'));
-  },
-  credentials: true,
-}));
+// app.use(cors({
+//   origin: (origin, callback) => {
+//     if (!origin || whitelist.includes(origin)) return callback(null, true);
+//     callback(new Error('Not allowed by CORS'));
+//   },
+//   credentials: true,
+// }));
 
 
 app.use(cookieParser());
