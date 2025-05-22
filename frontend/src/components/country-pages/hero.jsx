@@ -58,20 +58,22 @@ export default function CountryHero({
 
         .diagonal-image-wrapper {
           position: absolute;
-          top:0;
+          top: 0;
           right: 0;
           bottom: 0;
           width: 100%;
-          aspect-ratio: 16/9;
+          height: 100%;
           z-index: 1;
           clip-path: polygon(25% 0, 100% 0, 100% 100%, 15% 100%);
           transform: translateX(27%);
-          overflow:hidden;
+          overflow: hidden;
         }
 
         .diagonal-image {
           object-fit: cover;
           object-position: center;
+          width: 100%;
+          height: 100%;
         }
 
         .dot-pattern {
@@ -103,6 +105,12 @@ export default function CountryHero({
             width: 100%;
             height: 100%;
             opacity: 0.15;
+            transform: none;
+            position: fixed;
+          }
+
+          .diagonal-image {
+            object-position: center center;
           }
 
           .hero-box {

@@ -48,6 +48,19 @@ const Navbar = () => {
       <div className="d-none d-lg-flex align-items-center justify-content-end w-100 px-4">
         <ul className={`navbar-nav ${styles.navLinks}`}>
           {navItems.map((item) => {
+            if (item.name === 'Resources') {
+              return (
+                <li className={`nav-item ${styles.dropdownWrapper}`} key="Resources">
+                  <Link href={item.path} className={`nav-link ${styles.navItem}`}>
+                    Resources
+                  </Link>
+                  <div className={styles.dropdownMenu}>
+                    <Link href="/resources#tools" className={styles.dropdownItem}>Tools</Link>
+                    <Link href="/resources/blogs" className={styles.dropdownItem}>Blogs</Link>
+                  </div>
+                </li>
+              );
+            }
             if (item.name === 'Global') {
               return (
                 <li className={`nav-item ${styles.dropdownWrapper}`} key="Global">

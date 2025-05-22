@@ -1,8 +1,32 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+
 export default function FinalHero() {
+
+    const prevRef = useRef(null);
+    const nextRef = useRef(null);
+    const [swiperInstance, setSwiperInstance] = useState(null);
+
+    useEffect(() => {
+        if (
+            swiperInstance &&
+            prevRef.current &&
+            nextRef.current &&
+            swiperInstance.params.navigation
+        ) {
+            swiperInstance.params.navigation.prevEl = prevRef.current;
+            swiperInstance.params.navigation.nextEl = nextRef.current;
+            swiperInstance.navigation.destroy();
+            swiperInstance.navigation.init();
+            swiperInstance.navigation.update();
+        }
+    }, [swiperInstance, prevRef, nextRef]);
+
+
     const slidesCount = 2;
     const slideTime = 2000;
 
@@ -29,6 +53,8 @@ export default function FinalHero() {
             <div className="incorporation-shape shape2" />
             <div className="incorporation-shape shape3" />
 
+
+
             <div className="container position-relative" style={{ zIndex: 1 }}>
                 <div className="row min-vh-75 align-items-center py-4">
                     {/* Left Content Section from IncorporationHero */}
@@ -38,29 +64,158 @@ export default function FinalHero() {
                                 <i className="bi bi-star-fill me-2"></i>
                                 Most Popular Service
                             </div>
-                            <h1 className="display-3 fw-bold mb-4 text-gradient">
-                                Launch Your Business
-                                <span className="d-block text-primary">With Confidence</span>
-                            </h1>
-                            <p className="lead mb-4 text-muted">
-                                Start your entrepreneurial journey with our expert guidance.
-                                We handle the complex paperwork while you focus on your vision.
-                            </p>
-                            <div className="d-flex flex-wrap gap-3 mb-5">
-                                <Link
-                                    href="/incorporation/step1"
-                                    className="btn btn-primary btn-lg rounded-pill px-5 py-3 fw-semibold"
-                                >
-                                    Start Now <i className="bi bi-arrow-right ms-2" />
-                                </Link>
-                                <Link
-                                    href="/services/incorporation"
-                                    className="btn btn-outline-dark btn-lg rounded-pill px-5 py-3 fw-semibold"
-                                >
-                                    Learn More
-                                </Link>
-                            </div>
-                            <div className="incorporation-stats d-flex gap-4">
+
+                            <Swiper
+                                loop={true}
+                                modules={[Autoplay, Navigation]}
+                                autoplay={{ delay: 2000 }}
+
+                                // slidesPerView={3}
+                                // spaceBetween={5}
+
+                                navigation={{
+                                    prevEl: prevRef.current,
+                                    nextEl: nextRef.current,
+                                }}
+                                onInit={(swiper) => {
+                                    // Must be done in onInit to avoid null refs
+                                    swiper.params.navigation.prevEl = prevRef.current;
+                                    swiper.params.navigation.nextEl = nextRef.current;
+                                    swiper.navigation.init();
+                                    swiper.navigation.update();
+                                }}
+                                onSwiper={setSwiperInstance}
+
+
+                            >
+                                <SwiperSlide >
+                                    <h1 className="display-3 fw-bold mb-4 text-gradient">
+                                        Launch Your Business
+                                        <span className="d-block text-primary">With Confidence</span>
+                                    </h1>
+                                    <p className="lead mb-4 text-muted">
+                                        Start your entrepreneurial journey with our expert guidance.
+                                        We handle the complex paperwork while you focus on your vision.
+                                    </p>
+                                    <div className="d-flex flex-wrap gap-3 mb-3">
+                                        <Link
+                                            href="/incorporation/step1"
+                                            className="btn btn-primary btn-lg rounded-pill px-5 py-3 fw-semibold"
+                                        >
+                                            Start Now <i className="bi bi-arrow-right ms-2" />
+                                        </Link>
+                                        <Link
+                                            href="/services/incorporation"
+                                            className="btn btn-outline-dark btn-lg rounded-pill px-5 py-3 fw-semibold"
+                                        >
+                                            Learn More
+                                        </Link>
+                                    </div>
+
+                                </SwiperSlide>
+
+
+                                <SwiperSlide>
+                                    <h1 className="display-3 fw-bold mb-4 text-gradient">
+                                        Stay Compliant, Stay Secure
+                                        <span className="d-block text-primary">Get Guidance</span>
+                                    </h1>
+                                    <p className="lead mb-4 text-muted">
+                                        Our experts ensure your business meets all legal and compliance requirements, so you can operate with peace of mind.
+                                    </p>
+                                    <div className="d-flex flex-wrap gap-3 mb-3">
+                                        <Link
+                                            href="/services"
+                                            className="btn btn-primary btn-lg rounded-pill px-5 py-3 fw-semibold"
+                                        >
+                                            Get Help <i className="bi bi-arrow-right ms-2" />
+                                        </Link>
+                                        <Link
+                                            href="/services"
+                                            className="btn btn-outline-dark btn-lg rounded-pill px-5 py-3 fw-semibold"
+                                        >
+                                            Learn More
+                                        </Link>
+                                    </div>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <h1 className="display-3 fw-bold mb-4 text-gradient">
+                                        Effortless Accounting
+                                        <span className="d-block text-primary">Bookkeeping Made Simple</span>
+                                    </h1>
+                                    <p className="lead mb-4 text-muted">
+                                        Let us handle your books and finances, so you can focus on growing your business.
+                                    </p>
+                                    <div className="d-flex flex-wrap gap-3 mb-3">
+                                        <Link
+                                            href="/services/accounting"
+                                            className="btn btn-primary btn-lg rounded-pill px-5 py-3 fw-semibold"
+                                        >
+                                            Start Now <i className="bi bi-arrow-right ms-2" />
+                                        </Link>
+                                        <Link
+                                            href="/services/accounting"
+                                            className="btn btn-outline-dark btn-lg rounded-pill px-5 py-3 fw-semibold"
+                                        >
+                                            Learn More
+                                        </Link>
+                                    </div>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <h1 className="display-3 fw-bold mb-4 text-gradient">
+                                        Expert Startup Advice
+                                        <span className="d-block text-primary">From Idea to Execution</span>
+                                    </h1>
+                                    <p className="lead mb-4 text-muted">
+                                        Get personalized guidance from seasoned professionals to turn your business idea into reality.
+                                    </p>
+                                    <div className="d-flex flex-wrap gap-3 mb-3">
+                                        <Link
+                                            href="/services/advisory"
+                                            className="btn btn-primary btn-lg rounded-pill px-5 py-3 fw-semibold"
+                                        >
+                                            Consult Now <i className="bi bi-arrow-right ms-2" />
+                                        </Link>
+                                        <Link
+                                            href="/services/advisory"
+                                            className="btn btn-outline-dark btn-lg rounded-pill px-5 py-3 fw-semibold"
+                                        >
+                                            Learn More
+                                        </Link>
+                                    </div>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <h1 className="display-3 fw-bold mb-4 text-gradient">
+                                        Go Global with Ease
+                                        <span className="d-block text-primary">Expand Internationally</span>
+                                    </h1>
+                                    <p className="lead mb-4 text-muted">
+                                        We help you set up and manage your business in multiple countries, handling all the paperwork and regulations.
+                                    </p>
+                                    <div className="d-flex flex-wrap gap-3 mb-3">
+                                        <Link
+                                            href="/services/international"
+                                            className="btn btn-primary btn-lg rounded-pill px-5 py-3 fw-semibold"
+                                        >
+                                            Expand Now <i className="bi bi-arrow-right ms-2" />
+                                        </Link>
+                                        <Link
+                                            href="/services/international"
+                                            className="btn btn-outline-dark btn-lg rounded-pill px-5 py-3 fw-semibold"
+                                        >
+                                            Learn More
+                                        </Link>
+                                    </div>
+                                </SwiperSlide>
+
+
+
+
+
+                            </Swiper>
+
+
+                            <div className="incorporation-stats d-flex gap-4 mt-0">
                                 <div className="stat-item">
                                     <h3 className="fw-bold mb-1">500+</h3>
                                     <p className="text-muted mb-0">Companies Formed</p>
