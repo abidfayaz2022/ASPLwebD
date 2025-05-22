@@ -26,7 +26,10 @@ initializePassport(passport);  // <--- NOT `passportConfig;`
 
 // Security Middleware
 app.use(helmet({ contentSecurityPolicy: false })); // safer for Swagger/iFrames
-app.use(cors({ origin: "*", credentials: true }));
+app.use(cors({
+  origin: 'https://asp-lweb-d.vercel.app/',  // replace with your frontend URL
+  credentials: true                 // if you send cookies or auth tokens
+}));
 
 // app.use(cors({
 //   origin: (origin, callback) => {
