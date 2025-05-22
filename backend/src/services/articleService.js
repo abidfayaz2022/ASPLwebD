@@ -61,11 +61,19 @@ export const deleteArticle = async (articleId) => {
 
   if (article.imagePath) {
     const key = extractS3Key(article.imagePath);
-    if (key) await deleteFileFromS3(key);
+    if (key) {
+      try {
+        await deleteFileFromS3(key);
+      } catch (error) {
+        console.warn(`S3 image deletion failed or image not found: ${key}`, error.message);
+        // Proceeding with article deletion regardless of S3 image status
+      }
+    }
   }
 
   return prisma.article.delete({ where: { id: articleId } });
 };
+
 
 export const fetchPublishedArticles = async () => {
   return prisma.article.findMany({
