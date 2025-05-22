@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Start Frontend
-cd /home/ubuntu/angel/frontend
+cd /home/ubuntu/ASPLwebD/frontend
 
 # Clean build
 rm -rf .next
