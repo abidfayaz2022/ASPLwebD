@@ -31,7 +31,7 @@ const Footer = () => {
                                 </a> */}
                                 <div className="ms-auto d-none d-lg-flex align-items-center">
                                     <img
-                                        src="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/angelserviceslogo (2).png"
+                                        src="https://angel-frontend.s3.ap-southeast-1.amazonaws.com/public/images/angelserviceslogo%20(2).png"
                                         alt="Angel Services Logo"
                                         style={{ height: '75px', objectFit: 'contain' }}
                                     />

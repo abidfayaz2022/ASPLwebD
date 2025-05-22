@@ -87,7 +87,10 @@ export default async function handler(req, res) {
     };
 
     await transporter.sendMail(adminMailOptions);
-    await transporter.sendMail(userMailOptions);
+        // ✅ Only send confirmation if not disabled
+    if (formData.sendUserConfirmation !== false) {
+      await transporter.sendMail(userMailOptions);
+    }
 
   } catch (error) {
     console.error("Email Sending Error:", error);
