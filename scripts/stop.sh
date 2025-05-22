@@ -16,12 +16,12 @@ pm2 describe aspl-backend >/dev/null 2>&1 && pm2 delete aspl-backend || true
 pkill -f "node index.js" || true
 
 echo "Cleaning previous Next.js build artifacts..."
-[ -d /home/ubuntu/angel/frontend/.next ] && rm -rf /home/ubuntu/angel/frontend/.next
-[ -d /home/ubuntu/angel/frontend/out ] && rm -rf /home/ubuntu/angel/frontend/out
-[ -d /home/ubuntu/angel/frontend/.cache ] && rm -rf /home/ubuntu/angel/frontend/.cache
+[ -d /home/ubuntu/ASPLwebD/frontend/.next ] && rm -rf /home/ubuntu/angel/frontend/.next
+[ -d /home/ubuntu/ASPLwebD/frontend/out ] && rm -rf /home/ubuntu/angel/frontend/out
+[ -d /home/ubuntu/ASPLwebD/frontend/.cache ] && rm -rf /home/ubuntu/angel/frontend/.cache
 
 echo "Cleaning backend artifacts..."
-[ -d /home/ubuntu/angel/backend/node_modules ] && rm -rf /home/ubuntu/angel/backend/node_modules
+[ -d /home/ubuntu/ASPLwebD/backend/node_modules ] && rm -rf /home/ubuntu/angel/backend/node_modules
 
 echo "Stop script execution completed successfully."
 exit 0
